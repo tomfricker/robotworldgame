@@ -1,0 +1,21 @@
+import java.awt.Graphics;
+
+
+public class Game {
+	
+	
+
+	public static void main(String[] args) {
+		Board board = new Board();
+		Character robot = new Character();
+		//board.addCharacter(robot);
+		//robot.drawCharacter();
+		
+
+}
+	public static void createBoard() {
+		//Board board = new Board();
+		//Character robot = new Character();
+	}
+
+}
