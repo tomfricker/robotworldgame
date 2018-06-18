@@ -19,7 +19,7 @@ public class Game extends Canvas implements Runnable {
 		new Window(WIDTH, HEIGHT, "Robot World", this );
 		manager  = new Manager();
 		
-		//adds a player into the game
+		//adds players into the game
 		manager.addObject(new Player(100,100,ID.cat));
 		manager.addObject(new Player(400,400, ID.mouse));
 		
