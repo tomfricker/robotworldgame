@@ -73,7 +73,7 @@ public class Window extends Canvas{
         
 	    board.setLayout(new GridLayout(6, 6));
 	    
-	    //set the separate grids back and white
+	    //set the separate grids black and white
 	    for (int i = 0; i < 6; i++) {
 	        for (int j = 0; j < 6; j++) {
 	            squares[i][j] = new JPanel();

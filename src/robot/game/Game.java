@@ -99,7 +99,7 @@ public class Game extends Canvas implements Runnable {
 	
 	} //end of class
 	
-	
+	//testing a commit due to issues on my end (James)
 
 
 
