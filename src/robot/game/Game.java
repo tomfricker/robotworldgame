@@ -20,6 +20,7 @@ public class Game extends Canvas implements Runnable {
 		manager  = new Manager();
 		
 		//adds players into the game
+		manager.addObject(new Board(0,0,ID.background));
 		manager.addObject(new Player(100,100,ID.cat));
 		manager.addObject(new Player(400,400, ID.mouse));
 		
