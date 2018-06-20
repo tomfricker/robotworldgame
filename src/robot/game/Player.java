@@ -16,6 +16,8 @@ public class Player extends GameObjects {
 
 	
 	public void tick() {
+		//these players just move around at random and stay within the bounds of the game window (sort of)
+		//they're not too important to the game, they're mostly place holders to show proof of objects working. 
 		if(id == ID.mouse) {
 			Random rand = new Random(); 
 			int randmove1 = rand.nextInt(3);
@@ -53,9 +55,9 @@ public class Player extends GameObjects {
 	
 	public void render(Graphics g) {
 		if(id ==ID.mouse) {
-		g.setColor(Color.white);}
+		g.setColor(Color.blue);}
 		if(id ==ID.cat) {
-			g.setColor(Color.black);}
+			g.setColor(Color.red);}
 		g.fillRect(x,y,32,32);
 		
 	}

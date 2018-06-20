@@ -8,6 +8,7 @@ public class Manager {
 	
 	LinkedList<GameObjects> objectList = new LinkedList<>();
 	
+	//tick is the update stage of all objects in the game i.e. when the picese move or their actions are carried out. 
 	public void tick() {
 		for(int i = 0; i<objectList.size(); i++) {
 			GameObjects object = objectList.get(i);
@@ -16,6 +17,8 @@ public class Manager {
 		
 	}
 	
+	
+	//render is the method which draws the objects into the game window. 
 	public void render(Graphics g) {
 		for(int i = 0; i<objectList.size(); i++) {
 			GameObjects object = objectList.get(i);
