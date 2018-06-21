@@ -58,8 +58,7 @@ public class Window extends Canvas{
 	 * Adds the board (grid of squares) to the centre and the text field to the RHS of the frame.
 	 * @param frame, game
 	 */
-	public static void addComponentsToPane(Container frame, Game game) {
-         
+	public static void addComponentsToPane(Container frame, Game game) {	
 		//set the layout to centre the game
       	frame.setLayout(new BorderLayout()); 
       	frame.add(game, BorderLayout.CENTER);
@@ -79,7 +78,6 @@ public class Window extends Canvas{
 		outputTextArea.setFont(new Font("Monospaced", Font.PLAIN, 14));
 		outputTextArea.setLineWrap(true);
 		outputTextArea.setWrapStyleWord(true);
-		//create welcome message, to do: message class for different interactions/objects
 		outputTextArea.setText("Welcome to Robot World!\n\n"
 				+ "Have fun and enjoy learning to program.\n\n"
 				+ "Guide our friendly robot Robbie around the board and discover "
@@ -89,7 +87,8 @@ public class Window extends Canvas{
 		side.add(outputTextArea);
 		side.add(inputTextField);
 		
+		
 		//add side panel to frame on RHS
 		frame.add(side, BorderLayout.EAST);
-    }
+	}
 }
