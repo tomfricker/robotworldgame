@@ -8,6 +8,7 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.Panel;
 
+import javax.swing.JEditorPane;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -20,6 +21,8 @@ public class Window extends Canvas{
 	public static boolean RIGHT_TO_LEFT = false;
     
     private static JPanel squares[][] = new JPanel[6][6];	
+    
+    public static final int SIDEBARWIDTH = 200;
 
 	/**
 	 * Creates the frame (whole window) and adds components to it.
@@ -68,9 +71,25 @@ public class Window extends Canvas{
          
        
 
-        //create text field on RHS
+      //create side panel
+	    Panel side = new Panel();
+	    side.setLayout(new GridLayout(2,1));
+		side.setPreferredSize(new Dimension(SIDEBARWIDTH, HEIGHT));
+	    
+	    //create input box
         JTextField inputTextField = new JTextField(20);
 		inputTextField.setText("enter code here");
-        frame.add(inputTextField, BorderLayout.LINE_END);
+		
+        //create output box
+		JEditorPane outputTextArea = new JEditorPane();
+		outputTextArea.setText("text appears here");
+		
+		//add I/O boxes to side panel
+		side.add(outputTextArea);
+		side.add(inputTextField);
+		
+		
+		//add side panel to frame on RHS
+		frame.add(side, BorderLayout.LINE_END);
     }
 }
