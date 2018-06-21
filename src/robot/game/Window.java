@@ -41,7 +41,7 @@ public class Window extends Canvas{
 		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.pack();
-		frame.setResizable(false);
+		frame.setResizable(true);
 		frame.setLocationRelativeTo(null);
 		frame.add(game);
 		frame.setVisible(true);
@@ -66,27 +66,7 @@ public class Window extends Canvas{
         }
         
          
-        //Make the centre component big.     
-        Panel board = new Panel();
-        board.setPreferredSize(new Dimension(WIDTH, HEIGHT));
-        frame.add(board, BorderLayout.CENTER);
-        
-	    board.setLayout(new GridLayout(6, 6));
-	    
-	    //set the separate grids back and white
-	    for (int i = 0; i < 6; i++) {
-	        for (int j = 0; j < 6; j++) {
-	            squares[i][j] = new JPanel();
-
-	            if ((i + j) % 2 == 0) {
-	                squares[i][j].setBackground(Color.blue);
-	            } 
-	            else {
-	                squares[i][j].setBackground(Color.white);
-	            }   
-	            board.add(squares[i][j]);
-	        	}
-	    	}
+       
 
         //create text field on RHS
         JTextField inputTextField = new JTextField(20);

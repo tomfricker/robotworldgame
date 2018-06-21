@@ -12,16 +12,17 @@ public class Game extends Canvas implements Runnable {
 	public static final int WIDTH = 640, HEIGHT = WIDTH / 12 * 9;
 	private Thread thread;
 	private boolean running = false;
-	private Manager manager;
+	static Manager manager;
 	
 	public Game() {
 		//creates the window for the game to run in and the manager to control objects in the game. 
 		new Window(WIDTH, HEIGHT, "Robot World", this );
 		manager  = new Manager();
 		
-		//adds players into the game
-		manager.addObject(new Player(100,100,ID.cat));
-		manager.addObject(new Player(400,400, ID.mouse));
+		//creates a level (there's only 1 now)
+		// to do: I'm thinking this should be moved into manager.
+		Level level = new Level(1);
+	
 		
 	}
 	
@@ -39,8 +40,10 @@ public class Game extends Canvas implements Runnable {
 			e.printStackTrace();
 		}
 	}
-	
+		
 	public void run() {
+		//this part handles the frame counter and I'm not sure it's necessary for the game to actually run. I haven't bothered to check yet. 
+		//have since checked.... just leave it here. 
 		long lastTime =System.nanoTime();
 		double amountOfTicks = 60.0;
 		double ns = 1000000000 / amountOfTicks;
@@ -52,10 +55,11 @@ public class Game extends Canvas implements Runnable {
 			delta += (now - lastTime)/ns;
 			lastTime = now;
 			while(delta >=1) {
-				tick();
+				tick(); //this is the method call that updates objects presently in the game. 
 				delta--;
 			}
 			if(running) {
+				//the game then draws all of it's objects into the game. 
 				render();
 				frames++;
 			}
@@ -98,7 +102,6 @@ public class Game extends Canvas implements Runnable {
 	
 	
 	} //end of class
-	
 	
 
 
