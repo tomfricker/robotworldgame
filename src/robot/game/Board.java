@@ -42,9 +42,9 @@ public class Board extends GameObjects{
 						if(space) {g.setColor(Color.white);}
 						else{g.setColor(Color.black);}
 						//
-						g.fillRect(squareCornerX,squareCornerY,Game.WIDTH/boardSquares,Game.HEIGHT/boardSquares);
+						g.fillRect(squareCornerX,squareCornerY,(Game.WIDTH-Window.SIDEBARWIDTH)/boardSquares,Game.HEIGHT/boardSquares);
 						space = !space; //as the space boolean changes at the end of a row, the next row starts in the opposite colour, hence odd square numbers not working. 
-						squareCornerX += Game.WIDTH/boardSquares;
+						squareCornerX += (Game.WIDTH-Window.SIDEBARWIDTH)/boardSquares;
 					}
 				
 					squareCornerY += Game.HEIGHT/boardSquares;
