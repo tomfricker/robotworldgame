@@ -47,7 +47,7 @@ public class Commands {
 				Manager.removeObject(gameObject);
 			}
 		}
-		SidePanel.addText("You have picked up a flower!\n\n");
+		SidePanel.addText("~You have picked up a flower!\n\n");
 	}
 	
 	/**
