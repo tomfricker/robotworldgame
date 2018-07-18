@@ -4,40 +4,40 @@ import java.awt.Graphics;
 
 public abstract class GameObjects {
 
-	protected static int x; 
-	protected static int y;
+	protected int x; 
+	protected int y;
 	
 	protected int velY;
 	protected int velX;
 	
-	protected static ID id; 
+	protected ID id; 
 
 	protected boolean pickUp; 
 	
 	public GameObjects(int x, int y, ID id) {
-		GameObjects.x = x;
-		GameObjects.y = y;
-		GameObjects.id = id;		
+		this.x = x;
+		this.y = y;
+		this.id = id;		
 	}
 	
 	public abstract void tick();
 	
 	public abstract void render(Graphics g);
 
-	public static int getX() {
+	public int getX() {
 		return x;
 	}
 
-	public static void setX(int x) {
-		GameObjects.x = x;
+	public void setX(int x) {
+		this.x = x;
 	}
 
-	public static int getY() {
+	public int getY() {
 		return y;
 	}
 
-	public static void setY(int y) {
-		GameObjects.y = y;
+	public void setY(int y) {
+		this.y = y;
 	}
 
 	public int getVelY() {
@@ -56,12 +56,12 @@ public abstract class GameObjects {
 		this.velX = velX;
 	}
 	
-	public static ID getId() {
+	public ID getId() {
 		return id;
 	}
 
 	public void setId(ID id) {
-		GameObjects.id = id;
+		this.id = id;
 	}
 	
 	public boolean getPickUp() {

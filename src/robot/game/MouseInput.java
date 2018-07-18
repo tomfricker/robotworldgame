@@ -5,10 +5,7 @@ import java.awt.event.MouseEvent;
 
 public class MouseInput extends MouseAdapter {
 	
-	private Manager manager;
-	
 	public MouseInput(Manager manager) {
-		this.manager = manager;
 	}
 	
 	/**
@@ -29,10 +26,10 @@ public class MouseInput extends MouseAdapter {
 		int y = (squareNumY * Game.boardIndex)+(Game.boardIndex/2)-32;
 		
 		
-		for(GameObjects gameObject : manager.objectList) {
+		for(GameObjects gameObject : Manager.objectList) {
 			if(gameObject.getId() == ID.Player) {
-				GameObjects.setX(x);
-				GameObjects.setY(y);
+				gameObject.setX(x);
+				gameObject.setY(y);
 			}
 		}
 	}

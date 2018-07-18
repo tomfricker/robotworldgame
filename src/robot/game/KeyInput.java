@@ -4,10 +4,7 @@ import java.awt.event.KeyEvent;
 
 public class KeyInput extends KeyAdapter {
 	
-	private Manager manager;
-	
 	public KeyInput(Manager manager) {
-		this.manager = manager;
 	}
 	
 	/**
@@ -17,20 +14,20 @@ public class KeyInput extends KeyAdapter {
 		
 		int key = e.getKeyCode();
 		
-		for(GameObjects gameObject : manager.objectList) {
+		for(GameObjects gameObject : Manager.objectList) {
 			if(gameObject.getId() == ID.Player) {
 				if(key == KeyEvent.VK_UP)
 					//gameObject.setVelY(-5);
-					GameObjects.setY(GameObjects.getY()-Game.boardIndex);
+					gameObject.setY(gameObject.getY()-Game.boardIndex);
 				if(key == KeyEvent.VK_DOWN)
 					//gameObject.setVelY(5);
-					GameObjects.setY(GameObjects.getY()+Game.boardIndex);
+					gameObject.setY(gameObject.getY()+Game.boardIndex);
 				if(key == KeyEvent.VK_LEFT)
 					//gameObject.setVelX(-5);
-					GameObjects.setX(GameObjects.getX()-Game.boardIndex);
+					gameObject.setX(gameObject.getX()-Game.boardIndex);
 				if(key == KeyEvent.VK_RIGHT)
 					//gameObject.setVelX(5);
-					GameObjects.setX(GameObjects.getX()+Game.boardIndex);
+					gameObject.setX(gameObject.getX()+Game.boardIndex);
 			}
 		}
 		
@@ -43,7 +40,7 @@ public class KeyInput extends KeyAdapter {
 		
 		int key = e.getKeyCode();
 		
-		for(GameObjects gameObject : manager.objectList) {
+		for(GameObjects gameObject : Manager.objectList) {
 			if(gameObject.getId() == ID.Player) {
 				if(key == KeyEvent.VK_UP)
 					gameObject.setVelY(0);

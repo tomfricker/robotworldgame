@@ -2,32 +2,42 @@ package robot.game;
 
 public class Commands {
 
+	Manager manager;
+	
 	
 	public static void moveUp() {
-		if (GameObjects.getId() == ID.Player) {
-			int newY = Cells.decrementCell(Player.getY());
-			Player.setY(newY);
+		for(GameObjects gameObject : Manager.objectList) {
+			if (gameObject.getId() == ID.Player) {
+				int newY = Cells.decrementCell(gameObject.getY());
+				gameObject.setY(newY);
+			}
 		}
 	}
 	
 	public static void moveDown() {
-		if (GameObjects.getId() == ID.Player) {
-			int newY = Cells.incrementCell(Player.getY());
-			Player.setY(newY);
+		for(GameObjects gameObject : Manager.objectList) {
+			if (gameObject.getId() == ID.Player) {
+				int newY = Cells.incrementCell(gameObject.getY());
+				gameObject.setY(newY);
+			}
 		}
 	}
 	
 	public static void moveLeft() {
-		if (GameObjects.getId() == ID.Player) {
-			int newX = Cells.decrementCell(Player.getX());
-			Player.setX(newX);
+		for(GameObjects gameObject : Manager.objectList) {
+			if (gameObject.getId() == ID.Player) {
+				int newX = Cells.decrementCell(gameObject.getX());
+				gameObject.setX(newX);
+			}
 		}
 	}
 	
 	public static void moveRight() {
-		if (GameObjects.getId() == ID.Player) {
-			int newX = Cells.incrementCell(Player.getX());
-			Player.setX(newX);
+		for(GameObjects gameObject : Manager.objectList) {
+			if (gameObject.getId() == ID.Player) {
+				int newX = Cells.incrementCell(gameObject.getX());
+				gameObject.setX(newX);
+			}
 		}
 	}
 	
