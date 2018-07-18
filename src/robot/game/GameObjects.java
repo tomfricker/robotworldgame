@@ -10,14 +10,14 @@ public abstract class GameObjects {
 	protected int velY;
 	protected int velX;
 	
-	protected ID id; 
+	protected static ID id; 
 
 	protected boolean pickUp; 
 	
 	public GameObjects(int x, int y, ID id) {
 		GameObjects.x = x;
 		GameObjects.y = y;
-		this.id = id;		
+		GameObjects.id = id;		
 	}
 	
 	public abstract void tick();
@@ -56,12 +56,12 @@ public abstract class GameObjects {
 		this.velX = velX;
 	}
 	
-	public ID getId() {
+	public static ID getId() {
 		return id;
 	}
 
 	public void setId(ID id) {
-		this.id = id;
+		GameObjects.id = id;
 	}
 	
 	public boolean getPickUp() {

@@ -104,7 +104,7 @@ public class SidePanel extends Panel{
 	 * Returns text entered in input box
 	 * @return 
 	 */
-	public String getInput() {
+	public static String getInput() {
 		return inputTextField.getText();
 	}
 	
