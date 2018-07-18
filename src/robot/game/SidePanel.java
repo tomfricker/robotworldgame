@@ -130,7 +130,7 @@ public class SidePanel extends Panel{
 			addText(inputText + "\n\n");
 		}
 		else {
-			addText("~I don't understand, try typing something else.");
+			addText("~I don't understand, try typing something else. \n\n");
 		}
 		
 		refreshInputBox();
