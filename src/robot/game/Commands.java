@@ -3,7 +3,7 @@ package robot.game;
 public class Commands {
 
 	Manager manager;
-	
+
 	
 	public static void moveUp() {
 		for(GameObjects gameObject : Manager.objectList) {
@@ -41,35 +41,55 @@ public class Commands {
 		}
 	}
 	
+	public static void pickupFlower() {
+		for(GameObjects gameObject : Manager.objectList) {
+			if (gameObject.getId() == ID.NPC) {
+				Manager.removeObject(gameObject);
+			}
+		}
+		SidePanel.addText("You have picked up a flower!\n\n");
+	}
+	
 	/**
 	 * Checks which command has been entered and does it
 	 * @return 
 	 */
-	public static String checkCommands() {
+	public static Boolean checkCommands() {
 		String inputText = SidePanel.getInput();
-		
 		if(inputText.equals("robot.move(up);")) {
-			Commands.moveUp();
-			return inputText + "\n\n";
+			moveUp();
+			return true;
 		}
 		else if(inputText.equals("robot.move(down);")) {
-			Commands.moveDown();
-			return inputText + "\n\n";
+			moveDown();
+			return true;
 		}
 		else if(inputText.equals("robot.move(left);")) {
-			Commands.moveLeft();
-			return inputText + "\n\n";
+			moveLeft();
+			return true;
 		}
 		else if(inputText.equals("robot.move(right);")) {
-			Commands.moveRight();
-			return inputText + "\n\n";
+			moveRight();
+			return true;
+		}
+		else if(inputText.equals("robot.pickup(flower);")) {
+			pickupFlower();
+			return true;
 		}
 		else {
-			return "~I don't understand, try typing something else. \n\n";
+			return false;
 		}
-		
 	}
 	
-	
+	public static void printCommands() {
+		Boolean validCode = checkCommands();
+		String inputText = SidePanel.getInput();
+		if(validCode == true) {
+			SidePanel.addText(inputText + "\n\n");
+		}
+		else {
+			SidePanel.addText("~I don't understand:\n" + inputText + "\nTry typing something else.\n\n");
+		}
+	}
 	
 }

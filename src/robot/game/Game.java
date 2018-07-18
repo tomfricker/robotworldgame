@@ -29,9 +29,10 @@ public class Game extends Canvas implements Runnable {
 		//add the player to the game objects and display it on the board
 		manager.addObject(new Board(0,0,ID.background));
 		manager.addObject(new Player(Cells.A, Cells.A, ID.Player));
+		manager.addObject(new LevelHelenNPC(Cells.B, Cells.A, ID.NPC, manager, side));
 		
 		side.setText("~Welcome to level Helen of Robot World!\n\n"
-				+ "~Please move the Robot around the board by typing in code, e.g. robot.move(right); \n\n"
+				+ "~Please move the Robot around the board by typing in code, e.g. robot.move(right);\n\n"
 				+ "~Good luck and enjoy your adventure in Robot World!\n\n");
 		
 		//Level level = new Level(1);

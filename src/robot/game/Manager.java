@@ -26,7 +26,7 @@ public class Manager {
 		objectList.add(object);
 	}
 		
-	public void removeObject(GameObjects object) {
+	public static void removeObject(GameObjects object) {
 		objectList.remove(object);
 	}
 }

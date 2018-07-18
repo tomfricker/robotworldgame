@@ -39,8 +39,8 @@ public class SidePanel extends Panel{
         //gets input when enter is pressed
         inputTextField.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		checkCommands();
-        		//checkInput();
+        		Commands.printCommands();
+        		refreshInputBox();
         	}
         });
         
@@ -106,34 +106,6 @@ public class SidePanel extends Panel{
 	 */
 	public static String getInput() {
 		return inputTextField.getText();
-	}
-	
-	/**
-	 * Checks which command has been entered and does it
-	 */
-	public void checkCommands() {
-		String inputText = getInput();
-		if(inputText.equals("robot.move(up);")) {
-			Commands.moveUp();
-			addText(inputText + "\n\n");
-		}
-		else if(inputText.equals("robot.move(down);")) {
-			Commands.moveDown();
-			addText(inputText + "\n\n");
-		}
-		else if(inputText.equals("robot.move(left);")) {
-			Commands.moveLeft();
-			addText(inputText + "\n\n");
-		}
-		else if(inputText.equals("robot.move(right);")) {
-			Commands.moveRight();
-			addText(inputText + "\n\n");
-		}
-		else {
-			addText("~I don't understand, try typing something else. \n\n");
-		}
-		
-		refreshInputBox();
 	}
 	
 	/**
