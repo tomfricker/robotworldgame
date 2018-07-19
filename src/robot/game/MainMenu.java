@@ -22,7 +22,6 @@ public class MainMenu extends MouseAdapter{
 	private Game game;
 	private Manager manager;
 	private SidePanel side;
-	private Level level;
 	private HUD hud;
 	
 	public MainMenu(Game game, Manager manager, SidePanel side, HUD hud) {
@@ -65,7 +64,6 @@ public class MainMenu extends MouseAdapter{
 				manager.addObject(new LevelHelenNPC1(Cells.E, Cells.D, ID.NPC, manager, side, hud));
 				manager.addObject(new LevelHelenNPC2(Cells.E, Cells.C, ID.NPC, manager, side, hud));
 				//manager.addObject(new Flower1(Cells.B, Cells.F, ID.Flower, manager, side, hud));
-				//flower.addFlower(new Flower(Cells.D, Cells.D, ID.Flower, manager, side));
 				side.setText("~Welcome to level Helen of Robot World!\n\n"
 						+ "~Try moving the Robot around the board by typing in code, e.g. robot.move(right);\n\n");
 			}

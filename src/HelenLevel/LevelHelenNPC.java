@@ -17,15 +17,11 @@ import robot.game.SidePanel;
 
 public class LevelHelenNPC extends GameObjects {
 	
-	private Manager manager;
-	private SidePanel side;
 	private HUD hud;
 	boolean interacted;
 
 	public LevelHelenNPC(int x, int y, ID id, Manager manager, SidePanel side, HUD hud) {
 		super(x, y, id);
-		this.manager = manager;
-		this.side = side;
 		this.hud = hud;
 		interacted = false;
 	}

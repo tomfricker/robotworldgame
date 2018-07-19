@@ -5,8 +5,6 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
-import robot.game.Game.STATE;
-
 public class Game extends Canvas implements Runnable {
 
 	private static final long serialVersionUID = 5246413982503020397L;
@@ -17,7 +15,6 @@ public class Game extends Canvas implements Runnable {
 	private static final String TITLE = "Robot World";
 	public static int boardIndex;
 	static SidePanel side;
-	private Level level;
 	private MainMenu menu;
 	private HUD hud;
 	
@@ -35,7 +32,7 @@ public class Game extends Canvas implements Runnable {
 		SidePanel side = new SidePanel();
 		hud = new HUD();
 		menu= new MainMenu(this, manager, side, hud);
-		//this.addKeyListener(new KeyInput(manager));
+		this.addKeyListener(new KeyInput(manager));
 		//this.addMouseListener(new MouseInput(manager));
 		this.addMouseListener(menu);
 		

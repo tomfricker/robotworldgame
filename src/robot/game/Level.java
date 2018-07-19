@@ -15,8 +15,6 @@ public class Level {
 	private Manager manager;
 	private SidePanel side;
 	private HUD hud;
-	private int keepScore;
-	
 	public Level(Manager manager, SidePanel side, int level, HUD hud) {
 		this.manager = manager;
 		this.side = side;

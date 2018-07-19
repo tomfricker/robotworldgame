@@ -1,7 +1,5 @@
 package HelenLevel;
 
-import java.util.Iterator;
-
 import robot.game.Cells;
 import robot.game.GameObjects;
 import robot.game.ID;

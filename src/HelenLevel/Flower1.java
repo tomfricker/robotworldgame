@@ -4,12 +4,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.LinkedList;
-
 import javax.imageio.ImageIO;
-import javax.swing.JOptionPane;
-
 import robot.game.GameObjects;
 import robot.game.HUD;
 import robot.game.ID;
