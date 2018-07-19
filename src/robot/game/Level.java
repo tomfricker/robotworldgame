@@ -9,8 +9,16 @@ package robot.game;
  */
 public class Level {
 	
-	public Level(int level) {
-		loadLevel(level);
+	private Manager manager;
+	private SidePanel side;
+	private int keepScore;
+	
+	public Level(Manager manager, SidePanel side, int level) {
+		this.manager = manager;
+		this.side = side;
+		
+		loadLevel(1);
+		loadLevel(2);
 	}
 
 	/**
@@ -21,26 +29,44 @@ public class Level {
 	 * more of these can be added when the game is developed. 
 	 */
 	private void loadLevel(int level) {
-		if(level ==1) {
-			
-			//add the player to the game objects and display it on the board
-			Game.manager.addObject(new Board(0,0,ID.background));
-			Game.manager.addObject(new Player(8, 8, ID.Player));
-			//Game.manager.addObject(new LevelHelenNPC1(8+(Game.boardIndex*7), 8, ID.NPC, Game.manager, Game.side));
-			//Game.manager.addObject(new LevelHelenNPC2(8, 8+(Game.boardIndex*7), ID.NPC, Game.manager, Game.side));
-			//Game.manager.addObject(new LevelHelenNPC3(8+(Game.boardIndex*7), 8+(Game.boardIndex*7), ID.NPC, Game.manager, Game.side));
-			Game.side.setText("~Welcome to level 1 of Robot World!\n\n"
-					+ "~Please move Robbie the Robot around the board using the arrow keys.\n\n"
-					+ "~Good luck and enjoy your adventure in Robot World!\n\n");
+		//Create the player and the board
+		if(level == 1) {
+			levelOne();
 		}
-		
-	
+		else if(level == 2) {
+			levelTwo();
+		}
 	}
 	
+	/**
+	* Create the objects unique to level 1
+	*/
+	public void levelOne() {
+		manager.addObject(new Player(Cells.A, Cells.A, ID.Player));
+		manager.addObject(new LevelTomNPC(Cells.D, Cells.C, ID.NPC, manager, side));
+		manager.addObject(new LevelTomNPC1(Cells.H, Cells.A, ID.NPC, manager, side));
+		manager.addObject(new LevelTomNPC2(Cells.A, Cells.H, ID.NPC, manager, side));
+		manager.addObject(new LevelTomNPC3(Cells.H, Cells.H, ID.NPC, manager, side));
+		
+		side.setText("~Welcome to level 1 of Robot World!\n\n"
+					+ "~Please move Robbie the Robot around the board using the arrow keys.\n\n"
+					+ "~Good luck and enjoy your adventure in Robot World!\n\n");
+	}
+	
+	/**
+	 * add objects for level 2
+	 */
+	public void levelTwo() {
+		manager.addObject(new Player(Cells.A, Cells.A, ID.Player));
+		manager.addObject(new LevelHelenNPC(Cells.B, Cells.A, ID.NPC, manager, side));
+		
+		side.setText("~Welcome to level Helen of Robot World!\n\n"
+				+ "~Please move the Robot around the board by typing in code, e.g. robot.move(right);\n\n");
+	}
 
 	public void complete() {
 		//when completion criteria of a level is met, removes all objects from the manager's linked list and proceeds with the next part of the game. 
-		//Game.manager.objectList.clear();
+		//manager.objectList.clear();
 		//to do: add some sort of recognition for the completion of a level. 
 	}
 	

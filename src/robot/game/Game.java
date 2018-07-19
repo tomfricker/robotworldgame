@@ -1,6 +1,7 @@
 package robot.game;
 
 import java.awt.Canvas;
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
@@ -14,28 +15,23 @@ public class Game extends Canvas implements Runnable {
 	private static final String TITLE = "Robot World";
 	public static int boardIndex;
 	static SidePanel side;
+	private Level level;
 	
 	public Game() {
 		//creates the window for the game to run in and the manager to control objects in the game. 
 		manager = new Manager();
+		SidePanel side = new SidePanel();
+		
 		this.addKeyListener(new KeyInput(manager));
 		this.addMouseListener(new MouseInput(manager));
-		SidePanel side = new SidePanel();
+		
 		new Window(WIDTH, HEIGHT, TITLE, this, side);
 		
 		//creates board index values (testing)
 		boardIndex = HEIGHT/8;
 		
-		//add the player to the game objects and display it on the board
-		manager.addObject(new Board(0,0,ID.background));
-		manager.addObject(new Player(Cells.A, Cells.A, ID.Player));
-		manager.addObject(new LevelHelenNPC(Cells.B, Cells.A, ID.NPC, manager, side));
-		
-		side.setText("~Welcome to level Helen of Robot World!\n\n"
-				+ "~Please move the Robot around the board by typing in code, e.g. robot.move(right);\n\n"
-				+ "~Good luck and enjoy your adventure in Robot World!\n\n");
-		
-		//Level level = new Level(1);
+		level = new Level(manager, side, 1);
+		//level = new Level(manager, side, 2);
 	}
 	
 	public synchronized void start() {
@@ -98,6 +94,29 @@ public class Game extends Canvas implements Runnable {
 		}
 		
 		Graphics g = bs.getDrawGraphics();
+		
+		//calculates the correct dimensions for squares on a chessboard
+		int x = 0;
+		int y = 0;
+		int squareHeight = HEIGHT/8;
+		int squareWidth = squareHeight;
+				
+		//sets the background to a chessboard pattern
+		for(int j = 0; j < 8; j++) {
+			for(int i = 0; i < 8; i++) {
+				if((i + j) % 2 == 0) {
+					g.setColor(Color.white);
+					g.fillRect(x, y, squareWidth, squareHeight);
+				}
+				else {
+					g.setColor(Color.black);
+					g.fillRect(x, y, squareWidth, squareHeight);
+				}
+				x += squareWidth;
+			}
+			y += squareHeight;
+			x = 0;
+		}
 		
 		manager.render(g);
 		

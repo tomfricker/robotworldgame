@@ -70,7 +70,7 @@ public class SidePanel extends Panel{
 	 */
 	public void setText(String text) {
 		outputTextArea.setText(text);
-		scrollToBottom(scrollPane);
+		scrollToBottom();
 	}
 	
 	/**
@@ -79,7 +79,7 @@ public class SidePanel extends Panel{
 	 */
 	public static void addText(String text) {
 		outputTextArea.append(text);
-		scrollToBottom(scrollPane);
+		scrollToBottom();
 	}
 	
 	/**
@@ -87,7 +87,7 @@ public class SidePanel extends Panel{
 	 * Taken from https://stackoverflow.com/questions/5147768/scroll-jscrollpane-to-bottom
 	 * @param scrollPane
 	 */
-	private static void scrollToBottom(JScrollPane scrollPane) {
+	private static void scrollToBottom() {
 	    JScrollBar verticalBar = scrollPane.getVerticalScrollBar();
 	    AdjustmentListener downScroller = new AdjustmentListener() {
 	        @Override
