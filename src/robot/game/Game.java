@@ -5,6 +5,8 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
+import robot.game.Game.STATE;
+
 public class Game extends Canvas implements Runnable {
 
 	private static final long serialVersionUID = 5246413982503020397L;
@@ -16,14 +18,26 @@ public class Game extends Canvas implements Runnable {
 	public static int boardIndex;
 	static SidePanel side;
 	private Level level;
+	private MainMenu menu;
+	private HUD hud;
+	
+	public enum STATE {
+		Menu,
+		Game,
+		End
+	};
+	
+	public STATE gameState = STATE.Menu;
 	
 	public Game() {
 		//creates the window for the game to run in and the manager to control objects in the game. 
 		manager = new Manager();
 		SidePanel side = new SidePanel();
-		
+		hud = new HUD();
+		menu= new MainMenu(this, manager, side, hud);
 		this.addKeyListener(new KeyInput(manager));
-		this.addMouseListener(new MouseInput(manager));
+		//this.addMouseListener(new MouseInput(manager));
+		this.addMouseListener(menu);
 		
 		new Window(WIDTH, HEIGHT, TITLE, this, side);
 		
@@ -31,7 +45,7 @@ public class Game extends Canvas implements Runnable {
 		boardIndex = HEIGHT/8;
 		
 		//level = new Level(manager, side, 1);
-		level = new Level(manager, side, 2);
+		//level = new Level(manager, side, 2);
 	}
 	
 	public synchronized void start() {
@@ -84,6 +98,18 @@ public class Game extends Canvas implements Runnable {
 	
 	private void tick() {
 		manager.tick();
+		
+		if(gameState == STATE.Game) {
+			hud.tick();
+			
+			if(hud.getScore() >= 50) {
+				manager.clearAll();
+				gameState = STATE.End;
+			}
+		}
+		else if(gameState == STATE.Menu || gameState == STATE.End) {
+			menu.tick();
+		}
 	}
 
 	private void render() {
@@ -119,6 +145,13 @@ public class Game extends Canvas implements Runnable {
 		}
 		
 		manager.render(g);
+		
+		if(gameState == STATE.Game) {
+			hud.render(g);
+		}
+		else if(gameState == STATE.Menu || gameState == STATE.End) {
+			menu.render(g);
+		}
 		
 		g.dispose();
 		bs.show();

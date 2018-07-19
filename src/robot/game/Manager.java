@@ -6,7 +6,7 @@ import java.util.LinkedList;
 public class Manager {
 
 	
-	static LinkedList<GameObjects> objectList = new LinkedList<>();
+	public static LinkedList<GameObjects> objectList = new LinkedList<>();
 	
 	//tick is the update stage of all objects in the game i.e. when the pieces move or their actions are carried out. 
 	public void tick() {
@@ -28,5 +28,9 @@ public class Manager {
 		
 	public static void removeObject(GameObjects object) {
 		objectList.remove(object);
+	}
+	
+	public void clearAll() {
+		objectList.clear();
 	}
 }

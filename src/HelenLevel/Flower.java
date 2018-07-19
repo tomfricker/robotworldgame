@@ -1,4 +1,4 @@
-package robot.game;
+package HelenLevel;
 
 import java.awt.Graphics;
 import java.awt.Image;
@@ -8,6 +8,11 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 
 import javax.imageio.ImageIO;
+
+import robot.game.GameObjects;
+import robot.game.ID;
+import robot.game.Manager;
+import robot.game.SidePanel;
 
 public class Flower extends GameObjects {
 	

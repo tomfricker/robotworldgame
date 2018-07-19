@@ -1,4 +1,4 @@
-package robot.game;
+package TomLevel;
 
 import java.awt.Graphics;
 import java.awt.Image;
@@ -8,16 +8,24 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 
+import robot.game.GameObjects;
+import robot.game.HUD;
+import robot.game.ID;
+import robot.game.Manager;
+import robot.game.SidePanel;
+
 public class LevelTomNPC2 extends GameObjects {
 	
 	Manager manager;
 	SidePanel side;
+	HUD hud;
 	boolean interacted;
 
-	public LevelTomNPC2(int x, int y, ID id, Manager manager, SidePanel side) {
+	public LevelTomNPC2(int x, int y, ID id, Manager manager, SidePanel side, HUD hud) {
 		super(x, y, id);
 		this.manager = manager;
 		this.side = side;
+		this.hud = hud;
 		interacted = false;
 	}
 
@@ -29,7 +37,7 @@ public class LevelTomNPC2 extends GameObjects {
 
 	@Override
 	public void render(Graphics g) {
-		File imageFile = new File("C:/Users/MissH/git/RobotWorld/src/robot/game/RobotBuddy.png");
+		File imageFile = new File("C:/Users/MissH/Documents/TomsVersion/src/robot/game/RobotBuddy.png");
 		try {
 			Image robot = ImageIO.read(imageFile);
 			g.drawImage(robot, x, y, null);
@@ -49,6 +57,7 @@ public class LevelTomNPC2 extends GameObjects {
 				if(gameObject.getX() == x && gameObject.getY() == y) {
 					String message = "Every line of code must end with ;";
 					JOptionPane.showMessageDialog(null, message);
+					hud.setScore(hud.getScore() + 10);
 					interacted = true;
 					SidePanel.addText("~" + message + "\n\n");
 				}

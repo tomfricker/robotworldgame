@@ -1,5 +1,9 @@
 package robot.game;
 
+import HelenLevel.Flower;
+import HelenLevel.LevelHelenNPC;
+import TomLevel.LevelTomNPC;
+
 /**
  * 
  * @author James
@@ -12,11 +16,13 @@ public class Level {
 	private Manager manager;
 	private Flower flower;
 	private SidePanel side;
+	private HUD hud;
 	private int keepScore;
 	
-	public Level(Manager manager, SidePanel side, int level) {
+	public Level(Manager manager, SidePanel side, int level, HUD hud) {
 		this.manager = manager;
 		this.side = side;
+		this.hud = hud;
 		
 		//loadLevel(1);
 		loadLevel(2);
@@ -43,11 +49,12 @@ public class Level {
 	* Create the objects unique to level 1
 	*/
 	public void levelOne() {
+		manager.addObject(new Board(0, 0, ID.background));
 		manager.addObject(new Player(Cells.A, Cells.A, ID.Player));
-		manager.addObject(new LevelTomNPC(Cells.D, Cells.C, ID.NPC, manager, side));
-		manager.addObject(new LevelTomNPC1(Cells.H, Cells.A, ID.NPC, manager, side));
-		manager.addObject(new LevelTomNPC2(Cells.A, Cells.H, ID.NPC, manager, side));
-		manager.addObject(new LevelTomNPC3(Cells.H, Cells.H, ID.NPC, manager, side));
+		manager.addObject(new LevelTomNPC(Cells.D, Cells.C, ID.NPC, manager, side, hud));
+		//manager.addObject(new LevelTomNPC1(Cells.H, Cells.A, ID.NPC, manager, side));
+		//manager.addObject(new LevelTomNPC2(Cells.A, Cells.H, ID.NPC, manager, side));
+		//manager.addObject(new LevelTomNPC3(Cells.H, Cells.H, ID.NPC, manager, side));
 		
 		side.setText("~Welcome to level 1 of Robot World!\n\n"
 					+ "~Please move Robbie the Robot around the board using the arrow keys.\n\n"
@@ -59,7 +66,7 @@ public class Level {
 	 */
 	public void levelTwo() {
 		manager.addObject(new Player(Cells.A, Cells.A, ID.Player));
-		manager.addObject(new LevelHelenNPC(Cells.D, Cells.A, ID.NPC, manager, side));
+		manager.addObject(new LevelHelenNPC(Cells.D, Cells.A, ID.NPC, manager, side, hud));
 		//flower.addFlower(new Flower(Cells.D, Cells.D, ID.Flower, manager, side));
 		
 		side.setText("~Welcome to level Helen of Robot World!\n\n"

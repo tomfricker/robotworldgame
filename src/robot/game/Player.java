@@ -29,7 +29,7 @@ public class Player extends GameObjects {
 		 * copy the file location and paste into the speech marks below. The robot.png
 		 * should be located in the robot.game package underneath the classes to your left <------.
 		 */
-		File imageFile = new File("C:/Users/MissH/git/RobotWorld/src/robot/game/HelensRobot.png");
+		File imageFile = new File("C:/Users/MissH/git/RobotWorld/src/HelenLevel/HelensRobot.png");
 		try {
 			Image robot = ImageIO.read(imageFile);
 			g.drawImage(robot, x, y, null);

@@ -1,4 +1,4 @@
-package robot.game;
+package TomLevel;
 
 import java.awt.Graphics;
 import java.awt.Image;
@@ -8,16 +8,25 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 
+import robot.game.Game;
+import robot.game.GameObjects;
+import robot.game.HUD;
+import robot.game.ID;
+import robot.game.Manager;
+import robot.game.SidePanel;
+
 public class LevelTomNPC extends GameObjects {
 	
-	Manager manager;
-	SidePanel side;
+	private Manager manager;
+	private SidePanel side;
+	private HUD hud;
 	boolean interacted;
 
-	public LevelTomNPC(int x, int y, ID id, Manager manager, SidePanel side) {
+	public LevelTomNPC(int x, int y, ID id, Manager manager, SidePanel side, HUD hud) {
 		super(x, y, id);
 		this.manager = manager;
 		this.side = side;
+		this.hud = hud;
 		interacted = false;
 	}
 
@@ -29,7 +38,7 @@ public class LevelTomNPC extends GameObjects {
 
 	@Override
 	public void render(Graphics g) {
-		File imageFile = new File("C:/Users/MissH/git/RobotWorld/src/robot/game/RobotBuddy.png");
+		File imageFile = new File("C:/Users/MissH/Documents/TomsVersion/src/robot/game/RobotBuddy.png");
 		try {
 			Image robot = ImageIO.read(imageFile);
 			g.drawImage(robot, x, y, null);
@@ -63,6 +72,7 @@ public class LevelTomNPC extends GameObjects {
 					else if(input.equals(answer)) {
 						SidePanel.addText("~" + input + "\n");
 						SidePanel.addText("~correct\n\n");
+						hud.setScore(hud.getScore() + 50);
 						interacted = true;
 					}
 				}

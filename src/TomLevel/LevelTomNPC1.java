@@ -1,4 +1,4 @@
-package robot.game;
+package TomLevel;
 
 import java.awt.Graphics;
 import java.awt.Image;
@@ -8,16 +8,24 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 
-public class LevelTomNPC3 extends GameObjects {
+import robot.game.GameObjects;
+import robot.game.HUD;
+import robot.game.ID;
+import robot.game.Manager;
+import robot.game.SidePanel;
+
+public class LevelTomNPC1 extends GameObjects {
 	
 	Manager manager;
 	SidePanel side;
+	HUD hud;
 	boolean interacted;
 
-	public LevelTomNPC3(int x, int y, ID id, Manager manager, SidePanel side) {
+	public LevelTomNPC1(int x, int y, ID id, Manager manager, SidePanel side, HUD hud) {
 		super(x, y, id);
 		this.manager = manager;
 		this.side = side;
+		this.hud = hud;
 		interacted = false;
 	}
 
@@ -29,7 +37,7 @@ public class LevelTomNPC3 extends GameObjects {
 
 	@Override
 	public void render(Graphics g) {
-		File imageFile = new File("C:/Users/MissH/git/RobotWorld/src/robot/game/RobotBuddy.png");
+		File imageFile = new File("C:/Users/MissH/Documents/TomsVersion/src/robot/game/RobotBuddy.png");
 		try {
 			Image robot = ImageIO.read(imageFile);
 			g.drawImage(robot, x, y, null);
@@ -47,9 +55,9 @@ public class LevelTomNPC3 extends GameObjects {
 		for(GameObjects gameObject : Manager.objectList) {
 			if(gameObject.getId() == ID.Player) {
 				if(gameObject.getX() == x && gameObject.getY() == y) {
-					String message = "An example of a number variable declaration is:\n"
-							+ "int y = 12;";
+					String message = "To declare a whole number in Java you must make it an int";
 					JOptionPane.showMessageDialog(null, message);
+					hud.setScore(hud.getScore() + 10);
 					interacted = true;
 					SidePanel.addText("~" + message + "\n\n");
 				}

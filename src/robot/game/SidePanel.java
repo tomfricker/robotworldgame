@@ -17,6 +17,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import HelenLevel.Commands;
+
 public class SidePanel extends Panel{
 
 	private static final long serialVersionUID = -7645124710017857401L;
