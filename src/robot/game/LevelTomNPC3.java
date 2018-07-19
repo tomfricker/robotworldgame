@@ -44,14 +44,14 @@ public class LevelTomNPC3 extends GameObjects {
 	 * This character asks for the answer to a question then displays both correct and incorrect answers typed in the side panel.
 	 */
 	public void interact() {
-		for(GameObjects gameObject : manager.objectList) {
+		for(GameObjects gameObject : Manager.objectList) {
 			if(gameObject.getId() == ID.Player) {
 				if(gameObject.getX() == x && gameObject.getY() == y) {
 					String message = "An example of a number variable declaration is:\n"
 							+ "int y = 12;";
 					JOptionPane.showMessageDialog(null, message);
 					interacted = true;
-					side.addText("~" + message + "\n\n");
+					SidePanel.addText("~" + message + "\n\n");
 				}
 			}
 		}

@@ -29,7 +29,7 @@ public class LevelHelenNPC extends GameObjects {
 
 	@Override
 	public void render(Graphics g) {
-		File imageFile = new File("C:/Users/MissH/git/RobotWorld/src/robot/game/Flower.png");
+		File imageFile = new File("C:/Users/MissH/git/RobotWorld/src/robot/game/walle.png");
 		try {
 			Image robot = ImageIO.read(imageFile);
 			g.drawImage(robot, x, y, null);

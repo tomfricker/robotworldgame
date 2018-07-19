@@ -44,13 +44,13 @@ public class LevelTomNPC2 extends GameObjects {
 	 * This character asks for the answer to a question then displays both correct and incorrect answers typed in the side panel.
 	 */
 	public void interact() {
-		for(GameObjects gameObject : manager.objectList) {
+		for(GameObjects gameObject : Manager.objectList) {
 			if(gameObject.getId() == ID.Player) {
 				if(gameObject.getX() == x && gameObject.getY() == y) {
 					String message = "Every line of code must end with ;";
 					JOptionPane.showMessageDialog(null, message);
 					interacted = true;
-					side.addText("~" + message + "\n\n");
+					SidePanel.addText("~" + message + "\n\n");
 				}
 			}
 		}

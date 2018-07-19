@@ -30,8 +30,8 @@ public class Game extends Canvas implements Runnable {
 		//creates board index values (testing)
 		boardIndex = HEIGHT/8;
 		
-		level = new Level(manager, side, 1);
-		//level = new Level(manager, side, 2);
+		//level = new Level(manager, side, 1);
+		level = new Level(manager, side, 2);
 	}
 	
 	public synchronized void start() {

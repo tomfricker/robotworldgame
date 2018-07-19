@@ -10,6 +10,7 @@ package robot.game;
 public class Level {
 	
 	private Manager manager;
+	private Flower flower;
 	private SidePanel side;
 	private int keepScore;
 	
@@ -17,7 +18,7 @@ public class Level {
 		this.manager = manager;
 		this.side = side;
 		
-		loadLevel(1);
+		//loadLevel(1);
 		loadLevel(2);
 	}
 
@@ -58,10 +59,11 @@ public class Level {
 	 */
 	public void levelTwo() {
 		manager.addObject(new Player(Cells.A, Cells.A, ID.Player));
-		manager.addObject(new LevelHelenNPC(Cells.B, Cells.A, ID.NPC, manager, side));
+		manager.addObject(new LevelHelenNPC(Cells.D, Cells.A, ID.NPC, manager, side));
+		//flower.addFlower(new Flower(Cells.D, Cells.D, ID.Flower, manager, side));
 		
 		side.setText("~Welcome to level Helen of Robot World!\n\n"
-				+ "~Please move the Robot around the board by typing in code, e.g. robot.move(right);\n\n");
+				+ "~Try moving the Robot around the board by typing in code, e.g. robot.move(right);\n\n");
 	}
 
 	public void complete() {

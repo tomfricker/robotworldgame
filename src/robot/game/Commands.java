@@ -42,11 +42,21 @@ public class Commands {
 	}
 	
 	public static void pickupFlower() {
-		for(GameObjects gameObject : Manager.objectList) {
-			if (gameObject.getId() == ID.NPC) {
-				Manager.removeObject(gameObject);
+		for(GameObjects player : Manager.objectList) {
+			if(player.getId() == ID.Player) {
+		
+				for(GameObjects flower : Manager.objectList) {
+						
+					if(player.getX() == flower.getX() && player.getY() == flower.getY()) {
+					
+						if (flower.getId() == ID.Flower) {
+							Flower.removeFlower(flower);
+						}
+					}
+				}
 			}
 		}
+		
 		SidePanel.addText("~You have picked up a flower!\n\n");
 	}
 	
