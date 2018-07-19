@@ -1,5 +1,7 @@
 package HelenLevel;
 
+import java.util.Iterator;
+
 import robot.game.Cells;
 import robot.game.GameObjects;
 import robot.game.ID;
@@ -56,7 +58,15 @@ public class Commands {
 					if(player.getX() == flower.getX() && player.getY() == flower.getY()) {
 					
 						if (flower.getId() == ID.Flower) {
-							Flower.removeFlower(flower);
+							
+							//Iterator<GameObjects> it = flower.listIterator();
+							//while (it.hasNext() ) {
+							//	String flower.it.next();
+							//	if(flower.getID() ==ID.Flower) {
+							//		it.remove();
+							//	}
+							//}
+							Manager.removeObject(flower);
 						}
 					}
 				}

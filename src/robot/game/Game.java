@@ -35,7 +35,7 @@ public class Game extends Canvas implements Runnable {
 		SidePanel side = new SidePanel();
 		hud = new HUD();
 		menu= new MainMenu(this, manager, side, hud);
-		this.addKeyListener(new KeyInput(manager));
+		//this.addKeyListener(new KeyInput(manager));
 		//this.addMouseListener(new MouseInput(manager));
 		this.addMouseListener(menu);
 		

@@ -1,6 +1,5 @@
 package robot.game;
 
-import HelenLevel.Flower;
 import HelenLevel.LevelHelenNPC;
 import TomLevel.LevelTomNPC;
 
@@ -14,7 +13,6 @@ import TomLevel.LevelTomNPC;
 public class Level {
 	
 	private Manager manager;
-	private Flower flower;
 	private SidePanel side;
 	private HUD hud;
 	private int keepScore;
