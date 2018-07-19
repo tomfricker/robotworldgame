@@ -34,7 +34,7 @@ public class LevelHelenNPC extends GameObjects {
 
 	@Override
 	public void render(Graphics g) {
-		File imageFile = new File("C:/Users/MissH/git/RobotWorld/src/HelenLevel/walle.png");
+		File imageFile = new File("D:\\MSc Computer Science\\CO880 - Project and Dissertation\\GameProject\\RobotWorld\\src\\HelenLevel\\walle.png");
 		try {
 			Image robot = ImageIO.read(imageFile);
 			g.drawImage(robot, x, y, null);

@@ -1,5 +1,7 @@
 package robot.game;
 
+import DessyLevel.LevelDessyNPC;
+import DessyLevel.LevelDessyNPC1;
 import HelenLevel.LevelHelenNPC;
 import TomLevel.LevelTomNPC;
 
@@ -39,6 +41,9 @@ public class Level {
 		else if(level == 2) {
 			levelTwo();
 		}
+		else if(level == 3) {
+			levelThree();
+		}
 	}
 	
 	/**
@@ -67,6 +72,17 @@ public class Level {
 		
 		side.setText("~Welcome to level Helen of Robot World!\n\n"
 				+ "~Try moving the Robot around the board by typing in code, e.g. robot.move(right);\n\n");
+	}
+	
+	/**
+	 * add objects for level 3
+	 */
+	public void levelThree() {
+		manager.addObject(new Player(Cells.B, Cells.A, ID.Player));
+		manager.addObject(new LevelDessyNPC(Cells.H, Cells.A, ID.NPC, manager, side, hud));
+		//manager.addObject(new LevelDessyNPC1(Cells.E, Cells.C, ID.NPC, manager, side, hud));
+		side.setText("~Welcome to level 3 of Robot World - All about Classes and Objects!\n\n"
+				+ "~Try moving the Robot to the apple.\n\n");
 	}
 
 	public void complete() {
