@@ -18,18 +18,19 @@ public class Window extends Canvas {
 	 * @param title
 	 * @param game
 	 */
-    public Window(int width, int height, String title, Game game, SidePanel side) {
+    public Window(int width, int height, String title, Game game, SidePanel side, ButtonBar buttons) {
 		JFrame frame = new JFrame(title);
 		
 		Container contentPane = frame.getContentPane();
 		contentPane.setLayout(new BorderLayout());
-		contentPane.setPreferredSize(new Dimension(width, height));
-		contentPane.setMaximumSize(new Dimension(width, height));
-		contentPane.setMinimumSize(new Dimension(width, height));		
+		contentPane.setPreferredSize(new Dimension(width, height + ButtonBar.buttonBarSize));
+		contentPane.setMaximumSize(new Dimension(width, height + ButtonBar.buttonBarSize));
+		contentPane.setMinimumSize(new Dimension(width, height + ButtonBar.buttonBarSize));		
 		
 		//add side panel to frame on RHS
 		contentPane.add(side, BorderLayout.EAST);
 		contentPane.add(game, BorderLayout.CENTER);
+		contentPane.add(buttons, BorderLayout.SOUTH);
 		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setResizable(false);

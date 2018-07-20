@@ -25,7 +25,7 @@ public class MainMenu extends MouseAdapter{
 	private SidePanel side;
 	private HUD hud;
 	
-	public MainMenu(Game game, Manager manager, SidePanel side, HUD hud) {
+	public MainMenu(Game game, Manager manager, SidePanel side, HUD hud, ButtonBar buttons) {
 		this.game = game;
 		this.manager = manager;
 		this.side = side;
