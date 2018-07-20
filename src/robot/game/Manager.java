@@ -6,22 +6,18 @@ import java.util.LinkedList;
 public class Manager {
 
 	
-	LinkedList<GameObjects> objectList = new LinkedList<>();
+	public static LinkedList<GameObjects> objectList = new LinkedList<>();
 	
-	//tick is the update stage of all objects in the game i.e. when the picese move or their actions are carried out. 
+	//tick is the update stage of all objects in the game i.e. when the pieces move or their actions are carried out. 
 	public void tick() {
-		for(int i = 0; i<objectList.size(); i++) {
-			GameObjects object = objectList.get(i);
+		for(GameObjects object : objectList) {
 			object.tick();
 		}
-		
 	}
-	
 	
 	//render is the method which draws the objects into the game window. 
 	public void render(Graphics g) {
-		for(int i = 0; i<objectList.size(); i++) {
-			GameObjects object = objectList.get(i);
+		for(GameObjects object : objectList) {
 			object.render(g);
 		}
 	}
@@ -30,7 +26,11 @@ public class Manager {
 		objectList.add(object);
 	}
 		
-	public void removeObject(GameObjects object) {
+	public static void removeObject(GameObjects object) {
 		objectList.remove(object);
+	}
+	
+	public void clearAll() {
+		objectList.clear();
 	}
 }

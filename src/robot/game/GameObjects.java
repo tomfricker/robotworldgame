@@ -11,7 +11,7 @@ public abstract class GameObjects {
 	protected int velX;
 	
 	protected ID id; 
-	
+
 	protected boolean pickUp; 
 	
 	public GameObjects(int x, int y, ID id) {
@@ -54,6 +54,14 @@ public abstract class GameObjects {
 
 	public void setVelX(int velX) {
 		this.velX = velX;
+	}
+	
+	public ID getId() {
+		return id;
+	}
+
+	public void setId(ID id) {
+		this.id = id;
 	}
 	
 	public boolean getPickUp() {

@@ -1,68 +1,42 @@
 package robot.game;
 
-import java.awt.Color;
 import java.awt.Graphics;
-import java.util.Random;
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 
 public class Player extends GameObjects {
 	
-	
-	
 	protected Player(int x, int y, ID id) {
 		super(x, y, id);
-		
 	}
 
-
-	
+	@Override
 	public void tick() {
-		//these players just move around at random and stay within the bounds of the game window (sort of)
-		//they're not too important to the game, they're mostly place holders to show proof of objects working. 
-		if(id == ID.mouse) {
-			Random rand = new Random(); 
-			int randmove1 = rand.nextInt(3);
-			int randmove2 = rand.nextInt(3);
-			int moveVal1 = (1 -randmove1) * 10;
-			int moveVal2 = (1 - randmove2) * 10;
-			if(y + moveVal1 < 0) {y = 1;}
-			else if(y + 32 +moveVal1 > Game.HEIGHT ) {y = Game.HEIGHT - 32;}
-			else{y += moveVal1;}
-			
-			if(x + moveVal2 < 0) {x = 1;}
-			else if(x + 32 + moveVal1 > Game.WIDTH ) {x = Game.WIDTH - 32;}
-			else{x += moveVal2;}
-			
-		}
+		x += velX;
+		y += velY;
 		
-		if(id == ID.cat) {
-			Random rand = new Random(); 
-			int randmove1 = rand.nextInt(3);
-			int randmove2 = rand.nextInt(3);
-			int moveVal1 = (1 -randmove1) * 3;
-			int moveVal2 = (1 - randmove2) * 3;
-			if(y + moveVal1 < 0) {y = 1;}
-			else if(y + 32 +moveVal1 > Game.HEIGHT ) {y = Game.HEIGHT - 32;}
-			else{y += moveVal1;}
-			
-			if(x + moveVal2 < 0) {x = 1;}
-			else if(x + 32 + moveVal1 > Game.WIDTH ) {x = Game.WIDTH - 32;}
-			else{x += moveVal2;}
-		
-		}
-		
+		//this makes sure that the player does not go out of the bounds of the board
+		x = Game.clamp(x, 8, Game.HEIGHT - 72);
+		y = Game.clamp(y, 8, Game.HEIGHT - 72);
 	}
 
-	
+	@Override
 	public void render(Graphics g) {
-		if(id ==ID.mouse) {
-		g.setColor(Color.blue);}
-		if(id ==ID.cat) {
-			g.setColor(Color.red);}
-		g.fillRect(x,y,32,32);
-		
+		/* Make sure to change the location of the robot to where it is on your hard drive
+		 * this can be done by right clicking on the robot.png and selecting properties
+		 * copy the file location and paste into the speech marks below. The robot.png
+		 * should be located in the robot.game package underneath the classes to your left <------.
+		 */
+		File imageFile = new File("D:\\MSc Computer Science\\CO880 - Project and Dissertation\\GameProject\\RobotWorld\\src\\robot\\game\\robot.png");
+		try {
+			Image robot = ImageIO.read(imageFile);
+			g.drawImage(robot, x, y, null);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
-
-
 	
 
 }
