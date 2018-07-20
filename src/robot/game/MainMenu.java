@@ -6,8 +6,8 @@ import java.awt.Graphics;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import DessyLevel.LevelDessyNPC;
-import DessyLevel.LevelDessyNPC1;
+//import DessyLevel.LevelDessyNPC;
+//import DessyLevel.LevelDessyNPC1;
 import HelenLevel.LevelHelenNPC;
 import HelenLevel.LevelHelenNPC1;
 import HelenLevel.LevelHelenNPC2;
@@ -75,8 +75,8 @@ public class MainMenu extends MouseAdapter{
 				hud.setLevel(3);
 				//add objects to start of level 3
 				manager.addObject(new Player(Cells.B, Cells.A, ID.Player));
-				manager.addObject(new LevelDessyNPC(Cells.H, Cells.B, ID.NPC, manager, side, hud));
-				manager.addObject(new LevelDessyNPC1(Cells.E, Cells.E, ID.NPC, manager, side, hud));
+				//manager.addObject(new LevelDessyNPC(Cells.H, Cells.B, ID.NPC, manager, side, hud));
+				//manager.addObject(new LevelDessyNPC1(Cells.E, Cells.E, ID.NPC, manager, side, hud));
 				side.setText("~Welcome to level 3 of Robot World - All about Classes and Objects!\n\n"
 						+ "~Try moving the Robot to the apple.\n\n");
 			}
