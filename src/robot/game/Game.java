@@ -17,7 +17,6 @@ public class Game extends Canvas implements Runnable {
 	static SidePanel side;
 	private MainMenu menu;
 	private HUD hud;
-	static ButtonBar buttons;
 	
 	public enum STATE {
 		Menu,
@@ -31,14 +30,14 @@ public class Game extends Canvas implements Runnable {
 		//creates the window for the game to run in and the manager to control objects in the game. 
 		manager = new Manager();
 		SidePanel side = new SidePanel();
-		ButtonBar buttons = new ButtonBar();
+		CodePanel code = new CodePanel();
 		hud = new HUD();
-		menu= new MainMenu(this, manager, side, hud, buttons);
+		menu = new MainMenu(this, manager, side, hud, code);
 		this.addKeyListener(new KeyInput(manager));
 		//this.addMouseListener(new MouseInput(manager));
 		this.addMouseListener(menu);
 		
-		new Window(WIDTH, HEIGHT, TITLE, this, side, buttons);
+		new Window(WIDTH, HEIGHT, TITLE, this, side, code);
 		
 		//creates board index values (testing)
 		boardIndex = HEIGHT/8;

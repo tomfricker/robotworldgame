@@ -57,7 +57,7 @@ public class LevelHelenNPC1 extends GameObjects {
 				if(gameObject.getX() == x && gameObject.getY() == y) {
 					String message = "Well Done! Now try moving up.";
 					JOptionPane.showMessageDialog(null, message);
-					hud.setScore(hud.getScore() + 10);
+					hud.setScore(hud.getScore() + 5);
 					interacted = true;
 					SidePanel.addText("~" + message + "\n\n");
 				}

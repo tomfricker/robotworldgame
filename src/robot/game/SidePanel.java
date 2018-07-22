@@ -12,6 +12,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -25,7 +27,10 @@ public class SidePanel extends Panel{
 	
 	static JTextArea outputTextArea;
 	private static JScrollPane scrollPane;
-	static JTextField inputTextField;
+	//static JTextField inputTextField;
+	JButton menuButton;
+	JButton helpButton;
+	JPanel buttonBar;
 	
 	public SidePanel() {
 		//create side panel
@@ -36,23 +41,23 @@ public class SidePanel extends Panel{
 		Font font = new Font("Monospaced", Font.BOLD, 18);
 		
 	    //create input box
-        inputTextField = new JTextField(20);
+        //inputTextField = new JTextField(20);
 
         //gets input when enter is pressed
-        inputTextField.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		Commands.printCommands();
-        		refreshInputBox();
-        	}
-        });
+        //inputTextField.addActionListener(new ActionListener() {
+        //	public void actionPerformed(ActionEvent e) {
+        //		Commands.printCommands();
+        //		refreshInputBox();
+        //	}
+        //});
         
-        inputTextField.setFont(font);
-		inputTextField.setText("Enter code here");
-		inputTextField.addMouseListener(new MouseAdapter() {
-			public void mouseClicked(MouseEvent e) {
-				refreshInputBox();
-			}
-		});
+        //inputTextField.setFont(font);
+		//inputTextField.setText("Enter code here");
+		//inputTextField.addMouseListener(new MouseAdapter() {
+		//	public void mouseClicked(MouseEvent e) {
+		//		refreshInputBox();
+		//	}
+		//});
 		
         //create output box
 		SidePanel.outputTextArea = new JTextArea(20, 20);
@@ -61,9 +66,38 @@ public class SidePanel extends Panel{
 		outputTextArea.setWrapStyleWord(true);
 		SidePanel.scrollPane = new JScrollPane(outputTextArea);
 		
+		menuButton = new JButton("Main Menu");
+		menuButton.setToolTipText("Click this button to go back to the Main Menu.");
+		menuButton.setFont(font);
+		//menuButton.setBackground(Color.blue);
+		//menuButton.setForeground(Color.white);
+		menuButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//go to main menu
+			}
+		});
+		
+		helpButton = new JButton("Help");
+		helpButton.setFont(font);
+		//helpButton.setBackground(Color.red);
+		//helpButton.setForeground(Color.white);
+		helpButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//open help window
+			}
+		});
+		
+		buttonBar = new JPanel();
+		buttonBar.setLayout(new BoxLayout(buttonBar, BoxLayout.X_AXIS));
+		
+		buttonBar.add(menuButton);
+		buttonBar.add(helpButton);
+		
+		add(buttonBar);
+		
 		//add I/O boxes to side panel
 		add(scrollPane);
-		add(inputTextField);
+		//add(inputTextField);
 	}
 	
 	/**
@@ -106,30 +140,30 @@ public class SidePanel extends Panel{
 	 * Returns text entered in input box
 	 * @return 
 	 */
-	public static String getInput() {
-		return inputTextField.getText();
-	}
+	//public static String getInput() {
+	//	return inputTextField.getText();
+	//}
 	
 	/**
 	 * Clears input box
 	 */
-	public void refreshInputBox() {
-		inputTextField.setText("");
-	}
+	//public void refreshInputBox() {
+	//	inputTextField.setText("");
+	//}
 	
 	
 	/**
 	 * not being used - ignore atm
 	 */
-	public void checkInput() {
-		String inputText = getInput();
-		
-		if (inputText.endsWith(";")) {
-			addText(inputText + "\n\n");
-			inputTextField.setText("");
-		}
-		else {
-			addText("~You are missing something... \n\n");
-		}
-	}
+	//public void checkInput() {
+	//	String inputText = getInput();
+	//	
+	//	if (inputText.endsWith(";")) {
+	//		addText(inputText + "\n\n");
+	//		inputTextField.setText("");
+	//	}
+	//	else {
+	//		addText("~You are missing something... \n\n");
+	//	}
+	//}
 }

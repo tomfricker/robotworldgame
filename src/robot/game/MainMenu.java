@@ -26,7 +26,7 @@ public class MainMenu extends MouseAdapter{
 	private SidePanel side;
 	private HUD hud;
 	
-	public MainMenu(Game game, Manager manager, SidePanel side, HUD hud, ButtonBar buttons) {
+	public MainMenu(Game game, Manager manager, SidePanel side, HUD hud, CodePanel code) {
 		this.game = game;
 		this.manager = manager;
 		this.side = side;
@@ -65,10 +65,10 @@ public class MainMenu extends MouseAdapter{
 				manager.addObject(new LevelHelenNPC(Cells.D, Cells.A, ID.NPC, manager, side, hud));
 				manager.addObject(new LevelHelenNPC1(Cells.E, Cells.D, ID.NPC, manager, side, hud));
 				manager.addObject(new LevelHelenNPC2(Cells.E, Cells.C, ID.NPC, manager, side, hud));
-				manager.addFlower(new Flower(Cells.H, Cells.A, ID.Flower, manager, side, hud));
+				manager.addFlower(new Flower(Cells.C, Cells.A, ID.Flower, manager, side, hud));
 				manager.addFlower(new Flower(Cells.B, Cells.G, ID.Flower, manager, side, hud));
 				side.setText("~Welcome to level Helen of Robot World!\n\n"
-						+ "~Try moving the Robot around the board by typing in code, e.g. robot.move(right);\n\n");
+						+ "~Try moving the Robot around the board by typing in code, e.g. robot.move(right);, press the enter key and then the Run Code button.\n\n");
 			}
 			
 			y += 84;

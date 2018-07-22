@@ -68,7 +68,7 @@ public class LevelHelenNPC extends GameObjects {
 					else if(input.equals(answer)) {
 						SidePanel.addText("~" + input + "\n");
 						SidePanel.addText("~correct\n\n");
-						hud.setScore(hud.getScore() + 50);
+						hud.setScore(hud.getScore() + 20);
 						interacted = true;
 					}
 				}
