@@ -48,29 +48,18 @@ public class Commands {
 	}
 	
 	public static void pickupFlower() {
+		//GameObjects flowerToRemove = null;
 		for(GameObjects player : Manager.objectList) {
 			if(player.getId() == ID.Player) {
-		
-				for(GameObjects flower : Manager.objectList) {
-						
+				for(GameObjects flower : Manager.flowerList) {	
 					if(player.getX() == flower.getX() && player.getY() == flower.getY()) {
-					
 						if (flower.getId() == ID.Flower) {
-							
-							//Iterator<GameObjects> it = flower.listIterator();
-							//while (it.hasNext() ) {
-							//	String flower.it.next();
-							//	if(flower.getID() ==ID.Flower) {
-							//		it.remove();
-							//	}
-							//}
-							Manager.removeObject(flower);
+							Manager.removeFlower(flower);
 						}
 					}
 				}
 			}
 		}
-		
 		SidePanel.addText("~You have picked up a flower!\n\n");
 	}
 	
