@@ -1,8 +1,7 @@
 package HelenLevel;
 
 import java.awt.Graphics;
-//import java.awt.Image;
-import java.awt.image.BufferedImage;
+import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
@@ -37,7 +36,7 @@ public class Flower extends GameObjects {
 	public void render(Graphics g) {
 		File imageFile = new File("pictures\\Flower.png");
 		try {
-			BufferedImage flower = ImageIO.read(imageFile);
+			Image flower = ImageIO.read(imageFile);
 			g.drawImage(flower, x, y, null);
 		} catch (IOException e) {
 			e.printStackTrace();

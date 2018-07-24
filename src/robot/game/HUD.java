@@ -8,6 +8,16 @@ public class HUD {
 	
 	private int score = 0;
 	private int level = 0;
+	private int stage = 0;
+	
+	public int getStage() {
+		return stage;
+	}
+
+	public void setStage(int stage) {
+		this.stage = stage;
+	}
+
 	
 	public int getLevel() {
 		return level;
@@ -18,11 +28,27 @@ public class HUD {
 	}
 	
 	public void render(Graphics g) {
-		Font font = new Font("Monospaced", Font.PLAIN, 12);
+		//set background
+		int y = (Game.HEIGHT - 40);
+		int x = 8;
+		g.setColor(Color.BLUE);
+		g.fillRect(x, y, 225, 30);
+
+		g.setColor(Color.WHITE);
+		g.drawRect(x, y, 225, 30);
+		
+		//draw score and level
+		y += 20;
+		x += 10;
+		Font font = new Font("Arial", Font.BOLD, 14);
 		g.setFont(font);
-		g.setColor(Color.BLACK);
-		g.drawString("Score: " + score, 10, 30);
-		g.drawString("Level: " + level, 10, 45);
+		g.setColor(Color.WHITE);
+		g.drawString("Level: " + level, x, y);
+		x += 70;
+		g.drawString("Stage: " + stage, x, y);
+		x += 70;
+		g.drawString("Score: " + score, x, y);
+
 	}
 	
 	public void setLevel(int level) {

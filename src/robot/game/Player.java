@@ -1,8 +1,7 @@
 package robot.game;
 
 import java.awt.Graphics;
-//import java.awt.Image;
-import java.awt.image.BufferedImage;
+import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
@@ -33,7 +32,7 @@ public class Player extends GameObjects {
 		File imageFile = new File("pictures\\HelensRobot.png");
 		//InputStream input = getClass().getResourceAsStream("HelenRobot.png");
 		try {
-			BufferedImage robot = ImageIO.read(imageFile);
+			Image robot = ImageIO.read(imageFile);
 			g.drawImage(robot, x, y, null);
 		} catch (IOException e) {
 			e.printStackTrace();

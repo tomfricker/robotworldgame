@@ -104,7 +104,7 @@ public class Game extends Canvas implements Runnable {
 			spawner.tick();
 			
 			if(hud.getScore() >= 50) {
-				manager.clearAll();
+				Manager.clearAll();
 				gameState = STATE.End;
 			}
 		}

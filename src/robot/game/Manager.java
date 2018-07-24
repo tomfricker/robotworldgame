@@ -21,12 +21,18 @@ public class Manager {
 	
 	//render is the method which draws the objects into the game window. 
 	public void render(Graphics g) {
-		for(GameObjects object : objectList) {
-			object.render(g);
+		try{
+			for(GameObjects object : objectList) {
+				object.render(g);
+			}
+			for(GameObjects flower : flowerList) {
+				flower.render(g);
+			}
 		}
-		for(GameObjects flower : flowerList) {
-			flower.render(g);
+		catch(Exception e) {
+			System.out.println("Warning: Could not render.");
 		}
+
 	}
 		
 	public void addObject(GameObjects object) {

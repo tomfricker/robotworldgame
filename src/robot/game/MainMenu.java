@@ -12,13 +12,11 @@ import robot.game.Game.STATE;
 
 public class MainMenu extends MouseAdapter{
 	
-	private Game game;
 	private Manager manager;
 	private SidePanel side;
 	private HUD hud;
 	
 	public MainMenu(Game game, Manager manager, SidePanel side, HUD hud, CodePanel code) {
-		this.game = game;
 		this.manager = manager;
 		this.side = side;
 		this.hud = hud;
@@ -30,13 +28,14 @@ public class MainMenu extends MouseAdapter{
 		int mouseY = e.getY();
 		
 		if(Game.gameState == STATE.Menu) {
+			hud.setLevel(0);
 			hud.setScore(0);
 			int y = 200;
 			//level 1 button
 			if(mouseOver(mouseX, mouseY, 100, y, 440, 64)) {
 				Game.gameState = STATE.Game;
 				hud.setLevel(1);
-				manager.addObject(new Player(Cells.B, Cells.A, ID.Player));
+				manager.addObject(new Player(Cells.A, Cells.A, ID.Player));
 				manager.addObject(new LevelTomNPC1(Cells.H, Cells.A, ID.NPC, manager, side, hud));
 				side.setText("~Welcome to level 1 of Robot World!\n\n"
 						+ "~Please move Robbie the Robot around the board using the arrow keys.\n\n"

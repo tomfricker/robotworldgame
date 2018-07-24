@@ -53,8 +53,7 @@ public class LevelHelenNPC extends GameObjects {
 			if(gameObject.getId() == ID.Player) {
 				if(gameObject.getX() == x && gameObject.getY() == y) {
 					String answer = "robot.pickup(flower);";
-					String input = JOptionPane.showInputDialog(null, "Answer this correctly to pickup the flower.\n"
-							+ "What code would make the robot pickup the flower?");
+					String input = JOptionPane.showInputDialog(null, "What code would make the robot pickup a flower?");
 					if(input == null || input.length() == 0) {
 						gameObject.setX(gameObject.getX()-Game.boardIndex);
 					}
