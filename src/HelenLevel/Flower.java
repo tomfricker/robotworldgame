@@ -1,7 +1,8 @@
 package HelenLevel;
 
 import java.awt.Graphics;
-import java.awt.Image;
+//import java.awt.Image;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
@@ -34,9 +35,9 @@ public class Flower extends GameObjects {
 
 	@Override
 	public void render(Graphics g) {
-		File imageFile = new File("C:/Users/MissH/git/RobotWorld/src/HelenLevel/Flower.png");
+		File imageFile = new File("pictures\\Flower.png");
 		try {
-			Image flower = ImageIO.read(imageFile);
+			BufferedImage flower = ImageIO.read(imageFile);
 			g.drawImage(flower, x, y, null);
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -52,7 +53,7 @@ public class Flower extends GameObjects {
 		for(GameObjects gameObject : Manager.objectList) {
 			if(gameObject.getId() == ID.Player) {
 				if(gameObject.getX() == x && gameObject.getY() == y) {
-					hud.setScore(hud.getScore() + 10);
+					hud.setScore(hud.getScore() + 5);
 					interacted = true;
 				}
 			}

@@ -39,6 +39,7 @@ public class Manager {
 	
 	public void clearAll() {
 		objectList.clear();
+		flowerList.clear();
 	}
 	
 	public void addFlower(GameObjects flower) {

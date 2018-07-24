@@ -6,17 +6,8 @@ import java.awt.Graphics;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import HelenLevel.Flower;
-//import DessyLevel.LevelDessyNPC;
-//import DessyLevel.LevelDessyNPC1;
-import HelenLevel.LevelHelenNPC;
 import HelenLevel.LevelHelenNPC1;
-import HelenLevel.LevelHelenNPC2;
-import TomLevel.LevelTomNPC;
 import TomLevel.LevelTomNPC1;
-import TomLevel.LevelTomNPC2;
-import TomLevel.LevelTomNPC3;
-
 import robot.game.Game.STATE;
 
 public class MainMenu extends MouseAdapter{
@@ -46,10 +37,7 @@ public class MainMenu extends MouseAdapter{
 				game.gameState = STATE.Game;
 				hud.setLevel(1);
 				manager.addObject(new Player(Cells.B, Cells.A, ID.Player));
-				manager.addObject(new LevelTomNPC(Cells.E, Cells.D, ID.NPC, manager, side, hud));
 				manager.addObject(new LevelTomNPC1(Cells.H, Cells.A, ID.NPC, manager, side, hud));
-				manager.addObject(new LevelTomNPC2(Cells.A, Cells.H, ID.NPC, manager, side, hud));
-				manager.addObject(new LevelTomNPC3(Cells.H, Cells.H, ID.NPC, manager, side, hud));
 				side.setText("~Welcome to level 1 of Robot World!\n\n"
 						+ "~Please move Robbie the Robot around the board using the arrow keys.\n\n"
 						+ "~Good luck and enjoy your adventure in Robot World!\n\n");
@@ -62,11 +50,7 @@ public class MainMenu extends MouseAdapter{
 				hud.setLevel(2);
 				//add objects to start of level 2
 				manager.addObject(new Player(Cells.D, Cells.D, ID.Player));
-				manager.addObject(new LevelHelenNPC(Cells.D, Cells.A, ID.NPC, manager, side, hud));
 				manager.addObject(new LevelHelenNPC1(Cells.E, Cells.D, ID.NPC, manager, side, hud));
-				manager.addObject(new LevelHelenNPC2(Cells.E, Cells.C, ID.NPC, manager, side, hud));
-				manager.addFlower(new Flower(Cells.C, Cells.A, ID.Flower, manager, side, hud));
-				manager.addFlower(new Flower(Cells.B, Cells.G, ID.Flower, manager, side, hud));
 				side.setText("~Welcome to level Helen of Robot World!\n\n"
 						+ "~Try moving the Robot around the board by typing in code, e.g. robot.move(right);, press the enter key and then the Run Code button.\n\n");
 			}

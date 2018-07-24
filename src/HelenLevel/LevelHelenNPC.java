@@ -34,7 +34,7 @@ public class LevelHelenNPC extends GameObjects {
 
 	@Override
 	public void render(Graphics g) {
-		File imageFile = new File("C:/Users/MissH/git/RobotWorld/src/HelenLevel/walle.png");
+		File imageFile = new File("pictures\\walle.png");
 		try {
 			Image robot = ImageIO.read(imageFile);
 			g.drawImage(robot, x, y, null);
@@ -63,13 +63,16 @@ public class LevelHelenNPC extends GameObjects {
 						SidePanel.addText("~" + input + "\n");
 						SidePanel.addText("~incorrect\n\n");
 						gameObject.setX(gameObject.getX()-Game.boardIndex);
+						int currentScore = hud.getScore();
+						if(currentScore > 0)
+							hud.setScore(currentScore - 10);
 					}
 					//if the player is correct the interaction will not continue to be prompted
 					else if(input.equals(answer)) {
+						hud.setScore(hud.getScore() + 10);
+						interacted = true;
 						SidePanel.addText("~" + input + "\n");
 						SidePanel.addText("~correct\n\n");
-						hud.setScore(hud.getScore() + 20);
-						interacted = true;
 					}
 				}
 			}

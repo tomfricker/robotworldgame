@@ -1,7 +1,8 @@
 package robot.game;
 
 import java.awt.Graphics;
-import java.awt.Image;
+//import java.awt.Image;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
@@ -29,9 +30,10 @@ public class Player extends GameObjects {
 		 * copy the file location and paste into the speech marks below. The robot.png
 		 * should be located in the robot.game package underneath the classes to your left <------.
 		 */
-		File imageFile = new File("C:/Users/MissH/git/RobotWorld/src/HelenLevel/HelensRobot.png");
+		File imageFile = new File("pictures\\HelensRobot.png");
+		//InputStream input = getClass().getResourceAsStream("HelenRobot.png");
 		try {
-			Image robot = ImageIO.read(imageFile);
+			BufferedImage robot = ImageIO.read(imageFile);
 			g.drawImage(robot, x, y, null);
 		} catch (IOException e) {
 			e.printStackTrace();

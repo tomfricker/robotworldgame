@@ -17,6 +17,7 @@ public class Game extends Canvas implements Runnable {
 	static SidePanel side;
 	private MainMenu menu;
 	private HUD hud;
+	private Spawner spawner;
 	
 	public enum STATE {
 		Menu,
@@ -33,6 +34,7 @@ public class Game extends Canvas implements Runnable {
 		CodePanel code = new CodePanel();
 		hud = new HUD();
 		menu = new MainMenu(this, manager, side, hud, code);
+		spawner = new Spawner(manager, hud, side);
 		this.addKeyListener(new KeyInput(manager));
 		//this.addMouseListener(new MouseInput(manager));
 		this.addMouseListener(menu);
@@ -99,6 +101,7 @@ public class Game extends Canvas implements Runnable {
 		
 		if(gameState == STATE.Game) {
 			hud.tick();
+			spawner.tick();
 			
 			if(hud.getScore() >= 50) {
 				manager.clearAll();

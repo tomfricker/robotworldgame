@@ -56,7 +56,6 @@ public class Commands {
 	}
 	
 	public static void pickupFlower() {
-		//GameObjects flowerToRemove = null;
 		for(GameObjects player : Manager.objectList) {
 			if(player.getId() == ID.Player) {
 				for(GameObjects flower : Manager.flowerList) {	
@@ -64,11 +63,38 @@ public class Commands {
 						if (flower.getId() == ID.Flower) {
 							Manager.removeFlower(flower);
 						}
+						SidePanel.addText("~You have picked up a flower!\n\n");
 					}
+					//repeats message for all flowers (i.e. 3 times instead of 1)
+					//else {
+					//	SidePanel.addText("~Find a flower to pickup!\n\n");
+					//}
 				}
 			}
 		}
-		SidePanel.addText("~You have picked up a flower!\n\n");
+	}
+	
+	public static void move(String direction, int number) {
+		for(GameObjects gameObject : Manager.objectList) {
+			if (gameObject.getId() == ID.Player) {
+				int i = 1; 
+				do{ 
+					if(direction == "up") {
+						moveUp();
+					}
+					if(direction == "down") {
+						moveDown();
+					}
+					if(direction == "left") {
+						moveLeft();
+					}
+					if(direction == "right") {
+						moveRight();
+					}
+				}
+				while(i < number);
+			}
+		}
 	}
 	
 	/**
@@ -92,6 +118,9 @@ public class Commands {
 		else if(inputText.equals("robot.pickup(flower);")) {
 			return true;
 		}
+		//else if(inputText.equals("robot.move(String, int);")) {
+		//	return true;
+		//}
 		else {
 			return false;
 		}
@@ -137,6 +166,9 @@ public class Commands {
 			else if(command.equals("robot.pickup(flower);")) {
 				pickupFlower();
 			}
+			//else if(command.equals("robot.move(String direction, int number);")) {
+			//	move(direction, number);
+			//}
 		}
 	}
 	

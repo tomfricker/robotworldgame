@@ -9,6 +9,10 @@ public class HUD {
 	private int score = 0;
 	private int level = 0;
 	
+	public int getLevel() {
+		return level;
+	}
+	
 	public void tick() {
 		
 	}

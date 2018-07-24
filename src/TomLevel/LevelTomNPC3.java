@@ -37,7 +37,7 @@ public class LevelTomNPC3 extends GameObjects {
 
 	@Override
 	public void render(Graphics g) {
-		File imageFile = new File("C:/Users/MissH/Documents/TomsVersion/src/robot/game/RobotBuddy.png");
+		File imageFile = new File("pictures\\RobotBuddy.png");
 		try {
 			Image robot = ImageIO.read(imageFile);
 			g.drawImage(robot, x, y, null);
@@ -58,7 +58,7 @@ public class LevelTomNPC3 extends GameObjects {
 					String message = "An example of a number variable declaration is:\n"
 							+ "int y = 12;";
 					JOptionPane.showMessageDialog(null, message);
-					hud.setScore(hud.getScore() + 10);
+					hud.setScore(hud.getScore() + 5);
 					interacted = true;
 					SidePanel.addText("~" + message + "\n\n");
 				}

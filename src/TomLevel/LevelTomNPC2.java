@@ -37,7 +37,7 @@ public class LevelTomNPC2 extends GameObjects {
 
 	@Override
 	public void render(Graphics g) {
-		File imageFile = new File("C:/Users/MissH/Documents/TomsVersion/src/robot/game/RobotBuddy.png");
+		File imageFile = new File("pictures\\RobotBuddy.png");
 		try {
 			Image robot = ImageIO.read(imageFile);
 			g.drawImage(robot, x, y, null);
@@ -57,7 +57,7 @@ public class LevelTomNPC2 extends GameObjects {
 				if(gameObject.getX() == x && gameObject.getY() == y) {
 					String message = "Every line of code must end with ;";
 					JOptionPane.showMessageDialog(null, message);
-					hud.setScore(hud.getScore() + 10);
+					hud.setScore(hud.getScore() + 5);
 					interacted = true;
 					SidePanel.addText("~" + message + "\n\n");
 				}
