@@ -37,7 +37,7 @@ public class Manager {
 		objectList.remove(object);
 	}
 	
-	public void clearAll() {
+	public static void clearAll() {
 		objectList.clear();
 		flowerList.clear();
 	}

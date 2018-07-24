@@ -15,6 +15,8 @@ import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
+import robot.game.Game.STATE;
+
 public class SidePanel extends Panel{
 
 	private static final long serialVersionUID = -7645124710017857401L;
@@ -68,6 +70,8 @@ public class SidePanel extends Panel{
 		menuButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//go to main menu
+				Manager.clearAll();
+				Game.gameState = STATE.Menu;
 			}
 		});
 		

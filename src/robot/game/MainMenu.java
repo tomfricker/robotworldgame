@@ -29,12 +29,12 @@ public class MainMenu extends MouseAdapter{
 		int mouseX = e.getX();
 		int mouseY = e.getY();
 		
-		if(game.gameState == STATE.Menu) {
+		if(Game.gameState == STATE.Menu) {
 			hud.setScore(0);
 			int y = 200;
 			//level 1 button
 			if(mouseOver(mouseX, mouseY, 100, y, 440, 64)) {
-				game.gameState = STATE.Game;
+				Game.gameState = STATE.Game;
 				hud.setLevel(1);
 				manager.addObject(new Player(Cells.B, Cells.A, ID.Player));
 				manager.addObject(new LevelTomNPC1(Cells.H, Cells.A, ID.NPC, manager, side, hud));
@@ -46,7 +46,7 @@ public class MainMenu extends MouseAdapter{
 			y += 84;
 			//level 2 button
 			if(mouseOver(mouseX, mouseY, 100, y, 440, 64)) {
-				game.gameState = STATE.Game;
+				Game.gameState = STATE.Game;
 				hud.setLevel(2);
 				//add objects to start of level 2
 				manager.addObject(new Player(Cells.D, Cells.D, ID.Player));
@@ -58,7 +58,7 @@ public class MainMenu extends MouseAdapter{
 			y += 84;
 			//level 3 button
 			if(mouseOver(mouseX, mouseY, 100, y, 440, 64)) {
-				game.gameState = STATE.Game;
+				Game.gameState = STATE.Game;
 				hud.setLevel(3);
 				//add objects to start of level 3
 				manager.addObject(new Player(Cells.B, Cells.A, ID.Player));
@@ -71,7 +71,7 @@ public class MainMenu extends MouseAdapter{
 			y += 84;
 			//level 4 button
 			if(mouseOver(mouseX, mouseY, 100, y, 440, 64)) {
-				game.gameState = STATE.Game;
+				Game.gameState = STATE.Game;
 				hud.setLevel(4);
 				//add objects to start of level 4
 			}
@@ -79,14 +79,14 @@ public class MainMenu extends MouseAdapter{
 			y += 84;
 			//level 5 button
 			if(mouseOver(mouseX, mouseY, 100, y, 440, 64)) {
-				game.gameState = STATE.Game;
+				Game.gameState = STATE.Game;
 				hud.setLevel(5);
 				//add objects to start of level 5
 			}
 		}
-		else if(game.gameState == STATE.End) {
+		else if(Game.gameState == STATE.End) {
 			if(mouseOver(mouseX, mouseY, 70, 45, 500, 120)) {
-				game.gameState = STATE.Menu;
+				Game.gameState = STATE.Menu;
 			}
 		}
 		
@@ -126,7 +126,7 @@ public class MainMenu extends MouseAdapter{
 		int x = 70;
 		int y = 45;
 		
-		if(game.gameState == STATE.Menu) {
+		if(Game.gameState == STATE.Menu) {
 			//draw title background
 			g.setColor(Color.BLACK);
 			g.fillRect(x, y, 500, 120);
@@ -165,7 +165,7 @@ public class MainMenu extends MouseAdapter{
 				y += 64 + 20;
 			}
 		}
-		else if(game.gameState == STATE.End) {
+		else if(Game.gameState == STATE.End) {
 			//draw background
 			g.setColor(Color.BLACK);
 			g.fillRect(x, y, 500, 120);

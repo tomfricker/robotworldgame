@@ -25,7 +25,7 @@ public class Game extends Canvas implements Runnable {
 		End
 	};
 	
-	public STATE gameState = STATE.Menu;
+	public static STATE gameState = STATE.Menu;
 	
 	public Game() {
 		//creates the window for the game to run in and the manager to control objects in the game. 
