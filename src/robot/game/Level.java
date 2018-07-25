@@ -1,7 +1,7 @@
 package robot.game;
 
-import DessyLevel.LevelDessyNPC;
-import DessyLevel.LevelDessyNPC1;
+import DessyLevel.DessyLevelNPC;
+import DessyLevel.DessyLevelNPC1;
 import HelenLevel.LevelHelenNPC;
 import TomLevel.LevelTomNPC;
 
@@ -79,7 +79,7 @@ public class Level {
 	 */
 	public void levelThree() {
 		manager.addObject(new Player(Cells.B, Cells.A, ID.Player));
-		manager.addObject(new LevelDessyNPC(Cells.H, Cells.A, ID.NPC, manager, side, hud));
+		manager.addObject(new DessyLevelNPC(Cells.H, Cells.A, ID.NPC, manager, side, hud));
 		//manager.addObject(new LevelDessyNPC1(Cells.E, Cells.C, ID.NPC, manager, side, hud));
 		side.setText("~Welcome to level 3 of Robot World - All about Classes and Objects!\n\n"
 				+ "~Try moving the Robot to the apple.\n\n");
