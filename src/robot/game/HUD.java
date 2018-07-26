@@ -10,18 +10,9 @@ public class HUD {
 	private int level = 0;
 	private int stage = 0;
 	
-	public int getStage() {
-		return stage;
-	}
-
-	public void setStage(int stage) {
-		this.stage = stage;
-	}
-
-	
-	public int getLevel() {
-		return level;
-	}
+	private int interactions = 0;
+	private boolean levelEnd = false;
+	private boolean stageEnd = false;
 	
 	public void tick() {
 		
@@ -61,6 +52,42 @@ public class HUD {
 
 	public int getScore() {
 		return score;
+	}
+	
+	public boolean isStageEnd() {
+		return stageEnd;
+	}
+
+	public void setStageEnd(boolean stageEnd) {
+		this.stageEnd = stageEnd;
+	}
+
+	public boolean isLevelEnd() {
+		return levelEnd;
+	}
+
+	public void setLevelEnd(boolean levelEnd) {
+		this.levelEnd = levelEnd;
+	}
+
+	public int getStage() {
+		return stage;
+	}
+
+	public void setStage(int stage) {
+		this.stage = stage;
+	}
+
+	public int getLevel() {
+		return level;
+	}
+
+	public int getInteractions() {
+		return interactions;
+	}
+
+	public void setInteractions(int interactions) {
+		this.interactions = interactions;
 	}
 
 }

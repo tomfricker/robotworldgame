@@ -1,27 +1,24 @@
-package TomLevel;
+package npcs;
 
 import java.awt.Graphics;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
-import javax.swing.JOptionPane;
-
 import robot.game.GameObjects;
 import robot.game.HUD;
 import robot.game.ID;
 import robot.game.Manager;
 import robot.game.SidePanel;
 
-public class LevelTomNPC3 extends GameObjects {
+public class Flower extends GameObjects {
 	
 	Manager manager;
 	SidePanel side;
 	HUD hud;
 	boolean interacted;
 
-	public LevelTomNPC3(int x, int y, ID id, Manager manager, SidePanel side, HUD hud) {
+	public Flower(int x, int y, ID id, Manager manager, SidePanel side, HUD hud) {
 		super(x, y, id);
 		this.manager = manager;
 		this.side = side;
@@ -32,20 +29,20 @@ public class LevelTomNPC3 extends GameObjects {
 	@Override
 	public void tick() {
 		if(interacted == false)
-			interact();
+			interact();		
 	}
 
 	@Override
 	public void render(Graphics g) {
-		File imageFile = new File("pictures\\RobotBuddy.png");
+		File imageFile = new File("pictures\\Flower.png");
 		try {
-			Image robot = ImageIO.read(imageFile);
-			g.drawImage(robot, x, y, null);
+			Image flower = ImageIO.read(imageFile);
+			g.drawImage(flower, x, y, null);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
 	}
-	
 	
 	/**
 	 * This method sets up the interactions between the player object and the NPC.
@@ -55,14 +52,12 @@ public class LevelTomNPC3 extends GameObjects {
 		for(GameObjects gameObject : Manager.objectList) {
 			if(gameObject.getId() == ID.Player) {
 				if(gameObject.getX() == x && gameObject.getY() == y) {
-					String message = "An example of a number variable declaration is:\n"
-							+ "int y = 12;";
-					JOptionPane.showMessageDialog(null, message);
 					hud.setScore(hud.getScore() + 5);
 					interacted = true;
-					SidePanel.addText("~" + message + "\n\n");
 				}
 			}
 		}
 	}
+
+
 }

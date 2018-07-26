@@ -5,9 +5,7 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
-import HelenLevel.LevelHelenNPC1;
-import TomLevel.LevelTomNPC1;
+import npcs.MessageNPC;
 import robot.game.Game.STATE;
 
 public class MainMenu extends MouseAdapter{
@@ -30,13 +28,15 @@ public class MainMenu extends MouseAdapter{
 		if(Game.gameState == STATE.Menu) {
 			hud.setLevel(0);
 			hud.setScore(0);
+			hud.setStage(1);
 			int y = 200;
 			//level 1 button
 			if(mouseOver(mouseX, mouseY, 100, y, 440, 64)) {
 				Game.gameState = STATE.Game;
 				hud.setLevel(1);
 				manager.addObject(new Player(Cells.A, Cells.A, ID.Player));
-				manager.addObject(new LevelTomNPC1(Cells.H, Cells.A, ID.NPC, manager, side, hud));
+				String npcMessage = "To declare a whole number in Java you must make it an int";
+				manager.addObject(new MessageNPC(Cells.H, Cells.A, ID.NPC, manager, side, hud, npcMessage));
 				side.setText("~Welcome to level 1 of Robot World!\n\n"
 						+ "~Please move Robbie the Robot around the board using the arrow keys.\n\n"
 						+ "~Good luck and enjoy your adventure in Robot World!\n\n");
@@ -49,7 +49,9 @@ public class MainMenu extends MouseAdapter{
 				hud.setLevel(2);
 				//add objects to start of level 2
 				manager.addObject(new Player(Cells.D, Cells.D, ID.Player));
-				manager.addObject(new LevelHelenNPC1(Cells.E, Cells.D, ID.NPC, manager, side, hud));
+				//manager.addObject(new LevelHelenNPC1(Cells.E, Cells.D, ID.NPC, manager, side, hud));
+				String npcMessage = "Well Done! Now try moving up.";
+				manager.addObject(new MessageNPC(Cells.E, Cells.D, ID.NPC, manager, side, hud, npcMessage));
 				side.setText("~Welcome to level Helen of Robot World!\n\n"
 						+ "~Try moving the Robot around the board by typing in code, e.g. robot.move(right);, press the enter key and then the Run Code button.\n\n");
 			}

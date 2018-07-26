@@ -1,13 +1,6 @@
-package HelenLevel;
+package robot.game;
 
 import java.util.ArrayList;
-
-import robot.game.Cells;
-import robot.game.CodePanel;
-import robot.game.GameObjects;
-import robot.game.ID;
-import robot.game.Manager;
-import robot.game.SidePanel;
 
 /**
  * 
