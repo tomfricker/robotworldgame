@@ -24,9 +24,12 @@ public class Spawner {
 			//create the objects of level 1 once you reach a certain score
 			case 1: if(stage == 1) levelOneStageOne();
 			else if(stage == 2) levelOneStageTwo();
+
 			//level 2
 			case 2: if(stage == 1) levelTwoStageOne();
 			else if(stage == 2) levelTwoStageTwo();
+			else if(stage == 3) levelTwoStageThree();
+			
 			//level 3
 			//case 3:
 			//level 4
@@ -104,22 +107,20 @@ public class Spawner {
 	public void levelTwoStageOne() {
 		int interactions = hud.getInteractions();
 		if(interactions == 1) {
-			String message = "Well Done! One of my other friends will teach you how to pick up the flowers.";
+			String message = "Well Done! Try picking up the flower.";
 			manager.addObject(new MessageNPC(Cells.E, Cells.C, ID.NPC, manager, side, hud, message));
 			hud.setInteractions(interactions + 1);
 		 }
 		else if(interactions == 3) {
-			String question = "What code would make the robot pickup a flower?";
+			manager.addFlower(new Flower(Cells.E, Cells.A, ID.Flower, manager, side, hud));
+			hud.setInteractions(interactions + 1);
+		}
+		else if(interactions == 5) {
+			String question = "What code did you use to make the robot pickup the flower?";
 			String answer = "robot.pickup(flower);";
 			manager.addObject(new StageEndNPC(Cells.D, Cells.A, ID.NPC, manager, side, hud, question, answer));
 			hud.setInteractions(0);
 		 }
-		//else if(interactions == 5) {
-		//	manager.addFlower(new Flower(Cells.C, Cells.A, ID.Flower, manager, side, hud));
-		//	manager.addFlower(new Flower(Cells.B, Cells.G, ID.Flower, manager, side, hud));
-		//	manager.addFlower(new Flower(Cells.G, Cells.F, ID.Flower, manager, side, hud));
-		//	hud.setInteractions(interactions + 1);
-		//}
 	}
 	
 	/**
@@ -133,17 +134,77 @@ public class Spawner {
 					+ "~Now try stage 2.\n\n"
 					+ "~Good luck!\n\n");
 			manager.addObject(new Player(Cells.A, Cells.A, ID.Player));
-			manager.addFlower(new Flower(Cells.C, Cells.A, ID.Flower, manager, side, hud));
+			String message1 = "If you want to repeat some code you can use loops.";
+			manager.addObject(new MessageNPC(Cells.H, Cells.A, ID.NPC, manager, side, hud, message1));
 			hud.setStageEnd(false);
 		}
 		if(interactions == 1) {
-			String message2 = "MESSAGE";
+			String message2 = "There are three types of loops: for each, while and for.";
 			manager.addObject(new MessageNPC(Cells.C, Cells.D, ID.NPC, manager, side, hud, message2));
 			hud.setInteractions(interactions + 1);
 		}
 		else if(interactions == 3) {
-			String message3 = "MESSAGE";
+			String message3 = "The for each loop has the following form:\n" 
+					+ "for(ElementType element : collection) {\n"
+					+ "loop body\n"
+					+ "}";
 			manager.addObject(new MessageNPC(Cells.B, Cells.F, ID.NPC, manager, side, hud, message3));
+			hud.setInteractions(interactions + 1);
+		}
+		else if(interactions == 5) {
+			String message4 = "For example for each element flower of type Flower in the collection of flowers, pick up the flower.\n"
+					+ "for(Flower flower : flowers) {\n"
+					+ "pickup(flower);\n"
+					+ "}";
+			manager.addObject(new MessageNPC(Cells.G, Cells.H, ID.NPC, manager, side, hud, message4));
+			hud.setInteractions(interactions + 1);
+		}
+		else if(interactions == 5) {
+			String message4 = "MESSAGE";
+			manager.addObject(new MessageNPC(Cells.G, Cells.H, ID.NPC, manager, side, hud, message4));
+			hud.setInteractions(interactions + 1);
+		}
+		else if(interactions == 7) {
+			String question = "QUESTION";
+			String answer = "ANSWER";
+			manager.addObject(new StageEndNPC(Cells.E, Cells.D, ID.NPC, manager, side, hud, question, answer));
+			hud.setInteractions(0);
+		}
+	}
+	
+	public void levelTwoStageThree() {
+		int interactions = hud.getInteractions();
+		if(hud.isStageEnd() == true) {
+			Manager.clearAll();
+			SidePanel.addText("~Congratulations you completed Stage 2\n\n"
+					+ "~Now try stage 3.\n\n"
+					+ "~Good luck!\n\n");
+			manager.addObject(new Player(Cells.A, Cells.A, ID.Player));
+			String message1 = "MESSAGE";
+			manager.addObject(new MessageNPC(Cells.H, Cells.A, ID.NPC, manager, side, hud, message1));
+			hud.setStageEnd(false);
+		}
+		if(interactions == 1) {
+			String message2 = "Note that ++ is short hand for adding 1.";
+			manager.addObject(new MessageNPC(Cells.C, Cells.D, ID.NPC, manager, side, hud, message2));
+			hud.setInteractions(interactions + 1);
+		}
+		else if(interactions == 3) {
+			String message3 = "The for each loop has the following form:\n" 
+					+ "while(boolean condition) {\n"
+					+ "loop body\n"
+					+ "}";
+			manager.addObject(new MessageNPC(Cells.B, Cells.F, ID.NPC, manager, side, hud, message3));
+			hud.setInteractions(interactions + 1);
+		}
+		else if(interactions == 5) {
+			String message4 = "For example while the flowers position in the collection of flowers is less than the size of the collection, pick up the flower.\n"
+					+ "int flowerIndex = 0;\n"
+					+ "while(flowerIndex < flowers.size()) {\n"
+					+ "pickup(flower);\n"
+					+ "flowerIndex ++;\n"
+					+ "}";
+			manager.addObject(new MessageNPC(Cells.G, Cells.H, ID.NPC, manager, side, hud, message4));
 			hud.setInteractions(interactions + 1);
 		}
 		else if(interactions == 5) {

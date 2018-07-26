@@ -5,6 +5,9 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
+import DessyLevel.DessyLevelNPC;
+import DessyLevel.DessyLevelNPC1;
 import npcs.MessageNPC;
 import robot.game.Game.STATE;
 
@@ -29,11 +32,13 @@ public class MainMenu extends MouseAdapter{
 			hud.setLevel(0);
 			hud.setScore(0);
 			hud.setStage(1);
+			hud.setLevelEnd(false);
 			int y = 200;
 			//level 1 button
 			if(mouseOver(mouseX, mouseY, 100, y, 440, 64)) {
 				Game.gameState = STATE.Game;
 				hud.setLevel(1);
+				hud.setStage(1);
 				manager.addObject(new Player(Cells.A, Cells.A, ID.Player));
 				String npcMessage = "To declare a whole number in Java you must make it an int";
 				manager.addObject(new MessageNPC(Cells.H, Cells.A, ID.NPC, manager, side, hud, npcMessage));
@@ -49,7 +54,6 @@ public class MainMenu extends MouseAdapter{
 				hud.setLevel(2);
 				//add objects to start of level 2
 				manager.addObject(new Player(Cells.D, Cells.D, ID.Player));
-				//manager.addObject(new LevelHelenNPC1(Cells.E, Cells.D, ID.NPC, manager, side, hud));
 				String npcMessage = "Well Done! Now try moving up.";
 				manager.addObject(new MessageNPC(Cells.E, Cells.D, ID.NPC, manager, side, hud, npcMessage));
 				side.setText("~Welcome to level Helen of Robot World!\n\n"
@@ -63,8 +67,8 @@ public class MainMenu extends MouseAdapter{
 				hud.setLevel(3);
 				//add objects to start of level 3
 				manager.addObject(new Player(Cells.B, Cells.A, ID.Player));
-				//manager.addObject(new LevelDessyNPC(Cells.H, Cells.B, ID.NPC, manager, side, hud));
-				//manager.addObject(new LevelDessyNPC1(Cells.E, Cells.E, ID.NPC, manager, side, hud));
+				manager.addObject(new DessyLevelNPC(Cells.H, Cells.B, ID.NPC, manager, side, hud));
+				manager.addObject(new DessyLevelNPC1(Cells.E, Cells.E, ID.NPC, manager, side, hud));
 				side.setText("~Welcome to level 3 of Robot World - All about Classes and Objects!\n\n"
 						+ "~Try moving the Robot to the apple.\n\n");
 			}

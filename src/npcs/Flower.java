@@ -53,6 +53,7 @@ public class Flower extends GameObjects {
 			if(gameObject.getId() == ID.Player) {
 				if(gameObject.getX() == x && gameObject.getY() == y) {
 					hud.setScore(hud.getScore() + 5);
+					hud.setInteractions(hud.getInteractions() + 1);
 					interacted = true;
 				}
 			}
