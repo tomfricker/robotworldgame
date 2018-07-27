@@ -17,6 +17,7 @@ public class Game extends Canvas implements Runnable {
 	static SidePanel side;
 	private MainMenu menu;
 	private HUD hud;
+	private Spawner spawner;
 	
 	public enum STATE {
 		Menu,
@@ -24,19 +25,21 @@ public class Game extends Canvas implements Runnable {
 		End
 	};
 	
-	public STATE gameState = STATE.Menu;
+	public static STATE gameState = STATE.Menu;
 	
 	public Game() {
 		//creates the window for the game to run in and the manager to control objects in the game. 
 		manager = new Manager();
 		SidePanel side = new SidePanel();
+		CodePanel code = new CodePanel();
 		hud = new HUD();
-		menu= new MainMenu(this, manager, side, hud);
+		menu = new MainMenu(this, manager, side, hud, code);
+		spawner = new Spawner(manager, hud, side);
 		this.addKeyListener(new KeyInput(manager));
 		//this.addMouseListener(new MouseInput(manager));
 		this.addMouseListener(menu);
 		
-		new Window(WIDTH, HEIGHT, TITLE, this, side);
+		new Window(WIDTH, HEIGHT, TITLE, this, side, code);
 		
 		//creates board index values (testing)
 		boardIndex = HEIGHT/8;
@@ -70,7 +73,6 @@ public class Game extends Canvas implements Runnable {
 		double ns = 1000000000 / amountOfTicks;
 		double delta = 0;
 		long timer = System.currentTimeMillis();
-		int frames = 0;
 		while(running) {
 			long now = System.nanoTime();
 			delta += (now - lastTime)/ns;
@@ -82,12 +84,9 @@ public class Game extends Canvas implements Runnable {
 			if(running) {
 				//the game then draws all of its objects into the game. 
 				render();
-				frames++;
 			}
 			if(System.currentTimeMillis() - timer > 1000) {
 				timer += 1000;
-				System.out.println("FPS: " + frames);
-				frames = 0;
 			}
 		}
 		stop();
@@ -98,9 +97,10 @@ public class Game extends Canvas implements Runnable {
 		
 		if(gameState == STATE.Game) {
 			hud.tick();
+			spawner.tick();
 			
-			if(hud.getScore() >= 50) {
-				manager.clearAll();
+			if(hud.isLevelEnd() == true) {
+				Manager.clearAll();
 				gameState = STATE.End;
 			}
 		}

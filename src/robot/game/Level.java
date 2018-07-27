@@ -2,8 +2,6 @@ package robot.game;
 
 import DessyLevel.DessyLevelNPC;
 import DessyLevel.DessyLevelNPC1;
-import HelenLevel.LevelHelenNPC;
-import TomLevel.LevelTomNPC;
 
 /**
  * 
@@ -50,9 +48,9 @@ public class Level {
 	* Create the objects unique to level 1
 	*/
 	public void levelOne() {
-		manager.addObject(new Board(0, 0, ID.background));
-		manager.addObject(new Player(Cells.A, Cells.A, ID.Player));
-		manager.addObject(new LevelTomNPC(Cells.D, Cells.C, ID.NPC, manager, side, hud));
+		//manager.addObject(new Board(0, 0, ID.background));
+		//manager.addObject(new Player(Cells.A, Cells.A, ID.Player));
+		//manager.addObject(new LevelTomNPC(Cells.D, Cells.C, ID.NPC, manager, side, hud));
 		//manager.addObject(new LevelTomNPC1(Cells.H, Cells.A, ID.NPC, manager, side));
 		//manager.addObject(new LevelTomNPC2(Cells.A, Cells.H, ID.NPC, manager, side));
 		//manager.addObject(new LevelTomNPC3(Cells.H, Cells.H, ID.NPC, manager, side));
@@ -66,8 +64,8 @@ public class Level {
 	 * add objects for level 2
 	 */
 	public void levelTwo() {
-		manager.addObject(new Player(Cells.A, Cells.A, ID.Player));
-		manager.addObject(new LevelHelenNPC(Cells.D, Cells.A, ID.NPC, manager, side, hud));
+		//manager.addObject(new Player(Cells.A, Cells.A, ID.Player));
+		//manager.addObject(new LevelHelenNPC(Cells.D, Cells.A, ID.NPC, manager, side, hud));
 		//flower.addFlower(new Flower(Cells.D, Cells.D, ID.Flower, manager, side));
 		
 		side.setText("~Welcome to level Helen of Robot World!\n\n"

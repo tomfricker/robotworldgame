@@ -8,25 +8,16 @@ import java.awt.event.MouseEvent;
 
 import DessyLevel.DessyLevelNPC;
 import DessyLevel.DessyLevelNPC1;
-import HelenLevel.LevelHelenNPC;
-import HelenLevel.LevelHelenNPC1;
-import HelenLevel.LevelHelenNPC2;
-import TomLevel.LevelTomNPC;
-import TomLevel.LevelTomNPC1;
-import TomLevel.LevelTomNPC2;
-import TomLevel.LevelTomNPC3;
-
+import npcs.MessageNPC;
 import robot.game.Game.STATE;
 
 public class MainMenu extends MouseAdapter{
 	
-	private Game game;
 	private Manager manager;
 	private SidePanel side;
 	private HUD hud;
 	
-	public MainMenu(Game game, Manager manager, SidePanel side, HUD hud) {
-		this.game = game;
+	public MainMenu(Game game, Manager manager, SidePanel side, HUD hud, CodePanel code) {
 		this.manager = manager;
 		this.side = side;
 		this.hud = hud;
@@ -37,18 +28,20 @@ public class MainMenu extends MouseAdapter{
 		int mouseX = e.getX();
 		int mouseY = e.getY();
 		
-		if(game.gameState == STATE.Menu) {
+		if(Game.gameState == STATE.Menu) {
+			hud.setLevel(0);
 			hud.setScore(0);
+			hud.setStage(1);
+			hud.setLevelEnd(false);
 			int y = 200;
 			//level 1 button
 			if(mouseOver(mouseX, mouseY, 100, y, 440, 64)) {
-				game.gameState = STATE.Game;
+				Game.gameState = STATE.Game;
 				hud.setLevel(1);
-				manager.addObject(new Player(Cells.B, Cells.A, ID.Player));
-				manager.addObject(new LevelTomNPC(Cells.E, Cells.D, ID.NPC, manager, side, hud));
-				manager.addObject(new LevelTomNPC1(Cells.H, Cells.A, ID.NPC, manager, side, hud));
-				manager.addObject(new LevelTomNPC2(Cells.A, Cells.H, ID.NPC, manager, side, hud));
-				manager.addObject(new LevelTomNPC3(Cells.H, Cells.H, ID.NPC, manager, side, hud));
+				hud.setStage(1);
+				manager.addObject(new Player(Cells.A, Cells.A, ID.Player));
+				String npcMessage = "To declare a whole number in Java you must make it an int";
+				manager.addObject(new MessageNPC(Cells.H, Cells.A, ID.NPC, manager, side, hud, npcMessage));
 				side.setText("~Welcome to level 1 of Robot World!\n\n"
 						+ "~Please move Robbie the Robot around the board using the arrow keys.\n\n"
 						+ "~Good luck and enjoy your adventure in Robot World!\n\n");
@@ -57,21 +50,20 @@ public class MainMenu extends MouseAdapter{
 			y += 84;
 			//level 2 button
 			if(mouseOver(mouseX, mouseY, 100, y, 440, 64)) {
-				game.gameState = STATE.Game;
+				Game.gameState = STATE.Game;
 				hud.setLevel(2);
 				//add objects to start of level 2
 				manager.addObject(new Player(Cells.D, Cells.D, ID.Player));
-				manager.addObject(new LevelHelenNPC(Cells.D, Cells.A, ID.NPC, manager, side, hud));
-				manager.addObject(new LevelHelenNPC1(Cells.E, Cells.D, ID.NPC, manager, side, hud));
-				manager.addObject(new LevelHelenNPC2(Cells.E, Cells.C, ID.NPC, manager, side, hud));
+				String npcMessage = "Well Done! Now try moving up.";
+				manager.addObject(new MessageNPC(Cells.E, Cells.D, ID.NPC, manager, side, hud, npcMessage));
 				side.setText("~Welcome to level Helen of Robot World!\n\n"
-						+ "~Try moving the Robot around the board by typing in code, e.g. robot.move(right);\n\n");
+						+ "~Try moving the Robot around the board by typing in code, e.g. robot.move(right);, press the enter key and then the Run Code button.\n\n");
 			}
 			
 			y += 84;
 			//level 3 button
 			if(mouseOver(mouseX, mouseY, 100, y, 440, 64)) {
-				game.gameState = STATE.Game;
+				Game.gameState = STATE.Game;
 				hud.setLevel(3);
 				//add objects to start of level 3
 				manager.addObject(new Player(Cells.B, Cells.A, ID.Player));
@@ -84,7 +76,7 @@ public class MainMenu extends MouseAdapter{
 			y += 84;
 			//level 4 button
 			if(mouseOver(mouseX, mouseY, 100, y, 440, 64)) {
-				game.gameState = STATE.Game;
+				Game.gameState = STATE.Game;
 				hud.setLevel(4);
 				//add objects to start of level 4
 			}
@@ -92,14 +84,14 @@ public class MainMenu extends MouseAdapter{
 			y += 84;
 			//level 5 button
 			if(mouseOver(mouseX, mouseY, 100, y, 440, 64)) {
-				game.gameState = STATE.Game;
+				Game.gameState = STATE.Game;
 				hud.setLevel(5);
 				//add objects to start of level 5
 			}
 		}
-		else if(game.gameState == STATE.End) {
+		else if(Game.gameState == STATE.End) {
 			if(mouseOver(mouseX, mouseY, 70, 45, 500, 120)) {
-				game.gameState = STATE.Menu;
+				Game.gameState = STATE.Menu;
 			}
 		}
 		
@@ -139,7 +131,7 @@ public class MainMenu extends MouseAdapter{
 		int x = 70;
 		int y = 45;
 		
-		if(game.gameState == STATE.Menu) {
+		if(Game.gameState == STATE.Menu) {
 			//draw title background
 			g.setColor(Color.BLACK);
 			g.fillRect(x, y, 500, 120);
@@ -178,7 +170,7 @@ public class MainMenu extends MouseAdapter{
 				y += 64 + 20;
 			}
 		}
-		else if(game.gameState == STATE.End) {
+		else if(Game.gameState == STATE.End) {
 			//draw background
 			g.setColor(Color.BLACK);
 			g.fillRect(x, y, 500, 120);

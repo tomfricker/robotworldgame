@@ -1,4 +1,4 @@
-package HelenLevel;
+package npcs;
 
 import java.awt.Graphics;
 import java.awt.Image;
@@ -14,19 +14,21 @@ import robot.game.ID;
 import robot.game.Manager;
 import robot.game.SidePanel;
 
-public class LevelHelenNPC2 extends GameObjects{
-
+public class MessageNPC extends GameObjects {
+	
 	Manager manager;
 	SidePanel side;
 	HUD hud;
 	boolean interacted;
+	private String message;
 
-	public LevelHelenNPC2(int x, int y, ID id, Manager manager, SidePanel side, HUD hud) {
+	public MessageNPC(int x, int y, ID id, Manager manager, SidePanel side, HUD hud, String message) {
 		super(x, y, id);
 		this.manager = manager;
 		this.side = side;
 		this.hud = hud;
 		interacted = false;
+		this.message = message;
 	}
 
 	@Override
@@ -37,7 +39,7 @@ public class LevelHelenNPC2 extends GameObjects{
 
 	@Override
 	public void render(Graphics g) {
-		File imageFile = new File("D:\\MSc Computer Science\\CO880 - Project and Dissertation\\GameProject\\RobotWorld\\src\\HelenLevel\\walle.png");
+		File imageFile = new File("pictures\\walle.png");
 		try {
 			Image robot = ImageIO.read(imageFile);
 			g.drawImage(robot, x, y, null);
@@ -55,9 +57,9 @@ public class LevelHelenNPC2 extends GameObjects{
 		for(GameObjects gameObject : Manager.objectList) {
 			if(gameObject.getId() == ID.Player) {
 				if(gameObject.getX() == x && gameObject.getY() == y) {
-					String message = "Well Done! One of my other friends will teach you how to pick up the flowers.";
 					JOptionPane.showMessageDialog(null, message);
 					hud.setScore(hud.getScore() + 10);
+					hud.setInteractions(hud.getInteractions() + 1);
 					interacted = true;
 					SidePanel.addText("~" + message + "\n\n");
 				}

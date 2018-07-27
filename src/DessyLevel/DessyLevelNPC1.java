@@ -38,7 +38,7 @@ public class DessyLevelNPC1 extends GameObjects {
 
 	@Override
 	public void render(Graphics g) {
-		File imageFile = new File("D:\\MSc Computer Science\\CO880 - Project and Dissertation\\RobotWorld\\RobotWorld\\src\\DessyLevel\\banana.png");
+		File imageFile = new File("pictures\\banana.png");
 		try {
 			Image robot = ImageIO.read(imageFile);
 			g.drawImage(robot, x, y, null);
