@@ -17,10 +17,20 @@ import javax.swing.JTextArea;
 
 import robot.game.Game.STATE;
 
+/**
+ * This class creates a panel that displays messages to the user. This includes 
+ * introductory text for a level or messages from NPCs to the user.
+ * 
+ * It also contains two buttons that take the user to the main menu of the game
+ * or opens a new help window.
+ * 
+ * @author Robot World Group
+ *
+ */
 public class SidePanel extends Panel{
 
+	//Fields of the SidePanel class
 	private static final long serialVersionUID = -7645124710017857401L;
-	
 	static JTextArea outputTextArea;
 	private static JScrollPane scrollPane;
 	//static JTextField inputTextField;
@@ -28,6 +38,9 @@ public class SidePanel extends Panel{
 	JButton helpButton;
 	JPanel buttonBar;
 	
+	/**
+	 * Constructor of the SidePanel
+	 */
 	public SidePanel() {
 		//create side panel
 	    setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -36,6 +49,7 @@ public class SidePanel extends Panel{
 		//sets the font for input and output text
 		Font font = new Font("Monospaced", Font.BOLD, 18);
 		
+		//Input box now set within CodePanel
 	    //create input box
         //inputTextField = new JTextField(20);
 
@@ -55,13 +69,14 @@ public class SidePanel extends Panel{
 		//	}
 		//});
 		
-        //create output box
+        //create output text box
 		SidePanel.outputTextArea = new JTextArea(20, 20);
 		outputTextArea.setFont(font);
 		outputTextArea.setLineWrap(true);
 		outputTextArea.setWrapStyleWord(true);
 		SidePanel.scrollPane = new JScrollPane(outputTextArea);
 		
+		//Create button to take you to main menu
 		menuButton = new JButton("Main Menu");
 		menuButton.setToolTipText("Click this button to go back to the Main Menu.");
 		menuButton.setFont(font);
@@ -75,6 +90,7 @@ public class SidePanel extends Panel{
 			}
 		});
 		
+		//Create button to open help window
 		helpButton = new JButton("Help");
 		helpButton.setFont(font);
 		//helpButton.setBackground(Color.red);
@@ -85,15 +101,14 @@ public class SidePanel extends Panel{
 			}
 		});
 		
+		//Create button layout
 		buttonBar = new JPanel();
 		buttonBar.setLayout(new BoxLayout(buttonBar, BoxLayout.X_AXIS));
-		
 		buttonBar.add(menuButton);
 		buttonBar.add(helpButton);
 		
+		//add elements to panel
 		add(buttonBar);
-		
-		//add I/O boxes to side panel
 		add(scrollPane);
 		//add(inputTextField);
 	}

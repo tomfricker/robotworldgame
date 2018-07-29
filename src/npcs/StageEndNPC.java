@@ -15,26 +15,58 @@ import robot.game.ID;
 import robot.game.Manager;
 import robot.game.SidePanel;
 
+/**
+ * NPC stands for non playable character.
+ * 
+ * This class extends GameObjects so that it can be easily stored within the Manager
+ * class' list to be iterated over. It's function within the game is to ask the 
+ * the user a question and end the current stage they are playing.
+ * 
+ * It will ask it's question within a pop up window. It then waits for the user
+ * to input an answer or cancel it's interaction. If the user inputs an incorrect
+ * answer it will deduct points from their score and display the answer they put
+ * and an incorrect message to the SidePanel. If they are correct they are 
+ * awarded points and told they are correct within the SidePanel. This will then end
+ * the stage and update the HUD accordingly.
+ * 
+ * @author Robot World Group
+ *
+ */
 public class StageEndNPC extends GameObjects {
 	
+	//Fields of the StageEndNPC
 	private HUD hud;
-	boolean interacted;
 	private String question, answer;
 
+	/**
+	 * Constructor for the StageEndNPC
+	 * @param x
+	 * @param y
+	 * @param id
+	 * @param manager
+	 * @param side
+	 * @param hud
+	 * @param question
+	 * @param answer
+	 */
 	public StageEndNPC(int x, int y, ID id, Manager manager, SidePanel side, HUD hud, String question, String answer) {
 		super(x, y, id);
 		this.hud = hud;
-		interacted = false;
 		this.question = question;
 		this.answer = answer;
 	}
 
-	@Override
+	/**
+	 * Having the interact method within tick will ensure that if the player comes across the NPC in the game it
+	 * will display it's question to the user.
+	 */
 	public void tick() {
 		interact();
 	}
 
-	@Override
+	/**
+	 * Displays the image of the NPC on the board at the specified position.
+	 */
 	public void render(Graphics g) {
 		File imageFile = new File("pictures\\walle.png");
 		try {
@@ -69,10 +101,9 @@ public class StageEndNPC extends GameObjects {
 						if(currentScore > 0)
 							hud.setScore(currentScore - 10);
 					}
-					//if the player is correct the interaction will not continue to be prompted
+					//if the player is correct the stage will end and be set to the next
 					else if(input.equals(answer)) {
 						hud.setScore(hud.getScore() + 50);
-						interacted = true;
 						SidePanel.addText("~" + input + "\n");
 						SidePanel.addText("~correct\n\n");
 						hud.setStageEnd(true);

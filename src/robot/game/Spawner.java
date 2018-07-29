@@ -5,23 +5,44 @@ import npcs.LevelEndNPC;
 import npcs.MessageNPC;
 import npcs.StageEndNPC;
 
+/**
+ * This class constantly checks the HUD class to see if certain criteria have been met
+ * in order to add objects to the current level and stage that the user is playing.
+ * 
+ * @author Robot World Group
+ *
+ */
 public class Spawner {
 	
+	//Fields of Spawner class
 	private Manager manager;
 	private HUD hud;
 	private SidePanel side;
 	
+	/**
+	 * Constructor creates the Spawner class.
+	 * @param manager
+	 * @param hud
+	 * @param side
+	 */
 	public Spawner(Manager manager, HUD hud, SidePanel side) {
 		this.manager = manager;
 		this.hud = hud;
 		this.side = side;
 	}
 	
+	/**
+	 * This method constantly checks to see what level the user is on and,
+	 * depending on what stage they are on, execute the corresponding method
+	 * within this class.
+	 */
 	public void tick() {
-		//get the level and create objects once certain criteria is met
+		//Get the stage the user is on
 		int stage = hud.getStage();
+		//Get the level the user is on
 		switch(hud.getLevel()) {
-			//create the objects of level 1 once you reach a certain score
+			//Execute the method for the correct level/stage
+			//level 1
 			case 1: if(stage == 1) levelOneStageOne();
 			else if(stage == 2) levelOneStageTwo();
 
@@ -40,15 +61,21 @@ public class Spawner {
 	}
 	
 	/**
-	 * Creates the objects for the first stage of level 1 as you progress in the level
+	 * Creates the objects for the first stage of level 1 as you progress in the level.
+	 * The number of interactions is executed using odd numbers to ensure that an
+	 * object is only added once to the manager.
 	 */
 	public void levelOneStageOne() {
+		//Get the number of interactions
 		int interactions = hud.getInteractions();
+		//Add the second NPC once the first has been interacted with
 		if(interactions == 1) {
 			String message = "A line of code usually ends with ;";
 			manager.addObject(new MessageNPC(Cells.A, Cells.G, ID.NPC, manager, side, hud, message));
+			//Add an extra interaction to stop the addition of further objects from this method
 			hud.setInteractions(interactions + 1);
 		}
+		//Add the NPCs one at a time for the rest of the stage
 		else if(interactions == 3) {
 			String message = "An example of a number variable declaration is:\n\n"
 					+ "int y = 12;";
@@ -65,7 +92,8 @@ public class Spawner {
 	}
 	
 	/**
-	 * Sets up stage 2 of level 1 and adds NPCs as necessary
+	 * Sets up stage 2 of level 1 and adds NPCs as necessary. Works in the same way as
+	 * levelOneStageOne()
 	 */
 	public void levelOneStageTwo() {
 		int interactions = hud.getInteractions();
@@ -104,6 +132,10 @@ public class Spawner {
 		}
 	}
 	
+	/**
+	 * Sets up stage 1 of level 2 and adds NPCs as necessary. Works in the same way as
+	 * levelOneStageOne()
+	 */
 	public void levelTwoStageOne() {
 		int interactions = hud.getInteractions();
 		if(interactions == 1) {
@@ -124,7 +156,8 @@ public class Spawner {
 	}
 	
 	/**
-	 * Sets up stage 2 of level 2 and adds NPCs as necessary
+	 * Sets up stage 2 of level 2 and adds NPCs as necessary. Works in the same way as
+	 * levelOneStageOne()
 	 */
 	public void levelTwoStageTwo() {
 		int interactions = hud.getInteractions();
@@ -172,6 +205,10 @@ public class Spawner {
 		}
 	}
 	
+	/**
+	 * Sets up stage 3 of level 2 and adds NPCs as necessary. Works in the same way as
+	 * levelOneStageOne()
+	 */
 	public void levelTwoStageThree() {
 		int interactions = hud.getInteractions();
 		if(hud.isStageEnd() == true) {

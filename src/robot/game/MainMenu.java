@@ -11,28 +11,64 @@ import DessyLevel.DessyLevelNPC1;
 import npcs.MessageNPC;
 import robot.game.Game.STATE;
 
+/**
+ * This class displays the options for the 5 different levels of game.
+ * It extends MouseAdapter so that the different buttons are clickable within
+ * the main game window.
+ * 
+ * It also sets up the initial state of the level once it has been selected
+ * by the user.
+ * 
+ * It also shows the end level screen where the user sees their score and
+ * has the option to go back to the main menu to select another level.
+ * 
+ * @author Robot World Group
+ *
+ */
 public class MainMenu extends MouseAdapter{
 	
+	//Fields of the MainMenu class
 	private Manager manager;
 	private SidePanel side;
 	private HUD hud;
 	
+	/**
+	 * Constructor of the MainMenu
+	 * @param game
+	 * @param manager
+	 * @param side
+	 * @param hud
+	 * @param code
+	 */
 	public MainMenu(Game game, Manager manager, SidePanel side, HUD hud, CodePanel code) {
 		this.manager = manager;
 		this.side = side;
 		this.hud = hud;
 	}
 	
+	/**
+	 * This method checks if the gameState is either Menu or End.
+	 * If it is in Menu it will check if a certain level button
+	 * has been clicked on and set up the objects that begin that
+	 * particular level.
+	 * 
+	 * If the gameState is End then it will check to see if the 
+	 * user has clicked on the button to return to the MainMenu
+	 * and change the gameState accordingly.
+	 */
 	public void mousePressed(MouseEvent e) {
 		//get coordinates of the mouse when clicked
 		int mouseX = e.getX();
 		int mouseY = e.getY();
 		
+		//Check to see if the gameState is Menu
 		if(Game.gameState == STATE.Menu) {
+			//set up the initial state of the HUD before a level begins
 			hud.setLevel(0);
 			hud.setScore(0);
 			hud.setStage(1);
 			hud.setLevelEnd(false);
+			//Starting co-ordinates of the Y-axis for Level 1 button
 			int y = 200;
 			//level 1 button
 			if(mouseOver(mouseX, mouseY, 100, y, 440, 64)) {
@@ -47,8 +83,9 @@ public class MainMenu extends MouseAdapter{
 						+ "~Good luck and enjoy your adventure in Robot World!\n\n");
 						
 			}
-			y += 84;
+			
 			//level 2 button
+			y += 84;
 			if(mouseOver(mouseX, mouseY, 100, y, 440, 64)) {
 				Game.gameState = STATE.Game;
 				hud.setLevel(2);
@@ -60,8 +97,8 @@ public class MainMenu extends MouseAdapter{
 						+ "~Try moving the Robot around the board by typing in code, e.g. robot.move(right);, press the enter key and then the Run Code button.\n\n");
 			}
 			
-			y += 84;
 			//level 3 button
+			y += 84;
 			if(mouseOver(mouseX, mouseY, 100, y, 440, 64)) {
 				Game.gameState = STATE.Game;
 				hud.setLevel(3);
@@ -73,16 +110,16 @@ public class MainMenu extends MouseAdapter{
 						+ "~Try moving the Robot to the apple.\n\n");
 			}
 			
-			y += 84;
 			//level 4 button
+			y += 84;
 			if(mouseOver(mouseX, mouseY, 100, y, 440, 64)) {
 				Game.gameState = STATE.Game;
 				hud.setLevel(4);
 				//add objects to start of level 4
 			}
 			
-			y += 84;
 			//level 5 button
+			y += 84;
 			if(mouseOver(mouseX, mouseY, 100, y, 440, 64)) {
 				Game.gameState = STATE.Game;
 				hud.setLevel(5);
@@ -122,10 +159,18 @@ public class MainMenu extends MouseAdapter{
 		}
 	}
 	
+	/**
+	 * Ensures that the MainMenu is constantly being updated from the Game Class
+	 */
 	public void tick() {
 		
 	}
 	
+	/**
+	 * Draws all the rectangles and Strings contained within either the Menu screen
+	 * or End Game screens dependant on the gameState.
+	 * @param g
+	 */
 	public void render(Graphics g) {
 		//set the starting coordinates for each element of the menu
 		int x = 70;
@@ -171,7 +216,7 @@ public class MainMenu extends MouseAdapter{
 			}
 		}
 		else if(Game.gameState == STATE.End) {
-			//draw background
+			//draw rectangles
 			g.setColor(Color.BLACK);
 			g.fillRect(x, y, 500, 120);
 			g.setColor(Color.WHITE);
@@ -194,6 +239,7 @@ public class MainMenu extends MouseAdapter{
 			g.setColor(Color.WHITE);
 			g.drawString("Return to Main Menu", 120, 150);
 			
+			//display user score
 			g.drawString("Your score was : " + hud.getScore(), 120, 245);
 			
 		}
