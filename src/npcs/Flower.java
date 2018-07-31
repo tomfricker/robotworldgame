@@ -11,13 +11,28 @@ import robot.game.ID;
 import robot.game.Manager;
 import robot.game.SidePanel;
 
+/**
+ * This class extends GameObjects, it displays a flower.
+ * 
+ * @author MissH
+ *
+ */
 public class Flower extends GameObjects {
 	
 	Manager manager;
 	SidePanel side;
 	HUD hud;
 	boolean interacted;
-
+	
+	/**
+	 * Constructor for Flowers
+	 * @param x
+	 * @param y
+	 * @param id
+	 * @param manager
+	 * @param side
+	 * @param hud
+	 */
 	public Flower(int x, int y, ID id, Manager manager, SidePanel side, HUD hud) {
 		super(x, y, id);
 		this.manager = manager;
@@ -26,12 +41,18 @@ public class Flower extends GameObjects {
 		interacted = false;
 	}
 
+	/**
+	 * When player interacts with a flower it will call the interact method
+	 */
 	@Override
 	public void tick() {
 		if(interacted == false)
 			interact();		
 	}
 
+	/**
+	 * Displays image of flower on board 
+	 */
 	@Override
 	public void render(Graphics g) {
 		File imageFile = new File("pictures\\Flower.png");
@@ -45,8 +66,8 @@ public class Flower extends GameObjects {
 	}
 	
 	/**
-	 * This method sets up the interactions between the player object and the NPC.
-	 * This character asks for the answer to a question then displays both correct and incorrect answers typed in the side panel.
+	 * This method sets up the interactions between the player object and the flower.
+	 * If the player is on the same square as the flower it will increase the score and interactions.
 	 */
 	public void interact() {
 		for(GameObjects gameObject : Manager.objectList) {

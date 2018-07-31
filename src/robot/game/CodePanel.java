@@ -15,14 +15,17 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 /**
+ * This class creates a panel that allows the user to enter input and then displays it.
  * 
- * @author 
+ * It also has two buttons that run the users input or clears it.
+ * 
+ * @author MissH
  *
  */
 public class CodePanel extends Panel{
 
 	private static final long serialVersionUID = 1L;
-
+	//Width of the CodePanel
 	static final int CPWIDTH = 250;
 	
 	static JTextArea codeOutput;
@@ -32,18 +35,25 @@ public class CodePanel extends Panel{
 	JButton clearButton;
 	JPanel buttons;
 	
+	/**
+	 * Constructor of the CodePanel
+	 */
 	public CodePanel() {
+		//Create side panel
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		setPreferredSize(new Dimension(CPWIDTH, HEIGHT));
 		
+		//set font
 		Font font = new Font("Monospaced", Font.BOLD, 16);
 		
+		//create output text box
 		codeOutput = new JTextArea(20,20);
 		codeOutput.setFont(font);
 		codeOutput.setLineWrap(true);
 		codeOutput.setWrapStyleWord(true);
 		add(codeOutput);
 		
+		//create input text box
 		codeInput = new JTextField(20);
 		codeInput.setFont(font);
 		codeInput.setText("Write code here");
@@ -65,6 +75,7 @@ public class CodePanel extends Panel{
         	}
         });
 		
+        //create enter button
 		enterButton = new JButton("Run code");
 		enterButton.setFont(font);
 		//carries out entered code when enter button is pressed
@@ -89,6 +100,7 @@ public class CodePanel extends Panel{
         //	}
         //});
 		
+		//create clear button
 		clearButton = new JButton("Clear");
 		clearButton.setFont(font);
 		clearButton.setToolTipText("This will clear all the code you have entered so far.");
@@ -100,12 +112,13 @@ public class CodePanel extends Panel{
         	}
         });
 		
+		//create button layout
 		buttons = new JPanel();
 		buttons.setLayout(new BoxLayout(buttons, BoxLayout.X_AXIS));
 		buttons.add(enterButton);
 		//buttons.add(deleteButton);
 		buttons.add(clearButton);
-		
+		//add buttons to panel
 		add(buttons);
 	}
 	

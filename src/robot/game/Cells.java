@@ -1,5 +1,12 @@
 package robot.game;
 
+/**
+ * This class sets squares to A-H.
+ * It also holds the methods to increase and decrease a square.
+ * 
+ * @author MissH
+ *
+ */
 public class Cells {
 
 	/**
