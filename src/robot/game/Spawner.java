@@ -1,5 +1,6 @@
 package robot.game;
 
+import npcs.CollectionNPC;
 import npcs.Flower;
 import npcs.LevelEndNPC;
 import npcs.MessageNPC;
@@ -256,7 +257,7 @@ public class Spawner {
 			hud.setInteractions(0);
 		}
 	}
-
+	
 
 }
 

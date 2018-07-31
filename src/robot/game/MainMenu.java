@@ -8,7 +8,10 @@ import java.awt.event.MouseEvent;
 
 import DessyLevel.DessyLevelNPC;
 import DessyLevel.DessyLevelNPC1;
+import npcs.CollectionNPC;
 import npcs.MessageNPC;
+import npcs.PICKUPID;
+import npcs.Pickup;
 import robot.game.Game.STATE;
 
 /**
@@ -116,6 +119,16 @@ public class MainMenu extends MouseAdapter{
 				Game.gameState = STATE.Game;
 				hud.setLevel(4);
 				//add objects to start of level 4
+				manager.addObject(new Player(Cells.B,Cells.A,ID.Player));
+				manager.addObject(new CollectionNPC(Cells.A,Cells.H,ID.NPC,"Int",side,hud,1));
+				manager.addObject(new CollectionNPC(Cells.H,Cells.H,ID.NPC,"Char",side,hud,2));
+				manager.addObject(new CollectionNPC(Cells.H,Cells.A,ID.NPC,"Boolean",side,hud,1));
+				manager.addObject(new Pickup(Cells.A,Cells.F,ID.NPC, PICKUPID.Boolean,side));
+				manager.addObject(new Pickup(Cells.B,Cells.G,ID.NPC, PICKUPID.Char,side));
+				manager.addObject(new Pickup(Cells.A,Cells.A,ID.NPC, PICKUPID.Char,side));
+				manager.addObject(new Pickup(Cells.A,Cells.G,ID.NPC, PICKUPID.Int,side));
+				side.setText("~Welcome to level 4 of Robot World - Time to learn about Primitive Types!\n\n"
+						+ "~These are collectors. Try talking to them to see what they want\n\n");
 			}
 			
 			//level 5 button
