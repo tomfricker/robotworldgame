@@ -19,7 +19,7 @@ public final class Bag {
 	public static String bagType = "a";
 	public static boolean typed = false;
 	
-	//handles level specific pickups
+	//handles level specific pickups dfg
 	public static HashMap<PICKUPID,Integer> pickups = new HashMap<>();
 	
 	//can be used to add general objects to an inventory
