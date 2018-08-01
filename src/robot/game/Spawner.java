@@ -46,6 +46,7 @@ public class Spawner {
 			//level 1
 			case 1: if(stage == 1) levelOneStageOne();
 			else if(stage == 2) levelOneStageTwo();
+			else if(stage ==3) levelOneStageThree();
 
 			//level 2
 			case 2: if(stage == 1) levelTwoStageOne();
@@ -71,22 +72,81 @@ public class Spawner {
 		int interactions = hud.getInteractions();
 		//Add the second NPC once the first has been interacted with
 		if(interactions == 1) {
-			String message = "A line of code usually ends with ;";
+			String message = "There are many different types of data types including, int, double, float, "
+					+ "long, boolean and char.";
 			manager.addObject(new MessageNPC(Cells.A, Cells.G, ID.NPC, manager, side, hud, message));
 			//Add an extra interaction to stop the addition of further objects from this method
 			hud.setInteractions(interactions + 1);
 		}
 		//Add the NPCs one at a time for the rest of the stage
 		else if(interactions == 3) {
+			String message = "To use data within our program we need to store it in a variable.";
+			manager.addObject(new MessageNPC(Cells.C, Cells.G, ID.NPC, manager, side, hud, message));
+			hud.setInteractions(interactions + 1);
+		}
+		else if(interactions == 5) {
+			String message = "We decide what name to give our variable and begin with a lowercase letter.\n\n"
+					+ "e.g. robots, squares, x or y.";
+			manager.addObject(new MessageNPC(Cells.H, Cells.D, ID.NPC, manager, side, hud, message));
+			hud.setInteractions(interactions + 1);
+		}
+		else if(interactions == 7) {
+			String message = "to assign data to our variable we use =";
+			manager.addObject(new MessageNPC(Cells.F, Cells.B, ID.NPC, manager, side, hud, message));
+			hud.setInteractions(interactions + 1);
+		}
+		else if(interactions == 9) {
+			String message = "Finally we use ; to finish our line of code.";
+			manager.addObject(new MessageNPC(Cells.A, Cells.D, ID.NPC, manager, side, hud, message));
+			hud.setInteractions(interactions + 1);
+		}
+		else if(interactions == 11) {
+			String question = "In maths, an integer is any whole number. Looking at our data types, which\n"
+					+ "one do you think we would use to store an integer?";
+			String answer = "int";
+			manager.addObject(new StageEndNPC(Cells.E, Cells.D, ID.NPC, manager, side, hud, question, answer));
+			hud.setInteractions(0);
+		}
+	}
+	
+	/**
+	 * Creates the objects for the first stage of level 1 as you progress in the level.
+	 * The number of interactions is executed using odd numbers to ensure that an
+	 * object is only added once to the manager.
+	 */
+	public void levelOneStageTwo() {
+		int interactions = hud.getInteractions();
+		if(hud.isStageEnd() == true) {
+			Manager.clearAll();
+			SidePanel.addText("~Congratulations you completed Stage 1\n\n"
+					+ "~Now try stage 2.\n\n"
+					+ "~Good luck!\n\n");
+			manager.addObject(new Player(Cells.A, Cells.A, ID.Player));
+			String message1 = "In the last stage we learnt about data types, now we are going try our first line of code.";
+			manager.addObject(new MessageNPC(Cells.H, Cells.F, ID.NPC, manager, side, hud, message1));
+			hud.setStageEnd(false);
+		}
+		if(interactions == 1) {
+			String message = "Remeber we need a data type, a variable name, an assignment =, the data and finally a ;";
+			manager.addObject(new MessageNPC(Cells.B, Cells.G, ID.NPC, manager, side, hud, message));
+			//Add an extra interaction to stop the addition of further objects from this method
+			hud.setInteractions(interactions + 1);
+		}
+		//Add the NPCs one at a time for the rest of the stage
+		else if(interactions == 3) {
 			String message = "An example of a number variable declaration is:\n\n"
-					+ "int y = 12;";
+					+ "int squares = 64;";
 			manager.addObject(new MessageNPC(Cells.H, Cells.G, ID.NPC, manager, side, hud, message));
 			hud.setInteractions(interactions + 1);
 		}
 		else if(interactions == 5) {
-			String question = "Please declare the number of robots on the board that look just like me.\n"
-					+ "I need to be declared in a variable called x";
-			String answer = "int x = 4;";
+			for(int i = 0; i < 8; i++) {
+				int cell = 8 + Game.boardIndex*i;
+				manager.addObject(new MessageNPC(cell, Cells.A, ID.NPC, manager, side, hud, null));
+			}
+			String question = "Please declare the number of robots on the top line of the board.\n"
+					+ "I need to be declared in a variable called robots";
+			String answer = "int robots = 8;";
 			manager.addObject(new StageEndNPC(Cells.E, Cells.D, ID.NPC, manager, side, hud, question, answer));
 			hud.setInteractions(0);
 		}
@@ -96,12 +156,12 @@ public class Spawner {
 	 * Sets up stage 2 of level 1 and adds NPCs as necessary. Works in the same way as
 	 * levelOneStageOne()
 	 */
-	public void levelOneStageTwo() {
+	public void levelOneStageThree() {
 		int interactions = hud.getInteractions();
 		if(hud.isStageEnd() == true) {
 			Manager.clearAll();
-			SidePanel.addText("~Congratulations you completed Stage 1\n\n"
-					+ "~Now try stage 2.\n\n"
+			SidePanel.addText("~Congratulations you completed Stage 2\n\n"
+					+ "~Now try stage 3.\n\n"
 					+ "~Good luck!\n\n");
 			manager.addObject(new Player(Cells.A, Cells.A, ID.Player));
 			String message1 = "In Java, and most programming languages, a word, sentence or bunch of characters is called a String.\n\n(HINT: Notice the capitol letter)";
@@ -120,8 +180,7 @@ public class Spawner {
 			hud.setInteractions(interactions + 1);
 		}
 		else if(interactions == 5) {
-			String message4 = "Variables can have any name as long as it starts with a lowercase letter.\n\n"
-					+ "e.g int robots = 4;";
+			String message4 = "Remember the order, data type, variable name, assignment, data and ;";
 			manager.addObject(new MessageNPC(Cells.G, Cells.H, ID.NPC, manager, side, hud, message4));
 			hud.setInteractions(interactions + 1);
 		}
