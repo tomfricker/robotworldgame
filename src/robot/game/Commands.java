@@ -95,15 +95,14 @@ public class Commands {
 	}
 	
 	/**
-	 * Working progress - make the player move in the specified direction and the specified number of squares
+	 * Commands which make the player move in the specified direction and the specified number of squares
 	 * @param direction player moves in (up, down, left, right)
 	 * @param number of squares player moves in (<8)
 	 */
 	public static void move(String direction, int number) {
 		for(GameObjects gameObject : Manager.objectList) {
 			if (gameObject.getId() == ID.Player) {
-				int i = 1; 
-				do{ 
+				for(int i = 1; i <= number; i++) {
 					if(direction == "up") {
 						moveUp();
 					}
@@ -117,7 +116,6 @@ public class Commands {
 						moveRight();
 					}
 				}
-				while(i < number);
 			}
 		}
 	}
@@ -196,7 +194,76 @@ public class Commands {
 			//	move(direction, number);
 			//}
 			else if(command.equals("robot.move(up, 2);")) {
-				moveUp(); moveUp();
+				move("up", 2);
+			}
+			else if(command.equals("robot.move(up, 3);")) {
+				move("up", 3);
+			}
+			else if(command.equals("robot.move(up, 4);")) {
+				move("up", 4);
+			}
+			else if(command.equals("robot.move(up, 5);")) {
+				move("up", 5);
+			}
+			else if(command.equals("robot.move(up, 6);")) {
+				move("up", 6);
+			}
+			else if(command.equals("robot.move(up, 7);")) {
+				move("up", 7);
+			}
+			else if(command.equals("robot.move(down, 2);")) {
+				move("down", 2);
+			}
+			else if(command.equals("robot.move(down, 3);")) {
+				move("down", 3);
+			}
+			else if(command.equals("robot.move(down, 4);")) {
+				move("down", 4);
+			}
+			else if(command.equals("robot.move(down, 5);")) {
+				move("down", 5);
+			}
+			else if(command.equals("robot.move(down, 6);")) {
+				move("down", 6);
+			}
+			else if(command.equals("robot.move(down, 7);")) {
+				move("down", 7);
+			}
+			else if(command.equals("robot.move(left, 2);")) {
+				move("left", 2);
+			}
+			else if(command.equals("robot.move(left, 3);")) {
+				move("left", 3);
+			}
+			else if(command.equals("robot.move(left, 4);")) {
+				move("left", 4);
+			}
+			else if(command.equals("robot.move(left, 5);")) {
+				move("left", 5);
+			}
+			else if(command.equals("robot.move(left, 6);")) {
+				move("left", 6);
+			}
+			else if(command.equals("robot.move(left, 7);")) {
+				move("left", 7);
+			}
+			else if(command.equals("robot.move(right, 2);")) {
+				move("right", 2);
+			}
+			else if(command.equals("robot.move(right, 3);")) {
+				move("right", 3);
+			}
+			else if(command.equals("robot.move(right, 4);")) {
+				move("right", 4);
+			}
+			else if(command.equals("robot.move(right, 5);")) {
+				move("right", 5);
+			}
+			else if(command.equals("robot.move(right, 6);")) {
+				move("right", 6);
+			}
+			else if(command.equals("robot.move(right, 7);")) {
+				move("right", 7);
 			}
 		}
 	}
