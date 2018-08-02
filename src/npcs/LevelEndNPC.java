@@ -109,6 +109,8 @@ public class LevelEndNPC extends GameObjects {
 						SidePanel.addText("~" + input + "\n");
 						SidePanel.addText("~correct\n\n");
 						hud.setLevelEnd(true);
+						//hud.setInteractions(hud.getInteractions() + 1);
+						interacted = true;
 					}
 				}
 			}

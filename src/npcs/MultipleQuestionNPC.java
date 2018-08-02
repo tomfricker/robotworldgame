@@ -32,11 +32,11 @@ import robot.game.SidePanel;
  * @author Robot World Group
  *
  */
-public class StageEndNPC extends GameObjects {
+public class MultipleQuestionNPC extends GameObjects {
 	
 	//Fields of the StageEndNPC
 	private HUD hud;
-	private String question, answer;
+	private String[] questions, answers;
 	private boolean interacted;
 
 	/**
@@ -50,11 +50,11 @@ public class StageEndNPC extends GameObjects {
 	 * @param question
 	 * @param answer
 	 */
-	public StageEndNPC(int x, int y, ID id, Manager manager, SidePanel side, HUD hud, String question, String answer) {
+	public MultipleQuestionNPC(int x, int y, ID id, Manager manager, SidePanel side, HUD hud, String[] questions, String[] answers) {
 		super(x, y, id);
 		this.hud = hud;
-		this.question = question;
-		this.answer = answer;
+		this.questions = questions;
+		this.answers = answers;
 		interacted = false;
 	}
 
@@ -88,30 +88,31 @@ public class StageEndNPC extends GameObjects {
 		for(GameObjects gameObject : Manager.objectList) {
 			if(gameObject.getId() == ID.Player) {
 				if(gameObject.getX() == x && gameObject.getY() == y) {
-					//String answer = "int x = 4;";
-					String input = JOptionPane.showInputDialog(null, question);
-					if(input == null || input.length() == 0) {
-						gameObject.setX(gameObject.getX()-Game.boardIndex);
+					for(int i = 0; i < questions.length; i++) {
+						String input = JOptionPane.showInputDialog(null, questions[i]);
+						//if(input == null || input.length() == 0) {
+							//gameObject.setX(gameObject.getX()-Game.boardIndex);
+						//}
+						//if the answer is incorrect the player can continue to move round the board and the interactions can still take place
+						while (!input.equals(answers[i])) {
+							
+							SidePanel.addText("~" + input + "\n");
+							SidePanel.addText("~incorrect\n");
+							SidePanel.addText("~You lost 10 points\n\n");
+							gameObject.setX(gameObject.getX()-Game.boardIndex);
+							int currentScore = hud.getScore();
+							if(currentScore > 0)
+								hud.setScore(currentScore - 10);
+							input = JOptionPane.showInputDialog(null, questions[i]);
+						}
+						//if the player is correct the stage will end and be set to the next
+						if(input.equals(answers[i])) {
+							hud.setScore(hud.getScore() + 50);
+							SidePanel.addText("~" + input + "\n");
+							SidePanel.addText("~correct\n\n");
+						}
 					}
-					//if the answer is incorrect the player can continue to move round the board and the interactions can still take place
-					else if (!input.equals(answer)) {
-						SidePanel.addText("~" + input + "\n");
-						SidePanel.addText("~incorrect\n");
-						SidePanel.addText("~You lost 10 points\n\n");
-						gameObject.setX(gameObject.getX()-Game.boardIndex);
-						int currentScore = hud.getScore();
-						if(currentScore > 0)
-							hud.setScore(currentScore - 10);
-					}
-					//if the player is correct the stage will end and be set to the next
-					else if(input.equals(answer)) {
-						hud.setScore(hud.getScore() + 50);
-						SidePanel.addText("~" + input + "\n");
-						SidePanel.addText("~correct\n\n");
-						hud.setStageEnd(true);
-						hud.setStage(hud.getStage() + 1);
-						interacted = true;
-					}
+					hud.setLevelEnd(true);
 				}
 			}
 		}
