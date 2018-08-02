@@ -15,6 +15,7 @@ public class KeyInput extends KeyAdapter {
 	/**
 	 * This method controls the player object by the arrow keys on the keyboard
 	 */
+	@Override
 	public void keyPressed(KeyEvent e) {
 		
 		int key = e.getKeyCode();
@@ -36,15 +37,13 @@ public class KeyInput extends KeyAdapter {
 			}
 		}
 		
-		if (key == KeyEvent.VK_UP && CodePanel.getHasFocus()) {
-			System.out.println("You made it!");
-		}
-		
+				
 	}
 	
 	/**
 	 * This method makes sure the player stops moving when an arrow key is released
 	 */
+	@Override
 	public void keyReleased(KeyEvent e) {
 		
 		int key = e.getKeyCode();

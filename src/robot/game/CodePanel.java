@@ -52,9 +52,7 @@ public class CodePanel extends Panel implements FocusListener {
 		//set font
 		Font font = new Font("Monospaced", Font.BOLD, 16);
 		
-		manager = new Manager();
-		this.addKeyListener(new KeyInput(manager));
-		
+						
 		//create output text box
 		codeOutput = new JTextArea(20,20);
 		codeOutput.setFont(font);
@@ -71,9 +69,10 @@ public class CodePanel extends Panel implements FocusListener {
 				refreshInputBox();
 			}
 		});
-		add(codeInput);
+		codeInput.addKeyListener(new HistoryLog());
 		codeInput.addFocusListener(this);
-		
+		codeInput.setFocusable(true);
+		add(codeInput);
 		
 		//prints in codeOutput when enter key is pressed 
         codeInput.addActionListener(new ActionListener() {
@@ -142,6 +141,13 @@ public class CodePanel extends Panel implements FocusListener {
 	}
 	
 	/**
+	 * Sets text in input box
+	 */
+	public static void setInput(String input) {
+		codeInput.setText(input);
+	}
+	
+	/**
 	 * Returns text entered in input box
 	 * @return 
 	 */
@@ -153,7 +159,7 @@ public class CodePanel extends Panel implements FocusListener {
 	 * Sets the message to be displayed in the output text area
 	 * @param text
 	 */
-	public void setText(String text) {
+	public static void setText(String text) {
 		codeOutput.setText(text);
 	}
 	
@@ -165,25 +171,7 @@ public class CodePanel extends Panel implements FocusListener {
 		codeOutput.append(text);
 	}
 
-	/**
-	 * This method controls the player object by the arrow keys on the keyboard
-	 */
-	public void keyPressed(KeyEvent e) {
-		
-		int key = e.getKeyCode();
-		int pressedKeys = 0;
-			if(key == KeyEvent.VK_UP) {
-				System.out.println("You made it!");
-				//String phrase = HistoryLog.get(HistoryLog.length()-(pressedKeys+1));
-					//pressedKeys ++;
-					//codeInput.setText(phrase);
-			}		
-			else if (key == KeyEvent.VK_DOWN && pressedKeys != 0) {
-					//add code here
-					
-			}
-		}
-
+	
 	@Override
 	public void focusGained(FocusEvent arg0) {
 		System.out.println("Gained focus");
@@ -198,9 +186,6 @@ public class CodePanel extends Panel implements FocusListener {
 		
 	}
 	
-	public static boolean getHasFocus() {
-		return hasFocus;
-	}
-		
+			
 }
 
