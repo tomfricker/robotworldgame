@@ -22,6 +22,7 @@ public class Flower extends GameObjects {
 	Manager manager;
 	SidePanel side;
 	HUD hud;
+	File picture;
 	boolean interacted;
 	
 	/**
@@ -33,11 +34,12 @@ public class Flower extends GameObjects {
 	 * @param side
 	 * @param hud
 	 */
-	public Flower(int x, int y, ID id, Manager manager, SidePanel side, HUD hud) {
+	public Flower(int x, int y, ID id, Manager manager, SidePanel side, HUD hud, File picture) {
 		super(x, y, id);
 		this.manager = manager;
 		this.side = side;
 		this.hud = hud;
+		this.picture = picture;
 		interacted = false;
 	}
 
@@ -55,9 +57,8 @@ public class Flower extends GameObjects {
 	 */
 	@Override
 	public void render(Graphics g) {
-		File imageFile = new File("pictures\\Flower.png");
 		try {
-			Image flower = ImageIO.read(imageFile);
+			Image flower = ImageIO.read(picture);
 			g.drawImage(flower, x, y, null);
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -74,7 +75,7 @@ public class Flower extends GameObjects {
 			if(gameObject.getId() == ID.Player) {
 				if(gameObject.getX() == x && gameObject.getY() == y) {
 					hud.setScore(hud.getScore() + 5);
-					hud.setInteractions(hud.getInteractions() + 1);
+					//hud.setInteractions(hud.getInteractions() + 1);
 					interacted = true;
 				}
 			}
