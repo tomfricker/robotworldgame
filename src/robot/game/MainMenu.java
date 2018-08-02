@@ -79,8 +79,8 @@ public class MainMenu extends MouseAdapter{
 				hud.setLevel(1);
 				hud.setStage(1);
 				manager.addObject(new Player(Cells.A, Cells.A, ID.Player));
-				String npcMessage = "To declare a whole number in Java you must make it an int";
-				manager.addObject(new MessageNPC(Cells.H, Cells.A, ID.NPC, manager, side, hud, npcMessage));
+				String npcMessage = "In this first level we are going to learn about data types.";
+				manager.addObject(new MessageNPC(Cells.C, Cells.A, ID.NPC, manager, side, hud, npcMessage));
 				side.setText("~Welcome to level 1 of Robot World!\n\n"
 						+ "~Please move Robbie the Robot around the board using the arrow keys.\n\n"
 						+ "~Good luck and enjoy your adventure in Robot World!\n\n");
