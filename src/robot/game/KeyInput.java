@@ -4,7 +4,12 @@ import java.awt.event.KeyEvent;
 
 public class KeyInput extends KeyAdapter {
 	
+		//private CodePanel codePanel;
+		
 	public KeyInput(Manager manager) {
+			
+			//codePanel = new CodePanel();
+		
 	}
 	
 	/**
@@ -29,6 +34,10 @@ public class KeyInput extends KeyAdapter {
 					//gameObject.setVelX(5);
 					gameObject.setX(gameObject.getX()+Game.boardIndex);
 			}
+		}
+		
+		if (key == KeyEvent.VK_UP && CodePanel.getHasFocus()) {
+			System.out.println("You made it!");
 		}
 		
 	}

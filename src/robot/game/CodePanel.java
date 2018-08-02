@@ -5,6 +5,9 @@ import java.awt.Font;
 import java.awt.Panel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -22,11 +25,14 @@ import javax.swing.JTextField;
  * @author MissH
  *
  */
-public class CodePanel extends Panel{
+public class CodePanel extends Panel implements FocusListener {
 
 	private static final long serialVersionUID = 1L;
 	//Width of the CodePanel
 	static final int CPWIDTH = 250;
+	private static boolean hasFocus = false;
+	
+	static Manager manager;
 	
 	static JTextArea codeOutput;
 	static JTextField codeInput;
@@ -46,6 +52,9 @@ public class CodePanel extends Panel{
 		//set font
 		Font font = new Font("Monospaced", Font.BOLD, 16);
 		
+		manager = new Manager();
+		this.addKeyListener(new KeyInput(manager));
+		
 		//create output text box
 		codeOutput = new JTextArea(20,20);
 		codeOutput.setFont(font);
@@ -63,10 +72,13 @@ public class CodePanel extends Panel{
 			}
 		});
 		add(codeInput);
+		codeInput.addFocusListener(this);
+		
 		
 		//prints in codeOutput when enter key is pressed 
         codeInput.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
+        		HistoryLog.addToCommandList(getInput());
         		Commands.printCommands();
         		if(Commands.checkCommands() == true) {
         			Commands.addToCommandList(getInput());
@@ -86,7 +98,7 @@ public class CodePanel extends Panel{
         		refreshInputBox();
         		Commands.clearCommandList();
         		setText("");
-        	}
+           	}
         });
 		
 		//deleteButton = new JButton("Delete");
@@ -153,4 +165,42 @@ public class CodePanel extends Panel{
 		codeOutput.append(text);
 	}
 
+	/**
+	 * This method controls the player object by the arrow keys on the keyboard
+	 */
+	public void keyPressed(KeyEvent e) {
+		
+		int key = e.getKeyCode();
+		int pressedKeys = 0;
+			if(key == KeyEvent.VK_UP) {
+				System.out.println("You made it!");
+				//String phrase = HistoryLog.get(HistoryLog.length()-(pressedKeys+1));
+					//pressedKeys ++;
+					//codeInput.setText(phrase);
+			}		
+			else if (key == KeyEvent.VK_DOWN && pressedKeys != 0) {
+					//add code here
+					
+			}
+		}
+
+	@Override
+	public void focusGained(FocusEvent arg0) {
+		System.out.println("Gained focus");
+		hasFocus = true;
+		
+	}
+
+	@Override
+	public void focusLost(FocusEvent arg0) {
+		hasFocus = false;
+		System.out.println("Lost focus");
+		
+	}
+	
+	public static boolean getHasFocus() {
+		return hasFocus;
+	}
+		
 }
+
