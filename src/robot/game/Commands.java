@@ -2,6 +2,8 @@ package robot.game;
 
 import java.util.ArrayList;
 
+import npcs.Drawing;
+
 /**
  * This class has a array of all the commands available to the user. 
  * It checks that the users input is one of the valid commands and runs it.
@@ -17,7 +19,7 @@ public class Commands {
 	//array of valid commands
 	private static final String[] validCommands = {
 			"robot.move(up);", "robot.move(down);", "robot.move(left);", "robot.move(right);", 
-			"robot.pickup(flower);", 
+			"robot.pickup(flower);", "drawFlower();",
 			"robot.move(up, 2);", "robot.move(up, 3);", "robot.move(up, 4);", "robot.move(up, 5);", "robot.move(up, 6);", "robot.move(up, 7);", 
 			"robot.move(down, 2);", "robot.move(down, 3);", "robot.move(down, 4);", "robot.move(down, 5);", "robot.move(down, 6);", "robot.move(down, 7);", 
 			"robot.move(left, 2);", "robot.move(left, 3);", "robot.move(left, 4);", "robot.move(left, 5);", "robot.move(left, 6);", "robot.move(left, 7);", 
@@ -92,6 +94,10 @@ public class Commands {
 				}
 			}
 		}
+	}
+	
+	public static void drawFlower() {
+		Drawing.setVisibility(true);
 	}
 	
 	/**
@@ -189,6 +195,9 @@ public class Commands {
 			}
 			else if(command.equals("robot.pickup(flower);")) {
 				pickupFlower();
+			}
+			else if(command.equals("drawFlower();")) {
+				drawFlower();
 			}
 			//else if(command.equals("robot.move(String direction, int number);")) {
 			//	move(direction, number);

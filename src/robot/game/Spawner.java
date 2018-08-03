@@ -416,13 +416,13 @@ public class Spawner {
 			manager.addFlower(new Flower(Cells.A, Cells.E, ID.Flower, manager, side, hud, picture));
 			hud.setInteractions(interactions + 1);
 		}
-		else if(interactions == 5) {
-			String message4 = "You might have noticed that the while and for loops are similar." 
+		else if(interactions == 7) {
+			String message5 = "You might have noticed that the while and for loops are similar.\n" 
 					+ "A for loop is better suited for a known number of iterations.";
-			manager.addObject(new MessageNPC(Cells.G, Cells.H, ID.NPC, manager, side, hud, message4));
+			manager.addObject(new MessageNPC(Cells.F, Cells.E, ID.NPC, manager, side, hud, message5));
 			hud.setInteractions(interactions + 1);
 		}
-		else if(interactions == 7) {
+		else if(interactions == 9) {
 			String question = "Which flowers would be pickedup after the following for loop for the collection flower = {rose, tulip, lily}?\n"
 					+ "for(int i = 0; i < 1; i++) {\n"
 					+ "pickup(flower);\n"
@@ -444,8 +444,9 @@ public class Spawner {
 					+ "~Now try stage 5.\n\n"
 					+ "~Good luck!\n\n");
 			manager.addObject(new Player(Cells.A, Cells.A, ID.Player));
-			String message = "Lets use loops to draw a flower!";
+			String message = "Lets use loops to draw a flower! Try drawFlower();";
 			manager.addObject(new MessageNPC(Cells.B, Cells.B, ID.NPC, manager, side, hud, message));
+			manager.addObject(new Drawing(interactions, interactions, null, manager, side, hud));
 			File picture = new File("pictures\\flower2.png");
 			manager.addFlower(new Flower(Cells.B, Cells.D, ID.Flower, manager, side, hud, picture));
 			hud.setStageEnd(false);
