@@ -56,7 +56,7 @@ public class HistoryLog extends KeyAdapter {
 			}
 			else if (key == KeyEvent.VK_DOWN && pressedKeys != 0) {
 				String phrase = historyLog.get(historyLog.size()-(pressedKeys-1));
-				pressedKeys --;
+				pressedKeys ++;
 				System.out.println(phrase);
 				CodePanel.setText(phrase);
 						
