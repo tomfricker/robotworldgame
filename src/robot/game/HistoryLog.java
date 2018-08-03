@@ -52,13 +52,13 @@ public class HistoryLog extends KeyAdapter {
 				String phrase = historyLog.get(historyLog.size()-(pressedKeys+1));
 				pressedKeys ++;
 				System.out.println(phrase);
-				CodePanel.setText(phrase);
+				CodePanel.setInput(phrase);
 			}
 			else if (key == KeyEvent.VK_DOWN && pressedKeys != 0) {
 				String phrase = historyLog.get(historyLog.size()-(pressedKeys-1));
 				pressedKeys ++;
 				System.out.println(phrase);
-				CodePanel.setText(phrase);
+				CodePanel.setInput(phrase);
 						
 			}
 		}
