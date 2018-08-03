@@ -72,12 +72,23 @@ public class MessageNPC extends GameObjects {
 	 * Displays the image of the NPC on the board at the specified position.
 	 */
 	public void render(Graphics g) {
+		if(interacted == false) {
 		File imageFile = new File("pictures\\walle.png");
 		try {
 			Image robot = ImageIO.read(imageFile);
 			g.drawImage(robot, x, y, null);
 		} catch (IOException e) {
 			e.printStackTrace();
+		}
+		}
+		else {
+			File imageFile = new File("pictures\\walleTick.png");
+			try {
+				Image robot = ImageIO.read(imageFile);
+				g.drawImage(robot, x, y, null);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 	
