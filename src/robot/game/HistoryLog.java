@@ -4,6 +4,14 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
+/**
+ *  
+ * This class stores every input that the user puts in the codeInput in order to access it later through
+ * the scroll down and up arrow keys.
+ *
+ * @author Robot World Group
+ *
+ */
 public class HistoryLog extends KeyAdapter {
 	
 		//List of commands which have been entered by user
@@ -48,7 +56,7 @@ public class HistoryLog extends KeyAdapter {
 			}
 			else if (key == KeyEvent.VK_DOWN && pressedKeys != 0) {
 				String phrase = historyLog.get(historyLog.size()-(pressedKeys-1));
-				pressedKeys ++;
+				pressedKeys --;
 				System.out.println(phrase);
 				CodePanel.setText(phrase);
 						
