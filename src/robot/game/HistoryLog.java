@@ -16,7 +16,8 @@ public class HistoryLog extends KeyAdapter {
 	
 		//List of commands which have been entered by user
 		static ArrayList<String> historyLog = new ArrayList<String>();
-		//private CodePanel codePanel;
+		//variable to store how many times the UP and DOWN keys were pressed
+		private int pressedKeys = 0;
 		
 		public HistoryLog() {
 						
@@ -46,18 +47,16 @@ public class HistoryLog extends KeyAdapter {
 		public void keyPressed(KeyEvent e) {
 			
 			int key = e.getKeyCode();
-			int pressedKeys = 0;
+			
 						
 			if (key == KeyEvent.VK_UP) {
-				String phrase = historyLog.get(historyLog.size()-(pressedKeys+1));
+				String phrase = get(historyLog.size()-(pressedKeys+1));
 				pressedKeys ++;
-				System.out.println(phrase);
 				CodePanel.setInput(phrase);
 			}
 			else if (key == KeyEvent.VK_DOWN && pressedKeys != 0) {
-				String phrase = historyLog.get(historyLog.size()-(pressedKeys-1));
+				String phrase = get(historyLog.size()-(pressedKeys-1));
 				pressedKeys ++;
-				System.out.println(phrase);
 				CodePanel.setInput(phrase);
 						
 			}
