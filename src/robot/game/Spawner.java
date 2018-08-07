@@ -215,7 +215,8 @@ public class Spawner {
 					+ "~Now try stage 4.\n\n"
 					+ "~Good luck!\n\n");
 			manager.addObject(new Player(Cells.A, Cells.A, ID.Player));
-			String message1 = "In Java, and most programming languages, a word, sentence or bunch of characters is called a String.\n\n(HINT: Notice the capital letter)";
+			String message1 = "If we want to do arithmetic on numbers we can use + - / or * on two variables, such as:\n\n"
+					+ "int squares = rows * columns;";
 			manager.addObject(new MessageNPC(Cells.C, Cells.C, ID.NPC, manager, side, hud, message1));
 			hud.setStageEnd(false);
 		}
@@ -235,8 +236,19 @@ public class Spawner {
 					+ "1. int 30 = elephants;\n"
 					+ "2. 30 elephants = int;\n"
 					+ "3. elephants int = 30;\n"
-					+ "4. int elephants = 30;"};
-			String[] answers = {"3", "4"};
+					+ "4. int elephants = 30;",
+					"What is a String?\n\n"
+					+ "1. A whole number\n"
+					+ "2. A series of letters, numbers or characters\n"
+					+ "3. A decimal number\n"
+					+ "4. A statement of true or false\n",
+					"If x is 3 and y is 7 and we want to store the value of the\n"
+					+ "two variables added together which of the following statements would we use?\n\n"
+					+ "1. int z = x + y;\n"
+					+ "2. int z = 10;\n"
+					+ "3. int z = x;\n"
+					+ "4. int z = y;"};
+			String[] answers = {"3", "4", "2", "1"};
 			manager.addObject(new MultipleQuestionNPC(Cells.D, Cells.F, ID.NPC, manager, side, hud, questions, answers));
 			hud.setInteractions(0);
 		}
