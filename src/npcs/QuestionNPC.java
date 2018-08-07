@@ -73,13 +73,24 @@ public class QuestionNPC extends GameObjects {
 	 * Displays the image of the NPC on the board at the specified position.
 	 */
 	public void render(Graphics g) {
-		File imageFile = new File(picture);
-		try {
-			Image robot = ImageIO.read(imageFile);
-			g.drawImage(robot, x, y, null);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		if(interacted == false) {
+			File imageFile = new File(picture);
+			try {
+				Image robot = ImageIO.read(imageFile);
+				g.drawImage(robot, x, y, null);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			}
+			else {
+				File imageFile = new File("pictures\\walleTick.png");
+				try {
+					Image robot = ImageIO.read(imageFile);
+					g.drawImage(robot, x, y, null);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
 	}
 	
 	
@@ -108,12 +119,13 @@ public class QuestionNPC extends GameObjects {
 					//if the player is correct increase interactions and move on
 					else if(input.equals(answer)) {
 						hud.setScore(hud.getScore() + 50);
+						SidePanel.addText("~" + question + "\n\n");
 						SidePanel.addText("~" + input + "\n");
 						SidePanel.addText("~correct\n\n");
 						interacted = true;
 						//hud.setLevelEnd(true);
 						hud.setInteractions(hud.getInteractions() + 1);
-						SidePanel.addText(question);
+						
 						
 					}
 				}

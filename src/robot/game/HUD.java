@@ -64,7 +64,7 @@ public class HUD {
 		g.drawString("Score: " + score, x, y);
 
 	}
-	
+			
 	//All getter and setter methods for fields of this class
 	
 	public void setLevel(int level) {
