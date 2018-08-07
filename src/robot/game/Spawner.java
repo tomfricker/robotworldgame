@@ -64,7 +64,7 @@ public class Spawner {
 			else if(stage == 2) levelThreeStageTwo();
 			else if(stage == 3) levelThreeStageThree();
 			else if(stage == 4) levelThreeStageFour();
-			else if(stage == 5) levelThreeStageFour();
+			else if(stage == 5) levelThreeStageFive();
 			
 			//level 4
 			//case 4:
@@ -636,7 +636,7 @@ public class Spawner {
 		else if(interactions == 7) {
 			String question = "Write the code to create a Robot Object called robot with name Berty and age 17.\n\n" + 
 					"(Be careful how you write the parameters considering their data type!) ";
-			String answer = "Robot robot = new Robot(“Berty”, 17);";
+			String answer = "Robot robot = new Robot(\"Berty\", 17);";
 			manager.addObject(new StageEndNPC(Cells.H, Cells.E, ID.NPC, manager, side, hud, question, answer));
 			hud.setInteractions(0);
 		}
@@ -650,7 +650,7 @@ public class Spawner {
 		int interactions = hud.getInteractions();
 		if(hud.isStageEnd() == true) {
 			Manager.clearAll();
-			SidePanel.addText("~Welcome to Stage 3, All about Methods!\n\n"
+			SidePanel.addText("~Welcome to Stage 4, All about Methods!\n\n"
 						+ "~Good luck!\n\n");
 			manager.addObject(new Player(Cells.A, Cells.A, ID.Player));
 			String message = "Methods specify an action that is performed BY or ON an Object.";
@@ -667,9 +667,9 @@ public class Spawner {
 		else if(interactions == 3) {
 			String message = "Here is an example of how a Method is defined within a Class:\n\n" + 
 					"public returnType methodName (parameters) {\n" + 
-					"		action;\n" + 
-					"		action;\n" + 
-					"		…\n" + 
+					"\t\t\t action;\n" + 
+					"\t\t\t action;\n" + 
+					"\t\t\t …\n" + 
 					"}";
 			manager.addObject(new MessageNPC(Cells.G, Cells.C, ID.NPC, manager, side, hud, message));
 			hud.setInteractions(interactions + 1);
@@ -706,7 +706,7 @@ public class Spawner {
 		}
 		else if(interactions == 13) {
 			String question = "Write the code to change robot’s name to Robbie!";
-			String answer = "robot.changeName(“Robbie);";
+			String answer = "robot.changeName(\"Robbie\");";
 			manager.addObject(new StageEndNPC(Cells.F, Cells.F, ID.NPC, manager, side, hud, question, answer));
 			hud.setInteractions(0);
 		}
