@@ -227,6 +227,7 @@ public class Spawner {
 			manager.addObject(new MessageNPC(Cells.D, Cells.E, ID.NPC, manager, side, hud, message));
 			hud.setInteractions(interactions + 1);
 		}
+		//final quiz for end of level 1
 		else if(interactions == 3) {
 			String[] questions = {"Which of the following is not a data type?\n\n"
 					+ "1. int\n"
