@@ -64,7 +64,10 @@ public class HUD {
 		g.drawString("Score: " + score, x, y);
 
 	}
-	
+	//Dessy - maybe will use this method, needed Unstaged Changes
+	public void endLevel2() {
+		
+	}
 	//All getter and setter methods for fields of this class
 	
 	public void setLevel(int level) {
