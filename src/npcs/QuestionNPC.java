@@ -65,7 +65,8 @@ public class QuestionNPC extends GameObjects {
 	 * will display it's question to the user.
 	 */
 	public void tick() {
-		interact();
+		if (!interacted)
+			interact();
 	}
 
 	/**

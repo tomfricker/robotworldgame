@@ -63,7 +63,8 @@ public class StageEndNPC extends GameObjects {
 	 * will display it's question to the user.
 	 */
 	public void tick() {
-		interact();
+		if(!interacted)
+			interact();
 	}
 
 	/**
