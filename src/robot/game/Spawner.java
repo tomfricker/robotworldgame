@@ -4,9 +4,9 @@ import java.io.File;
 
 import npcs.Drawing;
 import npcs.Flower;
-import npcs.LevelEndNPC;
 import npcs.MessageNPC;
 import npcs.MultipleQuestionNPC;
+import npcs.QuestionNPC;
 import npcs.StageEndNPC;
 
 /**
@@ -60,7 +60,11 @@ public class Spawner {
 			else if(stage == 5) levelTwoStageFive();
 			
 			//level 3
-			//case 3:
+			case 3: if(stage == 1) levelThreeStageOne();
+			else if(stage == 2) levelThreeStageTwo();
+			else if(stage == 3) levelThreeStageThree();
+			else if(stage == 4) levelThreeStageFour();
+			
 			//level 4
 			//case 4:
 			//level 5
@@ -171,7 +175,7 @@ public class Spawner {
 					+ "~Now try stage 3.\n\n"
 					+ "~Good luck!\n\n");
 			manager.addObject(new Player(Cells.A, Cells.A, ID.Player));
-			String message1 = "In Java, and most programming languages, a word, sentence or bunch of characters is called a String.\n\n(HINT: Notice the capitol letter)";
+			String message1 = "In Java, and most programming languages, a word, sentence or bunch of characters is called a String.\n\n(HINT: Notice the capital letter)";
 			manager.addObject(new MessageNPC(Cells.C, Cells.C, ID.NPC, manager, side, hud, message1));
 			hud.setStageEnd(false);
 		}
@@ -211,7 +215,7 @@ public class Spawner {
 					+ "~Now try stage 4.\n\n"
 					+ "~Good luck!\n\n");
 			manager.addObject(new Player(Cells.A, Cells.A, ID.Player));
-			String message1 = "In Java, and most programming languages, a word, sentence or bunch of characters is called a String.\n\n(HINT: Notice the capitol letter)";
+			String message1 = "In Java, and most programming languages, a word, sentence or bunch of characters is called a String.\n\n(HINT: Notice the capital letter)";
 			manager.addObject(new MessageNPC(Cells.C, Cells.C, ID.NPC, manager, side, hud, message1));
 			hud.setStageEnd(false);
 		}
@@ -313,9 +317,9 @@ public class Spawner {
 		else if(interactions == 9) {
 			String question = "What would the following for each loop print for the collection flower = {rose, tulip, lily}?\n"
 					+ "for(Flower flower : flowers) {\n"
-					+ "print(flower, );\n"
+					+ "print(flower ,);\n"
 					+ "}";
-			String answer = "rose, tulip, lily, ";
+			String answer = "rose, tulip, lily ,";
 			manager.addObject(new StageEndNPC(Cells.E, Cells.D, ID.NPC, manager, side, hud, question, answer));
 			hud.setInteractions(0);
 		}
@@ -423,7 +427,7 @@ public class Spawner {
 			hud.setInteractions(interactions + 1);
 		}
 		else if(interactions == 9) {
-			String question = "Which flowers would be pickedup after the following for loop for the collection flower = {rose, tulip, lily}?\n"
+			String question = "Which flowers would be picked up after the following for loop for the collection flower = {rose, tulip, lily}?\n"
 					+ "for(int i = 0; i < 1; i++) {\n"
 					+ "pickup(flower);\n"
 					+ "}";
@@ -469,9 +473,92 @@ public class Spawner {
 			manager.addObject(new MultipleQuestionNPC(Cells.E, Cells.D, ID.NPC, manager, side, hud, questions, answers));
 			manager.addObject(new Drawing(Cells.D, Cells.D, ID.NPC, manager, side, hud));
 			hud.setInteractions(0);
+			
 		}
+		
 	}
 	
+	/**
+	 * Sets up stage 1 of level 3 and adds NPCs as necessary.
+	 */
+	public void levelThreeStageOne() {
+		//Get the number of interactions
+		int interactions = hud.getInteractions();
+				//Add the second NPC once the first has been interacted with
+				if(interactions == 1) {
+					String message = "Your robot is hungry, feed him by getting him to eat the apple.\n"
+							+ "You can use something like robot.eat(fruit). Now try it yourself:";
+					String answer = "robot.eat(apple);";
+					manager.addObject(new QuestionNPC(Cells.G, Cells.A, ID.NPC, manager, side, hud, message, answer, "pictures/apple.png"));
+					//Add an extra interaction to stop the addition of further objects from this method
+					hud.setInteractions(interactions + 1);
+					
+				}
+				//Add the NPCs one at a time for the rest of the stage
+				else if(interactions == 3) {
+					String message = "Here we have two classes: the Robot and the Item classes. \n" 
+							+"Robbie is an Object from the Robot Class. This means he has characteristics (Fields) that are taken from (belong to) the Robot Class. \n"
+							+"We’ll discuss those in detail later. Continue to the next fruit.";
+					manager.addObject(new MessageNPC(Cells.G, Cells.C, ID.NPC, manager, side, hud, message));
+					hud.setInteractions(interactions + 1);
+				}
+				else if(interactions == 5) {
+					String message = "Eat the banana to unlock more information about Classes and Objects.";
+					String answer = "robot.eat(banana);";
+					manager.addObject(new QuestionNPC(Cells.C, Cells.C, ID.NPC, manager, side, hud, message, answer, "pictures/banana.png"));
+					hud.setInteractions(interactions + 1);
+				}
+				else if(interactions == 7) {
+					String message = "Classes start with a capital letter, while Objects are written with a small letter. \n"
+							+ "Write all the Objects you have seen so far in order of introduction!";
+					String answer = "robot, apple, banana";
+					manager.addObject(new QuestionNPC(Cells.B, Cells.C, ID.NPC, manager, side, hud, message, answer, "pictures/walle.png"));
+					hud.setInteractions(interactions + 1);
+				}
+				else if(interactions == 9) {
+					String message = "Classes have Methods that help you make an action, but only an Object can “invoke” that method.\n" + 
+							"Write the name of the Method you've seen so far!";
+					String answer = "eat";
+					manager.addObject(new QuestionNPC(Cells.A, Cells.D, ID.NPC, manager, side, hud, message, answer, "pictures/walle.png"));
+					hud.setInteractions(interactions + 1);
+				}
+				else if(interactions == 11) {
+					String message = "To create a new object from a class you need to type it in this form: \n\n" + 
+							"ClassName ObjectName = new ClassName(); \n\n" + 
+							"(Don’t forget to put capital letters where needed!";
+					manager.addObject(new MessageNPC(Cells.D, Cells.D, ID.NPC, manager, side, hud, message));
+					hud.setInteractions(interactions + 1);
+				}
+				else if(interactions == 13) {
+					String question = "In maths, an integer is any whole number. Which data type\n"
+							+ "do you think we would use to store an integer?\n\n"
+							+ "int, double, float, long, boolean or char.";
+					String answer = "int";
+					manager.addObject(new StageEndNPC(Cells.B, Cells.C, ID.NPC, manager, side, hud, question, answer));
+					hud.setInteractions(0);
+				}
+	}
+	
+	/**
+	 * Sets up stage 2 of level 3 and adds NPCs as necessary.
+	 */
+	public void levelThreeStageTwo() {
+		
+	}
+	
+	/**
+	 * Sets up stage 3 of level 3 and adds NPCs as necessary.
+	 */
+	public void levelThreeStageThree() {
+		
+	}
+	
+	/**
+	 * Sets up stage 4 of level 3 and adds NPCs as necessary.
+	 */
+	public void levelThreeStageFour() {
+		
+	}
 
 }
 

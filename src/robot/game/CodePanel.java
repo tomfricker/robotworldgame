@@ -176,6 +176,7 @@ public class CodePanel extends Panel implements FocusListener {
 	public void focusGained(FocusEvent arg0) {
 		System.out.println("Gained focus");
 		hasFocus = true;
+		HistoryLog.printHistory();
 		
 	}
 

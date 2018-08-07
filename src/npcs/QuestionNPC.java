@@ -32,12 +32,13 @@ import robot.game.SidePanel;
  * @author Robot World Group
  *
  */
-public class LevelEndNPC extends GameObjects {
+public class QuestionNPC extends GameObjects {
 	
 	//Fields of the LevelEndNPC
 	private HUD hud;
 	boolean interacted;
 	private String question, answer;
+	private String picture;
 
 	/**
 	 * Constructor for the LevelEndNPC
@@ -50,12 +51,13 @@ public class LevelEndNPC extends GameObjects {
 	 * @param question
 	 * @param answer
 	 */
-	public LevelEndNPC(int x, int y, ID id, Manager manager, SidePanel side, HUD hud, String question, String answer) {
+	public QuestionNPC(int x, int y, ID id, Manager manager, SidePanel side, HUD hud, String question, String answer, String picture) {
 		super(x, y, id);
 		this.hud = hud;
 		interacted = false;
 		this.question = question;
 		this.answer = answer;
+		this.picture = picture;
 	}
 
 	/**
@@ -70,7 +72,7 @@ public class LevelEndNPC extends GameObjects {
 	 * Displays the image of the NPC on the board at the specified position.
 	 */
 	public void render(Graphics g) {
-		File imageFile = new File("pictures\\walle.png");
+		File imageFile = new File(picture);
 		try {
 			Image robot = ImageIO.read(imageFile);
 			g.drawImage(robot, x, y, null);
@@ -102,15 +104,16 @@ public class LevelEndNPC extends GameObjects {
 						if(currentScore > 0)
 							hud.setScore(currentScore - 10);
 					}
-					//if the player is correct the level will end
+					//if the player is correct increase interactions and move on
 					else if(input.equals(answer)) {
 						hud.setScore(hud.getScore() + 50);
-						interacted = true;
 						SidePanel.addText("~" + input + "\n");
 						SidePanel.addText("~correct\n\n");
-						hud.setLevelEnd(true);
-						//hud.setInteractions(hud.getInteractions() + 1);
 						interacted = true;
+						//hud.setLevelEnd(true);
+						hud.setInteractions(hud.getInteractions() + 1);
+						SidePanel.addText(question);
+						
 					}
 				}
 			}

@@ -40,6 +40,12 @@ public class HistoryLog extends KeyAdapter {
 			
 		}
 		
+		public static void printHistory() {
+			for (String log : historyLog) {
+				System.out.println(log);
+			}
+		}
+		
 		/**
 		 * This method controls the player object by the arrow keys on the keyboard
 		 */
@@ -56,9 +62,13 @@ public class HistoryLog extends KeyAdapter {
 			}
 			else if (key == KeyEvent.VK_DOWN && pressedKeys != 0) {
 				String phrase = get(historyLog.size()-(pressedKeys-1));
-				pressedKeys ++;
+				pressedKeys --;
 				CodePanel.setInput(phrase);
 						
+			}
+			
+			else if ((key == KeyEvent.VK_UP || key == KeyEvent.VK_DOWN) && (pressedKeys < 0 || pressedKeys >= historyLog.size())) {
+				// do nothing
 			}
 		}
 

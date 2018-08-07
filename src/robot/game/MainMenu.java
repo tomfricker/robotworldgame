@@ -106,11 +106,12 @@ public class MainMenu extends MouseAdapter{
 				Game.gameState = STATE.Game;
 				hud.setLevel(3);
 				//add objects to start of level 3
-				manager.addObject(new Player(Cells.B, Cells.A, ID.Player));
-				manager.addObject(new DessyLevelNPC(Cells.H, Cells.B, ID.NPC, manager, side, hud));
-				manager.addObject(new DessyLevelNPC1(Cells.E, Cells.E, ID.NPC, manager, side, hud));
-				side.setText("~Welcome to level 3 of Robot World - All about Classes and Objects!\n\n"
-						+ "~Try moving the Robot to the apple.\n\n");
+				manager.addObject(new Player(Cells.A, Cells.A, ID.Player));
+				String npcMessage = "Hello! I will be your robot buddy and guide you through this adventure. " 
+						+ "I hope we can learn together!\n\nNow go to the apple!\n\n";
+				manager.addObject(new MessageNPC(Cells.D, Cells.A, ID.NPC, manager, side, hud, npcMessage));
+				side.setText("~Welcome to level 2 of Robot World - All about Classes and Objects!\n\n"
+						+ "~Try moving the Robot to the other Robot.\n\n");
 			}
 			
 			//level 4 button

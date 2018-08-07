@@ -88,7 +88,7 @@ public class StageEndNPC extends GameObjects {
 		for(GameObjects gameObject : Manager.objectList) {
 			if(gameObject.getId() == ID.Player) {
 				if(gameObject.getX() == x && gameObject.getY() == y) {
-					//String answer = "int x = 4;";
+					
 					String input = JOptionPane.showInputDialog(null, question);
 					if(input == null || input.length() == 0) {
 						gameObject.setX(gameObject.getX()-Game.boardIndex);
