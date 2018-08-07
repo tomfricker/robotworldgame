@@ -66,6 +66,7 @@ public class HUD {
 	}
 	//Dessy - maybe will use this method, needed Unstaged Changes
 	public void endLevel2() {
+		//System.out.println(level);
 		
 	}
 	//All getter and setter methods for fields of this class
