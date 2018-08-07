@@ -6,8 +6,6 @@ import java.awt.Graphics;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import DessyLevel.DessyLevelNPC;
-import DessyLevel.DessyLevelNPC1;
 import npcs.CollectionNPC;
 import npcs.MessageNPC;
 import npcs.PICKUPID;
@@ -93,19 +91,6 @@ public class MainMenu extends MouseAdapter{
 				Game.gameState = STATE.Game;
 				hud.setLevel(2);
 				//add objects to start of level 2
-				manager.addObject(new Player(Cells.D, Cells.D, ID.Player));
-				String npcMessage = "Well Done! Now try moving up.";
-				manager.addObject(new MessageNPC(Cells.E, Cells.D, ID.NPC, manager, side, hud, npcMessage));
-				side.setText("~Welcome to level Helen of Robot World!\n\n"
-						+ "~Try moving the Robot around the board by typing in code, e.g. robot.move(right);, press the enter key and then the Run Code button.\n\n");
-			}
-			
-			//level 3 button
-			y += 84;
-			if(mouseOver(mouseX, mouseY, 100, y, 440, 64)) {
-				Game.gameState = STATE.Game;
-				hud.setLevel(3);
-				//add objects to start of level 3
 				manager.addObject(new Player(Cells.A, Cells.A, ID.Player));
 				String npcMessage = "Hello! I will be your robot buddy and guide you through this adventure. " 
 						+ "I hope we can learn together!\n\nNow go to the apple!\n\n";
@@ -114,12 +99,12 @@ public class MainMenu extends MouseAdapter{
 						+ "~Try moving the Robot to the other Robot.\n\n");
 			}
 			
-			//level 4 button
+			//level 3 button
 			y += 84;
 			if(mouseOver(mouseX, mouseY, 100, y, 440, 64)) {
 				Game.gameState = STATE.Game;
-				hud.setLevel(4);
-				//add objects to start of level 4
+				hud.setLevel(3);
+				//add objects to start of level 3
 				manager.addObject(new Player(Cells.B,Cells.A,ID.Player));
 				manager.addObject(new CollectionNPC(Cells.A,Cells.H,ID.NPC,"Int",side,hud,1));
 				manager.addObject(new CollectionNPC(Cells.H,Cells.H,ID.NPC,"Char",side,hud,2));
@@ -128,8 +113,22 @@ public class MainMenu extends MouseAdapter{
 				manager.addObject(new Pickup(Cells.B,Cells.G,ID.NPC, PICKUPID.Char,side));
 				manager.addObject(new Pickup(Cells.A,Cells.A,ID.NPC, PICKUPID.Char,side));
 				manager.addObject(new Pickup(Cells.A,Cells.G,ID.NPC, PICKUPID.Int,side));
-				side.setText("~Welcome to level 4 of Robot World - Time to learn about Primitive Types!\n\n"
+				side.setText("~Welcome to level 3 of Robot World - Time to learn about Primitive Types!\n\n"
 						+ "~These are collectors. Try talking to them to see what they want\n\n");
+			}
+			
+			//level 4 button
+			y += 84;
+			if(mouseOver(mouseX, mouseY, 100, y, 440, 64)) {
+				Game.gameState = STATE.Game;
+				hud.setLevel(4);
+				//add objects to start of level 4
+				manager.addObject(new Player(Cells.D, Cells.D, ID.Player));
+				String npcMessage = "Well Done! Now try moving up.";
+				manager.addObject(new MessageNPC(Cells.E, Cells.D, ID.NPC, manager, side, hud, npcMessage));
+				side.setText("~Welcome to level 4 of Robot World!\n\n"
+						+ "~Try moving the Robot around the board by typing in code, e.g. robot.move(right);, "
+						+ "press the enter key and then the Run Code button.\n\n");
 			}
 			
 			//level 5 button

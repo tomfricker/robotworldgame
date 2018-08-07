@@ -60,19 +60,24 @@ public class Spawner {
 			else if(stage == 5) levelTwoStageFive();
 			
 			//level 3
-			case 3: if(stage == 1) levelThreeStageOne();
+			/*case 3: if(stage == 1) levelThreeStageOne();
 			else if(stage == 2) levelThreeStageTwo();
 			else if(stage == 3) levelThreeStageThree();
 			else if(stage == 4) levelThreeStageFour();
-			else if(stage == 5) levelThreeStageFive();
+			else if(stage == 5) levelThreeStageFive();*/
 			
 			//level 4
-			//case 4:
+			case 4: if(stage == 1) levelFourStageOne();
+			else if(stage == 2) levelFourStageTwo();
+			else if(stage == 3) levelFourStageThree();
+			else if(stage == 4) levelFourStageFour();
+			else if(stage == 5) levelFourStageFive();
+			
 			//level 5
 			//case 5:
 		}
 	}
-	
+	//LEVEL 1 SETUP
 	/**
 	 * Creates the objects for the first stage of level 1 as you progress in the level.
 	 * The number of interactions is executed using odd numbers to ensure that an
@@ -205,7 +210,7 @@ public class Spawner {
 	}
 	
 	/**
-	 * Sets up stage 2 of level 1 and adds NPCs as necessary. Works in the same way as
+	 * Sets up stage 4 of level 1 and adds NPCs as necessary. Works in the same way as
 	 * levelOneStageOne()
 	 */
 	public void levelOneStageFour() {
@@ -243,246 +248,11 @@ public class Spawner {
 		}
 	}
 	
+	//LEVEL 2 SETUP 	
 	/**
-	 * Sets up stage 1 of level 2 and adds NPCs as necessary. Works in the same way as
-	 * levelOneStageOne()
+	 * Sets up stage 1 of level 2 and adds NPCs as necessary.
 	 */
 	public void levelTwoStageOne() {
-		int interactions = hud.getInteractions();
-		if(interactions == 1) {
-			String message = "Well Done! Lets see if you can pickup the flower.\n"
-					+ "Try typing robot.move(up, 2); to get to it.";
-			manager.addObject(new MessageNPC(Cells.E, Cells.C, ID.NPC, manager, side, hud, message));
-			hud.setInteractions(interactions + 1);
-		 }
-		else if(interactions == 3) {
-			File picture = new File("pictures\\Flower.png");
-			manager.addFlower(new Flower(Cells.E, Cells.A, ID.Flower, manager, side, hud, picture));
-			String message = "Now you can move more than one square at a time!";
-			manager.addObject(new MessageNPC(Cells.F, Cells.A, ID.NPC, manager, side, hud, message));
-			hud.setInteractions(interactions + 1);
-		}
-		else if(interactions == 5) {
-			String question = "What code did you use to make the robot pickup the flower?";
-			String answer = "robot.pickup(flower);";
-			manager.addObject(new StageEndNPC(Cells.D, Cells.A, ID.NPC, manager, side, hud, question, answer));
-			hud.setInteractions(0);
-		 }
-	}
-	
-	/**
-	 * Sets up stage 2 of level 2 and adds NPCs as necessary
-	 */
-	public void levelTwoStageTwo() {
-		int interactions = hud.getInteractions();
-		if(hud.isStageEnd() == true) {
-			Manager.clearAll();
-			SidePanel.addText("~Congratulations you completed Stage 1\n\n"
-					+ "~Now try stage 2.\n\n"
-					+ "~Good luck!\n\n");
-			manager.addObject(new Player(Cells.A, Cells.A, ID.Player));
-			String message1 = "If you want to repeat some code you can use loops.";
-			manager.addObject(new MessageNPC(Cells.H, Cells.A, ID.NPC, manager, side, hud, message1));
-			hud.setStageEnd(false);
-		}
-		if(interactions == 1) {
-			String message2 = "There are three types of loops: for each, while and for.";
-			manager.addObject(new MessageNPC(Cells.C, Cells.D, ID.NPC, manager, side, hud, message2));
-			File picture = new File("pictures\\flower2.png");
-			manager.addFlower(new Flower(Cells.A, Cells.D, ID.Flower, manager, side, hud, picture));
-			hud.setInteractions(interactions + 1);
-		}
-		else if(interactions == 3) {
-			String message3 = "The for each loop has the following syntax:\n" 
-					+ "for(ElementType element : collection) {\n"
-					+ "loop body\n"
-					+ "}";
-			manager.addObject(new MessageNPC(Cells.B, Cells.F, ID.NPC, manager, side, hud, message3));
-			hud.setInteractions(interactions + 1);
-		}
-		else if(interactions == 5) {
-			String message4 = "For example for each element flower of type Flower in the collection of flowers, pick up the flower.\n"
-					+ "for(Flower flower : flowers) {\n"
-					+ "pickup(flower);\n"
-					+ "}";
-			manager.addObject(new MessageNPC(Cells.G, Cells.H, ID.NPC, manager, side, hud, message4));
-			File picture = new File("pictures\\flower3.png");
-			manager.addFlower(new Flower(Cells.C, Cells.F, ID.Flower, manager, side, hud, picture));
-			hud.setInteractions(interactions + 1);
-		}
-		else if(interactions == 7) {
-			String message5 = "The for each loop is used for collections only!";
-			manager.addObject(new MessageNPC(Cells.G, Cells.E, ID.NPC, manager, side, hud, message5));
-			hud.setInteractions(interactions + 1);
-		}
-		else if(interactions == 9) {
-			String question = "What would the following for each loop print for the collection flower = {rose, tulip, lily}?\n"
-					+ "for(Flower flower : flowers) {\n"
-					+ "print(flower ,);\n"
-					+ "}";
-			String answer = "rose, tulip, lily ,";
-			manager.addObject(new StageEndNPC(Cells.E, Cells.D, ID.NPC, manager, side, hud, question, answer));
-			hud.setInteractions(0);
-		}
-	}
-	
-	/**
-	 * Sets up stage 3 of level 2 and adds NPCs as necessary
-	 */
-	public void levelTwoStageThree() {
-		int interactions = hud.getInteractions();
-		if(hud.isStageEnd() == true) {
-			Manager.clearAll();
-			SidePanel.addText("~Congratulations you completed Stage 2\n\n"
-					+ "~Now try stage 3.\n\n"
-					+ "~Good luck!\n\n");
-			manager.addObject(new Player(Cells.A, Cells.A, ID.Player));
-			String message1 = "Note that ++ is short hand for adding 1.";
-			manager.addObject(new MessageNPC(Cells.C, Cells.D, ID.NPC, manager, side, hud, message1));
-			File picture = new File("pictures\\Flower.png");
-			manager.addFlower(new Flower(Cells.B, Cells.D, ID.Flower, manager, side, hud, picture));
-			hud.setStageEnd(false);
-		}
-		else if(interactions == 1) {
-			String message2 = "The while loop has the following syntax:\n" 
-					+ "while(boolean condition) {\n"
-					+ "loop body\n"
-					+ "}";
-			manager.addObject(new MessageNPC(Cells.B, Cells.F, ID.NPC, manager, side, hud, message2));
-			hud.setInteractions(interactions + 1);
-		}
-		else if(interactions == 3) {
-			String message3 = "For example while the flowers position in the collection of flowers is less than the size of the collection, pick up the flower.\n"
-					+ "int flowerIndex = 0;\n"
-					+ "while(flowerIndex < flowers.size()) {\n"
-					+ "pickup(flower);\n"
-					+ "flowerIndex ++;\n"
-					+ "}";
-			manager.addObject(new MessageNPC(Cells.G, Cells.H, ID.NPC, manager, side, hud, message3));
-			File picture = new File("pictures\\flower3.png");
-			manager.addFlower(new Flower(Cells.E, Cells.C, ID.Flower, manager, side, hud, picture));
-			hud.setInteractions(interactions + 1);
-		}
-		else if(interactions == 5) {
-			String message4 = "A while loop is used when you have an unknown number of iterations.";
-			manager.addObject(new MessageNPC(Cells.C, Cells.B, ID.NPC, manager, side, hud, message4));
-			hud.setInteractions(interactions + 1);
-		}
-		else if(interactions == 7) {
-			String question = "Which flowers would be left unpicked after the following while loop for the collection flower = {rose, tulip, lily}?\n"
-					+ "int flowerIndex = 0;\n"
-					+ "while(flowerIndex < 2) {\n"
-					+ "pickup(flower);\n"
-					+ "flowerIndex ++;\n"
-					+ "}";
-			String answer = "lily";
-			manager.addObject(new StageEndNPC(Cells.E, Cells.D, ID.NPC, manager, side, hud, question, answer));
-			hud.setInteractions(0);
-		}
-	}
-	
-	/**
-	 * Sets up stage 4 of level 2 and adds NPCs as necessary
-	 */
-	public void levelTwoStageFour() {
-		int interactions = hud.getInteractions();
-		if(hud.isStageEnd() == true) {
-			Manager.clearAll();
-			SidePanel.addText("~Congratulations you completed Stage 3\n\n"
-					+ "~Now try stage 4.\n\n"
-					+ "~Good luck!\n\n");
-			manager.addObject(new Player(Cells.A, Cells.A, ID.Player));
-			String message1 = "The for loop is used to execute a block of statements a specified number of times.";
-			manager.addObject(new MessageNPC(Cells.D, Cells.A, ID.NPC, manager, side, hud, message1));
-			hud.setStageEnd(false);
-		}
-		if(interactions == 1) {
-			String message3 = "The for loop has the following syntax:\n" 
-					+ "for(initialization; loop condition; increment/decrement) {\n"
-					+ "loop body\n"
-					+ "}";
-			manager.addObject(new MessageNPC(Cells.B, Cells.F, ID.NPC, manager, side, hud, message3));
-			File picture = new File("pictures\\flower3.png");
-			manager.addFlower(new Flower(Cells.B, Cells.G, ID.Flower, manager, side, hud, picture));
-			hud.setInteractions(interactions + 1);
-		}
-		else if(interactions == 3) {
-			String message2 = "The loop condition must resolve to a boolean value.";
-			manager.addObject(new MessageNPC(Cells.F, Cells.B, ID.NPC, manager, side, hud, message2));
-			hud.setInteractions(interactions + 1);
-		}
-		else if(interactions == 5) {
-			String message4 = "For example for i starting at 0, if i is less than the number of flowers, pick up the flower.\n"
-					+ "for(int i = 0; i < flowers.size(); i++) {\n"
-					+ "pickup(flower);\n"
-					+ "}";
-			manager.addObject(new MessageNPC(Cells.G, Cells.H, ID.NPC, manager, side, hud, message4));
-			File picture = new File("pictures\\Flower.png");
-			manager.addFlower(new Flower(Cells.A, Cells.E, ID.Flower, manager, side, hud, picture));
-			hud.setInteractions(interactions + 1);
-		}
-		else if(interactions == 7) {
-			String message5 = "You might have noticed that the while and for loops are similar.\n" 
-					+ "A for loop is better suited for a known number of iterations.";
-			manager.addObject(new MessageNPC(Cells.F, Cells.E, ID.NPC, manager, side, hud, message5));
-			hud.setInteractions(interactions + 1);
-		}
-		else if(interactions == 9) {
-			String question = "Which flowers would be picked up after the following for loop for the collection flower = {rose, tulip, lily}?\n"
-					+ "for(int i = 0; i < 1; i++) {\n"
-					+ "pickup(flower);\n"
-					+ "}";
-			String answer = "rose";
-			manager.addObject(new StageEndNPC(Cells.E, Cells.D, ID.NPC, manager, side, hud, question, answer));
-			hud.setInteractions(0);
-		}
-	}
-	
-	/**
-	 * Sets up stage 5 of level 2 and adds NPCs as necessary
-	 */
-	public void levelTwoStageFive() {
-		int interactions = hud.getInteractions();
-		if(hud.isStageEnd() == true) {
-			Manager.clearAll();
-			SidePanel.addText("~Congratulations you completed Stage 4\n\n"
-					+ "~Now try stage 5.\n\n"
-					+ "~Good luck!\n\n");
-			manager.addObject(new Player(Cells.A, Cells.A, ID.Player));
-			String message = "Lets use loops to draw a flower! Try drawFlower();";
-			manager.addObject(new MessageNPC(Cells.B, Cells.B, ID.NPC, manager, side, hud, message));
-			manager.addObject(new Drawing(interactions, interactions, null, manager, side, hud));
-			File picture = new File("pictures\\flower2.png");
-			manager.addFlower(new Flower(Cells.B, Cells.D, ID.Flower, manager, side, hud, picture));
-			hud.setStageEnd(false);
-		}
-		if(interactions == 1) {
-			String[] questions = {"Which loop should we use: for each, while or for?",
-					"Correct the following for loop:\n"
-					+ "for(i = 1; i < 6; i++) {...\n",
-			"What is wrong with the following:\n"
-					+ "for(int i = 1; i = 6; i++) {...\n"
-					+ "1. inital condition is not instantiated\n"
-					+ "2. loop condition does not resolve to boolean\n"
-					+ "3. nothing",
-					"How many petals will this for loop draw?\n"
-					+ "for(int i = 1; i < 6; i++) {\n"
-					+ "petal.rotate(72);\n"
-					+ "draw(petal);\n"
-					+ "}"};
-			String[] answers = {"for", "int i = 1;", "2", "5"};
-			manager.addObject(new MultipleQuestionNPC(Cells.E, Cells.D, ID.NPC, manager, side, hud, questions, answers));
-			manager.addObject(new Drawing(Cells.D, Cells.D, ID.NPC, manager, side, hud));
-			hud.setInteractions(0);
-			
-		}
-		
-	}
-	
-	/**
-	 * Sets up stage 1 of level 3 and adds NPCs as necessary.
-	 */
-	public void levelThreeStageOne() {
 		//Get the number of interactions
 		int interactions = hud.getInteractions();
 				//Add the second NPC once the first has been interacted with
@@ -539,9 +309,9 @@ public class Spawner {
 	}
 	
 	/**
-	 * Sets up stage 2 of level 3 and adds NPCs as necessary.
+	 * Sets up stage 2 of level 2 and adds NPCs as necessary.
 	 */
-	public void levelThreeStageTwo() {
+	public void levelTwoStageTwo() {
 		int interactions = hud.getInteractions();
 		if(hud.isStageEnd() == true) {
 			Manager.clearAll();
@@ -592,9 +362,9 @@ public class Spawner {
 	}
 	
 	/**
-	 * Sets up stage 3 of level 3 and adds NPCs as necessary.
+	 * Sets up stage 3 of level 2 and adds NPCs as necessary.
 	 */
-	public void levelThreeStageThree() {
+	public void levelTwoStageThree() {
 		int interactions = hud.getInteractions();
 		if(hud.isStageEnd() == true) {
 			Manager.clearAll();
@@ -644,9 +414,9 @@ public class Spawner {
 	}
 	
 	/**
-	 * Sets up stage 4 of level 3 and adds NPCs as necessary.
+	 * Sets up stage 4 of level 2 and adds NPCs as necessary.
 	 */
-	public void levelThreeStageFour() {
+	public void levelTwoStageFour() {
 		int interactions = hud.getInteractions();
 		if(hud.isStageEnd() == true) {
 			Manager.clearAll();
@@ -713,7 +483,10 @@ public class Spawner {
 		
 	}
 	
-	public void levelThreeStageFive() {
+	/**
+	 * Sets up stage 5 of level 2 and adds NPCs as necessary
+	 */
+	public void levelTwoStageFive() {
 		int interactions = hud.getInteractions();
 		if(hud.isStageEnd() == true) {
 			Manager.clearAll();
@@ -746,6 +519,245 @@ public class Spawner {
 			manager.addObject(new MultipleQuestionNPC(Cells.D, Cells.F, ID.NPC, manager, side, hud, questions, answers));
 			hud.setInteractions(0);
 		}
+	}
+	
+	//LEVEL 3 SETUP
+	
+	//LEVEL 4 SETUP
+	/**
+	 * Sets up stage 1 of level 4 and adds NPCs as necessary. Works in the same way as
+	 * levelOneStageOne()
+	 */
+	public void levelFourStageOne() {
+		int interactions = hud.getInteractions();
+		if(interactions == 1) {
+			String message = "Well Done! Lets see if you can pickup the flower.\n"
+					+ "Try typing robot.move(up, 2); to get to it.";
+			manager.addObject(new MessageNPC(Cells.E, Cells.C, ID.NPC, manager, side, hud, message));
+			hud.setInteractions(interactions + 1);
+		 }
+		else if(interactions == 3) {
+			File picture = new File("pictures\\Flower.png");
+			manager.addFlower(new Flower(Cells.E, Cells.A, ID.Flower, manager, side, hud, picture));
+			String message = "Now you can move more than one square at a time!";
+			manager.addObject(new MessageNPC(Cells.F, Cells.A, ID.NPC, manager, side, hud, message));
+			hud.setInteractions(interactions + 1);
+		}
+		else if(interactions == 5) {
+			String question = "What code did you use to make the robot pickup the flower?";
+			String answer = "robot.pickup(flower);";
+			manager.addObject(new StageEndNPC(Cells.D, Cells.A, ID.NPC, manager, side, hud, question, answer));
+			hud.setInteractions(0);
+		 }
+	}
+	
+	/**
+	 * Sets up stage 2 of level 4 and adds NPCs as necessary
+	 */
+	public void levelFourStageTwo() {
+		int interactions = hud.getInteractions();
+		if(hud.isStageEnd() == true) {
+			Manager.clearAll();
+			SidePanel.addText("~Congratulations you completed Stage 1\n\n"
+					+ "~Now try stage 2.\n\n"
+					+ "~Good luck!\n\n");
+			manager.addObject(new Player(Cells.A, Cells.A, ID.Player));
+			String message1 = "If you want to repeat some code you can use loops.";
+			manager.addObject(new MessageNPC(Cells.H, Cells.A, ID.NPC, manager, side, hud, message1));
+			hud.setStageEnd(false);
+		}
+		if(interactions == 1) {
+			String message2 = "There are three types of loops: for each, while and for.";
+			manager.addObject(new MessageNPC(Cells.C, Cells.D, ID.NPC, manager, side, hud, message2));
+			File picture = new File("pictures\\flower2.png");
+			manager.addFlower(new Flower(Cells.A, Cells.D, ID.Flower, manager, side, hud, picture));
+			hud.setInteractions(interactions + 1);
+		}
+		else if(interactions == 3) {
+			String message3 = "The for each loop has the following syntax:\n" 
+					+ "for(ElementType element : collection) {\n"
+					+ "loop body\n"
+					+ "}";
+			manager.addObject(new MessageNPC(Cells.B, Cells.F, ID.NPC, manager, side, hud, message3));
+			hud.setInteractions(interactions + 1);
+		}
+		else if(interactions == 5) {
+			String message4 = "For example for each element flower of type Flower in the collection of flowers, pick up the flower.\n"
+					+ "for(Flower flower : flowers) {\n"
+					+ "pickup(flower);\n"
+					+ "}";
+			manager.addObject(new MessageNPC(Cells.G, Cells.H, ID.NPC, manager, side, hud, message4));
+			File picture = new File("pictures\\flower3.png");
+			manager.addFlower(new Flower(Cells.C, Cells.F, ID.Flower, manager, side, hud, picture));
+			hud.setInteractions(interactions + 1);
+		}
+		else if(interactions == 7) {
+			String message5 = "The for each loop is used for collections only!";
+			manager.addObject(new MessageNPC(Cells.G, Cells.E, ID.NPC, manager, side, hud, message5));
+			hud.setInteractions(interactions + 1);
+		}
+		else if(interactions == 9) {
+			String question = "What would the following for each loop print for the collection flower = {rose, tulip, lily}?\n"
+					+ "for(Flower flower : flowers) {\n"
+					+ "print(flower ,);\n"
+					+ "}";
+			String answer = "rose, tulip, lily ,";
+			manager.addObject(new StageEndNPC(Cells.E, Cells.D, ID.NPC, manager, side, hud, question, answer));
+			hud.setInteractions(0);
+		}
+	}
+	
+	/**
+	 * Sets up stage 3 of level 4 and adds NPCs as necessary
+	 */
+	public void levelFourStageThree() {
+		int interactions = hud.getInteractions();
+		if(hud.isStageEnd() == true) {
+			Manager.clearAll();
+			SidePanel.addText("~Congratulations you completed Stage 2\n\n"
+					+ "~Now try stage 3.\n\n"
+					+ "~Good luck!\n\n");
+			manager.addObject(new Player(Cells.A, Cells.A, ID.Player));
+			String message1 = "Note that ++ is short hand for adding 1.";
+			manager.addObject(new MessageNPC(Cells.C, Cells.D, ID.NPC, manager, side, hud, message1));
+			File picture = new File("pictures\\Flower.png");
+			manager.addFlower(new Flower(Cells.B, Cells.D, ID.Flower, manager, side, hud, picture));
+			hud.setStageEnd(false);
+		}
+		else if(interactions == 1) {
+			String message2 = "The while loop has the following syntax:\n" 
+					+ "while(boolean condition) {\n"
+					+ "loop body\n"
+					+ "}";
+			manager.addObject(new MessageNPC(Cells.B, Cells.F, ID.NPC, manager, side, hud, message2));
+			hud.setInteractions(interactions + 1);
+		}
+		else if(interactions == 3) {
+			String message3 = "For example while the flowers position in the collection of flowers is less than the size of the collection, pick up the flower.\n"
+					+ "int flowerIndex = 0;\n"
+					+ "while(flowerIndex < flowers.size()) {\n"
+					+ "pickup(flower);\n"
+					+ "flowerIndex ++;\n"
+					+ "}";
+			manager.addObject(new MessageNPC(Cells.G, Cells.H, ID.NPC, manager, side, hud, message3));
+			File picture = new File("pictures\\flower3.png");
+			manager.addFlower(new Flower(Cells.E, Cells.C, ID.Flower, manager, side, hud, picture));
+			hud.setInteractions(interactions + 1);
+		}
+		else if(interactions == 5) {
+			String message4 = "A while loop is used when you have an unknown number of iterations.";
+			manager.addObject(new MessageNPC(Cells.C, Cells.B, ID.NPC, manager, side, hud, message4));
+			hud.setInteractions(interactions + 1);
+		}
+		else if(interactions == 7) {
+			String question = "Which flowers would be left unpicked after the following while loop for the collection flower = {rose, tulip, lily}?\n"
+					+ "int flowerIndex = 0;\n"
+					+ "while(flowerIndex < 2) {\n"
+					+ "pickup(flower);\n"
+					+ "flowerIndex ++;\n"
+					+ "}";
+			String answer = "lily";
+			manager.addObject(new StageEndNPC(Cells.E, Cells.D, ID.NPC, manager, side, hud, question, answer));
+			hud.setInteractions(0);
+		}
+	}
+	
+	/**
+	 * Sets up stage 4 of level 4 and adds NPCs as necessary
+	 */
+	public void levelFourStageFour() {
+		int interactions = hud.getInteractions();
+		if(hud.isStageEnd() == true) {
+			Manager.clearAll();
+			SidePanel.addText("~Congratulations you completed Stage 3\n\n"
+					+ "~Now try stage 4.\n\n"
+					+ "~Good luck!\n\n");
+			manager.addObject(new Player(Cells.A, Cells.A, ID.Player));
+			String message1 = "The for loop is used to execute a block of statements a specified number of times.";
+			manager.addObject(new MessageNPC(Cells.D, Cells.A, ID.NPC, manager, side, hud, message1));
+			hud.setStageEnd(false);
+		}
+		if(interactions == 1) {
+			String message3 = "The for loop has the following syntax:\n" 
+					+ "for(initialization; loop condition; increment/decrement) {\n"
+					+ "loop body\n"
+					+ "}";
+			manager.addObject(new MessageNPC(Cells.B, Cells.F, ID.NPC, manager, side, hud, message3));
+			File picture = new File("pictures\\flower3.png");
+			manager.addFlower(new Flower(Cells.B, Cells.G, ID.Flower, manager, side, hud, picture));
+			hud.setInteractions(interactions + 1);
+		}
+		else if(interactions == 3) {
+			String message2 = "The loop condition must resolve to a boolean value.";
+			manager.addObject(new MessageNPC(Cells.F, Cells.B, ID.NPC, manager, side, hud, message2));
+			hud.setInteractions(interactions + 1);
+		}
+		else if(interactions == 5) {
+			String message4 = "For example for i starting at 0, if i is less than the number of flowers, pick up the flower.\n"
+					+ "for(int i = 0; i < flowers.size(); i++) {\n"
+					+ "pickup(flower);\n"
+					+ "}";
+			manager.addObject(new MessageNPC(Cells.G, Cells.H, ID.NPC, manager, side, hud, message4));
+			File picture = new File("pictures\\Flower.png");
+			manager.addFlower(new Flower(Cells.A, Cells.E, ID.Flower, manager, side, hud, picture));
+			hud.setInteractions(interactions + 1);
+		}
+		else if(interactions == 7) {
+			String message5 = "You might have noticed that the while and for loops are similar.\n" 
+					+ "A for loop is better suited for a known number of iterations.";
+			manager.addObject(new MessageNPC(Cells.F, Cells.E, ID.NPC, manager, side, hud, message5));
+			hud.setInteractions(interactions + 1);
+		}
+		else if(interactions == 9) {
+			String question = "Which flowers would be picked up after the following for loop for the collection flower = {rose, tulip, lily}?\n"
+					+ "for(int i = 0; i < 1; i++) {\n"
+					+ "pickup(flower);\n"
+					+ "}";
+			String answer = "rose";
+			manager.addObject(new StageEndNPC(Cells.E, Cells.D, ID.NPC, manager, side, hud, question, answer));
+			hud.setInteractions(0);
+		}
+	}
+	
+	/**
+	 * Sets up stage 5 of level 4 and adds NPCs as necessary
+	 */
+	public void levelFourStageFive() {
+		int interactions = hud.getInteractions();
+		if(hud.isStageEnd() == true) {
+			Manager.clearAll();
+			SidePanel.addText("~Congratulations you completed Stage 4\n\n"
+					+ "~Now try stage 5.\n\n"
+					+ "~Good luck!\n\n");
+			manager.addObject(new Player(Cells.A, Cells.A, ID.Player));
+			String message = "Lets use loops to draw a flower! Try drawFlower();";
+			manager.addObject(new MessageNPC(Cells.B, Cells.B, ID.NPC, manager, side, hud, message));
+			manager.addObject(new Drawing(interactions, interactions, null, manager, side, hud));
+			File picture = new File("pictures\\flower2.png");
+			manager.addFlower(new Flower(Cells.B, Cells.D, ID.Flower, manager, side, hud, picture));
+			hud.setStageEnd(false);
+		}
+		if(interactions == 1) {
+			String[] questions = {"Which loop should we use: for each, while or for?",
+					"Correct the following for loop:\n"
+					+ "for(i = 1; i < 6; i++) {...\n",
+			"What is wrong with the following:\n"
+					+ "for(int i = 1; i = 6; i++) {...\n"
+					+ "1. inital condition is not instantiated\n"
+					+ "2. loop condition does not resolve to boolean\n"
+					+ "3. nothing",
+					"How many petals will this for loop draw?\n"
+					+ "for(int i = 1; i < 6; i++) {\n"
+					+ "petal.rotate(72);\n"
+					+ "draw(petal);\n"
+					+ "}"};
+			String[] answers = {"for", "int i = 1;", "2", "5"};
+			manager.addObject(new MultipleQuestionNPC(Cells.E, Cells.D, ID.NPC, manager, side, hud, questions, answers));
+			manager.addObject(new Drawing(Cells.D, Cells.D, ID.NPC, manager, side, hud));
+			hud.setInteractions(0);
+			
+		}
+		
 	}
 
 }
