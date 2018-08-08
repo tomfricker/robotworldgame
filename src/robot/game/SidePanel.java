@@ -86,6 +86,7 @@ public class SidePanel extends Panel{
 			public void actionPerformed(ActionEvent e) {
 				//go to main menu
 				Manager.clearAll();
+				HUD.setInteractions(0);
 				Game.gameState = STATE.Menu;
 			}
 		});

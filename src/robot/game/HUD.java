@@ -25,7 +25,7 @@ public class HUD {
 	private int stage = 0;
 	
 	//Fields to hold interactions and whether a level or stage has ended
-	private int interactions = 0;
+	private static int interactions = 0;
 	private boolean levelEnd = false;
 	private boolean stageEnd = false;
 	
@@ -115,8 +115,8 @@ public class HUD {
 		return interactions;
 	}
 
-	public void setInteractions(int interactions) {
-		this.interactions = interactions;
+	public static void setInteractions(int interactions) {
+		HUD.interactions = interactions;
 	}
 
 }
