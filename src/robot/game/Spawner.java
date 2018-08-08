@@ -379,6 +379,7 @@ public class Spawner {
 	 */
 	public void levelTwoStageThree() {
 		int interactions = hud.getInteractions();
+		String tab = "   ";
 		if(hud.isStageEnd() == true) {
 			Manager.clearAll();
 			SidePanel.addText("~Well done! Welcome to Stage 3, where we will look at the Class Constructor.\n\n"
@@ -401,12 +402,12 @@ public class Spawner {
 					"Examples of both:\n\n" + 
 					"public Robot(String fullName, int robotAge) {\n" + 
 					"//this is a comment in Java: here we equate the Fields we created earlier to the parameters above\n" + 
-					"		name = fullName;\n" + 
-					"		age = robotAge;\n" + 
+					tab + "name = fullName;\n" + 
+					tab + "age = robotAge;\n" + 
 					"}\n\n" + 
 					"public Robot() {\n" + 
-					"		name = “Robbie”;\n" + 
-					"		age = 15;\n" + 
+					tab + "name = “Robbie”;\n" + 
+					tab + "age = 15;\n" + 
 					"}";
 			manager.addObject(new MessageNPC(Cells.E, Cells.E, ID.NPC, manager, side, hud, message));
 			hud.setInteractions(interactions + 1);
@@ -431,6 +432,7 @@ public class Spawner {
 	 */
 	public void levelTwoStageFour() {
 		int interactions = hud.getInteractions();
+		String tab = "   ";
 		if(hud.isStageEnd() == true) {
 			Manager.clearAll();
 			SidePanel.addText("~Welcome to Stage 4, All about Methods!\n\n"
@@ -450,9 +452,9 @@ public class Spawner {
 		else if(interactions == 3) {
 			String message = "Here is an example of how a Method is defined within a Class:\n\n" + 
 					"public returnType methodName (parameters) {\n" + 
-					"\t\t\t action;\n" + 
-					"\t\t\t action;\n" + 
-					"\t\t\t …\n" + 
+					tab + "action;\n" + 
+					tab + "action;\n" + 
+					tab + "…\n" + 
 					"}";
 			manager.addObject(new MessageNPC(Cells.G, Cells.C, ID.NPC, manager, side, hud, message));
 			hud.setInteractions(interactions + 1);
@@ -472,7 +474,7 @@ public class Spawner {
 		else if(interactions == 9) {
 			String message = "Which type of Method is the following: \n\n" + 
 					"public String getName() {\n" + 
-					"		return name;\n" + 
+					tab + "return name;\n" + 
 					"}\n";
 			String answer = "accessor";
 			manager.addObject(new QuestionNPC(Cells.D, Cells.D, ID.NPC, manager, side, hud, message, answer, "pictures/walle.png"));
@@ -481,7 +483,7 @@ public class Spawner {
 		else if(interactions == 11) {
 			String message = "Which type of Method is the following:\n\n" + 
 					"public void changeName(String newName) {\n" + 
-					"		name = newName;\r\n" + 
+					tab + "name = newName;\r\n" + 
 					"}\n";
 			String answer = "mutator";
 			manager.addObject(new QuestionNPC(Cells.A, Cells.D, ID.NPC, manager, side, hud, message, answer, "pictures/walle.png"));
@@ -506,7 +508,7 @@ public class Spawner {
 			SidePanel.addText("~Congratulations you completed all 4 Stages!\n\n"
 					+ "~Go to your last buddy to see what he has for you!\n\n");
 			manager.addObject(new Player(Cells.A, Cells.A, ID.Player));
-			String message1 = "Now take the final quiz to complete the Level!\n\n~Good luck!\\n\\n";
+			String message1 = "Now take the final quiz to complete the Level!\n\nGood luck!\n\n";
 			manager.addObject(new MessageNPC(Cells.C, Cells.C, ID.NPC, manager, side, hud, message1));
 			hud.setStageEnd(false);
 		}
@@ -526,7 +528,7 @@ public class Spawner {
 					+ "2. No\n"
 					+ "3. Yes, but not with the same parameter signatures\n"
 					+ "4. Yes, but only if it has the same parameters\n",
-					"Write a Method to set the age in the Robot Class!\n\n (HINT: Call it setAge!)"
+					"Write a Method to set the age in the Robot Class!\n\n (HINT: Call it setAge with parameter newAge!)"
 					};
 			String[] answers = {"3", "1", "3", "public void setAge(int newAge) {age = newAge;}"};
 			manager.addObject(new MultipleQuestionNPC(Cells.D, Cells.F, ID.NPC, manager, side, hud, questions, answers));
@@ -569,6 +571,7 @@ public class Spawner {
 	 */
 	public void levelFourStageTwo() {
 		int interactions = hud.getInteractions();
+		String tab = "   ";
 		if(hud.isStageEnd() == true) {
 			Manager.clearAll();
 			SidePanel.addText("~Congratulations you completed Stage 1\n\n"
@@ -589,7 +592,7 @@ public class Spawner {
 		else if(interactions == 3) {
 			String message3 = "The for each loop has the following syntax:\n" 
 					+ "for(ElementType element : collection) {\n"
-					+ "loop body\n"
+					+ tab + "loop body\n"
 					+ "}";
 			manager.addObject(new MessageNPC(Cells.B, Cells.F, ID.NPC, manager, side, hud, message3));
 			hud.setInteractions(interactions + 1);
@@ -597,7 +600,7 @@ public class Spawner {
 		else if(interactions == 5) {
 			String message4 = "For example for each element flower of type Flower in the collection of flowers, pick up the flower.\n"
 					+ "for(Flower flower : flowers) {\n"
-					+ "pickup(flower);\n"
+					+ tab + "pickup(flower);\n"
 					+ "}";
 			manager.addObject(new MessageNPC(Cells.G, Cells.H, ID.NPC, manager, side, hud, message4));
 			File picture = new File("pictures\\flower3.png");
@@ -612,7 +615,7 @@ public class Spawner {
 		else if(interactions == 9) {
 			String question = "What would the following for each loop print for the collection flower = {rose, tulip, lily}?\n"
 					+ "for(Flower flower : flowers) {\n"
-					+ "print(flower, );\n"
+					+ tab + "print(flower, );\n"
 					+ "}";
 			String answer = "rose, tulip, lily, ";
 			manager.addObject(new StageEndNPC(Cells.E, Cells.D, ID.NPC, manager, side, hud, question, answer));
@@ -625,6 +628,7 @@ public class Spawner {
 	 */
 	public void levelFourStageThree() {
 		int interactions = hud.getInteractions();
+		String tab = "   ";
 		if(hud.isStageEnd() == true) {
 			Manager.clearAll();
 			SidePanel.addText("~Congratulations you completed Stage 2\n\n"
@@ -640,7 +644,7 @@ public class Spawner {
 		else if(interactions == 1) {
 			String message2 = "The while loop has the following syntax:\n" 
 					+ "while(boolean condition) {\n"
-					+ "loop body\n"
+					+ tab + "loop body\n"
 					+ "}";
 			manager.addObject(new MessageNPC(Cells.B, Cells.F, ID.NPC, manager, side, hud, message2));
 			hud.setInteractions(interactions + 1);
@@ -649,8 +653,8 @@ public class Spawner {
 			String message3 = "For example while the flowers position in the collection of flowers is less than the size of the collection, pick up the flower.\n"
 					+ "int flowerIndex = 0;\n"
 					+ "while(flowerIndex < flowers.size()) {\n"
-					+ "pickup(flower);\n"
-					+ "flowerIndex ++;\n"
+					+ tab + "pickup(flower);\n"
+					+ tab + "flowerIndex ++;\n"
 					+ "}";
 			manager.addObject(new MessageNPC(Cells.G, Cells.H, ID.NPC, manager, side, hud, message3));
 			File picture = new File("pictures\\flower3.png");
@@ -666,8 +670,8 @@ public class Spawner {
 			String question = "Which flowers would be left unpicked after the following while loop for the collection flower = {rose, tulip, lily}?\n"
 					+ "int flowerIndex = 0;\n"
 					+ "while(flowerIndex < 2) {\n"
-					+ "pickup(flower);\n"
-					+ "flowerIndex ++;\n"
+					+ tab + "pickup(flower);\n"
+					+ tab + "flowerIndex ++;\n"
 					+ "}";
 			String answer = "lily";
 			manager.addObject(new StageEndNPC(Cells.E, Cells.D, ID.NPC, manager, side, hud, question, answer));
@@ -680,6 +684,7 @@ public class Spawner {
 	 */
 	public void levelFourStageFour() {
 		int interactions = hud.getInteractions();
+		String tab = "   ";
 		if(hud.isStageEnd() == true) {
 			Manager.clearAll();
 			SidePanel.addText("~Congratulations you completed Stage 3\n\n"
@@ -693,7 +698,7 @@ public class Spawner {
 		if(interactions == 1) {
 			String message3 = "The for loop has the following syntax:\n" 
 					+ "for(initialization; loop condition; increment/decrement) {\n"
-					+ "loop body\n"
+					+ tab + "loop body\n"
 					+ "}";
 			manager.addObject(new MessageNPC(Cells.B, Cells.F, ID.NPC, manager, side, hud, message3));
 			File picture = new File("pictures\\flower3.png");
@@ -708,7 +713,7 @@ public class Spawner {
 		else if(interactions == 5) {
 			String message4 = "For example for i starting at 0, if i is less than the number of flowers, pick up the flower.\n"
 					+ "for(int i = 0; i < flowers.size(); i++) {\n"
-					+ "pickup(flower);\n"
+					+ tab + "pickup(flower);\n"
 					+ "}";
 			manager.addObject(new MessageNPC(Cells.G, Cells.H, ID.NPC, manager, side, hud, message4));
 			File picture = new File("pictures\\Flower.png");
@@ -724,7 +729,7 @@ public class Spawner {
 		else if(interactions == 9) {
 			String question = "Which flowers would be picked up after the following for loop for the collection flower = {rose, tulip, lily}?\n"
 					+ "for(int i = 0; i < 1; i++) {\n"
-					+ "pickup(flower);\n"
+					+ tab + "pickup(flower);\n"
 					+ "}";
 			String answer = "rose";
 			manager.addObject(new StageEndNPC(Cells.E, Cells.D, ID.NPC, manager, side, hud, question, answer));

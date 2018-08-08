@@ -7,6 +7,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
 
 import robot.game.GameObjects;
 import robot.game.HUD;
