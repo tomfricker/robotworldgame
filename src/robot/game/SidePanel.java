@@ -97,6 +97,7 @@ public class SidePanel extends Panel{
 		//helpButton.setForeground(Color.white);
 		helpButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				new HelpWindow();
 			}
 		});
 		
