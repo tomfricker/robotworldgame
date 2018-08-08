@@ -317,9 +317,9 @@ public class Spawner {
 		else if(interactions == 9) {
 			String question = "What would the following for each loop print for the collection flower = {rose, tulip, lily}?\n"
 					+ "for(Flower flower : flowers) {\n"
-					+ "print(flower ,);\n"
+					+ "print(flower, );\n"
 					+ "}";
-			String answer = "rose, tulip, lily ,";
+			String answer = "rose, tulip, lily, ";
 			manager.addObject(new StageEndNPC(Cells.E, Cells.D, ID.NPC, manager, side, hud, question, answer));
 			hud.setInteractions(0);
 		}
