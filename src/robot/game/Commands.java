@@ -2,6 +2,7 @@ package robot.game;
 
 import java.util.ArrayList;
 
+import npcs.ArrayListNPC;
 import npcs.Drawing;
 
 /**
@@ -23,7 +24,8 @@ public class Commands {
 			"robot.move(up, 2);", "robot.move(up, 3);", "robot.move(up, 4);", "robot.move(up, 5);", "robot.move(up, 6);", "robot.move(up, 7);", 
 			"robot.move(down, 2);", "robot.move(down, 3);", "robot.move(down, 4);", "robot.move(down, 5);", "robot.move(down, 6);", "robot.move(down, 7);", 
 			"robot.move(left, 2);", "robot.move(left, 3);", "robot.move(left, 4);", "robot.move(left, 5);", "robot.move(left, 6);", "robot.move(left, 7);", 
-			"robot.move(right, 2);", "robot.move(right, 3);", "robot.move(right, 4);", "robot.move(right, 5);", "robot.move(right, 6);", "robot.move(right, 7);"
+			"robot.move(right, 2);", "robot.move(right, 3);", "robot.move(right, 4);", "robot.move(right, 5);", "robot.move(right, 6);", "robot.move(right, 7);",
+			"chars.add(a);","chars.add(e);","chars.add(i);","chars.add(o);","chars.add(u);", "chars.remove(1);"
 	};
 	
 	/**
@@ -122,6 +124,27 @@ public class Commands {
 						moveRight();
 					}
 				}
+			}
+		}
+	}
+	
+public static void addToAL(char c) {
+		
+		for(GameObjects o : Manager.objectList) {
+			if (o.getId() == ID.Collection) {
+				ArrayListNPC al = (ArrayListNPC)o;
+				al.add(c);
+				
+			}
+		}
+	}
+	
+	public static void removeFromAL(int i) {
+		for(GameObjects o : Manager.objectList) {
+			if (o.getId() == ID.Collection) {
+				ArrayListNPC al = (ArrayListNPC)o;
+				al.remove(i);
+				
 			}
 		}
 	}
@@ -273,6 +296,12 @@ public class Commands {
 			}
 			else if(command.equals("robot.move(right, 7);")) {
 				move("right", 7);
+			}
+			else if(command.equals("chars.add(a);")||command.equals("chars.add(e);")||command.equals("chars.add(i);")||command.equals("chars.add(o);")||command.equals("chars.add(u);")) {
+				addToAL('a');
+			}
+			else if(command.equals("chars.remove(1);")) {
+				removeFromAL(1);
 			}
 		}
 	}

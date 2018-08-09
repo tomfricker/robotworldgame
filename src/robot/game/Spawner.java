@@ -2,6 +2,7 @@ package robot.game;
 
 import java.io.File;
 
+import npcs.ArrayListNPC;
 import npcs.Drawing;
 import npcs.Flower;
 import npcs.MessageNPC;
@@ -60,11 +61,11 @@ public class Spawner {
 			else if(stage == 5) levelTwoStageFive();
 			
 			//level 3
-			/*case 3: if(stage == 1) levelThreeStageOne();
+			case 3: if(stage == 1) levelThreeStageOne();
 			else if(stage == 2) levelThreeStageTwo();
-			else if(stage == 3) levelThreeStageThree();
-			else if(stage == 4) levelThreeStageFour();
-			else if(stage == 5) levelThreeStageFive();*/
+			//else if(stage == 3) levelThreeStageThree();
+			//else if(stage == 4) levelThreeStageFour();
+			//else if(stage == 5) levelThreeStageFive();
 			
 			//level 4
 			case 4: if(stage == 1) levelFourStageOne();
@@ -282,7 +283,7 @@ public class Spawner {
 				else if(interactions == 3) {
 					String message = "Here we have two classes: the Robot and the Item classes. \n" 
 							+"Robbie is an Object from the Robot Class. This means he has characteristics (Fields) that are taken from (belong to) the Robot Class. \n"
-							+"We’ll discuss those in detail later. Continue to the next fruit.";
+							+"Weï¿½ll discuss those in detail later. Continue to the next fruit.";
 					manager.addObject(new MessageNPC(Cells.G, Cells.C, ID.NPC, manager, side, hud, message));
 					hud.setInteractions(interactions + 1);
 				}
@@ -300,7 +301,7 @@ public class Spawner {
 					hud.setInteractions(interactions + 1);
 				}
 				else if(interactions == 9) {
-					String message = "Classes have Methods that help you make an action, but only an Object can “invoke” that method.\n\n" + 
+					String message = "Classes have Methods that help you make an action, but only an Object can ï¿½invokeï¿½ that method.\n\n" + 
 							"Write the name of the Method you've seen so far!";
 					String answer = "eat";
 					manager.addObject(new QuestionNPC(Cells.A, Cells.D, ID.NPC, manager, side, hud, message, answer, "pictures/walle.png"));
@@ -309,7 +310,7 @@ public class Spawner {
 				else if(interactions == 11) {
 					String message = "To create a new object from a class you need to type it in this form: \n\n" + 
 							"ClassName ObjectName = new ClassName(); \n\n" + 
-							"(Don’t forget to put capital letters where needed!)";
+							"(Donï¿½t forget to put capital letters where needed!)";
 					manager.addObject(new MessageNPC(Cells.D, Cells.D, ID.NPC, manager, side, hud, message));
 					hud.setInteractions(interactions + 1);
 				}
@@ -333,8 +334,8 @@ public class Spawner {
 					+ "~Now try stage 2.\n\n"
 					+ "~Good luck!\n\n");
 			manager.addObject(new Player(Cells.A, Cells.A, ID.Player));
-			String message = "A Class in Java has 3 main components: Fields (Objects’ state), Methods (Objects’ behavior) "
-					+ "and Constructor (Objects’ creation).";
+			String message = "A Class in Java has 3 main components: Fields (Objectsï¿½ state), Methods (Objectsï¿½ behavior) "
+					+ "and Constructor (Objectsï¿½ creation).";
 			manager.addObject(new MessageNPC(Cells.A, Cells.E, ID.NPC, manager, side, hud, message));
 			hud.setStageEnd(false);
 		}
@@ -398,7 +399,7 @@ public class Spawner {
 		}
 		//Add the NPCs one at a time for the rest of the stage
 		else if(interactions == 3) {
-			String message = "These values can be passed by parameters or hard coded in the Constructor’s body.\n\n" + 
+			String message = "These values can be passed by parameters or hard coded in the Constructorï¿½s body.\n\n" + 
 					"Examples of both:\n\n" + 
 					"public Robot(String fullName, int robotAge) {\n" + 
 					"//this is a comment in Java: here we equate the Fields we created earlier to the parameters above\n" + 
@@ -406,7 +407,7 @@ public class Spawner {
 					tab + "age = robotAge;\n" + 
 					"}\n\n" + 
 					"public Robot() {\n" + 
-					tab + "name = “Robbie”;\n" + 
+					tab + "name = ï¿½Robbieï¿½;\n" + 
 					tab + "age = 15;\n" + 
 					"}";
 			manager.addObject(new MessageNPC(Cells.E, Cells.E, ID.NPC, manager, side, hud, message));
@@ -454,7 +455,7 @@ public class Spawner {
 					"public returnType methodName (parameters) {\n" + 
 					tab + "action;\n" + 
 					tab + "action;\n" + 
-					tab + "…\n" + 
+					tab + "ï¿½\n" + 
 					"}";
 			manager.addObject(new MessageNPC(Cells.G, Cells.C, ID.NPC, manager, side, hud, message));
 			hud.setInteractions(interactions + 1);
@@ -490,7 +491,7 @@ public class Spawner {
 			hud.setInteractions(interactions + 1);
 		}
 		else if(interactions == 13) {
-			String question = "Write the code to change robot’s name to Robbie!";
+			String question = "Write the code to change robotï¿½s name to Robbie!";
 			String answer = "robot.changeName(\"Robbie\");";
 			manager.addObject(new StageEndNPC(Cells.F, Cells.F, ID.NPC, manager, side, hud, question, answer));
 			hud.setInteractions(0);
@@ -777,6 +778,40 @@ public class Spawner {
 		}
 		
 	}
+	
+	public void levelThreeStageOne() {
+		
+	}
+	
+	public void levelThreeStageTwo() {
+		if(hud.isStageEnd() == true) {
+			Manager.clearAll();
+			SidePanel.addText("~ Well Done! Time to look at a Collection a little more closely \n\n" +
+								"~ An ArrayList is an ordered list of objects\n\n"+
+								"~ You construct an ArrayList using the constructor method ArraytList<Object>(). Object can be any kind of object you want the ArrayList to hold.\n\n" +
+								"~ They can be added to with the add() method. Remember how you call methods on an object...object.method()\n\n" +
+								"~ try adding each of the vowels (a,e,i,o,u) to this ArrayList<Char> called chars\n\n "+
+								"~ Notice how the Collection grows as you add each letter.\n\n");
+			manager.addObject(new Player(Cells.A, Cells.A, ID.Player));
+			manager.addObject(new ArrayListNPC(Cells.D, Cells.E, ID.Collection,"Char", manager, side,  hud,5,false));
+			hud.setStageEnd(false);
+			
+		}
+	}
+	
+	
+	//third stage of the collections level which was proving to be overly complicated with the commands so it's been left out for now. 
+		public void levelThreeStageThree() {
+			if(hud.isStageEnd() == true) {
+				Manager.clearAll();
+				SidePanel.addText("~ Well Done! Now try using the remove() method similarly to get rid of the letter a from the collection");
+				manager.addObject(new Player(Cells.A, Cells.A, ID.Player));
+				manager.addObject(new ArrayListNPC(Cells.D, Cells.E, ID.Collection,"Char", manager, side,  hud,5,true));
+				hud.setStageEnd(false);
+	
+
+			}
+		}
 
 }
 

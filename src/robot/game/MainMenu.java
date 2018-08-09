@@ -113,6 +113,7 @@ public class MainMenu extends MouseAdapter{
 				manager.addObject(new Pickup(Cells.B,Cells.G,ID.NPC, PICKUPID.Char,side));
 				manager.addObject(new Pickup(Cells.A,Cells.A,ID.NPC, PICKUPID.Char,side));
 				manager.addObject(new Pickup(Cells.A,Cells.G,ID.NPC, PICKUPID.Int,side));
+				manager.addObject(new Pickup(Cells.A,Cells.D,ID.NPC, PICKUPID.Int,side));
 				side.setText("~Welcome to level 3 of Robot World - Time to learn about Primitive Types!\n\n"
 						+ "~These are collectors. Try talking to them to see what they want\n\n");
 			}
