@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 import robot.game.Game;
 import robot.game.GameObjects;
 import robot.game.HUD;
+import robot.game.Hints;
 import robot.game.ID;
 import robot.game.Manager;
 import robot.game.SidePanel;
@@ -38,6 +39,7 @@ public class MultipleQuestionNPC extends GameObjects {
 	private HUD hud;
 	private String[] questions, answers;
 	private boolean interacted;
+	private Hints hints;
 
 	/**
 	 * Constructor for the StageEndNPC
@@ -56,6 +58,7 @@ public class MultipleQuestionNPC extends GameObjects {
 		this.questions = questions;
 		this.answers = answers;
 		interacted = false;
+		hints= new Hints();
 	}
 
 	/**
@@ -99,6 +102,10 @@ public class MultipleQuestionNPC extends GameObjects {
 							SidePanel.addText("~" + input + "\n");
 							SidePanel.addText("~incorrect\n");
 							SidePanel.addText("~You lost 10 points\n\n");
+							//gives a hint
+							String hint = hints.giveHint(input);
+							SidePanel.addText("~" + hint + "\n\n");
+							
 							gameObject.setX(gameObject.getX()-Game.boardIndex);
 							int currentScore = hud.getScore();
 							if(currentScore > 0)
