@@ -109,11 +109,11 @@ public class MainMenu extends MouseAdapter{
 				manager.addObject(new CollectionNPC(Cells.A,Cells.H,ID.NPC,"Int",side,hud,1));
 				manager.addObject(new CollectionNPC(Cells.H,Cells.H,ID.NPC,"Char",side,hud,2));
 				manager.addObject(new CollectionNPC(Cells.H,Cells.A,ID.NPC,"Boolean",side,hud,1));
-				manager.addObject(new Pickup(Cells.A,Cells.F,ID.NPC, PICKUPID.Boolean,side));
-				manager.addObject(new Pickup(Cells.B,Cells.G,ID.NPC, PICKUPID.Char,side));
-				manager.addObject(new Pickup(Cells.A,Cells.A,ID.NPC, PICKUPID.Char,side));
-				manager.addObject(new Pickup(Cells.A,Cells.G,ID.NPC, PICKUPID.Int,side));
-				manager.addObject(new Pickup(Cells.A,Cells.D,ID.NPC, PICKUPID.Int,side));
+				manager.addObject(new Pickup(Cells.A,Cells.F,ID.NPC, PICKUPID.Boolean,side, "true"));
+				manager.addObject(new Pickup(Cells.B,Cells.G,ID.NPC, PICKUPID.Char,side, "char1"));
+				manager.addObject(new Pickup(Cells.A,Cells.A,ID.NPC, PICKUPID.Char,side, "char2"));
+				manager.addObject(new Pickup(Cells.A,Cells.G,ID.NPC, PICKUPID.Int,side, "int1"));
+				manager.addObject(new Pickup(Cells.A,Cells.D,ID.NPC, PICKUPID.Int,side, "int2"));
 				side.setText("~Welcome to level 3 of Robot World - Time to learn about Primitive Types!\n\n"
 						+ "~These are collectors. Try talking to them to see what they want\n\n");
 			}

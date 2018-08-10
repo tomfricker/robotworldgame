@@ -6,8 +6,12 @@ package npcs;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 
+import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 
 import robot.game.Bag;
@@ -53,12 +57,33 @@ public class CollectionNPC extends GameObjects {
 
 	@Override
 	public void render(Graphics g) {
-		if(primType == "Int") {g.setColor(Color.RED);}
-		if(primType == "Char") {g.setColor(Color.BLUE);}
-		if(primType == "Boolean") {g.setColor(Color.GREEN);}
-	
-		g.fillRect(x+10, y+10, 40, 40);
-		
+		if(primType == "Int") {
+			File imageFile = new File("pictures//basketWalle.png");
+			try {
+				Image FALSE = ImageIO.read(imageFile);
+				g.drawImage(FALSE, x, y, null);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		if(primType == "Char") {
+			File imageFile = new File("pictures//basketWalleBlue.png");
+			try {
+				Image FALSE = ImageIO.read(imageFile);
+				g.drawImage(FALSE, x, y, null);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		if(primType == "Boolean") {
+			File imageFile = new File("pictures//basketWalleGreen.png");
+			try {
+				Image FALSE = ImageIO.read(imageFile);
+				g.drawImage(FALSE, x, y, null);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}		
 	}
 	
 	
