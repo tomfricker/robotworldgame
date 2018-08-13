@@ -39,7 +39,7 @@ public class ArrayListNPC extends GameObjects {
 		if (b) {
 			
 			for(int i = 0; i<5;i++) {
-				tail.add(new Pickup( x,  y, ID.NPC, PICKUPID.Char, side));
+				tail.add(new Pickup( x,  y, ID.NPC, PICKUPID.Char, side, "char1"));
 			}
 		}
 		
@@ -73,7 +73,7 @@ public class ArrayListNPC extends GameObjects {
 	}
 
 	public void add(char c) {
-		tail.add(new Pickup(64,64,ID.NPC, PICKUPID.Boolean,side));
+		tail.add(new Pickup(64,64,ID.NPC, PICKUPID.Boolean,side, "false"));
 		hud.setScore(hud.getScore()+10);
 		if(hud.getStage() == 2 && hud.getScore() == 100) {
 			hud.setStage(3);
