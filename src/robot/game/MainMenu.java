@@ -66,29 +66,84 @@ public class MainMenu extends MouseAdapter{
 		if(Game.gameState == STATE.Menu) {
 			//set up the initial state of the HUD before a level begins
 			hud.setLevel(0);
-			hud.setScore(0);
-			hud.setStage(1);
-			hud.setLevelEnd(false);
+			resetHUD();
 			//Starting co-ordinates of the Y-axis for Level 1 button
 			int y = 200;
 			//level 1 button
 			if(mouseOver(mouseX, mouseY, 100, y, 440, 64)) {
-				Game.gameState = STATE.Game;
+				createLevel(1);
+			}
+			
+			//level 2 button
+			y += 84;
+			if(mouseOver(mouseX, mouseY, 100, y, 440, 64)) {
+				createLevel(2);
+			}
+			
+			//level 3 button
+			y += 84;
+			if(mouseOver(mouseX, mouseY, 100, y, 440, 64)) {
+				createLevel(3);
+			}
+			
+			//level 4 button
+			y += 84;
+			if(mouseOver(mouseX, mouseY, 100, y, 440, 64)) {
+				createLevel(4);
+			}
+			
+			//level 5 button
+			y += 84;
+			if(mouseOver(mouseX, mouseY, 100, y, 440, 64)) {
+				createLevel(5);
+			}
+		}
+		else if(Game.gameState == STATE.End) {
+			if(mouseOver(mouseX, mouseY, 70, 45, 500, 120)) {
+				int level = hud.getLevel();
+				if(level != 5) {
+					resetHUD();
+					int newLevel = hud.getLevel()+1;
+					createLevel(newLevel);
+				}
+				else {
+					Game.gameState = STATE.Menu;
+				}
+			}
+		}
+		
+		
+	}
+	
+	/**
+	 * Resets the HUD so that a new level can be set up correctly.
+	 */
+	public void resetHUD() {
+		hud.setScore(0);
+		hud.setStage(1);
+		hud.setLevelEnd(false);
+	}
+	
+	/**
+	 * Sets up the beginning state for the appropriate level
+	 */
+	public void createLevel(int level) {
+		//set the game state
+		Game.gameState = STATE.Game;
+		
+		//create the level
+		switch (level) {
+			case 1 : {
 				hud.setLevel(1);
-				hud.setStage(1);
 				manager.addObject(new Player(Cells.A, Cells.A, ID.Player));
 				String npcMessage = "In this first level we are going to learn about data types.";
 				manager.addObject(new MessageNPC(Cells.C, Cells.A, ID.NPC, manager, side, hud, npcMessage));
 				side.setText("~Welcome to level 1 of Robot World!\n\n"
 						+ "~Please move Robbie the Robot around the board using the arrow keys.\n\n"
 						+ "~Good luck and enjoy your adventure in Robot World!\n\n");
-						
+				break;
 			}
-			
-			//level 2 button
-			y += 84;
-			if(mouseOver(mouseX, mouseY, 100, y, 440, 64)) {
-				Game.gameState = STATE.Game;
+			case 2 : {
 				hud.setLevel(2);
 				//add objects to start of level 2
 				manager.addObject(new Player(Cells.A, Cells.A, ID.Player));
@@ -97,12 +152,9 @@ public class MainMenu extends MouseAdapter{
 				manager.addObject(new MessageNPC(Cells.D, Cells.A, ID.NPC, manager, side, hud, npcMessage));
 				side.setText("~Welcome to level 2 of Robot World - All about Classes and Objects!\n\n"
 						+ "~Try moving the Robot to the other Robot.\n\n");
+				break;
 			}
-			
-			//level 3 button
-			y += 84;
-			if(mouseOver(mouseX, mouseY, 100, y, 440, 64)) {
-				Game.gameState = STATE.Game;
+			case 3: {
 				hud.setLevel(3);
 				//add objects to start of level 3
 				manager.addObject(new Player(Cells.B,Cells.A,ID.Player));
@@ -117,11 +169,7 @@ public class MainMenu extends MouseAdapter{
 				side.setText("~Welcome to level 3 of Robot World - Time to learn about Primitive Types!\n\n"
 						+ "~These are collectors. Try talking to them to see what they want\n\n");
 			}
-			
-			//level 4 button
-			y += 84;
-			if(mouseOver(mouseX, mouseY, 100, y, 440, 64)) {
-				Game.gameState = STATE.Game;
+			case 4 : {
 				hud.setLevel(4);
 				//add objects to start of level 4
 				manager.addObject(new Player(Cells.D, Cells.D, ID.Player));
@@ -131,22 +179,11 @@ public class MainMenu extends MouseAdapter{
 						+ "~Try moving the Robot around the board by typing in code, e.g. robot.move(right);, "
 						+ "press the enter key and then the Run Code button.\n\n");
 			}
-			
-			//level 5 button
-			y += 84;
-			if(mouseOver(mouseX, mouseY, 100, y, 440, 64)) {
-				Game.gameState = STATE.Game;
+			case 5 : {
 				hud.setLevel(5);
 				//add objects to start of level 5
 			}
 		}
-		else if(Game.gameState == STATE.End) {
-			if(mouseOver(mouseX, mouseY, 70, 45, 500, 120)) {
-				Game.gameState = STATE.Menu;
-			}
-		}
-		
-		
 	}
 	
 	/**
@@ -248,13 +285,16 @@ public class MainMenu extends MouseAdapter{
 			g.setColor(Color.BLUE);
 			g.drawString("YOU WIN!", 160, 100);
 			
-			font = new Font("Monospaced", Font.BOLD, 35);
+			font = new Font("Monospaced", Font.BOLD, 26);
 			g.setFont(font);
 			g.setColor(Color.WHITE);
-			g.drawString("Return to Main Menu", 120, 150);
+			if(hud.getLevel() != 5)
+				g.drawString("Click here for next level", 120, 150);
+			else
+				g.drawString("Click here for Main Menu", 120, 150);
 			
 			//display user score
-			g.drawString("Your score was : " + hud.getScore(), 120, 245);
+			g.drawString("Your score was : " + hud.getScore(), 160, 245);
 			
 		}
 	}
