@@ -48,10 +48,10 @@ public class Spawner {
 		switch(hud.getLevel()) {
 			//Execute the method for the correct level/stage
 			//level 1
-			case 1: if(stage == 1) levelOneStageOne();
-			else if(stage == 2) levelOneStageTwo();
-			else if(stage == 3) levelOneStageThree();
-			else if(stage == 4) levelOneStageFour();
+			case 1: if(stage == 1) dataTypesIntro();
+			else if(stage == 2) dataTypesInt();
+			else if(stage == 3) dataTypesString();
+			else if(stage == 4) dataTypesQuiz();
 
 			//level 2
 			case 2: if(stage == 1) levelTwoStageOne();
@@ -84,7 +84,7 @@ public class Spawner {
 	 * The number of interactions is executed using odd numbers to ensure that an
 	 * object is only added once to the manager.
 	 */
-	public void levelOneStageOne() {
+	public void dataTypesIntro() {
 		//Get the number of interactions
 		int interactions = hud.getInteractions();
 		//Add the second NPC once the first has been interacted with
@@ -132,7 +132,7 @@ public class Spawner {
 	 * The number of interactions is executed using odd numbers to ensure that an
 	 * object is only added once to the manager.
 	 */
-	public void levelOneStageTwo() {
+	public void dataTypesInt() {
 		int interactions = hud.getInteractions();
 		if(hud.isStageEnd() == true) {
 			Manager.clearAll();
@@ -174,7 +174,7 @@ public class Spawner {
 	 * Sets up stage 3 of level 1 and adds NPCs as necessary. Works in the same way as
 	 * levelOneStageOne()
 	 */
-	public void levelOneStageThree() {
+	public void dataTypesString() {
 		int interactions = hud.getInteractions();
 		if(hud.isStageEnd() == true) {
 			Manager.clearAll();
@@ -214,7 +214,7 @@ public class Spawner {
 	 * Sets up stage 4 of level 1 and adds NPCs as necessary. Works in the same way as
 	 * levelOneStageOne()
 	 */
-	public void levelOneStageFour() {
+	public void dataTypesQuiz() {
 		int interactions = hud.getInteractions();
 		if(hud.isStageEnd() == true) {
 			Manager.clearAll();

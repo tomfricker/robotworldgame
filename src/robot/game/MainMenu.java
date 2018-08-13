@@ -32,7 +32,7 @@ public class MainMenu extends MouseAdapter{
 	private Manager manager;
 	private SidePanel side;
 	private HUD hud;
-	private String[] levelNames = { "Data Types", "Class Structure", "Collections", "Loops", "Conditional Statements" };
+	private String[] levelNames = { "Data Types", "Classes and Objects", "Collections", "Loops and Methods", "Conditional Statements" };
 	
 	/**
 	 * Constructor of the MainMenu
