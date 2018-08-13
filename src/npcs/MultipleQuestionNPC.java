@@ -113,7 +113,7 @@ public class MultipleQuestionNPC extends GameObjects {
 							SidePanel.addText("~" + input + "\n");
 							SidePanel.addText("~correct\n\n");
 						}
-						//finishes the level
+						//finishes the level if all questions are correct
 						if(i == (answers.length - 1))
 							hud.setLevelEnd(true);
 					}
