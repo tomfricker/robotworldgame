@@ -32,6 +32,7 @@ public class MainMenu extends MouseAdapter{
 	private Manager manager;
 	private SidePanel side;
 	private HUD hud;
+	private String[] levelNames = { "Data Types", "Class Structure", "Collections", "Loops", "Conditional Statements" };
 	
 	/**
 	 * Constructor of the MainMenu
@@ -257,12 +258,12 @@ public class MainMenu extends MouseAdapter{
 			g.drawString("Level Select", 140, 150);
 			
 			//draw menu item strings
-			font = new Font("Monospaced", Font.BOLD, 40);
+			font = new Font("Monospaced", Font.BOLD, 22);
 			g.setFont(font);
 			g.setColor(Color.RED);
-			y = 245;
+			y = 240;
 			for(int i = 0; i < 5; i++) {
-				g.drawString("Level " + (i+1), 240, y);
+				g.drawString("Level " + (i+1) + " - " + levelNames[i], 110, y);
 				y += 64 + 20;
 			}
 		}
@@ -287,7 +288,7 @@ public class MainMenu extends MouseAdapter{
 			
 			font = new Font("Monospaced", Font.BOLD, 26);
 			g.setFont(font);
-			g.setColor(Color.WHITE);
+			g.setColor(Color.RED);
 			if(hud.getLevel() != 5)
 				g.drawString("Click here for next level", 120, 150);
 			else
