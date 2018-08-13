@@ -90,9 +90,11 @@ public class MultipleQuestionNPC extends GameObjects {
 				if(gameObject.getX() == x && gameObject.getY() == y) {
 					for(int i = 0; i < questions.length; i++) {
 						String input = JOptionPane.showInputDialog(null, questions[i]);
-						//if(input == null || input.length() == 0) {
-							//gameObject.setX(gameObject.getX()-Game.boardIndex);
-						//}
+						//allows the player to get out of the quiz and continue in level
+						if(input == null) {
+							gameObject.setX(gameObject.getX()-Game.boardIndex);
+							break;
+						}
 						//if the answer is incorrect the player can continue to move round the board and the interactions can still take place
 						while (!input.equals(answers[i])) {
 							
@@ -111,8 +113,10 @@ public class MultipleQuestionNPC extends GameObjects {
 							SidePanel.addText("~" + input + "\n");
 							SidePanel.addText("~correct\n\n");
 						}
+						//finishes the level
+						if(i == (answers.length - 1))
+							hud.setLevelEnd(true);
 					}
-					hud.setLevelEnd(true);
 				}
 			}
 		}
