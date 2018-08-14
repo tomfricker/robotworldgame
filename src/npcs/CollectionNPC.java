@@ -116,7 +116,8 @@ public class CollectionNPC extends GameObjects {
 						if(Bag.pickups.get(getPidfromRevMap()) != null) {
 							//System.out.println("pickups should be added to the collector");
 							turnIn();
-							if(hud.getScore() == 50) {
+							if(hud.getScore() >= 50) {
+								
 								hud.setStage(2);
 								hud.setStageEnd(true);
 							}

@@ -131,7 +131,6 @@ public class MainMenu extends MouseAdapter{
 	public void createLevel(int level) {
 		//set the game state
 		Game.gameState = STATE.Game;
-		
 		//create the level
 		switch (level) {
 			case 1 : {
@@ -167,8 +166,10 @@ public class MainMenu extends MouseAdapter{
 				manager.addObject(new Pickup(Cells.A,Cells.A,ID.NPC, PICKUPID.Char,side, "char2"));
 				manager.addObject(new Pickup(Cells.A,Cells.G,ID.NPC, PICKUPID.Int,side, "int1"));
 				manager.addObject(new Pickup(Cells.A,Cells.D,ID.NPC, PICKUPID.Int,side, "int2"));
-				side.setText("~Welcome to level 3 of Robot World - Time to learn about Primitive Types!\n\n"
+				side.setText("~Welcome to level 3 of Robot World - Time to learn about Primitive Types and Collections!\n\n"
 						+ "~These are collectors. Try talking to them to see what they want\n\n");
+				
+				break;
 			}
 			case 4 : {
 				hud.setLevel(4);
@@ -179,10 +180,12 @@ public class MainMenu extends MouseAdapter{
 				side.setText("~Welcome to level 4 of Robot World!\n\n"
 						+ "~Try moving the Robot around the board by typing in code, e.g. robot.move(right);, "
 						+ "press the enter key and then the Run Code button.\n\n");
+				break;
 			}
 			case 5 : {
 				hud.setLevel(5);
 				//add objects to start of level 5
+				break;
 			}
 		}
 	}
