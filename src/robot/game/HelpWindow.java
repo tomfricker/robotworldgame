@@ -55,7 +55,9 @@ public class HelpWindow {
 				switch(help) {
 					case "Controls": return "Use the arrow keys to move the robot";
 					case "Buttons": return "The Main Menu button takes you back to the level selector.\n\n"
-							+ "The Run Code button executes all the code in the right hand panel.";
+							+ "The Run Code button executes all the code in the right hand panel.\n\n"
+							+ "When on the Code Panel, you can scroll with the UP and DOWN arrow keys to navigate "
+							+ "through the commands you've written.";
 					case "Characters": return "There are different characters to interact with, try them all!";
 					case "1": return "Here we learn about data types and how to type them out in Java.";
 				}

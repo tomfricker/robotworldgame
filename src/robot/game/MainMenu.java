@@ -6,6 +6,9 @@ import java.awt.Graphics;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import javax.swing.JDialog;
+import javax.swing.JTextArea;
+import javax.swing.ScrollPaneLayout;
 import npcs.CollectionNPC;
 import npcs.MessageNPC;
 import npcs.PICKUPID;
@@ -144,6 +147,19 @@ public class MainMenu extends MouseAdapter{
 			if(mouseOver(mouseX, mouseY, 70, 45, 500, 120)) {
 				Game.gameState = STATE.Menu;
 			}
+			
+			else if(mouseOver(mouseX, mouseY, 100, 284, 440, 64)) {
+				//Game.gameState = STATE.Game;
+				//hud.setLevel(hud.getLevel()+1);
+				JDialog dialog = new JDialog();
+				dialog.setVisible(true);
+				dialog.setModal(true);
+				ScrollPaneLayout scrollPane = new ScrollPaneLayout();
+				dialog.setLayout(scrollPane);
+				String robotCode = "hello world";
+				scrollPane.addLayoutComponent(null, new JTextArea(robotCode));
+				
+			}
 		}
 		
 		
@@ -182,7 +198,7 @@ public class MainMenu extends MouseAdapter{
 	
 	/**
 	 * Draws all the rectangles and Strings contained within either the Menu screen
-	 * or End Game screens dependant on the gameState.
+	 * or End Game screens dependent on the gameState.
 	 * @param g
 	 */
 	public void render(Graphics g) {
@@ -255,6 +271,19 @@ public class MainMenu extends MouseAdapter{
 			
 			//display user score
 			g.drawString("Your score was : " + hud.getScore(), 120, 245);
+			
+			//display button for Robot source code at end of level 2
+			if (hud.getLevel()==1) {
+				g.setColor(Color.BLACK);
+				g.fillRect(100, 284, 440, 64);
+				g.setColor(Color.WHITE);
+				g.drawRect(100, 284, 440, 64);
+				
+				font = new Font("Monospaced", Font.BOLD, 25);
+				g.setFont(font);
+				g.setColor(Color.WHITE);
+				g.drawString("See Robot Class Source Code", 120, 329);
+			}
 			
 		}
 	}

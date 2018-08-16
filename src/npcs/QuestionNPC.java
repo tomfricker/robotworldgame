@@ -1,11 +1,13 @@
 package npcs;
 
+import java.awt.Dialog;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
 import robot.game.Game;
