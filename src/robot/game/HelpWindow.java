@@ -67,6 +67,8 @@ public class HelpWindow {
 							+ "The Run Code button executes all the code in the right hand panel.";
 					case "Characters": return "There are different characters to interact with, try them all!";
 					case "1 - Data Types": return readFile("HelpPages\\datatypes.html");
+					
+					case "4 - Loops and Methods": return readFile("HelpPages\\loops.html");
 				}
 				return null;
 			}

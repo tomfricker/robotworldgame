@@ -1,0 +1,141 @@
+<html>
+<head>
+<link href="styles.css" type="text/css" rel="stylesheet">
+<title>Loops</title>
+
+</head>
+<body>
+
+<h1>Loops</h1>
+<p>There are three different types of loops that you need to know about.<br>
+<br>
+
+<h2>The <b>for each</b> loop.</h2>
+<p>This loop is ONLY used for collections and has the following syntax:</p>
+<pre>
+for(ElementType element : collection) {<br>
+	loop body<br>
+}
+</pre>
+<p>
+The for each loop carries out the loop body for each element in the collection.
+</p>
+<ul>
+<li><b>ElementType element</b> - The ElementType is what class the objects in the collection are, and the element is a reference to an object in the collection. You choose what element is called.</li>
+<li><b>collection</b> - a collection of objects of the class ElementType.</li>
+<li><b>loop body</b> - statements which will be repeated for each element in the collection.</li>
+</ul>
+<p>
+Here is an example: <br>
+</p>
+<pre>
+for(Flower flower : flowers) {<br>
+	pickup(flower);<br>
+}
+</pre>
+<p>
+First we will look at each part of the loop.
+</p>
+<ul>
+<li><b>Flower flower</b> - The element flower is an object of teh class Flower. Here I chose the element to be called flower.</li>
+<li><b>flowers</b> - a collection of flowers (where each is of the class Flower).</li>
+<li><b>pickup(flower);</b> - each flower in the collection flowers will be picked up.</li>
+</ul>
+<p>
+So, imagine you have a numbered list of flowers. 
+This loop will start with the first flower on your list and pick it up. 
+Then it will move on to the second and pick that one up, and so on, until all the flowers on your list have been picked up.
+</p>
+<br>
+<br>
+
+<h2>The <b>while</b> loop.</h2>
+<p>
+This loop is used when you want to repeat the loop body an unknown number of times.<br>
+It has the following syntax: <br>
+<i>Note: boolean means it is either true or false.</i>
+</p>
+<pre>
+while(boolean condition) {<br>
+	loop body<br>
+}
+</pre>
+<p>
+The while loop carries out the loop body until the boolean condition is false.
+</p>
+<ul>
+<li><b>boolean condition</b> - an expression that can be either true or false.</li>
+<li><b>loop body</b> - statements which will be repeated.</li>
+</ul>
+<p>
+Here is an example: <br>
+</p>
+<pre>
+int flowerIndex = 0;<br>
+while(flowerIndex < flowers.size()) {<br>
+	pickup(flower);<br>
+	flowerIndex ++;<br>
+}
+</pre>
+<p>
+First we will look at each part of the loop.
+</p>
+<ul>
+<li><b>int flowerIndex = 0;</b> - First we initialise a variable flowerIndex which is an integer and is equal to zero.</li>
+<li><b>flowerIndex < flowers.size()</b> - the loop will continue while the flowerIndex is less than the number of flowers.</li>
+<li><b>pickup(flower);</b> - the flower will be picked up.</li>
+<li><b>flowerIndex ++;</b> - this will add one to the flowerIndex.</li>
+</ul>
+<p>
+So, once again, imagine you have a numbered list of flowers which starts with zero. 
+This loop will start with whatever flower is at the flowerIndex number, it will pick up that flower and then add one to the flowerIndex. 
+Then it will move on to the flower at the new number of the flowerIndex and pick that one up, and so on, until flowerIndex is a bigger number than the number of flowers available.
+</p>
+<br>
+<br>
+
+
+<h2>The <b>for</b> loop.</h2>
+<p>
+This loop is used when you want to repeat the loop body an known number of times.<br>
+It has the following syntax: <br>
+</p>
+<pre>
+for(initialization; loop condition; increment/decrement) {<br>
+	loop body<br>
+}
+</pre>
+<p>
+The for loop carries out the loop body until the loop condition is false.
+</p>
+<ul>
+<li><b>initialization</b> - is done once at the beginning.</li>
+<li><b>loop condition</b> - an expression that can be either true or false.</li>
+<li><b>increment/decrement</b> - is done after the loop body.</li>
+<li><b>loop body</b> - statements which will be repeated.</li>
+</ul>
+<p>
+Here is an example: <br>
+</p>
+<pre>
+for(int i = 0; i < 3; i++) {<br>
+	pickup(flower);<br>
+}
+</pre>
+<p>
+First we will look at each part of the loop.
+</p>
+<ul>
+<li><b>int i = 0;</b> - First we initialise <em>i</em> which is an integer and is equal to zero.</li>
+<li><b>i < 3;</b> - the loop will continue while i is less than 3.</li>
+<li><b>i++</b> - add one to i.</li>
+<li><b>pickup(flower);</b> - the flower will be picked up.</li>
+</ul>
+<p>
+So, you might have noticed that this loop does exactly the same as the while loop example, but here we know how many flowers we want the loop to repeat for.</p>
+<br>
+
+<p><i>(<b>Note:</b> that all of these examples are for demonstrating how a loop works and the loop bodies will not work as written here.)</i></p>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+
+h1 {
+	margin: 5px 10px 5px 10px;
+	padding: 5px 10px 5px 10px;
+	font-family: Candara; 
+	color: blue; 
+	text-align: center;
+	font-size: 250%;
+}
+
+h2 {
+	margin: 5px 10px 5px 10px;
+	padding: 5px 10px 5px 10px;
+	font-family: Candara;
+	color: red;
+	font-size: 150%;
+}
+
+p, pre {
+	margin: 5px 10px 5px 10px;
+	padding: 5px 10px 5px 10px;
+	font-family: Arial; 
+	color: black; 
+	text-align: justify;
+	font-size: 120%;
+}
+
+ul {
+	list-style-type: square;
+	font-family: Arial; 
+	color: black; 
+	font-size: 100%;
+}
+
+ul li {
+    padding: 8px 16px;
+}
+

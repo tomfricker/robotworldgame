@@ -719,8 +719,8 @@ public class Spawner {
 			hud.setInteractions(interactions + 1);
 		}
 		else if(interactions == 5) {
-			String message4 = "For example for i starting at 0, if i is less than the number of flowers, pick up the flower.\n"
-					+ "for(int i = 0; i < flowers.size(); i++) {\n"
+			String message4 = "For example for i starting at 0, if i is less than 3, pick up the flower.\n"
+					+ "for(int i = 0; i < 3; i++) {\n"
 					+ tab + "pickup(flower);\n"
 					+ "}";
 			manager.addObject(new MessageNPC(Cells.G, Cells.H, ID.NPC, manager, side, hud, message4));
