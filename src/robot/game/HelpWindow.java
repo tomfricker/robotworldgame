@@ -68,7 +68,10 @@ public class HelpWindow {
 							+ "When on the Code Panel, you can scroll with the UP and DOWN arrow keys to navigate "
 							+ "through the commands you've written.";
 					case "Characters": return "There are different characters to interact with, try them all!";
+					case "Input": return readFile("HelpPages\\input.html");
 					case "1 - Data Types": return readFile("HelpPages\\datatypes.html");
+					
+					case "4 - Loops and Methods": return readFile("HelpPages\\loops.html");
 				}
 				return null;
 			}
@@ -127,6 +130,9 @@ public class HelpWindow {
 	    category.add(info);
 	    
 	    info = new DefaultMutableTreeNode("Characters");
+	    category.add(info);
+	    
+	    info = new DefaultMutableTreeNode("Input");
 	    category.add(info);
 
 	    

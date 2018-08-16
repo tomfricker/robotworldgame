@@ -77,10 +77,10 @@ public class CodePanel extends Panel implements FocusListener {
 		//prints in codeOutput when enter key is pressed 
         codeInput.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		HistoryLog.addToCommandList(getInput());
         		Commands.printCommands();
         		if(Commands.checkCommands() == true) {
         			Commands.addToCommandList(getInput());
+        			HistoryLog.addToCommandList(getInput());
         		}
         		refreshInputBox();
         	}
@@ -95,6 +95,7 @@ public class CodePanel extends Panel implements FocusListener {
         		//goes through command list and carries it out
         		if(Commands.checkCommands() == true) {
         			Commands.addToCommandList(getInput());
+        			HistoryLog.addToCommandList(getInput());
         		}
         		Commands.runCommands();
         		refreshInputBox();
