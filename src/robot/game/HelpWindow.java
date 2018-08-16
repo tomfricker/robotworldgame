@@ -3,14 +3,18 @@ package robot.game;
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
+import java.io.FileReader;
+import java.util.Scanner;
 
+import javax.swing.JEditorPane;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
-import javax.swing.JTextArea;
 import javax.swing.JTree;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
+import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.tree.DefaultMutableTreeNode;
 
 public class HelpWindow {
@@ -23,7 +27,12 @@ public class HelpWindow {
 		contentPane.setPreferredSize(new Dimension(640, 480));
 		
 		JPanel contents = new JPanel();
-		JTextArea helpPane = new JTextArea();
+		JEditorPane helpPane = new JEditorPane();
+		JScrollPane scrollPane = new JScrollPane(helpPane);
+		
+		// add an html editor kit for interpreting HTML
+        HTMLEditorKit kit = new HTMLEditorKit();
+        helpPane.setEditorKit(kit);
 		
 		DefaultMutableTreeNode top = new DefaultMutableTreeNode("Help");
 		createNodes(top);
@@ -47,19 +56,19 @@ public class HelpWindow {
 	        }
 
 	        /**
-	         * Return the correct information for the item selected
+	         * Return the correct file location for the html page to load.
 	         * @param help
 	         * @return
 	         */
 			private String getHelp(String help) {
 				switch(help) {
-					case "Controls": return "Use the arrow keys to move the robot";
+					case "Controls": return readFile("HelpPages\\controls.html");
 					case "Buttons": return "The Main Menu button takes you back to the level selector.\n\n"
 							+ "The Run Code button executes all the code in the right hand panel.\n\n"
 							+ "When on the Code Panel, you can scroll with the UP and DOWN arrow keys to navigate "
 							+ "through the commands you've written.";
 					case "Characters": return "There are different characters to interact with, try them all!";
-					case "1": return "Here we learn about data types and how to type them out in Java.";
+					case "1 - Data Types": return readFile("HelpPages\\datatypes.html");
 				}
 				return null;
 			}
@@ -70,8 +79,8 @@ public class HelpWindow {
 		JSplitPane splitPane = new JSplitPane();
 		
 		splitPane.setTopComponent(tree);
-		splitPane.setBottomComponent(helpPane);
-		splitPane.setDividerLocation(180);
+		splitPane.setBottomComponent(scrollPane);
+		splitPane.setDividerLocation(210);
 	    splitPane.setPreferredSize(new Dimension(630, 350));
 		
 		contentPane.add(splitPane);
@@ -79,6 +88,29 @@ public class HelpWindow {
 		frame.pack();
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
+	}
+	
+	/**
+	 * Read a file and return it's contents
+	 * @return
+	 */
+	private String readFile(String file) {
+		StringBuilder contents = new StringBuilder("");
+		
+		try {
+			Scanner scanner = new Scanner(new FileReader(file));
+			
+			while(scanner.hasNextLine()) {
+				contents.append(scanner.nextLine());
+			}
+		}
+		catch(Exception e) {
+			e.printStackTrace();	
+		}
+		
+		String helpContents = contents.toString();
+		
+		return helpContents;
 	}
 	
 	private void createNodes(DefaultMutableTreeNode top) {
@@ -102,19 +134,19 @@ public class HelpWindow {
 	    category = new DefaultMutableTreeNode("Levels");
 	    top.add(category);
 
-	    info = new DefaultMutableTreeNode("1");
+	    info = new DefaultMutableTreeNode("1 - Data Types");
 	    category.add(info);
 
-	    info = new DefaultMutableTreeNode("2");
+	    info = new DefaultMutableTreeNode("2 - Classes and Objects");
 	    category.add(info);
 	    
-	    info = new DefaultMutableTreeNode("3");
+	    info = new DefaultMutableTreeNode("3 - Collections");
 	    category.add(info);
 	    
-	    info = new DefaultMutableTreeNode("4");
+	    info = new DefaultMutableTreeNode("4 - Loops and Methods");
 	    category.add(info);
 	    
-	    info = new DefaultMutableTreeNode("5");
+	    info = new DefaultMutableTreeNode("5 - Conditional Statements");
 	    category.add(info);
 	}
 

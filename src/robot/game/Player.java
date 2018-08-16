@@ -29,7 +29,8 @@ public class Player extends GameObjects {
 		 * copy the file location and paste into the speech marks below. The robot.png
 		 * should be located in the robot.game package underneath the classes to your left <------.
 		 */
-		File imageFile = new File("pictures/HelensRobot.png");
+
+		File imageFile = new File("pictures\\HelensRobot.png");
 		//InputStream input = getClass().getResourceAsStream("HelenRobot.png");
 		try {
 			Image robot = ImageIO.read(imageFile);

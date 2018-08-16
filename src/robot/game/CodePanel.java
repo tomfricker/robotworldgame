@@ -93,6 +93,9 @@ public class CodePanel extends Panel implements FocusListener {
 		enterButton.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		//goes through command list and carries it out
+        		if(Commands.checkCommands() == true) {
+        			Commands.addToCommandList(getInput());
+        		}
         		Commands.runCommands();
         		refreshInputBox();
         		Commands.clearCommandList();

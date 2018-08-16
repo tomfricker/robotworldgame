@@ -13,6 +13,7 @@ import javax.swing.JOptionPane;
 import robot.game.Game;
 import robot.game.GameObjects;
 import robot.game.HUD;
+import robot.game.Hints;
 import robot.game.ID;
 import robot.game.Manager;
 import robot.game.SidePanel;
@@ -41,6 +42,7 @@ public class QuestionNPC extends GameObjects {
 	boolean interacted;
 	private String question, answer;
 	private String picture;
+	private Hints hints;
 
 	/**
 	 * Constructor for the LevelEndNPC
@@ -60,6 +62,7 @@ public class QuestionNPC extends GameObjects {
 		this.question = question;
 		this.answer = answer;
 		this.picture = picture;
+		hints = new Hints();
 	}
 
 	/**
@@ -113,6 +116,10 @@ public class QuestionNPC extends GameObjects {
 						SidePanel.addText("~" + input + "\n");
 						SidePanel.addText("~incorrect\n");
 						SidePanel.addText("~You lost 10 points\n\n");
+						//gives a hint
+						String hint = hints.giveHint(input);
+						SidePanel.addText("~" + hint + "\n\n");
+						
 						gameObject.setX(gameObject.getX()-Game.boardIndex);
 						int currentScore = hud.getScore();
 						if(currentScore > 0)
@@ -121,9 +128,9 @@ public class QuestionNPC extends GameObjects {
 					//if the player is correct increase interactions and move on
 					else if(input.equals(answer)) {
 						hud.setScore(hud.getScore() + 50);
-						SidePanel.addText("~" + question + "\n\n");
-						SidePanel.addText("~" + input + "\n");
-						SidePanel.addText("~correct\n\n");
+						SidePanel.addText("~" + question + "\n\n"
+							+ "~" + input + "\n"
+							+ "~correct\n\n");
 						interacted = true;
 						//hud.setLevelEnd(true);
 						hud.setInteractions(hud.getInteractions() + 1);

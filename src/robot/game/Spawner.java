@@ -48,10 +48,10 @@ public class Spawner {
 		switch(hud.getLevel()) {
 			//Execute the method for the correct level/stage
 			//level 1
-			case 1: if(stage == 1) levelOneStageOne();
-			else if(stage == 2) levelOneStageTwo();
-			else if(stage == 3) levelOneStageThree();
-			else if(stage == 4) levelOneStageFour();
+			case 1: if(stage == 1) dataTypesIntro();
+			else if(stage == 2) dataTypesInt();
+			else if(stage == 3) dataTypesString();
+			else if(stage == 4) dataTypesQuiz();
 
 			//level 2
 			case 2: if(stage == 1) levelTwoStageOne();
@@ -84,7 +84,7 @@ public class Spawner {
 	 * The number of interactions is executed using odd numbers to ensure that an
 	 * object is only added once to the manager.
 	 */
-	public void levelOneStageOne() {
+	public void dataTypesIntro() {
 		//Get the number of interactions
 		int interactions = hud.getInteractions();
 		//Add the second NPC once the first has been interacted with
@@ -132,7 +132,7 @@ public class Spawner {
 	 * The number of interactions is executed using odd numbers to ensure that an
 	 * object is only added once to the manager.
 	 */
-	public void levelOneStageTwo() {
+	public void dataTypesInt() {
 		int interactions = hud.getInteractions();
 		if(hud.isStageEnd() == true) {
 			Manager.clearAll();
@@ -163,7 +163,8 @@ public class Spawner {
 				manager.addObject(new MessageNPC(cell, Cells.A, ID.NPC, manager, side, hud, null));
 			}
 			String question = "Please declare the number of robots on the top line of the board.\n"
-					+ "I need to be declared in a variable called robots";
+					+ "It needs to be declared in a variable called robots.\n\n"
+					+ "HINT: Spelling, spaces and upper/lowercase letters are important when writing code!";
 			String answer = "int robots = 8;";
 			manager.addObject(new StageEndNPC(Cells.D, Cells.G, ID.NPC, manager, side, hud, question, answer));
 			hud.setInteractions(0);
@@ -174,7 +175,7 @@ public class Spawner {
 	 * Sets up stage 3 of level 1 and adds NPCs as necessary. Works in the same way as
 	 * levelOneStageOne()
 	 */
-	public void levelOneStageThree() {
+	public void dataTypesString() {
 		int interactions = hud.getInteractions();
 		if(hud.isStageEnd() == true) {
 			Manager.clearAll();
@@ -182,7 +183,7 @@ public class Spawner {
 					+ "~Now try stage 3.\n\n"
 					+ "~Good luck!\n\n");
 			manager.addObject(new Player(Cells.A, Cells.A, ID.Player));
-			String message1 = "In Java, and most programming languages, a word, sentence or bunch of characters is called a String.\n\n(HINT: Notice the capital letter)";
+			String message1 = "In Java, and most programming languages, a word, sentence or group of characters is called a String.\n\n(HINT: Notice the capital letter)";
 			manager.addObject(new MessageNPC(Cells.C, Cells.C, ID.NPC, manager, side, hud, message1));
 			hud.setStageEnd(false);
 		}
@@ -203,8 +204,10 @@ public class Spawner {
 			hud.setInteractions(interactions + 1);
 		}
 		else if(interactions == 7) {
-			String question = "Please declare a String called robot that is \"Robot\"";
-			String answer = "String robot = \"Robot\";";
+			String question = "Let's declare a String.\n\n"
+					+ "We'll call the String name\n"
+					+ "Then assign \"Robbie\" to that variable.";
+			String answer = "String name = \"Robbie\";";
 			manager.addObject(new StageEndNPC(Cells.D, Cells.H, ID.NPC, manager, side, hud, question, answer));
 			hud.setInteractions(0);
 		}
@@ -214,7 +217,7 @@ public class Spawner {
 	 * Sets up stage 4 of level 1 and adds NPCs as necessary. Works in the same way as
 	 * levelOneStageOne()
 	 */
-	public void levelOneStageFour() {
+	public void dataTypesQuiz() {
 		int interactions = hud.getInteractions();
 		if(hud.isStageEnd() == true) {
 			Manager.clearAll();
@@ -222,8 +225,11 @@ public class Spawner {
 					+ "~Now try stage 4.\n\n"
 					+ "~Good luck!\n\n");
 			manager.addObject(new Player(Cells.A, Cells.A, ID.Player));
-			String message1 = "If we want to do arithmetic on numbers we can use + - / or * on two variables, such as:\n\n"
-					+ "int squares = rows * columns;";
+			String message1 = "If we want to do arithmetic on numbers we can use + - / or *(this means multiply) on two variables, such as:\n\n"
+					+ "int rows = 8;\n"
+					+ "int columns = 8;\n"
+					+ "int squares = rows * columns;\n\n"
+					+ "What number do you think squares will store?";
 			manager.addObject(new MessageNPC(Cells.C, Cells.C, ID.NPC, manager, side, hud, message1));
 			hud.setStageEnd(false);
 		}
@@ -239,7 +245,8 @@ public class Spawner {
 					+ "1. int\n"
 					+ "2. boolean\n"
 					+ "3. sausage\n"
-					+ "4. long\n", 
+					+ "4. long\n\n"
+					+ "Only write the number you think is correct.", 
 					"Which of these is a correct variable declaration in Java?\n\n"
 					+ "1. int 30 = elephants;\n"
 					+ "2. 30 elephants = int;\n"

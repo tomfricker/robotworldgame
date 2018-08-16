@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 import robot.game.Game;
 import robot.game.GameObjects;
 import robot.game.HUD;
+import robot.game.Hints;
 import robot.game.ID;
 import robot.game.Manager;
 import robot.game.SidePanel;
@@ -38,6 +39,7 @@ public class MultipleQuestionNPC extends GameObjects {
 	private HUD hud;
 	private String[] questions, answers;
 	private boolean interacted;
+	private Hints hints;
 
 	/**
 	 * Constructor for the StageEndNPC
@@ -56,6 +58,7 @@ public class MultipleQuestionNPC extends GameObjects {
 		this.questions = questions;
 		this.answers = answers;
 		interacted = false;
+		hints= new Hints();
 	}
 
 	/**
@@ -90,15 +93,21 @@ public class MultipleQuestionNPC extends GameObjects {
 				if(gameObject.getX() == x && gameObject.getY() == y) {
 					for(int i = 0; i < questions.length; i++) {
 						String input = JOptionPane.showInputDialog(null, questions[i]);
-						//if(input == null || input.length() == 0) {
-							//gameObject.setX(gameObject.getX()-Game.boardIndex);
-						//}
+						//allows the player to get out of the quiz and continue in level
+						if(input == null) {
+							gameObject.setX(gameObject.getX()-Game.boardIndex);
+							break;
+						}
 						//if the answer is incorrect the player can continue to move round the board and the interactions can still take place
 						while (!input.equals(answers[i])) {
 							
 							SidePanel.addText("~" + input + "\n");
 							SidePanel.addText("~incorrect\n");
 							SidePanel.addText("~You lost 10 points\n\n");
+							//gives a hint
+							String hint = hints.giveHint(input);
+							SidePanel.addText("~" + hint + "\n\n");
+							
 							gameObject.setX(gameObject.getX()-Game.boardIndex);
 							int currentScore = hud.getScore();
 							if(currentScore > 0)
@@ -111,8 +120,10 @@ public class MultipleQuestionNPC extends GameObjects {
 							SidePanel.addText("~" + input + "\n");
 							SidePanel.addText("~correct\n\n");
 						}
+						//finishes the level if all questions are correct
+						if(i == (answers.length - 1))
+							hud.setLevelEnd(true);
 					}
-					hud.setLevelEnd(true);
 				}
 			}
 		}
