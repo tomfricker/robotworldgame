@@ -66,6 +66,7 @@ public class HelpWindow {
 					case "Buttons": return "The Main Menu button takes you back to the level selector.\n\n"
 							+ "The Run Code button executes all the code in the right hand panel.";
 					case "Characters": return "There are different characters to interact with, try them all!";
+					case "Input": return readFile("HelpPages\\input.html");
 					case "1 - Data Types": return readFile("HelpPages\\datatypes.html");
 					
 					case "4 - Loops and Methods": return readFile("HelpPages\\loops.html");
@@ -127,6 +128,9 @@ public class HelpWindow {
 	    category.add(info);
 	    
 	    info = new DefaultMutableTreeNode("Characters");
+	    category.add(info);
+	    
+	    info = new DefaultMutableTreeNode("Input");
 	    category.add(info);
 
 	    
