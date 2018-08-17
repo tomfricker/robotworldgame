@@ -70,7 +70,7 @@ public class HelpWindow {
 					case "Characters": return "There are different characters to interact with, try them all!";
 					case "Input": return readFile("HelpPages\\input.html");
 					case "1 - Data Types": return readFile("HelpPages\\datatypes.html");
-					
+					case "2 - Classes and Objects": return readFile("HelpPages\\classes&objects.html");
 					case "4 - Loops and Methods": return readFile("HelpPages\\loops.html");
 				}
 				return null;
