@@ -2,8 +2,17 @@ package robot.game;
 
 import java.util.HashMap;
 
+/**
+ * This class creates possible hint for stated incorrect answers.
+ * It then compares the users input with the possible incorrect answers to find a relevant hint and if one is available returns the hint.
+ * 
+ * @author MissH
+ *
+ */
+
 public class Hints {
 	
+	//contains all available hints
 	private HashMap<String, String> hintMap;
 	
 	public Hints() {
@@ -11,6 +20,11 @@ public class Hints {
 		chooseHintMap();
 	}
 	
+	/**
+	 * Returns chosen hint if available, if not returns message
+	 * @param input The users answer
+	 * @return The hint or the given message
+	 */
 	public String giveHint(String input) {
 		String chosen = hintMap.get(input);
 		if(chosen != null) {
@@ -19,6 +33,9 @@ public class Hints {
 		return "That's not quite right, try again.";
 	}
 	
+	/**
+	 * Adds possible incorrect answers and their corresponding hint
+	 */
 	private void chooseHintMap() {
 //LEVEL 1
 		//level 1 stage 2

@@ -191,9 +191,10 @@ public class MainMenu extends MouseAdapter{
 				String npcMessage = "Well Done! Now try moving up.";
 				manager.addObject(new MessageNPC(Cells.E, Cells.D, ID.NPC, manager, side, hud, npcMessage));
 				side.setText("~Welcome to level 4 of Robot World!\n\n"
-						+ "~Try moving the Robot around the board by typing in code, e.g. robot.move(right);, "
-						+ "press the Run Code button.\n\n"
-						+ "~To learn how to use the input panel press the Help button.\n\n");
+						+ "~Try moving the Robot around the board by typing in code.\n\n"
+						+ "~First type robot.move(right); and then press the Run Code button.\n\n"
+						+ "~Go to each message robot as it appears to talk to it.\n\n"
+						+ "~To learn how to use the input panel press the Help button or type help.\n\n");
 				break;
 			}
 			case 5 : {
