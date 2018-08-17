@@ -12,11 +12,11 @@
 
 <h2>1) for each</h2>
 <p>This loop is ONLY used for collections and has the following syntax:</p>
-<pre>
+<pre><code>
 for(ElementType element : collection) {<br>
 	loop body<br>
 }
-</pre>
+</code></pre>
 <p>
 The for each loop carries out the loop body for each element in the collection.
 </p>
@@ -28,11 +28,11 @@ The for each loop carries out the loop body for each element in the collection.
 <p>
 Here is the example from the game: <br>
 </p>
-<pre>
+<pre><code>
 for(Flower flower : flowers) {<br>
 	pickup(flower);<br>
 }
-</pre>
+</code></pre>
 <p>
 First we will look at each part of the loop.
 </p>
@@ -55,11 +55,11 @@ This loop is used when you want to repeat the loop body an unknown number of tim
 It has the following syntax: <br>
 <i>Note: boolean means it is either true or false.</i>
 </p>
-<pre>
+<pre><code>
 while(boolean condition) {<br>
 	loop body<br>
 }
-</pre>
+<code></pre>
 <p>
 The while loop carries out the loop body until the boolean condition is false.
 </p>
@@ -70,13 +70,13 @@ The while loop carries out the loop body until the boolean condition is false.
 <p>
 Here is the example from the game: <br>
 </p>
-<pre>
+<pre><code>
 int flowerIndex = 0;<br>
 while(flowerIndex &lt flowers.size()) {<br>
 	pickup(flower);<br>
 	flowerIndex ++;<br>
 }
-</pre>
+</code></pre>
 <p>
 First we will look at each part of the loop.
 </p>
@@ -100,11 +100,11 @@ Then it will move on to the flower at the new number of the flowerIndex and pick
 This loop is used when you want to repeat the loop body an known number of times.<br>
 It has the following syntax: <br>
 </p>
-<pre>
+<pre><code>
 for(initialization; loop condition; increment/decrement) {<br>
 	loop body<br>
 }
-</pre>
+</code></pre>
 <p>
 The for loop carries out the loop body until the loop condition is false.
 </p>
@@ -117,16 +117,16 @@ The for loop carries out the loop body until the loop condition is false.
 <p>
 Here is the example from the game: <br>
 </p>
-<pre>
+<pre><code>
 for(int i = 0; i &lt 3; i++) {<br>
 	pickup(flower);<br>
 }
-</pre>
+</code></pre>
 <p>
 First we will look at each part of the loop.
 </p>
 <ul>
-<li><b>int i = 0;</b> - First we initialise <em>i</em> which is an integer and is equal to zero.</li>
+<li><b>int i = 0;</b> - First we initialise i which is an integer and is equal to zero.</li>
 <li><b>i &lt 3;</b> - the loop will continue while i is less than 3.</li>
 <li><b>i++</b> - add one to i.</li>
 <li><b>pickup(flower);</b> - the flower will be picked up.</li>
