@@ -25,7 +25,8 @@ public class Commands {
 			"robot.move(down, 2);", "robot.move(down, 3);", "robot.move(down, 4);", "robot.move(down, 5);", "robot.move(down, 6);", "robot.move(down, 7);", 
 			"robot.move(left, 2);", "robot.move(left, 3);", "robot.move(left, 4);", "robot.move(left, 5);", "robot.move(left, 6);", "robot.move(left, 7);", 
 			"robot.move(right, 2);", "robot.move(right, 3);", "robot.move(right, 4);", "robot.move(right, 5);", "robot.move(right, 6);", "robot.move(right, 7);",
-			"chars.add(a);","chars.add(e);","chars.add(i);","chars.add(o);","chars.add(u);", "chars.remove(1);"
+			"chars.add(a);","chars.add(e);","chars.add(i);","chars.add(o);","chars.add(u);", "chars.remove(1);",
+			"help"
 	};
 	
 	/**
@@ -98,6 +99,9 @@ public class Commands {
 		}
 	}
 	
+	/**
+	 * Shows drawing of flower
+	 */
 	public static void drawFlower() {
 		Drawing.setVisibility(true);
 	}
@@ -128,7 +132,7 @@ public class Commands {
 		}
 	}
 	
-public static void addToAL(char c) {
+	public static void addToAL(char c) {
 		
 		for(GameObjects o : Manager.objectList) {
 			if (o.getId() == ID.Collection) {
@@ -147,6 +151,13 @@ public static void addToAL(char c) {
 				
 			}
 		}
+	}
+	
+	/**
+	 * Opens help window
+	 */
+	public static void help() {
+		new HelpWindow();
 	}
 	
 	/**
@@ -302,6 +313,9 @@ public static void addToAL(char c) {
 			}
 			else if(command.equals("chars.remove(1);")) {
 				removeFromAL(1);
+			}
+			else if(command.equals("help")) {
+				help();
 			}
 		}
 	}
