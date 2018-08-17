@@ -15,6 +15,7 @@ import javax.swing.JTree;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
 import javax.swing.text.html.HTMLEditorKit;
+import javax.swing.text.html.StyleSheet;
 import javax.swing.tree.DefaultMutableTreeNode;
 
 public class HelpWindow {
@@ -33,6 +34,14 @@ public class HelpWindow {
 		// add an html editor kit for interpreting HTML
         HTMLEditorKit kit = new HTMLEditorKit();
         helpPane.setEditorKit(kit);
+        
+        //add css to html
+        StyleSheet styleSheet = kit.getStyleSheet();
+        styleSheet.addRule("h1 {margin: 5px 10px 5px 10px; padding: 5px 10px 5px 10px; color: blue; text-align: center; font-size: 200%;}");
+        styleSheet.addRule("h2 {margin: 5px 10px 5px 10px; padding: 5px 10px 5px 10px; color: red; font-size: 150%;}");
+        styleSheet.addRule("p, pre {margin: 5px 10px 5px 10px; padding: 5px 10px 5px 10px; color: black; text-align: justify; font-size: 120%;}");
+        styleSheet.addRule("ul {list-style-type: square; color: black; font-size: 110%;}");
+        styleSheet.addRule("ul li {padding: 8px 16px;}");
 		
 		DefaultMutableTreeNode top = new DefaultMutableTreeNode("Help");
 		createNodes(top);
