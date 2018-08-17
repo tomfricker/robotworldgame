@@ -554,8 +554,8 @@ public class Spawner {
 	public void levelFourStageOne() {
 		int interactions = hud.getInteractions();
 		if(interactions == 1) {
-			String message = "Well Done! Lets see if you can pickup the flower.\n"
-					+ "Try typing robot.move(up, 2); to get to it.";
+			String message = "Well Done! Next try typing robot.move(up, 2); to get to the flower.\n"
+					+ "Then try to pickup the flower by typing a new command once you are on the same square.";
 			manager.addObject(new MessageNPC(Cells.E, Cells.C, ID.NPC, manager, side, hud, message));
 			hud.setInteractions(interactions + 1);
 		 }
@@ -584,6 +584,7 @@ public class Spawner {
 			Manager.clearAll();
 			SidePanel.addText("~Congratulations you completed Stage 1\n\n"
 					+ "~Now try stage 2.\n\n"
+					+ "~Pick up the flowers for extra points!\n\n"
 					+ "~Good luck!\n\n");
 			manager.addObject(new Player(Cells.A, Cells.A, ID.Player));
 			String message1 = "If you want to repeat some code you can use loops.";
@@ -591,7 +592,8 @@ public class Spawner {
 			hud.setStageEnd(false);
 		}
 		if(interactions == 1) {
-			String message2 = "There are three types of loops: for each, while and for.";
+			String message2 = "There are three types of loops: for each, while and for.\n"
+					+ "Note: if you ever need more explanation press the help window.";
 			manager.addObject(new MessageNPC(Cells.C, Cells.D, ID.NPC, manager, side, hud, message2));
 			File picture = new File("pictures\\flower2.png");
 			manager.addFlower(new Flower(Cells.A, Cells.D, ID.Flower, manager, side, hud, picture));
@@ -623,6 +625,7 @@ public class Spawner {
 		else if(interactions == 9) {
 			String question = "What would the following for each loop print for the collection flower = {rose, tulip, lily}?\n"
 					+ "for(Flower flower : flowers) {\n"
+					+ tab + "//This print method prints out exactly what is in the brackets.\n"
 					+ tab + "print(flower, );\n"
 					+ "}";
 			String answer = "rose, tulip, lily, ";
@@ -756,7 +759,8 @@ public class Spawner {
 					+ "~Now try stage 5.\n\n"
 					+ "~Good luck!\n\n");
 			manager.addObject(new Player(Cells.A, Cells.A, ID.Player));
-			String message = "Lets use loops to draw a flower! Try drawFlower();";
+			String message = "Lets use loops to draw a flower!\n"
+					+ "First try typing: drawFlower();";
 			manager.addObject(new MessageNPC(Cells.B, Cells.B, ID.NPC, manager, side, hud, message));
 			manager.addObject(new Drawing(interactions, interactions, null, manager, side, hud));
 			File picture = new File("pictures\\flower2.png");
@@ -767,7 +771,7 @@ public class Spawner {
 			String[] questions = {"Which loop should we use: for each, while or for?",
 					"Correct the following for loop:\n"
 					+ "for(i = 1; i < 6; i++) {...\n",
-			"What is wrong with the following:\n"
+					"What is wrong with the following:\n"
 					+ "for(int i = 1; i = 6; i++) {...\n"
 					+ "1. inital condition is not instantiated\n"
 					+ "2. loop condition does not resolve to boolean\n"

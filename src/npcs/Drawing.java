@@ -12,6 +12,13 @@ import robot.game.ID;
 import robot.game.Manager;
 import robot.game.SidePanel;
 
+/**
+ * This class extends GaeObjects, it draws a flower on the board.
+ * 
+ * @author MissH
+ *
+ */
+
 public class Drawing extends GameObjects {
 
 	Manager manager;
@@ -20,6 +27,15 @@ public class Drawing extends GameObjects {
 	boolean interacted;
 	static boolean visibility = false;
 	
+	/**
+	 * Constructor for Drawing
+	 * @param x
+	 * @param y
+	 * @param id
+	 * @param manager
+	 * @param side
+	 * @param hud
+	 */
 	public Drawing(int x, int y, ID id, Manager manager, SidePanel side, HUD hud) {
 		super(x, y, id);
 		this.manager = manager;
@@ -28,12 +44,18 @@ public class Drawing extends GameObjects {
 		interacted = false;
 	}
 	
+	/**
+	 * When it is interacted with it will call the interact method
+	 */
 	@Override
 	public void tick() {
 		if(interacted == false)
 			interact();
 	}
 
+	/**
+	 * Draws the flower
+	 */
 	@Override
 	public void render(Graphics g) {
 		if(getVisibility() == true) {
@@ -63,6 +85,9 @@ public class Drawing extends GameObjects {
 		}
 	}
 	
+	/**
+	 * If visibility is true (code drawFlower(); has been entered) the score will increase and the level will end.
+	 */
 	public void interact() {
 		if(getVisibility() == true) {
 			hud.setScore(hud.getScore() + 50);
@@ -71,10 +96,18 @@ public class Drawing extends GameObjects {
 		interacted = true;			
 	}
 	
+	/**
+	 * Returns the boolean variable visibility
+	 * @return true or false
+	 */
 	public boolean getVisibility() {
 		return visibility;
 	}
 	
+	/**
+	 * Sets the boolean variable visibility to true or false
+	 * @param newvisibility The new value of visibility
+	 */
 	public static void setVisibility(boolean newvisibility) {
 		visibility = newvisibility;
 	}

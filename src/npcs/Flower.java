@@ -26,7 +26,7 @@ public class Flower extends GameObjects {
 	boolean interacted;
 	
 	/**
-	 * Constructor for Flowers
+	 * Constructor for Flower
 	 * @param x
 	 * @param y
 	 * @param id
