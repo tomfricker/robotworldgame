@@ -1,0 +1,349 @@
+<html>
+
+<head>
+<link href="styles.css" type="text/css" rel="stylesheet">
+
+<title>Level 2 - Classes and Objects</title>
+</head>
+
+<body>
+
+<p>
+Level 2 looks at Objects and Classes. 
+This is a crucial concept to any Object-Oriented Programming (OOP) language including Java which is what we teach in RobotWorld.<br/>
+Here is the Theory we go through, so that you can access it at any time!
+</p> 
+
+<h1>Introduction:</h1>
+
+<p>
+In the level we initially get introduced to two classes: the Robot and the Item Classes. 
+Robot is an <b>object</b> from the Robot Class. 
+This means it has characteristics (<b>fields</b>) that are taken from (belong to) the Robot Class. <br/><br/>
+You should note that <b>Classes</b> start with a capital letter, while <b>objects</b> are written with a small letter. 
+<b>Classes</b> have <b>methods</b> that help you make an action, but only an <b>object</b> can <b>invoke</b> that method.<br/><br/>
+The apple and the banana in this Level are Objects as well, instances from the Class Item. The robot can perform actions on them with the method <b>eat()</b>. 
+You can <b>invoke</b> the method by writing code in the form:<br/><br/>
+
+<code>ObjectName.MethodName(parameter);</code><br/><br/>
+
+So practically putting that in use with our Objects, it would look like this:<br/><br/>
+
+<code>robot.eat(apple);</code><br/><br/>
+
+Here the Method <b>eat()</b> takes a parameter, that is an <b>object</b> of <b>Class</b> Item. 
+You will get a better understanding of this further down when looking at <b>methods</b> in more detail.<br/><br/>
+Please note that you can name <b>objects</b> as you wish, as long as they start with a small letter and do not have a pre-existing meaning in Java (so we would exclude words like String, boolean, public, private etc.). 
+The same rules apply when naming a Class, however the Class name needs to start with a capital letter.<br/><br/>
+To create an <b>object</b> from a Class you need to write code in the following form: <br/><br/>
+
+<code>ClassName ObjectName = new ClassName();</code><br/><br/>
+
+The second part of this expression (after the = sign) is called a Constructor. 
+This is another element of a Class just like Fields and Methods.<br/><br/>
+
+As an example, let us create some Objects from our existing Classes:<br/><br/>
+
+<code>Item apple = new Item();</code><br/><br/>
+<code>Robot robot = new Robot();</code><br/><br/>
+</p>
+
+<h1>The Class Structure</h1>
+
+<p>
+As we have seen above a <b>Class</b> in Java has 3 main components: Fields (that refer to Objects' state), 
+Methods (that refer to Objects' behaviour) and Constructor (that is responsible for Objects' creation).<br/><br/>
+
+When building a class, you would follow the bellow structure:<br/><br/>
+</p>
+
+<pre><code>
+public class ClassName<br/>
+{<br/>
+	Fields<br/>
+	Constructor<br/>
+	Methods<br/>
+}
+</code></pre>
+<p>
+A full class example will be given at the end.<br/><br/>
+
+Before we go into more detail about each of these components, 
+it is important to look at one last concept: <b>access modifiers</b>.<br/><br/>
+
+These are key words that, just as their name suggests, modify the access of <b>Classes</b> and their elements to other Classes and their elements. 
+There are 4 types of access modifiers - <b>private, default, protected and public</b>; but we will only concentrate on 2 of those - public and private.<br/><br/>
+
+The private modifier is only accessible within the <b>Class</b>, while the public one is accessible everywhere. 
+We normally put access modifiers when defining a <b>Class, Constructor, fields</b> or <b>methods</b>.<br/><br/>
+
+<b>Classes, Constructors</b> and <b>methods</b> usually have public access modifier, 
+so that they can be used in other Classes as well.<br/><br/>
+
+Fields normally have a private access modifier so that 
+their values cannot be changed outside of the <b>Class</b> they are in.<br/><br/>
+
+Examples of access modifiers and how they are used:<br/><br/>
+</p>
+
+<h3>Class</h3>
+<pre><code>
+public class Item <br/>
+{ <br/>
+	Class Body <br/>
+}
+
+</code></pre>
+
+<h3>Constructor</h3>
+<pre><code>
+public Item() { <br/>
+	Constructor Body<br/>
+}
+
+</code></pre>
+
+<h3>Method</h3>
+<pre><code>
+public String getName(){<br/>
+	Method Body<br/>
+}
+
+</code></pre>
+
+<h3>Field</h3>
+<pre><code>
+private int age;
+</code></pre>
+
+<h1>Introduction to Fields</h1>
+
+<p>
+As mentioned before <b>fields</b> represent the characteristics of a <b>Class</b> and the <b>objects</b> 
+from that Class and allow for values to be stored within objects.<br/><br/>
+
+Each field has a <b>Data Type</b> that can be <b>primitive</b> or <b>reference</b> type: primitive as we have seen in 
+Level: Data Types such as String, int or boolean and reference type that can be any <b>Class</b> such as Robot or Item.<br/><br/>
+
+We write Fields in Java like so:<br/><br/>
+
+<b>accessModifier DataType/ClassName nameofField;</b>
+
+When you substitute all of these with concrete names you can get the following:<br/><br/>
+
+<code>private Item apple;</code> (this Field is of Class Item and is called apple)<br/><br/>
+<code>private String address;</code> (this Field is of type String, called address)<br/><br/>
+<code>private boolean hasAddress;</code> (this Field is of type Boolean and be either True or False value)<br/><br/>
+<code>private String name;</code><br/><br/>
+<code>private int age;</code><br/><br/>
+</p>
+
+<h1>Introduction to Constructor</h1>
+
+<p>
+Constructors are used when a new <b>object</b> of a <b>Class</b> is created. 
+They have the same name as the <b>Class</b> and initialise the <b>object</b> by storing initial values for the <b>fields</b>. 
+These values can be passed by parameters or hard coded in the constructor's body.<br/><br/>
+
+Here are examples of both:<br/><br/>
+</p>
+<pre><code>
+public Robot(String fullName, int robotAge) {<br/>
+	//this is a comment in Java: here we equate the Fields we created earlier to the parameters above<br/>
+	name = fullName;<br/>
+	age = robotAge;<br/>
+}<br/><br/>
+
+public Robot() {<br/>
+	name = "Robbie";<br/>
+	age = 15;<br/>
+}
+
+</code></pre>
+<p>
+Every <b>object</b> created with the second <b>constructor</b> will have the name "Robbie" and the age of 15 as default. 
+The <b>objects</b> created with the first <b>constructor</b> can have different name and age depending on what values you pass as parameters for <b>fullName</b> and <b>robotAge</b>.<br/><br/>
+
+Examples of creating an <b>object</b> with both <b>constructors</b>:<br/><br/>
+
+<code>Robot robot = new Robot();</code><br/><br/>
+<code>Robot robotOne = new Robot("Harry", 18);</code><br/><br/>
+
+As you can see, a <b>Class</b> can have multiple <b>constructors</b>, if they differ in parameters.<br/><br/>
+</p>
+
+<h1>Introduction to Methods</h1>
+
+<p>
+Methods specify an action that is performed BY or ON an <b>object</b>. 
+Each <b>Class</b> has certain <b>methods</b>, which its <b>objects</b> can perform or <b>invoke</b>.<br/><br/>
+
+Here is an example of how a <b>method</b> is defined within a <b>Class</b>:<br/><br/>
+</p>
+<pre><code>
+accessModifier returnType methodName (parameters) {<br/>
+	action;<br/>
+	action;<br/>
+	action;<br/>
+}
+</code></pre>
+
+<p>
+Methods that <b>return</b> an <b>object</b> have the same <b>return Type</b> as object's Data Type (e.g. String, int, Robot) and are called <b>accessor methods</b>. 
+They will also always have the <b>return</b> key word in their body:<br/><br/>
+</p>
+
+<pre><code>
+public String getAddress() {<br/>
+	return address;<br/>
+}
+</code></pre>
+
+<p>
+Methods that change the state of an <b>object</b> and do not have a <b>return</b> statement have a VOID <b>return Type</b> and are called <b>mutator methods</b>.<br/><br/>
+</p>
+
+<pre><code>
+public void changeAddress(String newAddress) {<br/>
+	address = newAddress;<br/>
+}
+</code></pre>
+<p>
+Here is the body of the Robot Class that we built together with your answers during this Level:<br/><br/>
+</p>
+<pre><code>
+/**<br/>
+ * This is the Robot class and it determines what Objects from the Class<br/>
+ * have as characteristics and what they can do.<br/>
+ * (You can write comments here and they won't be interpreted as code by the    <br/> 
+ * program. This helps others understand what your code does!)<br/>
+ *<br/>
+ * @author RobotWorld Team and You<br/>
+ * @version 1.0<br/>
+ */<br/>
+public class Robot<br/>
+{<br/>
+    //the age of the robot<br/>
+    private int age;<br/>
+    //the name of the robot<br/>
+    private String name;<br/>
+    //the hat of the robot<br/>
+    private Item hat;<br/>
+    //if the robot has a buddy<br/>
+    private boolean hasBuddy;<br/>
+    //if the robot is hungry<br/>
+    private boolean isHungry;<br/>
+<br/>
+    /**<br/>
+     * Constructor for objects of class Robot with parameters<br/>
+     */<br/>
+    public Robot(String fullName, int robotAge)<br/>
+    {<br/>
+        // initialise the fields<br/>
+        name = fullName;<br/>
+        age = robotAge;<br/>
+        hat = new Item();<br/>
+        hasBuddy = true;<br/>
+        isHungry = true;<br/>
+    }<br/>
+<br/>
+    /**<br/>
+     * Constructor for objects of class Robot without parameters<br/>
+     */<br/>
+    public Robot()<br/>
+    {<br/>
+        // initialise the fields<br/>
+        name = "Robbie";<br/>
+        age = 15;<br/>
+        hat = new Item();<br/>
+        hasBuddy = true;<br/>
+        isHungry = true;<br/>
+    }<br/>
+<br/>
+    /**<br/>
+     * Returns the age of the robot<br/>
+     *<br/>
+     * @return    the age of the robot<br/>
+     */<br/>
+    public int getAge()<br/>
+    {<br/>
+        return age;<br/>
+    }<br/>
+    <br/>
+    /**<br/>
+     * Sets the age of the robot to the parameter value<br/>
+     *<br/>
+     * @param  newAge  the age you're setting for the robot<br/>
+     */<br/>
+    public void setAge(int newAge)<br/>
+    {<br/>
+        age = newAge;<br/>
+    }<br/>
+    <br/>
+    /**<br/>
+     * Returns the name of the robot<br/>
+     *<br/>
+     * @return    the name of the robot<br/>
+     */<br/>
+    public String getName()<br/>
+    {<br/>
+        return name;<br/>
+    }<br/>
+    <br/>
+    /**<br/>
+     * Changes the name of the robot to the parameter value<br/> 
+     *<br/>
+     * @param  newName  the new name of the robot<br/>
+     */<br/>
+    public void changeName(String newName)<br/>
+    {<br/>
+        name = newName;<br/>
+    }<br/>
+    <br/>
+    /**<br/>
+     * Returns whether the robot has a buddy or not<br/>
+     *<br/>
+     * @return   the hasBuddy value of the robot<br/>
+     */<br/>
+    public boolean getBuddy()<br/>
+    {<br/>
+        return hasBuddy;<br/>
+    }<br/>
+    <br/>
+    /**<br/>
+     * Returns whether the robot is hungry or not<br/>
+     *<br/>
+     * @return   the isHungry value of the robot<br/>
+     */<br/>
+    public boolean getHungry()<br/>
+    {<br/>
+        return isHungry;<br/>
+    }<br/>
+    <br/>
+    /**<br/>
+     * Set the hat colour of the robot<br/>
+     *<br/>
+     * @param  colour  the colour you're setting for the hat<br/>
+     */<br/>
+    public void setHatColour(String colour)<br/>
+    {<br/>
+        hat.changeColour("blue");<br/>
+    }<br/>
+    <br/>
+    /**<br/>
+     * The robot eats<br/>
+     *<br/>
+     * @param  fruit  the Item that the robot eats<br/>
+     */<br/>
+    public void eat(Item fruit)<br/>
+    {<br/>
+        fruit.disappear();<br/>
+        isHungry = false;<br/>
+    }<br/>
+    <br/>
+}<br/>
+</code></pre>
+
+</body>
+
+</html>
