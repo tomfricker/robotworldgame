@@ -30,8 +30,7 @@ public class CodePanel extends Panel implements FocusListener {
 	private static final long serialVersionUID = 1L;
 	//Width of the CodePanel
 	static final int CPWIDTH = 250;
-	private static boolean hasFocus = false;
-	
+		
 	static Manager manager;
 	
 	static JTextArea codeOutput;
@@ -175,20 +174,18 @@ public class CodePanel extends Panel implements FocusListener {
 		codeOutput.append(text);
 	}
 
-	
+	/**
+	 * Override Methods of the FocusListener Class
+	 * (not used)
+	 */
 	@Override
 	public void focusGained(FocusEvent arg0) {
-		System.out.println("Gained focus");
-		hasFocus = true;
-		HistoryLog.printHistory();
-		
+				
 	}
 
 	@Override
 	public void focusLost(FocusEvent arg0) {
-		hasFocus = false;
-		System.out.println("Lost focus");
-		
+				
 	}
 	
 			

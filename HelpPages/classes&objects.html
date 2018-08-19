@@ -1,7 +1,9 @@
 <html>
 
 <head>
-<link href="styles.css" type="text/css" rel="stylesheet">
+<link href="styles.css" type="text/css" rel="stylesheet"/>
+<link href="prism_syntax_highlight.css" type="text/css" rel="stylesheet"/>
+<script src="prism_syntax_highlight.js"></script>
 
 <title>Level 2 - Classes and Objects</title>
 </head>
@@ -25,11 +27,11 @@ You should note that <b>Classes</b> start with a capital letter, while <b>object
 The apple and the banana in this Level are Objects as well, instances from the Class Item. The robot can perform actions on them with the method <b>eat()</b>. 
 You can <b>invoke</b> the method by writing code in the form:<br/><br/>
 
-<code>ObjectName.MethodName(parameter);</code><br/><br/>
+<code class="language-java">ObjectName.MethodName(parameter);</code><br/><br/>
 
 So practically putting that in use with our Objects, it would look like this:<br/><br/>
 
-<code>robot.eat(apple);</code><br/><br/>
+<code class="language-java">robot.eat(apple);</code><br/><br/>
 
 Here the Method <b>eat()</b> takes a parameter, that is an <b>object</b> of <b>Class</b> Item. 
 You will get a better understanding of this further down when looking at <b>methods</b> in more detail.<br/><br/>
@@ -37,15 +39,15 @@ Please note that you can name <b>objects</b> as you wish, as long as they start 
 The same rules apply when naming a Class, however the Class name needs to start with a capital letter.<br/><br/>
 To create an <b>object</b> from a Class you need to write code in the following form: <br/><br/>
 
-<code>ClassName ObjectName = new ClassName();</code><br/><br/>
+<code class="language-java">ClassName ObjectName = new ClassName();</code><br/><br/>
 
 The second part of this expression (after the = sign) is called a Constructor. 
 This is another element of a Class just like Fields and Methods.<br/><br/>
 
 As an example, let us create some Objects from our existing Classes:<br/><br/>
 
-<code>Item apple = new Item();</code><br/><br/>
-<code>Robot robot = new Robot();</code><br/><br/>
+<code class="language-java">Item apple = new Item();</code><br/><br/>
+<code class="language-java">Robot robot = new Robot();</code><br/><br/>
 </p>
 
 <h1>The Class Structure</h1>
@@ -57,7 +59,7 @@ Methods (that refer to Objects' behaviour) and Constructor (that is responsible 
 When building a class, you would follow the bellow structure:<br/><br/>
 </p>
 
-<pre><code>
+<pre><code class="language-java">
 public class ClassName<br/>
 {<br/>
 	Fields<br/>
@@ -86,8 +88,8 @@ their values cannot be changed outside of the <b>Class</b> they are in.<br/><br/
 Examples of access modifiers and how they are used:<br/><br/>
 </p>
 
-<h3>Class</h3>
-<pre><code>
+<h2>Class</h2>
+<pre><code class="language-java">
 public class Item <br/>
 { <br/>
 	Class Body <br/>
@@ -95,24 +97,24 @@ public class Item <br/>
 
 </code></pre>
 
-<h3>Constructor</h3>
-<pre><code>
+<h2>Constructor</h2>
+<pre><code class="language-java">
 public Item() { <br/>
 	Constructor Body<br/>
 }
 
 </code></pre>
 
-<h3>Method</h3>
-<pre><code>
+<h2>Method</h2>
+<pre><code class="language-java">
 public String getName(){<br/>
 	Method Body<br/>
 }
 
 </code></pre>
 
-<h3>Field</h3>
-<pre><code>
+<h2>Field</h2>
+<pre><code class="language-java">
 private int age;
 </code></pre>
 
@@ -127,15 +129,15 @@ Level: Data Types such as String, int or boolean and reference type that can be 
 
 We write Fields in Java like so:<br/><br/>
 
-<b>accessModifier DataType/ClassName nameofField;</b>
+<code class="language-java">accessModifier DataType/ClassName nameofField;</code><br/><br/>
 
 When you substitute all of these with concrete names you can get the following:<br/><br/>
 
-<code>private Item apple;</code> (this Field is of Class Item and is called apple)<br/><br/>
-<code>private String address;</code> (this Field is of type String, called address)<br/><br/>
-<code>private boolean hasAddress;</code> (this Field is of type Boolean and be either True or False value)<br/><br/>
-<code>private String name;</code><br/><br/>
-<code>private int age;</code><br/><br/>
+<code class="language-java">private Item apple;</code><span class="comment">(this Field is of Class Item and is called apple)</span><br/><br/>
+<code class="language-java">private String address;</code><span class="comment">(this Field is of type String, called address)</span><br/><br/>
+<code class="language-java">private boolean hasAddress;</code><span class="comment">(this Field is of type Boolean and be either True or False value)</span><br/><br/>
+<code class="language-java">private String name;</code><br/><br/>
+<code class="language-java">private int age;</code><br/><br/>
 </p>
 
 <h1>Introduction to Constructor</h1>
@@ -147,7 +149,7 @@ These values can be passed by parameters or hard coded in the constructor's body
 
 Here are examples of both:<br/><br/>
 </p>
-<pre><code>
+<pre><code class="language-java">
 public Robot(String fullName, int robotAge) {<br/>
 	//this is a comment in Java: here we equate the Fields we created earlier to the parameters above<br/>
 	name = fullName;<br/>
@@ -166,8 +168,8 @@ The <b>objects</b> created with the first <b>constructor</b> can have different 
 
 Examples of creating an <b>object</b> with both <b>constructors</b>:<br/><br/>
 
-<code>Robot robot = new Robot();</code><br/><br/>
-<code>Robot robotOne = new Robot("Harry", 18);</code><br/><br/>
+<code class="language-java">Robot robot = new Robot();</code><br/><br/>
+<code class="language-java">Robot robotOne = new Robot("Harry", 18);</code><br/><br/>
 
 As you can see, a <b>Class</b> can have multiple <b>constructors</b>, if they differ in parameters.<br/><br/>
 </p>
@@ -180,7 +182,7 @@ Each <b>Class</b> has certain <b>methods</b>, which its <b>objects</b> can perfo
 
 Here is an example of how a <b>method</b> is defined within a <b>Class</b>:<br/><br/>
 </p>
-<pre><code>
+<pre><code class="language-java">
 accessModifier returnType methodName (parameters) {<br/>
 	action;<br/>
 	action;<br/>
@@ -193,7 +195,7 @@ Methods that <b>return</b> an <b>object</b> have the same <b>return Type</b> as 
 They will also always have the <b>return</b> key word in their body:<br/><br/>
 </p>
 
-<pre><code>
+<pre><code class="language-java">
 public String getAddress() {<br/>
 	return address;<br/>
 }
@@ -203,7 +205,7 @@ public String getAddress() {<br/>
 Methods that change the state of an <b>object</b> and do not have a <b>return</b> statement have a VOID <b>return Type</b> and are called <b>mutator methods</b>.<br/><br/>
 </p>
 
-<pre><code>
+<pre><code class="language-java">
 public void changeAddress(String newAddress) {<br/>
 	address = newAddress;<br/>
 }
@@ -211,7 +213,7 @@ public void changeAddress(String newAddress) {<br/>
 <p>
 Here is the body of the Robot Class that we built together with your answers during this Level:<br/><br/>
 </p>
-<pre><code>
+<pre><code class="language-java">
 /**<br/>
  * This is the Robot class and it determines what Objects from the Class<br/>
  * have as characteristics and what they can do.<br/>

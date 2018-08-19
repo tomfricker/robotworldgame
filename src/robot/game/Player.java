@@ -6,12 +6,32 @@ import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
+/**
+ *  
+ * The Player class is a subclass of GameObjects.
+ * It creates an object, renders it on the game board
+ * and controls its interactions through the tick method.
+ * 
+ * 
+ * @author Robot World Group
+ *
+ */
 public class Player extends GameObjects {
 	
+	/**
+	 * Constructor for Player
+	 * @param x
+	 * @param y
+	 * @param id
+	 */
 	protected Player(int x, int y, ID id) {
 		super(x, y, id);
 	}
-
+	
+	/**
+	 * This method updates the stage of the Player object
+	 * when it moves or interacts with other objects.
+	 */
 	@Override
 	public void tick() {
 		x += velX;
@@ -21,15 +41,13 @@ public class Player extends GameObjects {
 		x = Game.clamp(x, 8, Game.HEIGHT - 72);
 		y = Game.clamp(y, 8, Game.HEIGHT - 72);
 	}
-
+	
+	/**
+	 * This method renders the Player object - shows an 
+	 * image of the Player character on the board.
+	 */
 	@Override
 	public void render(Graphics g) {
-		/* Make sure to change the location of the robot to where it is on your hard drive
-		 * this can be done by right clicking on the robot.png and selecting properties
-		 * copy the file location and paste into the speech marks below. The robot.png
-		 * should be located in the robot.game package underneath the classes to your left <------.
-		 */
-
 		File imageFile = new File("pictures\\HelensRobot.png");
 		//InputStream input = getClass().getResourceAsStream("HelenRobot.png");
 		try {

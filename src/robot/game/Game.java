@@ -44,6 +44,7 @@ public class Game extends Canvas implements Runnable {
 		//creates board index values (testing)
 		boardIndex = HEIGHT/8;
 		
+		side.setText("Welcome to RobotWorld Game! Please check the Help Menu for instructions!");
 		//level = new Level(manager, side, 1);
 		//level = new Level(manager, side, 2);
 	}
@@ -155,7 +156,7 @@ public class Game extends Canvas implements Runnable {
 	}
 	
 	/**
-	 * This method will return an integer within the bounds set ia the parameters
+	 * This method will return an integer within the bounds set via the parameters
 	 * passed in. This is useful for setting boundaries that players and other
 	 * characters must adhere to.
 	 * @param var

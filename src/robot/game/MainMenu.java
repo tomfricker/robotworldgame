@@ -58,8 +58,10 @@ public class MainMenu extends MouseAdapter{
 	 * particular level.
 	 * 
 	 * If the gameState is End then it will check to see if the 
-	 * user has clicked on the button to return to the MainMenu
-	 * and change the gameState accordingly.
+	 * user has clicked on the button to go to next Level 
+	 * and change the gameState accordingly. If the gameState is 
+	 * End of Level 2, then an additional button will appear,
+	 * which will display the source code of a class.
 	 */
 	public void mousePressed(MouseEvent e) {
 		//get coordinates of the mouse when clicked
@@ -123,7 +125,7 @@ public class MainMenu extends MouseAdapter{
 			else {
 				Game.gameState = STATE.Menu;
 			}
-		}
+			}
 		}
 		
 		

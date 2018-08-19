@@ -6,8 +6,12 @@ import java.util.ArrayList;
 
 /**
  *  
- * This class stores every input that the user puts in the codeInput in order to access it later through
- * the scroll down and up arrow keys.
+ * This class stores every input that the user puts 
+ * in the codeInput in order to access it later through
+ * the scroll DOWN and UP arrow keys.
+ * 
+ * It extends and acts as a KeyAdapter which allows it 
+ * to read key input from the user and do an action accordingly.
  *
  * @author Robot World Group
  *
@@ -19,27 +23,35 @@ public class HistoryLog extends KeyAdapter {
 		//variable to store how many times the UP and DOWN keys were pressed
 		private int pressedKeys = 0;
 		
+		/**
+		 * Constructor for the History Log
+		 */
 		public HistoryLog() {
 						
     	}
 		
 		/**
-		 * Adds each line entered by user to the history log
+		 * Adds the specified command to the history log
 		 * @param command
 		 */
 		public static void addToCommandList(String command) {
 			historyLog.add(command);
 		}
-
-		public static int length() {
-			return historyLog.size();
-		}
-
+		
+		/**
+		 * Returns the i-th element of the history log list
+		 * @param i index number
+		 * @return i-th element of HL
+		 */
 		public static String get(int i) {
 			return historyLog.get(i);
 			
 		}
 		
+		/**
+		 * Print all elements of the history log list (for testing)
+		 * 
+		 */
 		public static void printHistory() {
 			for (String log : historyLog) {
 				System.out.println(log);
@@ -47,7 +59,8 @@ public class HistoryLog extends KeyAdapter {
 		}
 		
 		/**
-		 * This method controls the player object by the arrow keys on the keyboard
+		 * This method allows the user to scroll through the history log
+		 * with the UP and DOWN arrow keys when they are on the CodePanel
 		 */
 		@Override
 		public void keyPressed(KeyEvent e) {

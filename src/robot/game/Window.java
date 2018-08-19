@@ -6,6 +6,15 @@ import java.awt.Container;
 import java.awt.Dimension;
 import javax.swing.JFrame;
 
+/**
+ *  
+ * This class creates the Window of the game as a JFrame,
+ * sets a Layout and adds the different elements to the 
+ * layout(SidePanel, CodePanel etc.).
+ *
+ * @author Robot World Group
+ *
+ */
 public class Window extends Canvas {
 
 	private static final long serialVersionUID = 966700232577608739L;

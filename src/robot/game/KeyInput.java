@@ -2,14 +2,23 @@ package robot.game;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
+/**
+ *  
+ * This class gets input from the keyboard and 
+ * controls the Player object's movements on the board
+ * with the arrow keys, when the board is in focus.
+ * 
+ * 
+ * @author Robot World Group
+ *
+ */
 public class KeyInput extends KeyAdapter {
 	
-		//private CodePanel codePanel;
-		
+	/**
+	 * Constructor for KeyInput
+	 */			
 	public KeyInput(Manager manager) {
-			
-			//codePanel = new CodePanel();
-		
+								
 	}
 	
 	/**
