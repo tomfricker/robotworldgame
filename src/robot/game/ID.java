@@ -1,9 +1,17 @@
 package robot.game;
 
+/**
+ *  
+ * This class is the ID of GameObjects. 
+ * Every GameObject should have an ID which 
+ * determines what the object can do. This can 
+ * be chosen from an existing number of IDs.
+ *
+ * @author Robot World Group
+ *
+ */
 public enum ID {
 
-	//each type of game object should have an ID associated with it e.g. the background and solid "walls" as well as players.
-	//there's no real restriction on what can be here. I've already thought of different types of player characters like NPCs that can help and some that can hinder.
-	//You never know what we might want to add later.
+	//Add new ID types here
 	Player, NPC, Flower, background, Collection;
 }
