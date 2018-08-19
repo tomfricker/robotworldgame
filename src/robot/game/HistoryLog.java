@@ -54,7 +54,7 @@ public class HistoryLog extends KeyAdapter {
 		 */
 		public static void printHistory() {
 			for (String log : historyLog) {
-				System.out.println(log);
+				//System.out.println(log);
 			}
 		}
 		
