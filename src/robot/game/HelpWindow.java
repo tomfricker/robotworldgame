@@ -78,6 +78,8 @@ public class HelpWindow {
 	          if (node.isLeaf()) {
 	            String help = (String)nodeInfo;
 	            helpPane.setText(getHelp(help));
+	            //sets scroll bar to top of page
+	            helpPane.setCaretPosition(0);
 	          }
 	        }
 
