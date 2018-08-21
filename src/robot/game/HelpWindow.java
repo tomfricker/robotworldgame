@@ -40,6 +40,7 @@ public class HelpWindow {
 		
 		JPanel contents = new JPanel();
 		JEditorPane helpPane = new JEditorPane();
+		helpPane.setEditable(false);
 		JScrollPane scrollPane = new JScrollPane(helpPane);
 		
 		// add an html editor kit for interpreting HTML
