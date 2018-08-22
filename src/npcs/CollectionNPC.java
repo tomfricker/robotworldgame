@@ -1,7 +1,3 @@
-/**
-	fully replace the CollectionNPC class with this. 
-*/
-
 package npcs;
 
 import java.awt.Color;
@@ -10,10 +6,8 @@ import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
-
 import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
-
 import robot.game.Bag;
 import robot.game.GameObjects;
 import robot.game.HUD;
@@ -21,6 +15,14 @@ import robot.game.ID;
 import robot.game.Manager;
 import robot.game.SidePanel;
 
+/**
+ * An NPC that extends GameObjects. The CollectionNPC calls a static class 
+ * Bag object that allows for the player to collect items. Therefore the 
+ * bag only exists in levels where it is relevant. 
+ * Each COllectionNPC has an in game type stored as the primType field. 
+ * @author jatg
+ *
+ */
 public class CollectionNPC extends GameObjects {
 	
 	public String primType;
@@ -49,13 +51,18 @@ public class CollectionNPC extends GameObjects {
 		
 	}
 
-	@Override
+	/**
+	 * updates the CollectionNPC's state 
+	 */
 	public void tick() {
 		interact();
 		
 	}
 
-	@Override
+	/**
+	 * Renders the CollectionNPC in the game, the image file is determined by
+	 * the CollectionNPC's in game type. 
+	 */
 	public void render(Graphics g) {
 		if(primType == "Int") {
 			File imageFile = new File("pictures//basketWalle.png");
@@ -86,7 +93,14 @@ public class CollectionNPC extends GameObjects {
 		}		
 	}
 	
-	
+	/**
+	 * Checks whether the CollectionNPC should interact or not and what should occur. 
+	 * If the player's bag does not have the same in game type as the COllectionNPC, it will call the 
+	 * impose() method.  
+	 * Otherwise, it will check the player's bag to see if they have any pickups which may be turned in 
+	 * to increase the player's score. 
+	 * 
+	 */
 	public void interact() {
 		for(GameObjects o : Manager.objectList) {
 			if( o.getId() == ID.Player) {
@@ -145,6 +159,10 @@ public class CollectionNPC extends GameObjects {
 		}
 	}
 	
+	/**
+	 * Sets the Bag's in game type to that of the CollectionNPC and prompts the player to find 
+	 * pickups in the level of the CollectionNPCs type. 
+	 */
 	public void impose() {
 		if(Bag.bagType != primType) {
 			Bag.setType(primType);
@@ -162,6 +180,11 @@ public class CollectionNPC extends GameObjects {
 	}
 	*/
 	
+	
+	/**
+	 * Checks the Bag and, if there are pickups in the Bag that are of the same in game type as the 
+	 * CollectionNPC, removes them and increases the player's score. 
+	 */
 	public void turnIn() {
 		
 		if (Bag.getBagType().equals(primType)) {
@@ -176,10 +199,19 @@ public class CollectionNPC extends GameObjects {
 		}
 	}
 	
+	/**
+	 * Uses the revidmap (reverse ID map) to get the PICKUPID of a pickup object that corresponds to 
+	 * the primType of the CollectionNPC
+	 * @return PICKUPID The ID of the pickup "type" 
+	 */
 	private PICKUPID getPidfromRevMap() {
 		return revidmap.get(primType);
 	}
 	
+	/**
+	 * uses the primType field of the Collection as it is constructed in order to set special text to 
+	 * be displayed in the game's side bar. 
+	 */
 	private void setSpecText() {
 		if(primType == "Boolean") {
 			colspectext = "Remember that Booleans are true or false\n\n";
@@ -194,5 +226,5 @@ public class CollectionNPC extends GameObjects {
 	
 	
 	
-}//eoc
+}
 

@@ -15,6 +15,13 @@ import robot.game.ID;
 import robot.game.Manager;
 import robot.game.SidePanel;
 
+/**
+ * A PickUp object can be added to a level in the game and acts as a token which may be collected by the 
+ * Player and used to score the player's progress through the level. 
+ * They may be one of three in game types which represent char, int and boolean primitive types. 
+ * @author jatg
+ *
+ */
 public class Pickup extends GameObjects {
 	
 	private SidePanel side;
@@ -32,7 +39,9 @@ public class Pickup extends GameObjects {
 		this.name = name;
 	}//char
 
-	@Override
+	/**
+	 * updates the state of the Pickup object as the Manager class iterates over all GameObjects
+	 */
 	public void tick() {
 		for(GameObjects o : Manager.objectList) {
 			
@@ -47,7 +56,11 @@ public class Pickup extends GameObjects {
 		
 	}
 
-	@Override
+	/**
+	 * Renders the Pickup in the game when it is stored in the Manager. 
+	 * The image file used to render the object depends on the PICKUPID of the pickup object. 
+	 * if the pickup has been picked up, and therefore has the PICKUPID of Picked, it is not rendered at all.  
+	 */
 	public void render(Graphics g) {
 		if(pid == PICKUPID.Picked) {}
 		else {
@@ -115,6 +128,10 @@ public class Pickup extends GameObjects {
 		
 	}
 	
+	/**
+	 * checks the in game type of any Bag object which may be present and,
+	 * if it is the same as the type of the pickup, adds it to the Bag. 
+	 */
 	public void pickUp() {
 		String bagpickupType = Bag.getBagType();
 		if( bagpickupType.equals(idmap.get(pid))){
@@ -123,10 +140,18 @@ public class Pickup extends GameObjects {
 		}
 	}
 	
+	/**
+	 * gets the PICKUPID of the Pickup. 
+	 * @return the PICKUPID of the pickup object
+	 */
 	public PICKUPID getPID() {
 		return pid;
 	}
 	
+	/**
+	 * changes the PICKUPID of the Pickup to Picked, and therefore, stops 
+	 * it from rendering and, as far as a player is concerned, removes it from the game.  
+	 */
 	public void setPicked() {
 		pid = PICKUPID.Picked;
 	}

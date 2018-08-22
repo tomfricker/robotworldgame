@@ -18,8 +18,19 @@ import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.StyleSheet;
 import javax.swing.tree.DefaultMutableTreeNode;
 
+/**
+ * This class creates a new window that displays html files that are
+ * stored within the project's help pages folder. There is a selectable
+ * tree to open new pages, within a split pane window.
+ * 
+ * @author Robot World Group
+ *
+ */
 public class HelpWindow {
 	
+	/**
+	 * Constructor of the HelpWindow class.
+	 */
 	public HelpWindow() {
 		JFrame frame = new JFrame("Help");
 		
@@ -29,6 +40,7 @@ public class HelpWindow {
 		
 		JPanel contents = new JPanel();
 		JEditorPane helpPane = new JEditorPane();
+		helpPane.setEditable(false);
 		JScrollPane scrollPane = new JScrollPane(helpPane);
 		
 		// add an html editor kit for interpreting HTML
@@ -43,9 +55,14 @@ public class HelpWindow {
         styleSheet.addRule("ul {list-style-type: square; font-size: 105%;}");
         styleSheet.addRule("ul li {padding: 8px 16px;}");
 		
+        //create the options for the JTree selection menu
 		DefaultMutableTreeNode top = new DefaultMutableTreeNode("Help");
 		createNodes(top);
 		JTree tree = new JTree(top);
+		tree.setRootVisible(false);
+		for (int i = 0; i < tree.getRowCount(); i++) {
+		    tree.expandRow(i);
+		}
 		
 		 // listen for when the selection changes.
 	    tree.addTreeSelectionListener(new TreeSelectionListener() {
@@ -61,6 +78,8 @@ public class HelpWindow {
 	          if (node.isLeaf()) {
 	            String help = (String)nodeInfo;
 	            helpPane.setText(getHelp(help));
+	            //sets scroll bar to top of page
+	            helpPane.setCaretPosition(0);
 	          }
 	        }
 
@@ -125,6 +144,10 @@ public class HelpWindow {
 		return helpContents;
 	}
 	
+	/**
+	 * Creates the nodes for the JTree selection menu of the help window.
+	 * @param top
+	 */
 	private void createNodes(DefaultMutableTreeNode top) {
 	    DefaultMutableTreeNode category = null;
 	    DefaultMutableTreeNode info = null;

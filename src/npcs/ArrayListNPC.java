@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 
 import robot.game.Bag;
 import robot.game.Cells;
@@ -12,6 +13,14 @@ import robot.game.HUD;
 import robot.game.ID;
 import robot.game.Manager;
 import robot.game.SidePanel;
+
+/**
+ * ArrayListNPC is an NPC for use in the game that as methods which can 
+ * simulate adding items to an ArrayList. 
+ * extends the GameObjects class and can be added to the 
+ * 
+ * @author James Galbraith
+ */
 
 public class ArrayListNPC extends GameObjects {
 	
@@ -45,13 +54,19 @@ public class ArrayListNPC extends GameObjects {
 		
 	}
 
-	@Override
+	/**
+	 * Overridden tick method which allows the ArrayListNPC to update it's position/state.
+	 */
 	public void tick() {
 		interact();
 		
 	}
 
-	@Override
+	/**
+	 * Renders the ArrayListNPC objects depending on their type
+	 * Also renders the "tail" of the ArratyListNPC which represents the objects
+	 * stored in the collection.
+	 */
 	public void render(Graphics g) {
 		if(primType == "Int") {g.setColor(Color.RED);}
 		if(primType == "Char") {g.setColor(Color.BLUE);}
@@ -68,10 +83,18 @@ public class ArrayListNPC extends GameObjects {
 		
 	}
 	
+	/**
+	 * ArrayListNPC does not require an interact method because it's add character 
+	 * method is called by a command. 
+	 */
 	public void interact() {
 		
 	}
 
+	/**
+	 * adds a character pickup object to the ArrayListNPC. 
+	 * @param c char 
+	 */
 	public void add(char c) {
 		tail.add(new Pickup(64,64,ID.NPC, PICKUPID.Boolean,side, "false"));
 		hud.setScore(hud.getScore()+10);
@@ -82,7 +105,17 @@ public class ArrayListNPC extends GameObjects {
 		}
 	}
 	
+	/**
+	 * Removes an item from the 
+	 * @param i the index of an item in the ArrayListNPCs tail 
+	 */
 	public void remove(int i) {
+		Iterator<GameObjects> it = tail.iterator();
+		while(it.hasNext()) {
+			
+		}
+			
+		
 		tail.remove(i);
 	}
 	

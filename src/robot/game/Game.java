@@ -7,6 +7,21 @@ import java.awt.image.BufferStrategy;
 
 public class Game extends Canvas implements Runnable {
 
+	/**
+	 * The Game class is an important class for the most basic functionality of the RobotWorld game.
+	 * Game sets up the window in which the game is run as well as important methods for progressing 
+	 * the game loop.
+	 * 
+	 * This class controls the game's overall state and the updating and rendering of game objects. 
+	 * the update (tick) and render methods rely heavily on the Manager class as it is called to 
+	 * carry out updating and rendering during the game loop. 
+	 * 
+	 * This class also contains the background for each level in the game. in the render method and
+	 * ensures that all moving objects within the game are contained within the boundaries of the 
+	 * game's window
+	 * 
+	 * @author RobotWorld Group 
+	 */
 	private static final long serialVersionUID = 5246413982503020397L;
 	public static final int WIDTH = 860, HEIGHT = 640;
 	private Thread thread;
@@ -49,12 +64,18 @@ public class Game extends Canvas implements Runnable {
 		//level = new Level(manager, side, 2);
 	}
 	
+	/**
+	 * creates a new thread and allows the game to be run.
+	 */
 	public synchronized void start() {
 		thread = new Thread(this);
 		thread.start();
 		running = true;
 	}
 	
+	/**
+	 * Ends the thread started by start() and stops the game running.
+	 */
 	public synchronized void stop() {
 		try {
 			thread.join();
@@ -64,11 +85,15 @@ public class Game extends Canvas implements Runnable {
 		}
 	}
 		
+	/**
+	 * This method contains the game loop. Whilst the game is running, it progresses a timer and,
+	 * when time has progressed, it calls the game to update itself. It does so by calling tick()
+	 * (update all game objects in the manager) and render to then show the updated GameObjects objects.
+	 * This is only carried out if the game is running however. Otherwise, the game is stopped. 
+	 */
 	public void run() {
 		//ensures that the board is in focus at start of game
 		this.requestFocus();
-		//this part handles the frame counter and I'm not sure it's necessary for the game to actually run. I haven't bothered to check yet. 
-		//have since checked.... just leave it here. 
 		long lastTime =System.nanoTime();
 		double amountOfTicks = 60.0;
 		double ns = 1000000000 / amountOfTicks;
@@ -93,6 +118,16 @@ public class Game extends Canvas implements Runnable {
 		stop();
 	}
 	
+	/**
+	 * Calls for the game to update itself. This calls the Manager to iterate over a linkedList of 
+	 * GameObjects and update each in turn. If the Game is in the STATE.Game enum state, 
+	 * the hud and the spawner update. This also calls the Manager to reset all GameObjects if the hud
+	 * detects the end of a level.
+	 * 
+	 *  If the game is in the STATE.Menu enum state, the tick method is responsible for calling the menu 
+	 *  to update
+	 * 
+	 */
 	private void tick() {
 		manager.tick();
 		
@@ -110,6 +145,16 @@ public class Game extends Canvas implements Runnable {
 		}
 	}
 
+	/**
+	 * Render uses a buffer strategy to manage the rendering of all objects in the game. 
+	 * 
+	 * The method first renders a chess board using black and white squares which serves 
+	 * as the background for each level of the game. 
+	 * Secondly, the Manager is called to render all of the objects stored in its objects LinkedList.
+	 * 
+	 * Finally, the Method renders the hud or the menu depending on which state the game is in. 
+	 * 
+	 */
 	private void render() {
 		BufferStrategy bs = this.getBufferStrategy();
 		if(bs == null) {
@@ -182,7 +227,7 @@ public class Game extends Canvas implements Runnable {
 	
 	
 	
-} //end of class
+}
 	
 
 

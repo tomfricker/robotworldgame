@@ -13,7 +13,7 @@ import robot.game.Manager;
 import robot.game.SidePanel;
 
 /**
- * This class extends GaeObjects, it draws a flower on the board.
+ * This class extends GameObjects, it draws a flower on the board.
  * 
  * @author MissH
  *
