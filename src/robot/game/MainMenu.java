@@ -113,13 +113,7 @@ public class MainMenu extends MouseAdapter{
 					createLevel(newLevel);
 				}
 				else if(mouseOver(mouseX, mouseY, 100, 284, 440, 64)) {
-					JDialog dialog = new JDialog();
-					dialog.setVisible(true);
-					dialog.setModal(true);
-					ScrollPaneLayout scrollPane = new ScrollPaneLayout();
-					dialog.setLayout(scrollPane);
-					String robotCode = "hello world";
-					scrollPane.addLayoutComponent(null, new JTextArea(robotCode));
+					SourceCodeWindow sourceCodeWindow = new SourceCodeWindow();
 					
 				} 
 			else {
