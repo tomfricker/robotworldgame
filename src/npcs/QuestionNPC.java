@@ -1,6 +1,5 @@
 package npcs;
 
-import java.awt.Dialog;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.io.File;
@@ -106,7 +105,7 @@ public class QuestionNPC extends GameObjects {
 		for(GameObjects gameObject : Manager.objectList) {
 			if(gameObject.getId() == ID.Player) {
 				if(gameObject.getX() == x && gameObject.getY() == y) {
-					String input = JOptionPane.showInputDialog(null, question);
+					String input = JOptionPane.showInputDialog(null, question, "Open Answer Question", JOptionPane.QUESTION_MESSAGE);
 					if(input == null || input.length() == 0) {
 						gameObject.setX(gameObject.getX()-Game.boardIndex);
 					}

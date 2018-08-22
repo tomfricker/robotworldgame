@@ -6,11 +6,16 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.JDialog;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
+import javax.swing.JRadioButton;
+import javax.swing.JTextField;
 
 import robot.game.Game;
 import robot.game.GameObjects;
 import robot.game.HUD;
+import robot.game.Hints;
 import robot.game.ID;
 import robot.game.Manager;
 import robot.game.SidePanel;
@@ -20,27 +25,29 @@ import robot.game.SidePanel;
  * 
  * This class extends GameObjects so that it can be easily stored within the Manager
  * class' list to be iterated over. It's function within the game is to ask the 
- * the user a question and end the current stage they are playing.
+ * the user a question and validate the answer.
  * 
  * It will ask it's question within a pop up window. It then waits for the user
  * to input an answer or cancel it's interaction. If the user inputs an incorrect
  * answer it will deduct points from their score and display the answer they put
  * and an incorrect message to the SidePanel. If they are correct they are 
- * awarded points and told they are correct within the SidePanel. This will then end
- * the stage and update the HUD accordingly.
+ * awarded points and told they are correct within the SidePanel. 
  * 
  * @author Robot World Group
  *
  */
-public class StageEndNPC extends GameObjects {
+public class MultipleChoiceQNPC extends GameObjects {
 	
-	//Fields of the StageEndNPC
+	//Fields of the LevelEndNPC
 	private HUD hud;
+	boolean interacted;
 	private String question, answer;
-	private boolean interacted;
+	private Hints hints;
+	private String [] options;
+	
 
 	/**
-	 * Constructor for the StageEndNPC
+	 * Constructor for the QuestionNPC
 	 * @param x
 	 * @param y
 	 * @param id
@@ -50,12 +57,15 @@ public class StageEndNPC extends GameObjects {
 	 * @param question
 	 * @param answer
 	 */
-	public StageEndNPC(int x, int y, ID id, Manager manager, SidePanel side, HUD hud, String question, String answer) {
+	public MultipleChoiceQNPC(int x, int y, ID id, Manager manager, SidePanel side, HUD hud, String question, String [] options, String answer) {
 		super(x, y, id);
 		this.hud = hud;
+		interacted = false;
 		this.question = question;
 		this.answer = answer;
-		interacted = false;
+		this.options = options;
+		hints = new Hints();
+				
 	}
 
 	/**
@@ -63,7 +73,7 @@ public class StageEndNPC extends GameObjects {
 	 * will display it's question to the user.
 	 */
 	public void tick() {
-		if(!interacted)
+		if (!interacted)
 			interact();
 	}
 
@@ -71,13 +81,24 @@ public class StageEndNPC extends GameObjects {
 	 * Displays the image of the NPC on the board at the specified position.
 	 */
 	public void render(Graphics g) {
-		File imageFile = new File("pictures\\walle.png");
-		try {
-			Image robot = ImageIO.read(imageFile);
-			g.drawImage(robot, x, y, null);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		if(interacted == false) {
+			File imageFile = new File("pictures\\walle.png");
+			try {
+				Image robot = ImageIO.read(imageFile);
+				g.drawImage(robot, x, y, null);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			}
+			else {
+				File imageFile = new File("pictures\\walleTick.png");
+				try {
+					Image robot = ImageIO.read(imageFile);
+					g.drawImage(robot, x, y, null);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
 	}
 	
 	
@@ -89,7 +110,7 @@ public class StageEndNPC extends GameObjects {
 		for(GameObjects gameObject : Manager.objectList) {
 			if(gameObject.getId() == ID.Player) {
 				if(gameObject.getX() == x && gameObject.getY() == y) {
-					String input = JOptionPane.showInputDialog(null, question, "Stage End Question", JOptionPane.QUESTION_MESSAGE);
+					String input = (String) JOptionPane.showInputDialog(null, question, "Multiple Choice Question", JOptionPane.QUESTION_MESSAGE, null, options, null);
 					if(input == null || input.length() == 0) {
 						gameObject.setX(gameObject.getX()-Game.boardIndex);
 					}
@@ -98,19 +119,25 @@ public class StageEndNPC extends GameObjects {
 						SidePanel.addText("~" + input + "\n");
 						SidePanel.addText("~incorrect\n");
 						SidePanel.addText("~You lost 10 points\n\n");
+						//gives a hint
+						String hint = hints.giveHint(input);
+						SidePanel.addText("~" + hint + "\n\n");
+						
 						gameObject.setX(gameObject.getX()-Game.boardIndex);
 						int currentScore = hud.getScore();
 						if(currentScore > 0)
 							hud.setScore(currentScore - 10);
 					}
-					//if the player is correct the stage will end and be set to the next
+					//if the player is correct increase interactions and move on
 					else if(input.equals(answer)) {
 						hud.setScore(hud.getScore() + 50);
-						SidePanel.addText("~" + input + "\n");
-						SidePanel.addText("~correct\n\n");
-						hud.setStageEnd(true);
-						hud.setStage(hud.getStage() + 1);
+						SidePanel.addText("~" + question + "\n\n"
+							+ "~" + input + "\n"
+							+ "~correct\n\n");
 						interacted = true;
+						hud.setInteractions(hud.getInteractions() + 1);
+						
+						
 					}
 				}
 			}

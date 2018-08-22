@@ -106,7 +106,7 @@ public class MessageNPC extends GameObjects {
 		for(GameObjects gameObject : Manager.objectList) {
 			if(gameObject.getId() == ID.Player) {
 				if(gameObject.getX() == x && gameObject.getY() == y) {
-					JOptionPane.showMessageDialog(null, message);
+					JOptionPane.showMessageDialog(null, message, "Message for You", JOptionPane.INFORMATION_MESSAGE);
 					hud.setScore(hud.getScore() + 10);
 					hud.setInteractions(hud.getInteractions() + 1);
 					interacted = true;

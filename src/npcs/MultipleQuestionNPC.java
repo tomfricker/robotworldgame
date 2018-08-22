@@ -92,7 +92,7 @@ public class MultipleQuestionNPC extends GameObjects {
 			if(gameObject.getId() == ID.Player) {
 				if(gameObject.getX() == x && gameObject.getY() == y) {
 					for(int i = 0; i < questions.length; i++) {
-						String input = JOptionPane.showInputDialog(null, questions[i]);
+						String input = JOptionPane.showInputDialog(null, questions[i], "Level End Quiz", JOptionPane.QUESTION_MESSAGE);
 						//allows the player to get out of the quiz and continue in level
 						if(input == null) {
 							gameObject.setX(gameObject.getX()-Game.boardIndex);

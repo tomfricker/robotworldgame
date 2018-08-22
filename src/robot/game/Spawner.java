@@ -2,10 +2,13 @@ package robot.game;
 
 import java.io.File;
 
+import javax.swing.JList;
+
 import npcs.ArrayListNPC;
 import npcs.Drawing;
 import npcs.Flower;
 import npcs.MessageNPC;
+import npcs.MultipleChoiceQNPC;
 import npcs.MultipleQuestionNPC;
 import npcs.QuestionNPC;
 import npcs.StageEndNPC;
@@ -279,7 +282,7 @@ public class Spawner {
 				//Add the second NPC once the first has been interacted with
 				if(interactions == 1) {
 					String message = "Your robot is hungry, feed him by getting him to eat the apple.\n"
-							+ "You can use something like robot.eat(fruit). Now try it yourself:";
+							+ "You can use something like robot.eat(fruit).\n (HINT: Find a substitute for the word \"fruit\"!) Now try it yourself:";
 					String answer = "robot.eat(apple);";
 					manager.addObject(new QuestionNPC(Cells.G, Cells.A, ID.NPC, manager, side, hud, message, answer, "pictures/apple.png"));
 					//Add an extra interaction to stop the addition of further objects from this method
@@ -290,7 +293,7 @@ public class Spawner {
 				else if(interactions == 3) {
 					String message = "Here we have two classes: the Robot and the Item classes. \n" 
 							+"Robbie is an Object from the Robot Class. This means he has characteristics (Fields) that are taken from (belong to) the Robot Class. \n"
-							+"We�ll discuss those in detail later. Continue to the next fruit.";
+							+"We'll discuss those in detail later. Continue to the next fruit.";
 					manager.addObject(new MessageNPC(Cells.G, Cells.C, ID.NPC, manager, side, hud, message));
 					hud.setInteractions(interactions + 1);
 				}
@@ -302,27 +305,30 @@ public class Spawner {
 				}
 				else if(interactions == 7) {
 					String message = "Classes start with a capital letter, while Objects are written with a small letter. \n\n"
-							+ "Write all the Objects you have seen so far in order of introduction!";
+							+ "Which Objects have you seen so far in order of introduction!";
+					String [] options = {"banana, robot, apple", "Item, Robot, banana", "robot, apple, banana"};
 					String answer = "robot, apple, banana";
-					manager.addObject(new QuestionNPC(Cells.B, Cells.C, ID.NPC, manager, side, hud, message, answer, "pictures/walle.png"));
+					manager.addObject(new MultipleChoiceQNPC(Cells.B, Cells.C, ID.NPC, manager, side, hud, message, options, answer));
 					hud.setInteractions(interactions + 1);
 				}
 				else if(interactions == 9) {
-					String message = "Classes have Methods that help you make an action, but only an Object can �invoke� that method.\n\n" + 
-							"Write the name of the Method you've seen so far!";
-					String answer = "eat";
-					manager.addObject(new QuestionNPC(Cells.A, Cells.D, ID.NPC, manager, side, hud, message, answer, "pictures/walle.png"));
+					String message = "Classes have Methods that help you make an action, but only an Object can \"invoke\" that method.\n\n" + 
+							"Which Method have you seen so far!";
+					String [] options = {"robot", "eat()", "Item"};
+					String answer = "eat()";
+					manager.addObject(new MultipleChoiceQNPC(Cells.A, Cells.D, ID.NPC, manager, side, hud, message, options, answer));
 					hud.setInteractions(interactions + 1);
 				}
 				else if(interactions == 11) {
-					String message = "To create a new object from a class you need to type it in this form: \n\n" + 
+					String message = "To create a new object from a Class you need to type it in this form: \n\n" + 
 							"ClassName ObjectName = new ClassName(); \n\n" + 
-							"(Don�t forget to put capital letters where needed!)";
+							"(Don't forget to put capital letters where needed!)";
 					manager.addObject(new MessageNPC(Cells.D, Cells.D, ID.NPC, manager, side, hud, message));
 					hud.setInteractions(interactions + 1);
 				}
 				else if(interactions == 13) {
-					String question = "Now try to create a friend for your robot from the class Robot and name it buddy!";
+					String question = "Now try to create a friend for your robot from the class Robot and name it buddy!\n"
+							+ "(HINT: Substitute the key words from the previous Message with actual names!)";
 					String answer = "Robot buddy = new Robot();";
 					manager.addObject(new StageEndNPC(Cells.F, Cells.F, ID.NPC, manager, side, hud, question, answer));
 					hud.setInteractions(0);
@@ -341,22 +347,24 @@ public class Spawner {
 					+ "~Now try stage 2.\n\n"
 					+ "~Good luck!\n\n");
 			manager.addObject(new Player(Cells.A, Cells.A, ID.Player));
-			String message = "A Class in Java has 3 main components: Fields (Objects� state), Methods (Objects� behavior) "
-					+ "and Constructor (Objects� creation).";
+			String message = "A Class in Java has 3 main components: Fields (Objects' state), Methods (Objects' behavior) "
+					+ "and Constructor (Objects' creation).";
 			manager.addObject(new MessageNPC(Cells.A, Cells.E, ID.NPC, manager, side, hud, message));
 			hud.setStageEnd(false);
 		}
 		if(interactions == 1) {
 			String message = "Fields can be primitive or reference type: an int, String or of class Item or Robot.\n\n" + 
 					"We define them like so:\n\n" + 
-					"private DataType/ClassName nameOfField;";
+					"private DataType/ClassName nameOfField;\n\n"
+					+ "If you want to learn more about the key word PRIVATE check the Help Section, Level 2, Access Modifier!";
 			manager.addObject(new MessageNPC(Cells.D, Cells.F, ID.NPC, manager, side, hud, message));
 			//Add an extra interaction to stop the addition of further objects from this method
 			hud.setInteractions(interactions + 1);
 		}
 		//Add the NPCs one at a time for the rest of the stage
 		else if(interactions == 3) {
-			String message = "Define an age field for the Robot class.";
+			String message = "Define an age field for the Robot Class.\n\n"
+					+ "(HINT: Subsittute the words above with actual names!)";
 			String answer = "private int age;";
 			manager.addObject(new QuestionNPC(Cells.E, Cells.C, ID.NPC, manager, side, hud, message, answer, "pictures/walle.png"));
 			hud.setInteractions(interactions + 1);
@@ -374,8 +382,9 @@ public class Spawner {
 			hud.setInteractions(interactions + 1);
 		}
 		else if(interactions == 9) {
-			String question = "Now add a name and hasBuddy Fields to the Robot class.\n\n"
-					+ "(Think carefully what data types those Fields will be!)";
+			String question = "Now write 2 more Fields to the Robot class. The first would be called name and the second one: "
+					+ "hasBuddy (which has True or False value)\n\n"
+					+ "(HINT: Think carefully what data types those Fields will be!)";
 			String answer = "private String name; private boolean hasBuddy;";
 			manager.addObject(new StageEndNPC(Cells.H, Cells.G, ID.NPC, manager, side, hud, question, answer));
 			hud.setInteractions(0);
@@ -406,7 +415,7 @@ public class Spawner {
 		}
 		//Add the NPCs one at a time for the rest of the stage
 		else if(interactions == 3) {
-			String message = "These values can be passed by parameters or hard coded in the Constructor�s body.\n\n" + 
+			String message = "These values can be passed by parameters or hard coded in the Constructor's body.\n\n" + 
 					"Examples of both:\n\n" + 
 					"public Robot(String fullName, int robotAge) {\n" + 
 					"//this is a comment in Java: here we equate the Fields we created earlier to the parameters above\n" + 
@@ -414,7 +423,7 @@ public class Spawner {
 					tab + "age = robotAge;\n" + 
 					"}\n\n" + 
 					"public Robot() {\n" + 
-					tab + "name = �Robbie�;\n" + 
+					tab + "name = \"Robbie\";\n" + 
 					tab + "age = 15;\n" + 
 					"}";
 			manager.addObject(new MessageNPC(Cells.E, Cells.E, ID.NPC, manager, side, hud, message));
@@ -462,7 +471,7 @@ public class Spawner {
 					"public returnType methodName (parameters) {\n" + 
 					tab + "action;\n" + 
 					tab + "action;\n" + 
-					tab + "�\n" + 
+					tab + "action;\n" + 
 					"}";
 			manager.addObject(new MessageNPC(Cells.G, Cells.C, ID.NPC, manager, side, hud, message));
 			hud.setInteractions(interactions + 1);
@@ -484,8 +493,9 @@ public class Spawner {
 					"public String getName() {\n" + 
 					tab + "return name;\n" + 
 					"}\n";
+			String [] options = {"accessor", "mutator"};
 			String answer = "accessor";
-			manager.addObject(new QuestionNPC(Cells.D, Cells.D, ID.NPC, manager, side, hud, message, answer, "pictures/walle.png"));
+			manager.addObject(new MultipleChoiceQNPC(Cells.D, Cells.D, ID.NPC, manager, side, hud, message, options, answer));
 			hud.setInteractions(interactions + 1);
 		}
 		else if(interactions == 11) {
@@ -493,12 +503,13 @@ public class Spawner {
 					"public void changeName(String newName) {\n" + 
 					tab + "name = newName;\r\n" + 
 					"}\n";
+			String [] options = {"accessor", "mutator"};
 			String answer = "mutator";
-			manager.addObject(new QuestionNPC(Cells.A, Cells.D, ID.NPC, manager, side, hud, message, answer, "pictures/walle.png"));
+			manager.addObject(new MultipleChoiceQNPC(Cells.A, Cells.D, ID.NPC, manager, side, hud, message, options, answer));
 			hud.setInteractions(interactions + 1);
 		}
 		else if(interactions == 13) {
-			String question = "Write the code to change robot�s name to Robbie!";
+			String question = "Write the code to change robot's name to Robbie!";
 			String answer = "robot.changeName(\"Robbie\");";
 			manager.addObject(new StageEndNPC(Cells.F, Cells.F, ID.NPC, manager, side, hud, question, answer));
 			hud.setInteractions(0);
@@ -536,7 +547,7 @@ public class Spawner {
 					+ "2. No\n"
 					+ "3. Yes, but not with the same parameter signatures\n"
 					+ "4. Yes, but only if it has the same parameters\n",
-					"Write a Method to set the age in the Robot Class!\n\n (HINT: Call it setAge with parameter newAge!)"
+					"Write a Method to set the age in the Robot Class!\n\n (HINT: Call it setAge with parameter newAge!\n Put SPACES only between words and the = sign!)"
 					};
 			String[] answers = {"3", "1", "3", "public void setAge(int newAge) {age = newAge;}"};
 			manager.addObject(new MultipleQuestionNPC(Cells.D, Cells.F, ID.NPC, manager, side, hud, questions, answers));
