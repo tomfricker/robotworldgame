@@ -33,7 +33,7 @@ public class Hints {
 		if(chosen != null) {
 			return chosen;
 		}
-		return "That's not quite right, try again.";
+		return chooseGeneralHint();
 	}
 	
 	/**
@@ -174,6 +174,66 @@ public class Hints {
 		
 		
 		
+	}
+	
+	/**
+	 * Returns general hints based on level, stage and number of interactions
+	 * @return
+	 */
+	private String chooseGeneralHint() {
+		if(HUD.getLevel() == 1) {
+			if(HUD.getStage() == 2) {
+				return "Your answer should be in this form: DataType Name = Assignment;";
+			}
+			else if(HUD.getStage() == 3) {
+				return "Your answer should be in this form: DataType Name = Assignment;";
+			}
+		}
+		else if(HUD.getLevel() == 2) {
+			if(HUD.getStage() == 1) {
+				if(HUD.getInteractions() == 2) {
+					return "Replace fruit with the name of the fruit you want the robot to eat.";
+				}
+				else if(HUD.getInteractions() == 6) {
+					return "Replace fruit with the name of the fruit you want the robot to eat.";
+				}
+				else if(HUD.getInteractions() == 0) {
+					return "Your answer should be in this form: NameOfClass NameOfObject = new NameOfClass();";
+				}
+			}
+			else if(HUD.getStage() == 2) {
+				if(HUD.getInteractions() == 4) {
+					return "Replace DataType and NameOfField: private DataType NameOfField;";
+				}
+				else if(HUD.getInteractions() == 6) {
+					return "Replace ClassName and NameOfField: private ClassName NameOfField;";
+				}
+				else if(HUD.getInteractions() == 0) {
+					return "Your answer should be in this form: private DataType NameOfField; private DataType NameOfField;";
+				}
+			}
+			else if(HUD.getStage() == 3) {
+				return "Your answer should be in this form: NameOfClass NameOfObject = new NameOfClass(String, int);";
+			}
+			else if(HUD.getStage() == 4) {
+				return "Replace MethodName and String: robot.MethodName(String);";
+			}			
+		}
+		else if(HUD.getLevel() == 4) {
+			if(HUD.getStage() == 1) {
+				return "The method you should use is pickup: robot.MethodName(ObjectName);";
+			}
+			else if(HUD.getStage() == 2) {
+				return "Your answer should be in this form: flowerName, flowerName, flowerName, ";
+			}
+			else if(HUD.getStage() == 3) {
+				return "The flowers are numbered like this: 0) rose, 1) tulip, 2) lily";
+			}
+			else if(HUD.getStage() == 4) {
+				return "The flowers are numbered like this: 0) rose, 1) tulip, 2) lily";
+			}
+		}
+		return "That's not quite right, try again.";
 	}
 
 }
