@@ -7,7 +7,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
-import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -18,7 +17,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 /**
- * This class creates a panel that allows the user to enter input and then displays it.
+ * This class creates a panel that allows the user to enter input and then displays it above.
  * 
  * It also has two buttons that run the users input or clears it.
  * 
@@ -102,17 +101,6 @@ public class CodePanel extends Panel implements FocusListener {
         		setText("");
            	}
         });
-		
-		//deleteButton = new JButton("Delete");
-		//deleteButton.setFont(font);
-		//deleteButton.setToolTipText("This will delete the last command you entered.");
-		////removes last command from list and deletes it from codeOutput
-		//deleteButton.addActionListener(new ActionListener() {
-        //	public void actionPerformed(ActionEvent e) {
-        //		Commands.removeLastCommand();
-		//		//remove last command from codeOutput
-        //	}
-        //});
 		
 		//create clear button
 		clearButton = new JButton("Clear");

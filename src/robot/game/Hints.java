@@ -15,6 +15,9 @@ public class Hints {
 	//contains all available hints
 	private HashMap<String, String> hintMap;
 	
+	/**
+	 * Constructor for Hints
+	 */
 	public Hints() {
 		hintMap = new HashMap<>();
 		chooseHintMap();
@@ -47,16 +50,13 @@ public class Hints {
 				"Robots or robots?");
 		
 		//level 1 stage 3
-		hintMap.put("robot = \"Robot\";", 
+		hintMap.put("name = \"Robbie\";", 
 				"Don't forget to declare a data type!");
-		hintMap.put("String Robot = \"Robot\"", 
+		hintMap.put("String name = \"Robbie\"", 
 				"I think you forgot something on the end;");
-		hintMap.put("String robot = Robot;", 
+		hintMap.put("String name = Robbie;", 
 				"A String is alway contained in inverted commas!");
-		hintMap.put("String Robot = \"Robot\";", 
-				"Robots or robots?");
-		hintMap.put("String robot = \"robot\";", 
-				"Robots or robots?");
+
 		
 //LEVEL 2
 		//level 2 stage 1
@@ -69,11 +69,6 @@ public class Hints {
 				"Who is eating the apple?");
 		hintMap.put("robot.eat(banana)", 
 				"I think you forgot something on the end;");
-		
-		hintMap.put("apple, banana", 
-				"Someone is an object as well.");
-		hintMap.put("robots, apple, banana", 
-				"You only need one of each object.");
 		
 		hintMap.put("Robot buddy = Robot();", 
 				"Don't forget you are creating something new!");
@@ -168,7 +163,9 @@ public class Hints {
 		
 		//level 4 stage 2
 		hintMap.put("rose, tulip, lily", 
-				"The print method prints everything in the brackets (including spaces).");
+				"The print method prints everything in the brackets (including commas and spaces on the end).");
+		hintMap.put("rose, tulip, lily,", 
+				"The print method prints everything in the brackets (including spaces on the end).");
 		
 		//level 4 stage 5
 		hintMap.put("int i = 1", 
