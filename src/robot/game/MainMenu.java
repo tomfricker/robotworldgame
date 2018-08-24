@@ -6,9 +6,6 @@ import java.awt.Graphics;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import javax.swing.JDialog;
-import javax.swing.JTextArea;
-import javax.swing.ScrollPaneLayout;
 import npcs.CollectionNPC;
 import npcs.MessageNPC;
 import npcs.PICKUPID;
@@ -106,19 +103,19 @@ public class MainMenu extends MouseAdapter{
 		}
 		else if(Game.gameState == STATE.End) {
 			if(mouseOver(mouseX, mouseY, 70, 45, 500, 120)) {
-				int level = hud.getLevel();
+				int level = HUD.getLevel();
 				if(level != 5) {
 					resetHUD();
-					int newLevel = hud.getLevel()+1;
+					int newLevel = HUD.getLevel()+1;
 					createLevel(newLevel);
 				}
 			}
 			else if(mouseOver(mouseX, mouseY, 100, 284, 440, 64)) {
-					int currentLevel = hud.getLevel();
+					int currentLevel = HUD.getLevel();
 					if(currentLevel == 5) {
 						new SourceCodeWindow();
 						resetHUD();
-						int newLevel = hud.getLevel()+1;
+						int newLevel = HUD.getLevel()+1;
 						createLevel(newLevel);
 					}
 			}
@@ -311,7 +308,7 @@ public class MainMenu extends MouseAdapter{
 			font = new Font("Monospaced", Font.BOLD, 26);
 			g.setFont(font);
 			g.setColor(Color.RED);
-			if(hud.getLevel() != 5)
+			if(HUD.getLevel() != 5)
 				g.drawString("Click here for next level", 120, 150);
 			else
 				g.drawString("Click here for Main Menu", 120, 150);
@@ -320,7 +317,7 @@ public class MainMenu extends MouseAdapter{
 			g.drawString("Your score was : " + hud.getScore(), 160, 245);
 			
 			//display button for Robot source code at end of level 5
-			if (hud.getLevel()==5) {
+			if (HUD.getLevel()==5) {
 				g.setColor(Color.BLACK);
 				g.fillRect(100, 284, 440, 64);
 				g.setColor(Color.WHITE);

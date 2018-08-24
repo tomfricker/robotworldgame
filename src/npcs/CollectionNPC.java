@@ -1,6 +1,5 @@
 package npcs;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.io.File;
@@ -109,7 +108,7 @@ public class CollectionNPC extends GameObjects {
 				if(o.getX() == x && o.getY() == y) {
 					if(interacted ==false) {
 					JOptionPane.showMessageDialog(null, "I'm an ArrayList of type"+primType+". I want you to find me all of the "+primType+" objects on the board and bring them back to me.");
-					side.addText(colspectext);
+					SidePanel.addText(colspectext);
 					interacted = true;
 					}
 					//checks type of bag against collector type
@@ -168,7 +167,7 @@ public class CollectionNPC extends GameObjects {
 			Bag.setType(primType);
 			//System.out.println("imposed the collector's type "+primType+" on the player's bag");
 			//reminded = false;
-			side.addText("~Look for the "+primType+" objects on the board for me.\n\n");
+			SidePanel.addText("~Look for the "+primType+" objects on the board for me.\n\n");
 		}
 	}
 	
@@ -193,7 +192,7 @@ public class CollectionNPC extends GameObjects {
 			if(turnedin >0) {
 				hud.setScore(hud.getScore()+(10*turnedin));
 				Bag.removePickups(cpid);
-				side.addText("~ Thank you for those "+ turnedin + " "+ primType + "s. \n\n");
+				SidePanel.addText("~ Thank you for those "+ turnedin + " "+ primType + "s. \n\n");
 			}
 			//System.out.println("Turned in "+ turnedin+ " "+cpid+"s for "+(turnedin * 10) + " points");
 		}

@@ -6,12 +6,7 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
-import javax.swing.JDialog;
-import javax.swing.JList;
 import javax.swing.JOptionPane;
-import javax.swing.JRadioButton;
-import javax.swing.JTextField;
-
 import robot.game.Game;
 import robot.game.GameObjects;
 import robot.game.HUD;
@@ -135,7 +130,7 @@ public class MultipleChoiceQNPC extends GameObjects {
 							+ "~" + input + "\n"
 							+ "~correct\n\n");
 						interacted = true;
-						hud.setInteractions(hud.getInteractions() + 1);
+						HUD.setInteractions(HUD.getInteractions() + 1);
 						
 						
 					}

@@ -6,7 +6,6 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
-import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
 import robot.game.Game;
@@ -131,7 +130,7 @@ public class QuestionNPC extends GameObjects {
 							+ "~correct\n\n");
 						interacted = true;
 						//hud.setLevelEnd(true);
-						hud.setInteractions(hud.getInteractions() + 1);
+						HUD.setInteractions(HUD.getInteractions() + 1);
 						
 						
 					}
