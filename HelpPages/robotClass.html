@@ -1,0 +1,147 @@
+<html>
+
+<head>
+<script>
+
+</script>
+
+<title>Class Robot - Source Code</title>
+</head>
+
+<body>
+<pre><code class="language-java">
+/**<br/>
+ * This is the Robot class and it determines what Objects from the Class<br/>
+ * have as characteristics and what they can do.<br/>
+ * (You can write comments here and they won't be interpreted as code by the    <br/> 
+ * program. This helps others understand what your code does!)<br/>
+ *<br/>
+ * @author RobotWorld Team and You<br/>
+ * @version 1.0<br/>
+ */<br/>
+public class Robot<br/>
+{<br/>
+    //the age of the robot<br/>
+    private int age;<br/>
+    //the name of the robot<br/>
+    private String name;<br/>
+    //the hat of the robot<br/>
+    private Item hat;<br/>
+    //if the robot has a buddy<br/>
+    private boolean hasBuddy;<br/>
+    //if the robot is hungry<br/>
+    private boolean isHungry;<br/>
+<br/>
+    /**<br/>
+     * Constructor for objects of class Robot with parameters<br/>
+     */<br/>
+    public Robot(String fullName, int robotAge)<br/>
+    {<br/>
+        // initialise the fields<br/>
+        name = fullName;<br/>
+        age = robotAge;<br/>
+        hat = new Item();<br/>
+        hasBuddy = true;<br/>
+        isHungry = true;<br/>
+    }<br/>
+<br/>
+    /**<br/>
+     * Constructor for objects of class Robot without parameters<br/>
+     */<br/>
+    public Robot()<br/>
+    {<br/>
+        // initialise the fields<br/>
+        name = "Robbie";<br/>
+        age = 15;<br/>
+        hat = new Item();<br/>
+        hasBuddy = true;<br/>
+        isHungry = true;<br/>
+    }<br/>
+<br/>
+    /**<br/>
+     * Returns the age of the robot<br/>
+     *<br/>
+     * @return    the age of the robot<br/>
+     */<br/>
+    public int getAge()<br/>
+    {<br/>
+        return age;<br/>
+    }<br/>
+    <br/>
+    /**<br/>
+     * Sets the age of the robot to the parameter value<br/>
+     *<br/>
+     * @param  newAge  the age you're setting for the robot<br/>
+     */<br/>
+    public void setAge(int newAge)<br/>
+    {<br/>
+        age = newAge;<br/>
+    }<br/>
+    <br/>
+    /**<br/>
+     * Returns the name of the robot<br/>
+     *<br/>
+     * @return    the name of the robot<br/>
+     */<br/>
+    public String getName()<br/>
+    {<br/>
+        return name;<br/>
+    }<br/>
+    <br/>
+    /**<br/>
+     * Changes the name of the robot to the parameter value<br/> 
+     *<br/>
+     * @param  newName  the new name of the robot<br/>
+     */<br/>
+    public void changeName(String newName)<br/>
+    {<br/>
+        name = newName;<br/>
+    }<br/>
+    <br/>
+    /**<br/>
+     * Returns whether the robot has a buddy or not<br/>
+     *<br/>
+     * @return   the hasBuddy value of the robot<br/>
+     */<br/>
+    public boolean getBuddy()<br/>
+    {<br/>
+        return hasBuddy;<br/>
+    }<br/>
+    <br/>
+    /**<br/>
+     * Returns whether the robot is hungry or not<br/>
+     *<br/>
+     * @return   the isHungry value of the robot<br/>
+     */<br/>
+    public boolean getHungry()<br/>
+    {<br/>
+        return isHungry;<br/>
+    }<br/>
+    <br/>
+    /**<br/>
+     * Set the hat colour of the robot<br/>
+     *<br/>
+     * @param  colour  the colour you're setting for the hat<br/>
+     */<br/>
+    public void setHatColour(String colour)<br/>
+    {<br/>
+        hat.changeColour("blue");<br/>
+    }<br/>
+    <br/>
+    /**<br/>
+     * The robot eats<br/>
+     *<br/>
+     * @param  fruit  the Item that the robot eats<br/>
+     */<br/>
+    public void eat(Item fruit)<br/>
+    {<br/>
+        fruit.disappear();<br/>
+        isHungry = false;<br/>
+    }<br/>
+    <br/>
+}<br/>
+</code></pre>
+
+</body>
+
+</html>

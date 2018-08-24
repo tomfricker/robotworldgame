@@ -35,7 +35,7 @@ public class MainMenu extends MouseAdapter{
 	private Manager manager;
 	private SidePanel side;
 	private HUD hud;
-	private String[] levelNames = { "Data Types", "Classes and Objects", "Collections", "Loops and Methods", "Conditional Statements" };
+	private String[] levelNames = {"Data Types", "Conditional Statements", "Collections", "Loops and Methods", "Classes and Objects"};
 	
 	/**
 	 * Constructor of the MainMenu
@@ -112,13 +112,18 @@ public class MainMenu extends MouseAdapter{
 					int newLevel = hud.getLevel()+1;
 					createLevel(newLevel);
 				}
-				else if(mouseOver(mouseX, mouseY, 100, 284, 440, 64)) {
-					SourceCodeWindow sourceCodeWindow = new SourceCodeWindow();
-					
-				} 
+			}
+			else if(mouseOver(mouseX, mouseY, 100, 284, 440, 64)) {
+					int currentLevel = hud.getLevel();
+					if(currentLevel == 5) {
+						new SourceCodeWindow();
+						resetHUD();
+						int newLevel = hud.getLevel()+1;
+						createLevel(newLevel);
+					}
+			}
 			else {
 				Game.gameState = STATE.Menu;
-			}
 			}
 		}
 		
@@ -155,12 +160,6 @@ public class MainMenu extends MouseAdapter{
 			case 2 : {
 				hud.setLevel(2);
 				//add objects to start of level 2
-				manager.addObject(new Player(Cells.A, Cells.A, ID.Player));
-				String npcMessage = "Hello! I will be your robot buddy and guide you through this adventure. " 
-						+ "I hope we can learn together!\n\nNow go to the apple!\n\n";
-				manager.addObject(new MessageNPC(Cells.D, Cells.A, ID.NPC, manager, side, hud, npcMessage));
-				side.setText("~Welcome to level 2 of Robot World - All about Classes and Objects!\n\n"
-						+ "~Try moving the Robot to the other Robot.\n\n");
 				break;
 			}
 			case 3: {
@@ -196,6 +195,12 @@ public class MainMenu extends MouseAdapter{
 			case 5 : {
 				hud.setLevel(5);
 				//add objects to start of level 5
+				manager.addObject(new Player(Cells.A, Cells.A, ID.Player));
+				String npcMessage = "Hello! I will be your robot buddy and guide you through this adventure. " 
+						+ "I hope we can learn together!\n\nNow go to the apple!\n\n";
+				manager.addObject(new MessageNPC(Cells.D, Cells.A, ID.NPC, manager, side, hud, npcMessage));
+				side.setText("~Welcome to level 2 of Robot World - All about Classes and Objects!\n\n"
+						+ "~Try moving the Robot to the other Robot.\n\n");
 				break;
 			}
 		}
@@ -314,8 +319,8 @@ public class MainMenu extends MouseAdapter{
 			//display user score
 			g.drawString("Your score was : " + hud.getScore(), 160, 245);
 			
-			//display button for Robot source code at end of level 2
-			if (hud.getLevel()==1) {
+			//display button for Robot source code at end of level 5
+			if (hud.getLevel()==5) {
 				g.setColor(Color.BLACK);
 				g.fillRect(100, 284, 440, 64);
 				g.setColor(Color.WHITE);

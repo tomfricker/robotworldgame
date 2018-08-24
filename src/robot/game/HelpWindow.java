@@ -52,6 +52,7 @@ public class HelpWindow {
         styleSheet.addRule("h1 {margin: 5px 10px 5px 10px; padding: 5px 10px 5px 10px; color: blue; text-align: center; font-size: 180%;}");
         styleSheet.addRule("h2 {margin: 5px 10px 5px 10px; padding: 5px 10px 5px 10px; color: red; font-size: 140%;}");
         styleSheet.addRule("p, pre {margin: 5px 10px 5px 10px; padding: 5px 10px 5px 10px; color: black; text-align: justify; font-size: 120%;}");
+        styleSheet.addRule("code {margin: 5px 10px 5px 10px; padding: 5px 10px 5px 10px; color: black; text-align: justify; font-size: 120%;}");
         styleSheet.addRule("ul {list-style-type: square; font-size: 105%;}");
         styleSheet.addRule("ul li {padding: 8px 16px;}");
 		
@@ -98,8 +99,9 @@ public class HelpWindow {
 					case "Characters": return "There are different characters to interact with, try them all!";
 					case "Input": return readFile("HelpPages\\input.html");
 					case "1 - Data Types": return readFile("HelpPages\\datatypes.html");
-					case "2 - Classes and Objects": return readFile("HelpPages\\classes&objects.html");
+					case "2 - Conditional Statements": return readFile("");
 					case "4 - Loops and Methods": return readFile("HelpPages\\loops.html");
+					case "5 Classes and Objects": return readFile("HelpPages\\\\classes&objects.html");
 				}
 				return null;
 			}
@@ -125,7 +127,7 @@ public class HelpWindow {
 	 * Read a file and return it's contents
 	 * @return
 	 */
-	private String readFile(String file) {
+	String readFile(String file) {
 		StringBuilder contents = new StringBuilder("");
 		
 		try {
@@ -175,7 +177,7 @@ public class HelpWindow {
 	    info = new DefaultMutableTreeNode("1 - Data Types");
 	    category.add(info);
 
-	    info = new DefaultMutableTreeNode("2 - Classes and Objects");
+	    info = new DefaultMutableTreeNode("2 - Conditional Statements");
 	    category.add(info);
 	    
 	    info = new DefaultMutableTreeNode("3 - Collections");
@@ -184,7 +186,7 @@ public class HelpWindow {
 	    info = new DefaultMutableTreeNode("4 - Loops and Methods");
 	    category.add(info);
 	    
-	    info = new DefaultMutableTreeNode("5 - Conditional Statements");
+	    info = new DefaultMutableTreeNode("5 - Classes and Objects");
 	    category.add(info);
 	}
 

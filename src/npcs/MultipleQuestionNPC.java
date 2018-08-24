@@ -40,6 +40,7 @@ public class MultipleQuestionNPC extends GameObjects {
 	private String[] questions, answers;
 	private boolean interacted;
 	private Hints hints;
+	private String [][] options;
 
 	/**
 	 * Constructor for the StageEndNPC
@@ -52,11 +53,12 @@ public class MultipleQuestionNPC extends GameObjects {
 	 * @param question
 	 * @param answer
 	 */
-	public MultipleQuestionNPC(int x, int y, ID id, Manager manager, SidePanel side, HUD hud, String[] questions, String[] answers) {
+	public MultipleQuestionNPC(int x, int y, ID id, Manager manager, SidePanel side, HUD hud, String[] questions, String[] answers, String [][] options) {
 		super(x, y, id);
 		this.hud = hud;
 		this.questions = questions;
 		this.answers = answers;
+		this.options = options;
 		interacted = false;
 		hints= new Hints();
 	}
@@ -92,7 +94,7 @@ public class MultipleQuestionNPC extends GameObjects {
 			if(gameObject.getId() == ID.Player) {
 				if(gameObject.getX() == x && gameObject.getY() == y) {
 					for(int i = 0; i < questions.length; i++) {
-						String input = JOptionPane.showInputDialog(null, questions[i], "Level End Quiz", JOptionPane.QUESTION_MESSAGE);
+						String input = (String) JOptionPane.showInputDialog(null, questions[i], "Level End Quiz", JOptionPane.QUESTION_MESSAGE, null, options[i], null);
 						//allows the player to get out of the quiz and continue in level
 						if(input == null) {
 							gameObject.setX(gameObject.getX()-Game.boardIndex);
@@ -112,7 +114,7 @@ public class MultipleQuestionNPC extends GameObjects {
 							int currentScore = hud.getScore();
 							if(currentScore > 0)
 								hud.setScore(currentScore - 10);
-							input = JOptionPane.showInputDialog(null, questions[i]);
+							input = (String) JOptionPane.showInputDialog(null, questions[i],"Level End Quiz", JOptionPane.QUESTION_MESSAGE, null, options[i], null);
 						}
 						//if the player is correct the stage will end and be set to the next
 						if(input.equals(answers[i])) {
