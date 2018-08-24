@@ -199,7 +199,7 @@ public class MainMenu extends MouseAdapter{
 				String npcMessage = "Hello! I will be your robot buddy and guide you through this adventure. " 
 						+ "I hope we can learn together!\n\nNow go to the apple!\n\n";
 				manager.addObject(new MessageNPC(Cells.D, Cells.A, ID.NPC, manager, side, hud, npcMessage));
-				side.setText("~Welcome to level 2 of Robot World - All about Classes and Objects!\n\n"
+				side.setText("~Welcome to Level 5 of Robot World - All about Classes and Objects!\n\n"
 						+ "~Try moving the Robot to the other Robot.\n\n");
 				break;
 			}
