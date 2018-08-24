@@ -49,7 +49,6 @@ public class Player extends GameObjects {
 	@Override
 	public void render(Graphics g) {
 		File imageFile = new File("pictures\\HelensRobot.png");
-		//InputStream input = getClass().getResourceAsStream("HelenRobot.png");
 		try {
 			Image robot = ImageIO.read(imageFile);
 			g.drawImage(robot, x, y, null);
