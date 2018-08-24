@@ -91,11 +91,8 @@ public class HelpWindow {
 			private String getHelp(String help) {
 				switch(help) {
 					case "Controls": return readFile("HelpPages\\controls.html");
-					case "Buttons": return "The Main Menu button takes you back to the level selector.\n\n"
-							+ "The Run Code button executes all the code in the right hand panel.\n\n"
-							+ "When on the Code Panel, you can scroll with the UP and DOWN arrow keys to navigate "
-							+ "through the commands you've written.";
-					case "Characters": return "There are different characters to interact with, try them all!";
+					case "Buttons": return readFile("HelpPages\\buttons.html");
+					case "Characters": return readFile("HelpPages\\characters.html");
 					case "Input": return readFile("HelpPages\\input.html");
 					case "1 - Data Types": return readFile("HelpPages\\datatypes.html");
 					case "2 - Classes and Objects": return readFile("HelpPages\\classes&objects.html");
