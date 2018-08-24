@@ -51,7 +51,7 @@ public class Cells {
 		}
 		else if(currentLetter == H) {
 			nextLetter = H;
-			SidePanel.addText("~ Don't go off the board! \n\n");
+			SidePanel.addText("~Don't go off the board! \n\n");
 		}
 		return nextLetter;
 	}
@@ -65,7 +65,7 @@ public class Cells {
 		int beforeLetter = 0;
 		if (currentLetter == A) {
 			beforeLetter = A;
-			SidePanel.addText("~ Don't go off the board! \n\n");
+			SidePanel.addText("~Don't go off the board! \n\n");
 		}
 		else if(currentLetter == B) {
 			beforeLetter = A;

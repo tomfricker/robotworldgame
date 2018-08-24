@@ -81,7 +81,13 @@ public class Drawing extends GameObjects {
 				g2d.setColor(Color.MAGENTA);
 				g2d.fillOval(p, q, 50, 80);
 			}
-			g2d.setTransform(old);	
+			g2d.setTransform(old);
+			
+			//draw flower centre
+			int n = (Game.HEIGHT - 177);
+			int m = (Game.WIDTH - 405);
+			g.setColor(Color.YELLOW);
+			g.fillOval(m, n, 45, 45);
 		}
 	}
 	

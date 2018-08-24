@@ -6,7 +6,7 @@ import npcs.ArrayListNPC;
 import npcs.Drawing;
 
 /**
- * This class has a array of all the commands available to the user. 
+ * This class has a array of all the commands available to the user and an ArrayList of all the commands the user has entered. 
  * It checks that the users input is one of the valid commands and runs it.
  * 
  * @author MissH
@@ -90,10 +90,6 @@ public class Commands {
 						}
 						SidePanel.addText("~You have picked up a flower!\n\n");
 					}
-					//repeats message for all flowers (i.e. 3 times instead of 1)
-					//else {
-					//	SidePanel.addText("~Find a flower to pickup!\n\n");
-					//}
 				}
 			}
 		}
@@ -132,23 +128,28 @@ public class Commands {
 		}
 	}
 	
+	/**
+	 * Add parameter to ArrayListNPC
+	 * @param c
+	 */
 	public static void addToAL(char c) {
-		
 		for(GameObjects o : Manager.objectList) {
 			if (o.getId() == ID.Collection) {
 				ArrayListNPC al = (ArrayListNPC)o;
 				al.add(c);
-				
 			}
 		}
 	}
 	
+	/**
+	 * Removes parameter from ArrayListNPC
+	 * @param i
+	 */
 	public static void removeFromAL(int i) {
 		for(GameObjects o : Manager.objectList) {
 			if (o.getId() == ID.Collection) {
 				ArrayListNPC al = (ArrayListNPC)o;
 				al.remove(i);
-				
 			}
 		}
 	}
@@ -161,8 +162,8 @@ public class Commands {
 	}
 	
 	/**
-	 * Checks which command has been entered and does it
-	 * @return 
+	 * Checks if the users input is a valid command
+	 * @return boolean value
 	 */
 	public static Boolean checkCommands() {
 		String inputText = CodePanel.getInput();
@@ -175,7 +176,7 @@ public class Commands {
 	}
 	
 	/**
-	 * prints valid code in codePanel output box or displays error message in sidePanel
+	 * Prints valid code in codePanel output box or displays error message in sidePanel
 	 */
 	public static void printCommands() {
 		Boolean validCode = checkCommands();
@@ -194,13 +195,6 @@ public class Commands {
 	 */
 	public static void addToCommandList(String command) {
 		commands.add(command);
-	}
-	
-	/**
-	 * Removes last command added to commands list (for delete button)
-	 */
-	public static void removeLastCommand() {
-		commands.remove(commands.size()-1);
 	}
 	
 	/**
@@ -233,9 +227,6 @@ public class Commands {
 			else if(command.equals("drawFlower();")) {
 				drawFlower();
 			}
-			//else if(command.equals("robot.move(String direction, int number);")) {
-			//	move(direction, number);
-			//}
 			else if(command.equals("robot.move(up, 2);")) {
 				move("up", 2);
 			}

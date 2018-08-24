@@ -21,8 +21,8 @@ public class HUD {
 	
 	//Fields to display and store information on the score/level/stage
 	private int score = 0;
-	private int level = 0;
-	private int stage = 0;
+	private static int level = 0;
+	private static int stage = 0;
 	
 	//Fields to hold interactions and whether a level or stage has ended
 	private static int interactions = 0;
@@ -68,7 +68,7 @@ public class HUD {
 	//All getter and setter methods for fields of this class
 	
 	public void setLevel(int level) {
-		this.level = level;
+		HUD.level = level;
 	}
 	
 	public void setScore(int score) {
@@ -95,19 +95,19 @@ public class HUD {
 		this.levelEnd = levelEnd;
 	}
 
-	public int getStage() {
+	public static int getStage() {
 		return stage;
 	}
 
 	public void setStage(int stage) {
-		this.stage = stage;
+		HUD.stage = stage;
 	}
 
-	public int getLevel() {
+	public static int getLevel() {
 		return level;
 	}
 
-	public int getInteractions() {
+	public static int getInteractions() {
 		return interactions;
 	}
 

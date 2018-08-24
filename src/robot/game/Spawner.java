@@ -2,8 +2,6 @@ package robot.game;
 
 import java.io.File;
 
-import javax.swing.JList;
-
 import npcs.ArrayListNPC;
 import npcs.Drawing;
 import npcs.Flower;
@@ -46,9 +44,9 @@ public class Spawner {
 	 */
 	public void tick() {
 		//Get the stage the user is on
-		int stage = hud.getStage();
+		int stage = HUD.getStage();
 		//Get the level the user is on
-		switch(hud.getLevel()) {
+		switch(HUD.getLevel()) {
 			//Execute the method for the correct level/stage
 			//level 1
 			case 1: if(stage == 1) dataTypesIntro();
@@ -67,11 +65,11 @@ public class Spawner {
 			//else if(stage == 5) levelThreeStageFive();
 			
 			//level 4
-			case 4: if(stage == 1) levelFourStageOne();
-			else if(stage == 2) levelFourStageTwo();
-			else if(stage == 3) levelFourStageThree();
-			else if(stage == 4) levelFourStageFour();
-			else if(stage == 5) levelFourStageFive();
+			case 4: if(stage == 1) loopsIntro();
+			else if(stage == 2) loopsForeach();
+			else if(stage == 3) loopsWhile();
+			else if(stage == 4) loopsFor();
+			else if(stage == 5) loopsQuiz();
 			
 			//level 5
 			case 5: if(stage == 1) classesObjectsIntro();
@@ -89,36 +87,36 @@ public class Spawner {
 	 */
 	public void dataTypesIntro() {
 		//Get the number of interactions
-		int interactions = hud.getInteractions();
+		int interactions = HUD.getInteractions();
 		//Add the second NPC once the first has been interacted with
 		if(interactions == 1) {
 			String message = "There are many different types of data types including, int, double, float, "
 					+ "long, boolean and char.";
 			manager.addObject(new MessageNPC(Cells.E, Cells.A, ID.NPC, manager, side, hud, message));
 			//Add an extra interaction to stop the addition of further objects from this method
-			hud.setInteractions(interactions + 1);
+			HUD.setInteractions(interactions + 1);
 		}
 		//Add the NPCs one at a time for the rest of the stage
 		else if(interactions == 3) {
 			String message = "To use data within our program we need to store it in a variable.";
 			manager.addObject(new MessageNPC(Cells.G, Cells.A, ID.NPC, manager, side, hud, message));
-			hud.setInteractions(interactions + 1);
+			HUD.setInteractions(interactions + 1);
 		}
 		else if(interactions == 5) {
 			String message = "We decide what name to give our variable and begin with a lowercase letter.\n\n"
 					+ "e.g. robots, squares, x or y.";
 			manager.addObject(new MessageNPC(Cells.H, Cells.C, ID.NPC, manager, side, hud, message));
-			hud.setInteractions(interactions + 1);
+			HUD.setInteractions(interactions + 1);
 		}
 		else if(interactions == 7) {
 			String message = "To assign data to our variable we use =";
 			manager.addObject(new MessageNPC(Cells.F, Cells.C, ID.NPC, manager, side, hud, message));
-			hud.setInteractions(interactions + 1);
+			HUD.setInteractions(interactions + 1);
 		}
 		else if(interactions == 9) {
 			String message = "Finally we use ; to finish our line of code.";
 			manager.addObject(new MessageNPC(Cells.D, Cells.C, ID.NPC, manager, side, hud, message));
-			hud.setInteractions(interactions + 1);
+			HUD.setInteractions(interactions + 1);
 		}
 		else if(interactions == 11) {
 			String question = "In maths, an integer is any whole number. Which data type\n"
@@ -126,7 +124,7 @@ public class Spawner {
 					+ "int, double, float, long, boolean or char.";
 			String answer = "int";
 			manager.addObject(new StageEndNPC(Cells.B, Cells.C, ID.NPC, manager, side, hud, question, answer));
-			hud.setInteractions(0);
+			HUD.setInteractions(0);
 		}
 	}
 	
@@ -136,7 +134,7 @@ public class Spawner {
 	 * object is only added once to the manager.
 	 */
 	public void dataTypesInt() {
-		int interactions = hud.getInteractions();
+		int interactions = HUD.getInteractions();
 		if(hud.isStageEnd() == true) {
 			Manager.clearAll();
 			SidePanel.addText("~Congratulations you completed Stage 1\n\n"
@@ -151,14 +149,14 @@ public class Spawner {
 			String message = "Remeber we need a data type, a variable name, an assignment =, the data and finally a ;";
 			manager.addObject(new MessageNPC(Cells.A, Cells.F, ID.NPC, manager, side, hud, message));
 			//Add an extra interaction to stop the addition of further objects from this method
-			hud.setInteractions(interactions + 1);
+			HUD.setInteractions(interactions + 1);
 		}
 		//Add the NPCs one at a time for the rest of the stage
 		else if(interactions == 3) {
 			String message = "An example of a number variable declaration is:\n\n"
 					+ "int squares = 64;";
 			manager.addObject(new MessageNPC(Cells.B, Cells.G, ID.NPC, manager, side, hud, message));
-			hud.setInteractions(interactions + 1);
+			HUD.setInteractions(interactions + 1);
 		}
 		else if(interactions == 5) {
 			for(int i = 0; i < 8; i++) {
@@ -170,7 +168,7 @@ public class Spawner {
 					+ "HINT: Spelling, spaces and upper/lowercase letters are important when writing code!";
 			String answer = "int robots = 8;";
 			manager.addObject(new StageEndNPC(Cells.D, Cells.G, ID.NPC, manager, side, hud, question, answer));
-			hud.setInteractions(0);
+			HUD.setInteractions(0);
 		}
 	}
 	
@@ -179,7 +177,7 @@ public class Spawner {
 	 * levelOneStageOne()
 	 */
 	public void dataTypesString() {
-		int interactions = hud.getInteractions();
+		int interactions = HUD.getInteractions();
 		if(hud.isStageEnd() == true) {
 			Manager.clearAll();
 			SidePanel.addText("~Congratulations you completed Stage 2\n\n"
@@ -194,17 +192,17 @@ public class Spawner {
 			String message2 = "When writing a String you must wrap it with inverted commas like:\n\n"
 					+ "\"This is a string\"";
 			manager.addObject(new MessageNPC(Cells.E, Cells.E, ID.NPC, manager, side, hud, message2));
-			hud.setInteractions(interactions + 1);
+			HUD.setInteractions(interactions + 1);
 		}
 		else if(interactions == 3) {
 			String message3 = "Just like an int a String must have a variable name";
 			manager.addObject(new MessageNPC(Cells.G, Cells.G, ID.NPC, manager, side, hud, message3));
-			hud.setInteractions(interactions + 1);
+			HUD.setInteractions(interactions + 1);
 		}
 		else if(interactions == 5) {
 			String message4 = "Remember the order, data type, variable name, assignment, data and ;";
 			manager.addObject(new MessageNPC(Cells.F, Cells.H, ID.NPC, manager, side, hud, message4));
-			hud.setInteractions(interactions + 1);
+			HUD.setInteractions(interactions + 1);
 		}
 		else if(interactions == 7) {
 			String question = "Let's declare a String.\n\n"
@@ -212,7 +210,7 @@ public class Spawner {
 					+ "Then assign \"Robbie\" to that variable.";
 			String answer = "String name = \"Robbie\";";
 			manager.addObject(new StageEndNPC(Cells.D, Cells.H, ID.NPC, manager, side, hud, question, answer));
-			hud.setInteractions(0);
+			HUD.setInteractions(0);
 		}
 	}
 	
@@ -221,7 +219,7 @@ public class Spawner {
 	 * levelOneStageOne()
 	 */
 	public void dataTypesQuiz() {
-		int interactions = hud.getInteractions();
+		int interactions = HUD.getInteractions();
 		if(hud.isStageEnd() == true) {
 			Manager.clearAll();
 			SidePanel.addText("~Congratulations you completed Stage 3\n\n"
@@ -240,7 +238,7 @@ public class Spawner {
 			String message = "This is the final stage of level 1.\n"
 					+ "Let's see what you can remember.";
 			manager.addObject(new MessageNPC(Cells.D, Cells.E, ID.NPC, manager, side, hud, message));
-			hud.setInteractions(interactions + 1);
+			HUD.setInteractions(interactions + 1);
 		}
 		//final quiz for end of level 1
 		else if(interactions == 3) {
@@ -259,8 +257,10 @@ public class Spawner {
 	}
 	
 	//LEVEL 2 SETUP 	
+
 	//Conditional statements
-	
+
+		
 	//LEVEL 3 SETUP
 	
 	public void levelThreeStageOne() {
@@ -301,34 +301,34 @@ public class Spawner {
 	 * Sets up stage 1 of level 4 and adds NPCs as necessary. Works in the same way as
 	 * levelOneStageOne()
 	 */
-	public void levelFourStageOne() {
-		int interactions = hud.getInteractions();
+	public void loopsIntro() {
+		int interactions = HUD.getInteractions();
 		if(interactions == 1) {
 			String message = "Well Done! Next try typing robot.move(up, 2); to get to the flower.\n"
 					+ "Then try to pickup the flower by typing a new command once you are on the same square.";
 			manager.addObject(new MessageNPC(Cells.E, Cells.C, ID.NPC, manager, side, hud, message));
-			hud.setInteractions(interactions + 1);
+			HUD.setInteractions(interactions + 1);
 		 }
 		else if(interactions == 3) {
 			File picture = new File("pictures\\Flower.png");
 			manager.addFlower(new Flower(Cells.E, Cells.A, ID.Flower, manager, side, hud, picture));
 			String message = "Now you can move more than one square at a time!";
 			manager.addObject(new MessageNPC(Cells.F, Cells.A, ID.NPC, manager, side, hud, message));
-			hud.setInteractions(interactions + 1);
+			HUD.setInteractions(interactions + 1);
 		}
 		else if(interactions == 5) {
 			String question = "What code did you use to make the robot pickup the flower?";
 			String answer = "robot.pickup(flower);";
 			manager.addObject(new StageEndNPC(Cells.D, Cells.A, ID.NPC, manager, side, hud, question, answer));
-			hud.setInteractions(0);
+			HUD.setInteractions(0);
 		 }
 	}
 	
 	/**
 	 * Sets up stage 2 of level 4 and adds NPCs as necessary
 	 */
-	public void levelFourStageTwo() {
-		int interactions = hud.getInteractions();
+	public void loopsForeach() {
+		int interactions = HUD.getInteractions();
 		String tab = "   ";
 		if(hud.isStageEnd() == true) {
 			Manager.clearAll();
@@ -347,7 +347,7 @@ public class Spawner {
 			manager.addObject(new MessageNPC(Cells.C, Cells.D, ID.NPC, manager, side, hud, message2));
 			File picture = new File("pictures\\flower2.png");
 			manager.addFlower(new Flower(Cells.A, Cells.D, ID.Flower, manager, side, hud, picture));
-			hud.setInteractions(interactions + 1);
+			HUD.setInteractions(interactions + 1);
 		}
 		else if(interactions == 3) {
 			String message3 = "The for each loop has the following syntax:\n" 
@@ -355,7 +355,7 @@ public class Spawner {
 					+ tab + "loop body\n"
 					+ "}";
 			manager.addObject(new MessageNPC(Cells.B, Cells.F, ID.NPC, manager, side, hud, message3));
-			hud.setInteractions(interactions + 1);
+			HUD.setInteractions(interactions + 1);
 		}
 		else if(interactions == 5) {
 			String message4 = "For example for each element flower of type Flower in the collection of flowers, pick up the flower.\n"
@@ -365,12 +365,12 @@ public class Spawner {
 			manager.addObject(new MessageNPC(Cells.G, Cells.H, ID.NPC, manager, side, hud, message4));
 			File picture = new File("pictures\\flower3.png");
 			manager.addFlower(new Flower(Cells.C, Cells.F, ID.Flower, manager, side, hud, picture));
-			hud.setInteractions(interactions + 1);
+			HUD.setInteractions(interactions + 1);
 		}
 		else if(interactions == 7) {
 			String message5 = "The for each loop is used for collections only!";
 			manager.addObject(new MessageNPC(Cells.G, Cells.E, ID.NPC, manager, side, hud, message5));
-			hud.setInteractions(interactions + 1);
+			HUD.setInteractions(interactions + 1);
 		}
 		else if(interactions == 9) {
 			String question = "What would the following for each loop print for the collection flower = {rose, tulip, lily}?\n"
@@ -380,15 +380,15 @@ public class Spawner {
 					+ "}";
 			String answer = "rose, tulip, lily, ";
 			manager.addObject(new StageEndNPC(Cells.E, Cells.D, ID.NPC, manager, side, hud, question, answer));
-			hud.setInteractions(0);
+			HUD.setInteractions(0);
 		}
 	}
 	
 	/**
 	 * Sets up stage 3 of level 4 and adds NPCs as necessary
 	 */
-	public void levelFourStageThree() {
-		int interactions = hud.getInteractions();
+	public void loopsWhile() {
+		int interactions = HUD.getInteractions();
 		String tab = "   ";
 		if(hud.isStageEnd() == true) {
 			Manager.clearAll();
@@ -408,7 +408,7 @@ public class Spawner {
 					+ tab + "loop body\n"
 					+ "}";
 			manager.addObject(new MessageNPC(Cells.B, Cells.F, ID.NPC, manager, side, hud, message2));
-			hud.setInteractions(interactions + 1);
+			HUD.setInteractions(interactions + 1);
 		}
 		else if(interactions == 3) {
 			String message3 = "For example while the flowers position in the collection of flowers is less than the size of the collection, pick up the flower.\n"
@@ -420,12 +420,12 @@ public class Spawner {
 			manager.addObject(new MessageNPC(Cells.G, Cells.H, ID.NPC, manager, side, hud, message3));
 			File picture = new File("pictures\\flower3.png");
 			manager.addFlower(new Flower(Cells.E, Cells.C, ID.Flower, manager, side, hud, picture));
-			hud.setInteractions(interactions + 1);
+			HUD.setInteractions(interactions + 1);
 		}
 		else if(interactions == 5) {
 			String message4 = "A while loop is used when you have an unknown number of iterations.";
 			manager.addObject(new MessageNPC(Cells.C, Cells.B, ID.NPC, manager, side, hud, message4));
-			hud.setInteractions(interactions + 1);
+			HUD.setInteractions(interactions + 1);
 		}
 		else if(interactions == 7) {
 			String question = "Which flowers would be left unpicked after the following while loop for the collection flower = {rose, tulip, lily}?\n"
@@ -436,15 +436,15 @@ public class Spawner {
 					+ "}";
 			String answer = "lily";
 			manager.addObject(new StageEndNPC(Cells.E, Cells.D, ID.NPC, manager, side, hud, question, answer));
-			hud.setInteractions(0);
+			HUD.setInteractions(0);
 		}
 	}
 	
 	/**
 	 * Sets up stage 4 of level 4 and adds NPCs as necessary
 	 */
-	public void levelFourStageFour() {
-		int interactions = hud.getInteractions();
+	public void loopsFor() {
+		int interactions = HUD.getInteractions();
 		String tab = "   ";
 		if(hud.isStageEnd() == true) {
 			Manager.clearAll();
@@ -464,12 +464,12 @@ public class Spawner {
 			manager.addObject(new MessageNPC(Cells.B, Cells.F, ID.NPC, manager, side, hud, message3));
 			File picture = new File("pictures\\flower3.png");
 			manager.addFlower(new Flower(Cells.B, Cells.G, ID.Flower, manager, side, hud, picture));
-			hud.setInteractions(interactions + 1);
+			HUD.setInteractions(interactions + 1);
 		}
 		else if(interactions == 3) {
 			String message2 = "The loop condition must resolve to a boolean value.";
 			manager.addObject(new MessageNPC(Cells.F, Cells.B, ID.NPC, manager, side, hud, message2));
-			hud.setInteractions(interactions + 1);
+			HUD.setInteractions(interactions + 1);
 		}
 		else if(interactions == 5) {
 			String message4 = "For example for i starting at 0, if i is less than 3, pick up the flower.\n"
@@ -479,13 +479,13 @@ public class Spawner {
 			manager.addObject(new MessageNPC(Cells.G, Cells.H, ID.NPC, manager, side, hud, message4));
 			File picture = new File("pictures\\Flower.png");
 			manager.addFlower(new Flower(Cells.A, Cells.E, ID.Flower, manager, side, hud, picture));
-			hud.setInteractions(interactions + 1);
+			HUD.setInteractions(interactions + 1);
 		}
 		else if(interactions == 7) {
 			String message5 = "You might have noticed that the while and for loops are similar.\n" 
 					+ "A for loop is better suited for a known number of iterations.";
 			manager.addObject(new MessageNPC(Cells.F, Cells.E, ID.NPC, manager, side, hud, message5));
-			hud.setInteractions(interactions + 1);
+			HUD.setInteractions(interactions + 1);
 		}
 		else if(interactions == 9) {
 			String question = "Which flowers would be picked up after the following for loop for the collection flower = {rose, tulip, lily}?\n"
@@ -494,15 +494,15 @@ public class Spawner {
 					+ "}";
 			String answer = "rose";
 			manager.addObject(new StageEndNPC(Cells.E, Cells.D, ID.NPC, manager, side, hud, question, answer));
-			hud.setInteractions(0);
+			HUD.setInteractions(0);
 		}
 	}
 	
 	/**
 	 * Sets up stage 5 of level 4 and adds NPCs as necessary
 	 */
-	public void levelFourStageFive() {
-		int interactions = hud.getInteractions();
+	public void loopsQuiz() {
+		int interactions = HUD.getInteractions();
 		if(hud.isStageEnd() == true) {
 			Manager.clearAll();
 			SidePanel.addText("~Congratulations you completed Stage 4\n\n"
@@ -536,7 +536,7 @@ public class Spawner {
 			String[] answers = {"for", "int i = 1;", "Loop condition does not resolve to boolean", "5"};
 			manager.addObject(new MultipleQuestionNPC(Cells.E, Cells.D, ID.NPC, manager, side, hud, questions, answers, options));
 			manager.addObject(new Drawing(Cells.D, Cells.D, ID.NPC, manager, side, hud));
-			hud.setInteractions(0);
+			HUD.setInteractions(0);
 			
 		}
 		
