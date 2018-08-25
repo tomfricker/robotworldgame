@@ -245,10 +245,10 @@ public class Spawner {
 			String[] questions = {"Which of the following is not a data type?\n\n", "Which of these is a correct variable declaration in Java?\n\n",
 					"What is a String?\n\n", "If x is 3 and y is 7 and we want to store the value of the\n"
 					+ "two variables added together which of the following statements would we use?\n\n"};
-			String [] question1 = {"int", "boolean", "sausage", "long"};
-			String [] question2 = {"int 30 = elephants;", "30 elephants = int;", "elephants int = 30;", "int elephants = 30;"};
-			String [] question3 = {"A whole number", "A series of letters, numbers or characters", "A decimal number", "A statement of true or false"};
-			String [] question4 = {"int z = x + y;", "int z = 10;", "int z = x;", "int z = y;"};
+			String [] question1 = {"","int", "boolean", "sausage", "long"};
+			String [] question2 = {"","int 30 = elephants;", "30 elephants = int;", "elephants int = 30;", "int elephants = 30;"};
+			String [] question3 = {"","A whole number", "A series of letters, numbers or characters", "A decimal number", "A statement of true or false"};
+			String [] question4 = {"","int z = x + y;", "int z = 10;", "int z = x;", "int z = y;"};
 			String [][] options = {question1, question2, question3, question4};
 			String[] answers = {"sausage", "int elephants = 30;", "A series of letters, numbers or characters", "int z = x + y;"};
 			manager.addObject(new MultipleQuestionNPC(Cells.D, Cells.F, ID.NPC, manager, side, hud, questions, answers, options));
@@ -528,10 +528,10 @@ public class Spawner {
 					+ "petal.rotate(72);\n"
 					+ "draw(petal);\n"
 					+ "}"};
-			String [] question1 = {"for each", "while", "for"};
-			String [] question2 = {"i = 0", "int i = 1", "i--"};
-			String [] question3 = {"Inital condition is not instantiated", "Loop condition does not resolve to boolean", "Nothing"};
-			String [] question4 = {"6", "5", "4"};
+			String [] question1 = {"","for each", "while", "for"};
+			String [] question2 = {"","i = 0", "int i = 1", "i--"};
+			String [] question3 = {"","Inital condition is not instantiated", "Loop condition does not resolve to boolean", "Nothing"};
+			String [] question4 = {"","6", "5", "4"};
 			String [][] options = {question1, question2, question3, question4};
 			String[] answers = {"for", "int i = 1", "Loop condition does not resolve to boolean", "5"};
 			manager.addObject(new MultipleQuestionNPC(Cells.E, Cells.D, ID.NPC, manager, side, hud, questions, answers, options));
@@ -577,7 +577,7 @@ public class Spawner {
 					else if(interactions == 7) {
 						String message = "Classes start with a capital letter, while Objects are written with a small letter. \n\n"
 								+ "Which Objects have you seen so far in order of introduction!";
-						String [] options = {"banana, robot, apple", "Item, Robot, banana", "robot, apple, banana"};
+						String [] options = {"","banana, robot, apple", "Item, Robot, banana", "robot, apple, banana"};
 						String answer = "robot, apple, banana";
 						manager.addObject(new MultipleChoiceQNPC(Cells.B, Cells.C, ID.NPC, manager, side, hud, message, options, answer));
 						HUD.setInteractions(interactions + 1);
@@ -585,7 +585,7 @@ public class Spawner {
 					else if(interactions == 9) {
 						String message = "Classes have Methods that help you make an action, but only an Object can \"invoke\" that method.\n\n" + 
 								"Which Method have you seen so far!";
-						String [] options = {"robot", "eat()", "Item"};
+						String [] options = {"","robot", "eat()", "Item"};
 						String answer = "eat()";
 						manager.addObject(new MultipleChoiceQNPC(Cells.A, Cells.D, ID.NPC, manager, side, hud, message, options, answer));
 						HUD.setInteractions(interactions + 1);
@@ -764,7 +764,7 @@ public class Spawner {
 						"public String getName() {\n" + 
 						tab + "return name;\n" + 
 						"}\n";
-				String [] options = {"accessor", "mutator"};
+				String [] options = {"","accessor", "mutator"};
 				String answer = "accessor";
 				manager.addObject(new MultipleChoiceQNPC(Cells.D, Cells.D, ID.NPC, manager, side, hud, message, options, answer));
 				HUD.setInteractions(interactions + 1);
@@ -774,7 +774,7 @@ public class Spawner {
 						"public void changeName(String newName) {\n" + 
 						tab + "name = newName;\r\n" + 
 						"}\n";
-				String [] options = {"accessor", "mutator"};
+				String [] options = {"","accessor", "mutator"};
 				String answer = "mutator";
 				manager.addObject(new MultipleChoiceQNPC(Cells.A, Cells.D, ID.NPC, manager, side, hud, message, options, answer));
 				HUD.setInteractions(interactions + 1);
@@ -807,11 +807,11 @@ public class Spawner {
 						"Can a Class have more than one Constuctor?\n\n",
 						"Write a Method to set the age in the Robot Class!\n(Choose the correct option)"
 						};
-				String [] question1 = {"int", "Boolean", "Message", "triangle"};
-				String [] question2 = {"Constructor, Fields, Methods", "Methods, Constructor, Fields", "Fields, Constructor, Methods", "Fields, Methods, Constructor"};
-				String [] question3 = {"For storing values within Objects", "To allow Objects to do actions", "To ease Class creation", "To add parameters"};
-				String [] question4 = {"Yes", "No", "Yes, but not with the same parameter signatures", "Yes, but only if it has the same parameters"};
-				String [] question5 = {"String setAge(String newAge) {age = newAge;}","public void setAge(int newAge) {age = newAge;}", "public setAge(int age) {age = age;}", "public void setAge(int newAge) {newAge = age;}"};
+				String [] question1 = {"","int", "Boolean", "Message", "triangle"};
+				String [] question2 = {"","Constructor, Fields, Methods", "Methods, Constructor, Fields", "Fields, Constructor, Methods", "Fields, Methods, Constructor"};
+				String [] question3 = {"","For storing values within Objects", "To allow Objects to do actions", "To ease Class creation", "To add parameters"};
+				String [] question4 = {"","Yes", "No", "Yes, but not with the same parameter signatures", "Yes, but only if it has the same parameters"};
+				String [] question5 = {"","String setAge(String newAge) {age = newAge;}","public void setAge(int newAge) {age = newAge;}", "public setAge(int age) {age = age;}", "public void setAge(int newAge) {newAge = age;}"};
 				String [][] options = {question1, question2, question3, question4, question5};
 				String[] answers = {"Message", "Fields, Constructor, Methods","For storing values within Objects", "Yes, but not with the same parameter signatures", "public void setAge(int newAge) {age = newAge;}"};
 				manager.addObject(new MultipleQuestionNPC(Cells.D, Cells.F, ID.NPC, manager, side, hud, questions, answers, options));
