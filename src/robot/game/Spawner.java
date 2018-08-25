@@ -146,7 +146,7 @@ public class Spawner {
 			hud.setStageEnd(false);
 		}
 		if(interactions == 1) {
-			String message = "Remeber we need a data type, a variable name, an assignment =, the data and finally a ;";
+			String message = "Remember we need a data type, a variable name, an assignment =, the data and finally a ;";
 			manager.addObject(new MessageNPC(Cells.A, Cells.F, ID.NPC, manager, side, hud, message));
 			//Add an extra interaction to stop the addition of further objects from this method
 			HUD.setInteractions(interactions + 1);
@@ -533,7 +533,7 @@ public class Spawner {
 			String [] question3 = {"Inital condition is not instantiated", "Loop condition does not resolve to boolean", "Nothing"};
 			String [] question4 = {"6", "5", "4"};
 			String [][] options = {question1, question2, question3, question4};
-			String[] answers = {"for", "int i = 1;", "Loop condition does not resolve to boolean", "5"};
+			String[] answers = {"for", "int i = 1", "Loop condition does not resolve to boolean", "5"};
 			manager.addObject(new MultipleQuestionNPC(Cells.E, Cells.D, ID.NPC, manager, side, hud, questions, answers, options));
 			manager.addObject(new Drawing(Cells.D, Cells.D, ID.NPC, manager, side, hud));
 			HUD.setInteractions(0);

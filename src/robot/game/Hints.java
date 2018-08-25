@@ -64,6 +64,8 @@ public class Hints {
 				"Who is eating the apple?");
 		hintMap.put("robot.eat(apple)", 
 				"I think you forgot something on the end;");
+		hintMap.put("robot.eat(fruit) = apple;", 
+				"There is no need to assign. Just replace fruit with apple.;");
 		
 		hintMap.put("eat(banana);", 
 				"Who is eating the apple?");
@@ -189,7 +191,7 @@ public class Hints {
 				return "Your answer should be in this form: DataType Name = Assignment;";
 			}
 		}
-		else if(HUD.getLevel() == 2) {
+		else if(HUD.getLevel() == 5) {
 			if(HUD.getStage() == 1) {
 				if(HUD.getInteractions() == 2) {
 					return "Replace fruit with the name of the fruit you want the robot to eat.";
