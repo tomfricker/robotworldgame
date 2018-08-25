@@ -65,7 +65,7 @@ public class Game extends Canvas implements Runnable {
 	}
 	
 	/**
-	 * creates a new thread and allows the game to be run.
+	 * Creates a new thread and allows the game to be run.
 	 */
 	public synchronized void start() {
 		thread = new Thread(this);
@@ -121,7 +121,7 @@ public class Game extends Canvas implements Runnable {
 	/**
 	 * Calls for the game to update itself. This calls the Manager to iterate over a linkedList of 
 	 * GameObjects and update each in turn. If the Game is in the STATE.Game enum state, 
-	 * the hud and the spawner update. This also calls the Manager to reset all GameObjects if the hud
+	 * the Hud and the Spawner update. This also calls the Manager to reset all GameObjects if the Hud
 	 * detects the end of a level.
 	 * 
 	 *  If the game is in the STATE.Menu enum state, the tick method is responsible for calling the menu 

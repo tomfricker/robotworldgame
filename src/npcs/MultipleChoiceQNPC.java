@@ -25,10 +25,11 @@ import robot.game.SidePanel;
  * 
  * This class extends GameObjects so that it can be easily stored within the Manager
  * class' list to be iterated over. It's function within the game is to ask the 
- * the user a question and validate the answer.
+ * the user a multiple choice question and validate the answer.
  * 
  * It will ask it's question within a pop up window. It then waits for the user
- * to input an answer or cancel it's interaction. If the user inputs an incorrect
+ * to choose an answer from a drop-down field of options
+ * or cancel it's interaction. If the user inputs an incorrect
  * answer it will deduct points from their score and display the answer they put
  * and an incorrect message to the SidePanel. If they are correct they are 
  * awarded points and told they are correct within the SidePanel. 
