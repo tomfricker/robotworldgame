@@ -146,7 +146,7 @@ public class Spawner {
 			hud.setStageEnd(false);
 		}
 		if(interactions == 1) {
-			String message = "Remeber we need a data type, a variable name, an assignment =, the data and finally a ;";
+			String message = "Remember we need a data type, a variable name, an assignment =, the data and finally a ;";
 			manager.addObject(new MessageNPC(Cells.A, Cells.F, ID.NPC, manager, side, hud, message));
 			//Add an extra interaction to stop the addition of further objects from this method
 			HUD.setInteractions(interactions + 1);
