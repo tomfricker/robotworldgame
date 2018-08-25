@@ -6,9 +6,6 @@ import java.awt.Graphics;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import javax.swing.JDialog;
-import javax.swing.JTextArea;
-import javax.swing.ScrollPaneLayout;
 import npcs.CollectionNPC;
 import npcs.MessageNPC;
 import npcs.PICKUPID;

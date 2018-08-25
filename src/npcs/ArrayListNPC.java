@@ -7,7 +7,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 
 import robot.game.Bag;
-import robot.game.Cells;
 import robot.game.GameObjects;
 import robot.game.HUD;
 import robot.game.ID;
@@ -98,9 +97,9 @@ public class ArrayListNPC extends GameObjects {
 	public void add(char c) {
 		tail.add(new Pickup(64,64,ID.NPC, PICKUPID.Boolean,side, "false"));
 		hud.setScore(hud.getScore()+10);
-		if(hud.getStage() == 2 && hud.getScore() == 100) {
+		if(HUD.getStage() == 2 && hud.getScore() == 100) {
 			hud.setStage(3);
-			side.addText("~ Congratulations! You have completed the introduction to Collections in Java Programming");
+			SidePanel.addText("~ Congratulations! You have completed the introduction to Collections in Java Programming");
 			hud.setLevelEnd(true);
 		}
 	}

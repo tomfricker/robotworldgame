@@ -6,10 +6,7 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
-import javax.swing.JDialog;
 import javax.swing.JOptionPane;
-import javax.swing.JTextArea;
-
 import robot.game.GameObjects;
 import robot.game.HUD;
 import robot.game.ID;
@@ -108,7 +105,7 @@ public class MessageNPC extends GameObjects {
 				if(gameObject.getX() == x && gameObject.getY() == y) {
 					JOptionPane.showMessageDialog(null, message, "Message for You", JOptionPane.INFORMATION_MESSAGE);
 					hud.setScore(hud.getScore() + 10);
-					hud.setInteractions(hud.getInteractions() + 1);
+					HUD.setInteractions(HUD.getInteractions() + 1);
 					interacted = true;
 					SidePanel.addText("~" + message + "\n\n");
 				}

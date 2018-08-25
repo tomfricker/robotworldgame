@@ -118,7 +118,6 @@ public class CodePanel extends Panel implements FocusListener {
 		buttons = new JPanel();
 		buttons.setLayout(new BoxLayout(buttons, BoxLayout.X_AXIS));
 		buttons.add(enterButton);
-		//buttons.add(deleteButton);
 		buttons.add(clearButton);
 		//add buttons to panel
 		add(buttons);

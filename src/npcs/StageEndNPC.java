@@ -115,7 +115,7 @@ public class StageEndNPC extends GameObjects {
 						SidePanel.addText("~" + input + "\n");
 						SidePanel.addText("~correct\n\n");
 						hud.setStageEnd(true);
-						hud.setStage(hud.getStage() + 1);
+						hud.setStage(HUD.getStage() + 1);
 						interacted = true;
 					}
 				}
