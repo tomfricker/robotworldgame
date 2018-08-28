@@ -545,7 +545,7 @@ public class Spawner {
 	//LEVEL 5 SETUP
 		
 		/**
-		 * Sets up stage 1 of level 2 and adds NPCs as necessary.
+		 * Sets up stage 1 of level 5 and adds NPCs as necessary.
 		 */
 		public void classesObjectsIntro() {
 			//Get the number of interactions
@@ -579,7 +579,7 @@ public class Spawner {
 								+ "Which Objects have you seen so far in order of introduction!";
 						String [] options = {"","banana, robot, apple", "Item, Robot, banana", "robot, apple, banana"};
 						String answer = "robot, apple, banana";
-						manager.addObject(new MultipleChoiceQNPC(Cells.B, Cells.C, ID.NPC, manager, side, hud, message, options, answer));
+						manager.addObject(new MultipleChoiceQNPC(Cells.A, Cells.D, ID.NPC, manager, side, hud, message, options, answer));
 						HUD.setInteractions(interactions + 1);
 					}
 					else if(interactions == 9) {
@@ -587,27 +587,27 @@ public class Spawner {
 								"Which Method have you seen so far!";
 						String [] options = {"","robot", "eat()", "Item"};
 						String answer = "eat()";
-						manager.addObject(new MultipleChoiceQNPC(Cells.A, Cells.D, ID.NPC, manager, side, hud, message, options, answer));
+						manager.addObject(new MultipleChoiceQNPC(Cells.D, Cells.E, ID.NPC, manager, side, hud, message, options, answer));
 						HUD.setInteractions(interactions + 1);
 					}
 					else if(interactions == 11) {
 						String message = "To create a new object from a Class you need to type it in this form: \n\n" + 
 								"ClassName ObjectName = new ClassName(); \n\n" + 
 								"(Don't forget to put capital letters where needed!)";
-						manager.addObject(new MessageNPC(Cells.D, Cells.D, ID.NPC, manager, side, hud, message));
+						manager.addObject(new MessageNPC(Cells.F, Cells.F, ID.NPC, manager, side, hud, message));
 						HUD.setInteractions(interactions + 1);
 					}
 					else if(interactions == 13) {
 						String question = "Now try to create a friend for your robot from the class Robot and name it buddy!\n"
 								+ "(HINT: Substitute the key words from the previous Message with actual names!)";
 						String answer = "Robot buddy = new Robot();";
-						manager.addObject(new StageEndNPC(Cells.F, Cells.F, ID.NPC, manager, side, hud, question, answer));
+						manager.addObject(new StageEndNPC(Cells.D, Cells.H, ID.NPC, manager, side, hud, question, answer));
 						HUD.setInteractions(0);
 					}
 		}
 		
 		/**
-		 * Sets up stage 2 of level 2 and adds NPCs as necessary.
+		 * Sets up stage 2 of level 5 and adds NPCs as necessary.
 		 */
 		public void classesObjectsFields() {
 			int interactions = HUD.getInteractions();
@@ -618,8 +618,8 @@ public class Spawner {
 						+ "~Now try stage 2.\n\n"
 						+ "~Good luck!\n\n");
 				manager.addObject(new Player(Cells.A, Cells.A, ID.Player));
-				String message = "A Class in Java has 3 main components: Fields (Objects' state), Methods (Objects' behavior) "
-						+ "and Constructor (Objects' creation).";
+				String message = "A Class in Java has 3 main components: Fields (Objects' state), a Constructor (Objects' creation) "
+						+ "and Methods (Objects' behavior).";
 				manager.addObject(new MessageNPC(Cells.A, Cells.E, ID.NPC, manager, side, hud, message));
 				hud.setStageEnd(false);
 			}
@@ -627,7 +627,7 @@ public class Spawner {
 				String message = "Fields can be primitive or reference type: an int, String or of class Item or Robot.\n\n" + 
 						"We define them like so:\n\n" + 
 						"private DataType/ClassName nameOfField;\n\n"
-						+ "If you want to learn more about the key word PRIVATE check the Help Section, Level 2, Access Modifier!";
+						+ "If you want to learn more about the key word PRIVATE check the Help Section, Level 5, Access Modifier!";
 				manager.addObject(new MessageNPC(Cells.D, Cells.F, ID.NPC, manager, side, hud, message));
 				//Add an extra interaction to stop the addition of further objects from this method
 				HUD.setInteractions(interactions + 1);
@@ -663,7 +663,7 @@ public class Spawner {
 		}
 		
 		/**
-		 * Sets up stage 3 of level 2 and adds NPCs as necessary.
+		 * Sets up stage 3 of level 3 and adds NPCs as necessary.
 		 */
 		public void classesObjectsConstructor() {
 			int interactions = HUD.getInteractions();
@@ -716,7 +716,7 @@ public class Spawner {
 		}
 		
 		/**
-		 * Sets up stage 4 of level 2 and adds NPCs as necessary.
+		 * Sets up stage 4 of level 5 and adds NPCs as necessary.
 		 */
 		public void classesObjectsMethods() {
 			int interactions = HUD.getInteractions();
@@ -732,7 +732,7 @@ public class Spawner {
 			}
 			if(interactions == 1) {
 				String message = "Each Class has certain Methods, which its Objects can perform.";
-				manager.addObject(new MessageNPC(Cells.G, Cells.A, ID.NPC, manager, side, hud, message));
+				manager.addObject(new MessageNPC(Cells.G, Cells.C, ID.NPC, manager, side, hud, message));
 				//Add an extra interaction to stop the addition of further objects from this method
 				HUD.setInteractions(interactions + 1);
 			}
@@ -744,19 +744,19 @@ public class Spawner {
 						tab + "action;\n" + 
 						tab + "action;\n" + 
 						"}";
-				manager.addObject(new MessageNPC(Cells.G, Cells.C, ID.NPC, manager, side, hud, message));
+				manager.addObject(new MessageNPC(Cells.E, Cells.D, ID.NPC, manager, side, hud, message));
 				HUD.setInteractions(interactions + 1);
 			}
 			else if(interactions == 5) {
 				String message = "Methods that RETURN an Object have the same returnType as Object (e.g. String, int, Robot) "
 						+ "and are called ACCESSOR Methods";
-				manager.addObject(new MessageNPC(Cells.C, Cells.C, ID.NPC, manager, side, hud, message));
+				manager.addObject(new MessageNPC(Cells.B, Cells.E, ID.NPC, manager, side, hud, message));
 				HUD.setInteractions(interactions + 1);
 			}
 			else if(interactions == 7) {
 				String message = "Methods that change the state of an Object and do not have a RETURN statement have a VOID "
 						+ "returnType and are called MUTATOR Methods.";
-				manager.addObject(new MessageNPC(Cells.B, Cells.C, ID.NPC, manager, side, hud, message));
+				manager.addObject(new MessageNPC(Cells.D, Cells.F, ID.NPC, manager, side, hud, message));
 				HUD.setInteractions(interactions + 1);
 			}
 			else if(interactions == 9) {
@@ -766,7 +766,7 @@ public class Spawner {
 						"}\n";
 				String [] options = {"","accessor", "mutator"};
 				String answer = "accessor";
-				manager.addObject(new MultipleChoiceQNPC(Cells.D, Cells.D, ID.NPC, manager, side, hud, message, options, answer));
+				manager.addObject(new MultipleChoiceQNPC(Cells.H, Cells.F, ID.NPC, manager, side, hud, message, options, answer));
 				HUD.setInteractions(interactions + 1);
 			}
 			else if(interactions == 11) {
@@ -776,20 +776,20 @@ public class Spawner {
 						"}\n";
 				String [] options = {"","accessor", "mutator"};
 				String answer = "mutator";
-				manager.addObject(new MultipleChoiceQNPC(Cells.A, Cells.D, ID.NPC, manager, side, hud, message, options, answer));
+				manager.addObject(new MultipleChoiceQNPC(Cells.E, Cells.G, ID.NPC, manager, side, hud, message, options, answer));
 				HUD.setInteractions(interactions + 1);
 			}
 			else if(interactions == 13) {
 				String question = "Write the code to change robot's name to Robbie!";
 				String answer = "robot.changeName(\"Robbie\");";
-				manager.addObject(new StageEndNPC(Cells.F, Cells.F, ID.NPC, manager, side, hud, question, answer));
+				manager.addObject(new StageEndNPC(Cells.A, Cells.G, ID.NPC, manager, side, hud, question, answer));
 				HUD.setInteractions(0);
 			}
 			
 		}
 		
 		/**
-		 * Sets up stage 5 of level 2 and adds NPCs as necessary
+		 * Sets up stage 5 of level 5 and adds NPCs as necessary
 		 */
 		public void classesObjectsQuiz() {
 			int interactions = HUD.getInteractions();
@@ -814,7 +814,7 @@ public class Spawner {
 				String [] question5 = {"","String setAge(String newAge) {age = newAge;}","public void setAge(int newAge) {age = newAge;}", "public setAge(int age) {age = age;}", "public void setAge(int newAge) {newAge = age;}"};
 				String [][] options = {question1, question2, question3, question4, question5};
 				String[] answers = {"Message", "Fields, Constructor, Methods","For storing values within Objects", "Yes, but not with the same parameter signatures", "public void setAge(int newAge) {age = newAge;}"};
-				manager.addObject(new MultipleQuestionNPC(Cells.D, Cells.F, ID.NPC, manager, side, hud, questions, answers, options));
+				manager.addObject(new MultipleQuestionNPC(Cells.D, Cells.E, ID.NPC, manager, side, hud, questions, answers, options));
 				HUD.setInteractions(0);
 			}
 		}

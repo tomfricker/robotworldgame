@@ -79,6 +79,17 @@ public class HUD {
 		return score;
 	}
 	
+	public int getMaxScore(int level) {
+		switch (level) {
+		case 1: return 500;
+		case 2: return 0;
+		case 3: return 100;
+		case 4: return 620;
+		case 5: return 1010;
+		}
+		return 0;
+	}
+	
 	public boolean isStageEnd() {
 		return stageEnd;
 	}
