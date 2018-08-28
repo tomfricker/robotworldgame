@@ -74,6 +74,7 @@ public class SourceCodeWindow {
 	
 	/**
 	 * Add all the CSS rules to a Style Sheet
+	 * (rules have been sourced from Prism CSS File: https://prismjs.com/)
 	 *  
 	 */
 	private void addAllRules(StyleSheet styleSheet) {
