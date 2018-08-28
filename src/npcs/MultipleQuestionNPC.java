@@ -100,7 +100,7 @@ public class MultipleQuestionNPC extends GameObjects {
 							gameObject.setX(gameObject.getX()-Game.boardIndex);
 							break;
 						}
-						//if the answer is incorrect the player can continue to move round the board and the interactions can still take place
+						//if the answer is incorrect the player can continue to move around the board and the interactions can still take place
 						while (!input.equals(answers[i])) {
 							
 							SidePanel.addText("~" + input + "\n");

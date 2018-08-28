@@ -114,9 +114,7 @@ public class MainMenu extends MouseAdapter{
 					int currentLevel = HUD.getLevel();
 					if(currentLevel == 5) {
 						new SourceCodeWindow();
-						resetHUD();
-						int newLevel = HUD.getLevel()+1;
-						createLevel(newLevel);
+						
 					}
 			}
 			else {
@@ -314,7 +312,7 @@ public class MainMenu extends MouseAdapter{
 				g.drawString("Click here for Main Menu", 120, 150);
 			
 			//display user score
-			g.drawString("Your score was : " + hud.getScore(), 160, 245);
+			g.drawString("Your score was: " + hud.getScore() + "/" + hud.getMaxScore(HUD.getLevel()), 160, 245);
 			
 			//display button for Robot source code at end of level 5
 			if (HUD.getLevel()==5) {
