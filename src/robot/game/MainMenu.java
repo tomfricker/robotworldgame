@@ -149,7 +149,8 @@ public class MainMenu extends MouseAdapter{
 				manager.addObject(new MessageNPC(Cells.C, Cells.A, ID.NPC, manager, side, hud, npcMessage));
 				side.setText("~Welcome to level 1 of Robot World!\n\n"
 						+ "~Please move Robbie the Robot around the board using the arrow keys.\n\n"
-						+ "~Good luck and enjoy your adventure in Robot World!\n\n");
+						+ "~Good luck and enjoy your adventure in Robot World!\n\n"
+						+ "~If you get stuck use the Help Button.\n\n");
 				break;
 			}
 			case 2 : {

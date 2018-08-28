@@ -114,7 +114,7 @@ public class Spawner {
 			HUD.setInteractions(interactions + 1);
 		}
 		else if(interactions == 9) {
-			String message = "Finally we use ; to finish our line of code.";
+			String message = "Finally we use ; (semi-colon) to finish our line of code.";
 			manager.addObject(new MessageNPC(Cells.D, Cells.C, ID.NPC, manager, side, hud, message));
 			HUD.setInteractions(interactions + 1);
 		}
