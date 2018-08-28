@@ -74,6 +74,7 @@ public class SidePanel extends Panel{
 		outputTextArea.setFont(font);
 		outputTextArea.setLineWrap(true);
 		outputTextArea.setWrapStyleWord(true);
+		outputTextArea.setEditable(false);
 		SidePanel.scrollPane = new JScrollPane(outputTextArea);
 		
 		//Create button to take you to main menu
