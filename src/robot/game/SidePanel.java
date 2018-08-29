@@ -49,26 +49,6 @@ public class SidePanel extends Panel{
 		//sets the font for input and output text
 		Font font = new Font("Monospaced", Font.BOLD, 18);
 		
-		//Input box now set within CodePanel
-	    //create input box
-        //inputTextField = new JTextField(20);
-
-        //gets input when enter is pressed
-        //inputTextField.addActionListener(new ActionListener() {
-        //	public void actionPerformed(ActionEvent e) {
-        //		Commands.printCommands();
-        //		refreshInputBox();
-        //	}
-        //});
-        
-        //inputTextField.setFont(font);
-		//inputTextField.setText("Enter code here");
-		//inputTextField.addMouseListener(new MouseAdapter() {
-		//	public void mouseClicked(MouseEvent e) {
-		//		refreshInputBox();
-		//	}
-		//});
-		
         //create output text box
 		SidePanel.outputTextArea = new JTextArea(20, 20);
 		outputTextArea.setFont(font);
@@ -151,35 +131,4 @@ public class SidePanel extends Panel{
 	    };
 	    verticalBar.addAdjustmentListener(downScroller);
 	}
-	
-	/**
-	 * Returns text entered in input box
-	 * @return 
-	 */
-	//public static String getInput() {
-	//	return inputTextField.getText();
-	//}
-	
-	/**
-	 * Clears input box
-	 */
-	//public void refreshInputBox() {
-	//	inputTextField.setText("");
-	//}
-	
-	
-	/**
-	 * not being used - ignore atm
-	 */
-	//public void checkInput() {
-	//	String inputText = getInput();
-	//	
-	//	if (inputText.endsWith(";")) {
-	//		addText(inputText + "\n\n");
-	//		inputTextField.setText("");
-	//	}
-	//	else {
-	//		addText("~You are missing something... \n\n");
-	//	}
-	//}
 }
