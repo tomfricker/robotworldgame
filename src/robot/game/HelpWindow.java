@@ -51,6 +51,7 @@ public class HelpWindow {
         StyleSheet styleSheet = kit.getStyleSheet();
         styleSheet.addRule("h1 {margin: 5px 10px 5px 10px; padding: 5px 10px 5px 10px; color: blue; text-align: center; font-size: 180%;}");
         styleSheet.addRule("h2 {margin: 5px 10px 5px 10px; padding: 5px 10px 5px 10px; color: red; font-size: 140%;}");
+        styleSheet.addRule("h3 {margin: 5px 10px 5px 10px; padding: 5px 10px 5px 10px; color: black; font-size: 120%;}");
         styleSheet.addRule("p, pre {margin: 5px 10px 5px 10px; padding: 5px 10px 5px 10px; color: black; text-align: justify; font-size: 120%;}");
         styleSheet.addRule("code {margin: 5px 10px 5px 10px; padding: 5px 10px 5px 10px; color: black; text-align: justify; font-size: 120%;}");
         styleSheet.addRule("ul {list-style-type: square; font-size: 105%;}");

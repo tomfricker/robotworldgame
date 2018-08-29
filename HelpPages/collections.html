@@ -1,0 +1,64 @@
+<h1> Collections </h1>
+
+<p> 
+In this level, the concept of collections are introduced. Collections are a convenient way of storing data in programming.
+Java uses a range of different collections to store data in different ways. Common collections are:
+</p>
+<ul>
+	<li>ArrayList</li>
+	<li>HashMap</li>
+	<li>HashSet</li>
+	<li>LinkedList</li>
+</ul>
+<p>
+Collections vary mostly in structure but a user often needs to concern themselves with only a few of their methods. <br>
+
+The two most common features of collections are adding and removing objects to and from them.<br>
+the majority of collections will use the add() method like the one featured in the collections level. However HashMaps
+use put() instead.<br><br>
+
+The type of object you can put into a collection is determined when it is instantiated in code. <br>
+The four collection types listed above have the following declarations:
+</p>
+<ul>
+	<li>ArrayList&lt;{objectType}></li>
+	<li>HashMap&lt;{Key},{objectType}></li>
+	<li>HashSet&lt;{objectType}></li>
+	<li>LinkedList&lt;{objectType}></li>
+</ul>
+<p>
+The {objectType} part of the declaration is replaced with any type. For example, an ArrayList&lt;Integer> (note the use of 
+the wrapper type Integer rather than primitive type int) can only be used to store int values.<br><br>
+The HashMap collection is slightly different. It uses a Key which relates to a specific object of the objectType in the 
+Map. the type of the key can be different to that of the Objects being stored e.g. &lt;Integer,String> but they may also be
+the same e.g. &lt;Integer, Integer>.<br>
+There can not be more than one instance of the same key used, however, multiple values may be the same. <br>
+i.e. you can have &lt;1,"Hello"> and &lt;2,"Hello"> <br>
+but you can not have &lt;1,"Hello"> and &lt;1,"Goodbye">. <br>
+<br>
+in the latter case, only the second key value pair put into the map will remain at the end. 
+</p>
+
+<h2>Playing the Level</h2>
+<p>
+The Level has two stages. <br>
+<br>
+</p>
+<h3>Stage 1</h3>
+<p>
+Firstly, three collections of different types will ask you to collect their respective data types which are spread over the board. <br>
+You need to talk to the them to be able to collect their objects. and you can only collect for one Collection at a time. <br>
+<br>
+When you have collected the object for the Collection, you need to return to them to turn your pickups in, in return for points. <br>
+<br>
+Once you collect all of the Pickups and return them to their collections, you will progress to Stage 2.
+<br>
+<br>
+</p>
+<h3>Stage 2</h3>
+<p>
+In stage 2, you will meet a lone collection. You need to use the Code Panel to add char (character) objects to the collection. 
+<br>
+<br>
+The collection's name is chars.
+</p>
