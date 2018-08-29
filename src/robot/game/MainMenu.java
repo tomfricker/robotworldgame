@@ -162,16 +162,17 @@ public class MainMenu extends MouseAdapter{
 				hud.setLevel(3);
 				//add objects to start of level 3
 				manager.addObject(new Player(Cells.B,Cells.A,ID.Player));
-				manager.addObject(new CollectionNPC(Cells.A,Cells.H,ID.NPC,"Int",side,hud,1));
-				manager.addObject(new CollectionNPC(Cells.H,Cells.H,ID.NPC,"Char",side,hud,2));
-				manager.addObject(new CollectionNPC(Cells.H,Cells.A,ID.NPC,"Boolean",side,hud,1));
-				manager.addObject(new Pickup(Cells.A,Cells.F,ID.NPC, PICKUPID.Boolean,side, "true"));
-				manager.addObject(new Pickup(Cells.B,Cells.G,ID.NPC, PICKUPID.Char,side, "char1"));
-				manager.addObject(new Pickup(Cells.A,Cells.A,ID.NPC, PICKUPID.Char,side, "char2"));
-				manager.addObject(new Pickup(Cells.A,Cells.G,ID.NPC, PICKUPID.Int,side, "int1"));
-				manager.addObject(new Pickup(Cells.A,Cells.D,ID.NPC, PICKUPID.Int,side, "int2"));
+				manager.addObject(new CollectionNPC(Cells.B,Cells.G,ID.NPC,"Int",side,hud,1));//
+				manager.addObject(new CollectionNPC(Cells.H,Cells.E,ID.NPC,"Char",side,hud,2));//
+				manager.addObject(new CollectionNPC(Cells.H,Cells.A,ID.NPC,"Boolean",side,hud,1));//
+				manager.addObject(new Pickup(Cells.A,Cells.G,ID.NPC, PICKUPID.Boolean,side, "true"));//
+				manager.addObject(new Pickup(Cells.D,Cells.C,ID.NPC, PICKUPID.Char,side, "char1"));//
+				manager.addObject(new Pickup(Cells.F,Cells.A,ID.NPC, PICKUPID.Char,side, "char2"));//
+				manager.addObject(new Pickup(Cells.F,Cells.D,ID.NPC, PICKUPID.Int,side, "int1"));//
+				manager.addObject(new Pickup(Cells.H,Cells.H,ID.NPC, PICKUPID.Int,side, "int2"));//
 				side.setText("~Welcome to level 3 of Robot World - Time to learn about Primitive Types and Collections!\n\n"
-						+ "~These are collectors. Try talking to them to see what they want\n\n");
+						+ "~These are collections. They are a useful way of organising data.\n\n"
+						+"try talking to them to work out how to get the messy data into an organised state.\n\n ");
 				
 				break;
 			}
