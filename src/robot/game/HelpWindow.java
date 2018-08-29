@@ -100,6 +100,7 @@ public class HelpWindow {
 					case "2 - Conditional Statements": return readFile("HelpPages\\\\conditionalStatements.html");
 					case "4 - Loops and Methods": return readFile("HelpPages\\loops.html");
 					case "5 - Classes and Objects": return readFile("HelpPages\\classes&objects.html");
+					case "3 - Collections":return readFile("HelpPages\\collections.html");
 				}
 				return null;
 			}
