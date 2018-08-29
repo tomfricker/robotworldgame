@@ -29,17 +29,15 @@ public class CollectionNPC extends GameObjects {
 	//public Boolean reminded;
 	//public boolean firstVisit;
 	public HUD hud;
-	public int targetValue;
 	public HashMap<String,PICKUPID> revidmap = new HashMap<>();
 	public boolean interacted = false;
 	private String colspectext;
 
-	public CollectionNPC(int x, int y, ID id,String primType,SidePanel side, HUD hud,int targetValue) {
+	public CollectionNPC(int x, int y, ID id,String primType,SidePanel side, HUD hud) {
 		super(x, y, id);
 		this.primType = primType;
 		this.side = side;
 		this.hud = hud;
-		this.targetValue = targetValue;
 		revidmap.put("Int",PICKUPID.Int);
 		revidmap.put("Char",PICKUPID.Char);
 		revidmap.put("Boolean",PICKUPID.Boolean);

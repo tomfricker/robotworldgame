@@ -26,19 +26,17 @@ public class ArrayListNPC extends GameObjects {
 	public String primType;
 	public SidePanel side;
 	public HUD hud;
-	public int targetValue;
 	public HashMap<String,PICKUPID> revidmap = new HashMap<>();
 	public boolean interacted = false;
 	private ArrayList<GameObjects> tail = new ArrayList<>();
 	public Manager manager;
 	
 
-	public ArrayListNPC(int x, int y, ID id,String primType,Manager manager,SidePanel side, HUD hud,int targetValue, boolean b) {
+	public ArrayListNPC(int x, int y, ID id,String primType,Manager manager,SidePanel side, HUD hud, boolean b) {
 		super(x, y, id);
 		this.primType = primType;
 		this.side = side;
 		this.hud = hud;
-		this.targetValue = targetValue;
 		revidmap.put("Int",PICKUPID.Int);
 		revidmap.put("Char",PICKUPID.Char);
 		revidmap.put("Boolean",PICKUPID.Boolean);

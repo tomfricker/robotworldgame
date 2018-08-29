@@ -162,9 +162,9 @@ public class MainMenu extends MouseAdapter{
 				hud.setLevel(3);
 				//add objects to start of level 3
 				manager.addObject(new Player(Cells.B,Cells.A,ID.Player));
-				manager.addObject(new CollectionNPC(Cells.B,Cells.G,ID.NPC,"Int",side,hud,1));//
-				manager.addObject(new CollectionNPC(Cells.H,Cells.E,ID.NPC,"Char",side,hud,2));//
-				manager.addObject(new CollectionNPC(Cells.H,Cells.A,ID.NPC,"Boolean",side,hud,1));//
+				manager.addObject(new CollectionNPC(Cells.B,Cells.G,ID.NPC,"Int",side,hud));//
+				manager.addObject(new CollectionNPC(Cells.H,Cells.E,ID.NPC,"Char",side,hud));//
+				manager.addObject(new CollectionNPC(Cells.H,Cells.A,ID.NPC,"Boolean",side,hud));//
 				manager.addObject(new Pickup(Cells.A,Cells.G,ID.NPC, PICKUPID.Boolean,side, "true"));//
 				manager.addObject(new Pickup(Cells.D,Cells.C,ID.NPC, PICKUPID.Char,side, "char1"));//
 				manager.addObject(new Pickup(Cells.F,Cells.A,ID.NPC, PICKUPID.Char,side, "char2"));//

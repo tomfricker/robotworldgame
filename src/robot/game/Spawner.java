@@ -277,7 +277,7 @@ public class Spawner {
 								"~ try adding each of the vowels (a,e,i,o,u) to this ArrayList<Char> called chars\n\n "+
 								"~ Notice how the Collection grows as you add each letter.\n\n");
 			manager.addObject(new Player(Cells.A, Cells.A, ID.Player));
-			manager.addObject(new ArrayListNPC(Cells.D, Cells.E, ID.Collection,"Char", manager, side,  hud,5,false));
+			manager.addObject(new ArrayListNPC(Cells.D, Cells.E, ID.Collection,"Char", manager, side,  hud,false));
 			hud.setStageEnd(false);
 			
 		}
@@ -290,7 +290,7 @@ public class Spawner {
 				Manager.clearAll();
 				SidePanel.addText("~ Well Done! Now try using the remove() method similarly to get rid of the letter a from the collection");
 				manager.addObject(new Player(Cells.A, Cells.A, ID.Player));
-				manager.addObject(new ArrayListNPC(Cells.D, Cells.E, ID.Collection,"Char", manager, side,  hud,5,true));
+				manager.addObject(new ArrayListNPC(Cells.D, Cells.E, ID.Collection,"Char", manager, side,  hud,true));
 				hud.setStageEnd(false);
 	
 
