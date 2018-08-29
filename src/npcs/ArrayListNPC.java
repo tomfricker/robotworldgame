@@ -2,9 +2,15 @@ package npcs;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+
+import javax.imageio.ImageIO;
+import javax.swing.JOptionPane;
 
 import robot.game.Bag;
 import robot.game.GameObjects;
@@ -65,13 +71,23 @@ public class ArrayListNPC extends GameObjects {
 	 * stored in the collection.
 	 */
 	public void render(Graphics g) {
+		/**
+		 * can be used to render different images for the ArrayListNPC should more types be needed. 
 		if(primType == "Int") {g.setColor(Color.RED);}
 		if(primType == "Char") {g.setColor(Color.BLUE);}
 		if(primType == "Boolean") {g.setColor(Color.GREEN);}
-	
-		g.fillRect(x+10, y+10, 40, 40);
+		*/
+		File imageFile = new File("pictures//basketWalle.png");
+		try {
+			Image FALSE = ImageIO.read(imageFile);
+			g.drawImage(FALSE, x, y, null);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		//g.fillRect(x+10, y+10, 40, 40);
+		g.setColor(Color.BLUE);
 		int tailPositionX = x + 25;
-		int tailPositionY = y + 50;
+		int tailPositionY = y + 65;
 		for(GameObjects o:tail) {
 			g.fillOval(tailPositionX, tailPositionY, 10, 10);
 			tailPositionY += 20;
@@ -82,10 +98,24 @@ public class ArrayListNPC extends GameObjects {
 	
 	/**
 	 * ArrayListNPC does not require an interact method because it's add character 
-	 * method is called by a command. 
+	 * method is called by a command. However, testing suggested a reminder would
+	 * be helpful for the player to better understand the stage. Therefore a message
+	 * box was added to provide more information if the player makes contact with the
+	 * ArrayListNPC. 
 	 */
 	public void interact() {
-		
+		for(GameObjects o : Manager.objectList) {
+			if( o.getId() == ID.Player) {
+			
+				// gets player coordinates
+				if(o.getX() == x && o.getY() == y) {
+					if(!interacted) {
+						JOptionPane.showMessageDialog(null, "Use the Code Panel to add chars to me!");
+						interacted = true;
+					}
+				}
+			}
+		}
 	}
 
 	/**
@@ -94,6 +124,7 @@ public class ArrayListNPC extends GameObjects {
 	 */
 	public void add(char c) {
 		tail.add(new Pickup(64,64,ID.NPC, PICKUPID.Boolean,side, "false"));
+		if(tail.size() == 4) {JOptionPane.showMessageDialog(null, "Only 1 more char to add! Well Done and keep going!");}
 		hud.setScore(hud.getScore()+10);
 		if(HUD.getStage() == 2 && hud.getScore() == 100) {
 			hud.setStage(3);
