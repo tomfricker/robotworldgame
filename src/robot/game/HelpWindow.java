@@ -189,6 +189,11 @@ public class HelpWindow {
 	    category.add(info);
 	}
 	
+	/**
+	 * Add all the CSS rules to a Style Sheet
+	 * (rules have been sourced from Prism CSS File to achieve Syntax Highlight: https://prismjs.com/)
+	 *  
+	 */
 	private void addHighlRules(StyleSheet styleSheet) {
 		styleSheet.addRule("code[class*=\"language-\"],\r\n" + 
         		"pre[class*=\"language-\"] {\r\n" + 

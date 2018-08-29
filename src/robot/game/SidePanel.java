@@ -100,7 +100,7 @@ public class SidePanel extends Panel{
 		helpButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new HelpWindow();
-				new SourceCodeWindow();				
+							
 			}
 		});
 		

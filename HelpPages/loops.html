@@ -12,7 +12,7 @@
 
 <h2>1) for each</h2>
 <p>This loop is ONLY used for collections and has the following syntax:</p>
-<pre><code>
+<pre><code class="language-java">
 for(ElementType element : collection) {<br>
 	loop body<br>
 }
@@ -28,7 +28,7 @@ The for each loop carries out the loop body for each element in the collection.
 <p>
 Here is the example from the game: <br>
 </p>
-<pre><code>
+<pre><code class="language-java">
 for(Flower flower : flowers) {<br>
 	pickup(flower);<br>
 }
@@ -55,11 +55,11 @@ This loop is used when you want to repeat the loop body an unknown number of tim
 It has the following syntax: <br>
 <i>Note: boolean means it is either true or false.</i>
 </p>
-<pre><code>
+<pre><code class="language-java">
 while(boolean condition) {<br>
 	loop body<br>
 }
-<code></pre>
+</code></pre>
 <p>
 The while loop carries out the loop body until the Boolean condition is false.
 </p>
@@ -70,7 +70,7 @@ The while loop carries out the loop body until the Boolean condition is false.
 <p>
 Here is the example from the game: <br>
 </p>
-<pre><code>
+<pre><code class="language-java">
 int flowerIndex = 0;<br>
 while(flowerIndex &lt flowers.size()) {<br>
 	pickup(flower);<br>
@@ -100,7 +100,7 @@ Then it will move on to the flower at the new number of the flowerIndex and pick
 This loop is used when you want to repeat the loop body a known number of times.<br>
 It has the following syntax: <br>
 </p>
-<pre><code>
+<pre><code class="language-java">
 for(initialization; loop condition; increment/decrement) {<br>
 	loop body<br>
 }
@@ -117,7 +117,7 @@ The for loop carries out the loop body until the loop condition is false.
 <p>
 Here is the example from the game: <br>
 </p>
-<pre><code>
+<pre><code class="language-java">
 for(int i = 0; i &lt 3; i++) {<br>
 	pickup(flower);<br>
 }
