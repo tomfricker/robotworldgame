@@ -7,9 +7,11 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import npcs.CollectionNPC;
+import npcs.OperatorsNPC;
 import npcs.MessageNPC;
 import npcs.PICKUPID;
 import npcs.Pickup;
+import npcs.StageEndNPC;
 import robot.game.Game.STATE;
 
 /**
@@ -153,9 +155,69 @@ public class MainMenu extends MouseAdapter{
 						+ "~If you get stuck use the Help Button.\n\n");
 				break;
 			}
+			
 			case 2 : {
-				hud.setLevel(2);
 				//add objects to start of level 2
+				hud.setLevel(2);
+				manager.addObject(new Player(Cells.A, Cells.A, ID.Player));
+				//displays message when player interacts with an OperatorsNPC	
+				String npcMessage = "Hi! Java uses relational operators to compare two values.\n\n"
+						+ "It then checks to see if they are equal\n\n"
+						+ "or if a value is greater than, less than or not equal to another value.\n\n"
+						+ "The result of this comparison will be a boolean value which is either: True or False.\n\n"
+						+ "We will learn more about Booleans in the next stage.\n\n"
+						+ "Use the right arrow key to speak to Robbie's friend. They will be happy to teach you more!\n\n"
+						+ "See you in the next stage!\n\n";
+				manager.addObject(new MessageNPC(Cells.B, Cells.A, ID.NPC, manager, side, hud, npcMessage));
+		        String npcMessage2 = "Hi! I'm Greg the Great. I love the > operator.\n\n"
+		        		+ "make Robbie find all the values that are greater than 5 and bring them back to me\n\n"
+		        		+ "Once you've brought them back, press the down key to visit Lessley!\n\n"
+		        		+ "Hint: This means any number higher than 5.\n\n";
+		         manager.addObject(new OperatorsNPC(Cells.H, Cells.A, ID.NPC,"GreaterThan", side,hud, npcMessage2));
+		       String npcMessage3 = "Hi I'm Lessley, I am looking for all the values less than 5.\n\n"
+		       		+ "Collect all the values less than 5 and bring them back to me!\n\n"
+		       		+ "Once you've done that press the left key to visit Eddie Equal!\n\n"
+		          + "Hint: This means any number lower than 5.\n\n";
+				manager.addObject(new OperatorsNPC(Cells.H, Cells.H, ID.NPC,"LessThan", side, hud, npcMessage3));
+			  String npcMessage4 = "Hi I'm Eddie Equal, I am looking for all the values that are equal to 5.\n\n"
+			  		+ "Collect all the values equal to 5 and bring them back to me\n\n"
+			  		+ "Once you've done that press the up arrow to visit Nora NotEqual!\n\n"
+				 + "Hint: There is only 1 value.\n\n";
+				manager.addObject(new OperatorsNPC(Cells.A, Cells.H, ID.NPC,"Equal", side, hud, npcMessage4));
+		        String question = "Hi I'm Nora NotEqual. In Java when you use the != operator, it means that two\n\n"
+		        		+ "values are not the same. Let's see if you understand this. Answer this question to \n\n"
+		        		+ "to move onto the next stage:\n"
+		        		+ " int robot x = 1;"
+		        		+ " int robot y  = 10;\n\n"
+		        		+ " System.out.println(x != y);\n"
+		        		+ "Type whether you think the above print statement would give true or false\n\n"
+		        		+ "Hint: 2 != 2 would give false ";
+		        String answer = "true";
+		        manager.addObject(new StageEndNPC(Cells.A, Cells.D, ID.NPC, manager, side, hud, question, answer));
+		        manager.addObject(new Pickup(Cells.C, Cells.G,ID.NPC, PICKUPID.Less,side, "One"));
+		        manager.addObject(new Pickup(Cells.B, Cells.F,ID.NPC, PICKUPID.Less,side, "Two"));
+		        manager.addObject(new Pickup(Cells.C, Cells.D,ID.NPC, PICKUPID.Less,side, "Three"));
+		        manager.addObject(new Pickup(Cells.E, Cells.F,ID.NPC, PICKUPID.Less,side, "Four"));
+		        manager.addObject(new Pickup(Cells.G, Cells.F,ID.NPC, PICKUPID.Equal,side, "Five"));
+		        manager.addObject(new Pickup(Cells.B, Cells.C,ID.NPC, PICKUPID.Greater,side, "Six"));
+		        manager.addObject(new Pickup(Cells.D, Cells.B,ID.NPC, PICKUPID.Greater,side, "Seven"));
+		        manager.addObject(new Pickup(Cells.D, Cells.D,ID.NPC, PICKUPID.Greater,side, "Eight"));
+		        manager.addObject(new Pickup(Cells.H, Cells.E,ID.NPC, PICKUPID.Greater,side, "Nine"));
+		        manager.addObject(new Pickup(Cells.H, Cells.C,ID.NPC, PICKUPID.Greater,side, "Ten"));
+		         	side.setText("Welcome to level 2 of Robot World!\n\n"
+						+ "~Booleans and Conditional Statements are very important in Java\n\n"
+						+ "~But first you need to know about Relational Operators before you can understand them.\n\n"
+						+ "~By the end of this level you will know about:\n\n"
+						+ "*Greater Than (>)\n\n"
+						+ "*Less than (<)\n\n"
+						+ "*Equal to (==)\n\n"
+						+ "*And finally Not equal to operators. (!=)\n\n"
+						+ "Press the right arrow key to read about them.\n\n"
+						+ "~If you need help use the Help Button on the left hand side.\n\n");
+	
+			
+				
+				
 				break;
 			}
 			case 3: {

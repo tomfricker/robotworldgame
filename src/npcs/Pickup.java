@@ -35,6 +35,9 @@ public class Pickup extends GameObjects {
 		idmap.put(PICKUPID.Int,"Int");
 		idmap.put(PICKUPID.Char,"Char");
 		idmap.put(PICKUPID.Boolean,"Boolean");
+		idmap.put(PICKUPID.Greater,"GreaterThan");
+		idmap.put(PICKUPID.Less,"LessThan");
+		idmap.put(PICKUPID.Equal,"Equal");
 		this.name = name;
 	}//char
 
@@ -122,11 +125,115 @@ public class Pickup extends GameObjects {
 						e.printStackTrace();
 					}
 				}
-			}
-		}
+			}	
+		 
+			  if(pid == PICKUPID.Less) {
+				  if(name == "One") {
+						File imageFile = new File("pictures//One.png");
+						try {
+							Image One = ImageIO.read(imageFile);
+							g.drawImage(One, x, y, null);
+						} catch (IOException e) {
+							e.printStackTrace();
+			  }
+		  }			
 		
-	}
-	
+				  if(name == "Two") {
+					  File imageFile = new File("pictures//Two.png");
+						try {
+							Image Two = ImageIO.read(imageFile);
+							g.drawImage(Two, x, y, null);
+						} catch (IOException e) {
+							e.printStackTrace();
+	             	}
+				  }
+				      
+				  if(name == "Three") {
+					  File imageFile = new File("pictures//Three.png");
+						try {
+							Image Three = ImageIO.read(imageFile);
+							g.drawImage(Three, x, y, null);
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+				  }
+				  
+				  if(name == "Four") {
+					  File imageFile = new File("pictures//Four.png");
+						try {
+							Image Four = ImageIO.read(imageFile);
+							g.drawImage(Four, x, y, null);
+						} catch (IOException e) {
+							e.printStackTrace();  
+						}		
+				  }		
+			  } 	  
+
+			  if(pid == PICKUPID.Equal) {
+				  if(name == "Five") {
+						File imageFile = new File("pictures//Five.png");
+						try {
+							Image Five = ImageIO.read(imageFile);
+							g.drawImage(Five, x, y, null);
+						} catch (IOException e) {
+							e.printStackTrace();
+						}			
+				  }
+			  }	  
+			  if(pid == PICKUPID.Greater) {
+				  if(name == "Six") {
+						File imageFile = new File("pictures//Six.png");
+						try {
+							Image Six = ImageIO.read(imageFile);
+							g.drawImage(Six, x, y, null);
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+				  }
+				  
+				  if(name == "Seven") {
+					  File imageFile = new File("pictures//Seven.png");
+						try {
+							Image Seven = ImageIO.read(imageFile);
+							g.drawImage(Seven, x, y, null);
+						} catch (IOException e) {
+							e.printStackTrace();  
+						}
+				  }
+				  
+				  
+				  if(name == "Eight") {
+					  File imageFile = new File("pictures//Eight.png");
+						try {
+							Image Eight = ImageIO.read(imageFile);
+							g.drawImage(Eight, x, y, null);
+						} catch (IOException e) {
+							e.printStackTrace();  
+						}
+				  }
+				  
+				  if(name == "Nine") {
+					  File imageFile = new File("pictures//Nine.png");
+						try {
+							Image Nine = ImageIO.read(imageFile);
+							g.drawImage(Nine, x, y, null);
+						} catch (IOException e) {
+							e.printStackTrace();  
+						}
+				  }
+				  
+				  if(name == "Ten") {
+					  File imageFile = new File("pictures//Ten.png");
+						try {
+							Image Ten = ImageIO.read(imageFile);
+							g.drawImage(Ten, x, y, null);
+						} catch (IOException e) {
+							e.printStackTrace();  
+						}
+				  }
+             }	
+         }
+	}	
 	/**
 	 * checks the in game type of any Bag object which may be present and,
 	 * if it is the same as the type of the pickup, adds it to the Bag. 

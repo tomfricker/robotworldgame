@@ -79,6 +79,7 @@ public class MultipleChoiceQNPC extends GameObjects {
 	public void render(Graphics g) {
 		if(interacted == false) {
 			File imageFile = new File("pictures\\walle.png");
+			//pictures\\
 			try {
 				Image robot = ImageIO.read(imageFile);
 				g.drawImage(robot, x, y, null);

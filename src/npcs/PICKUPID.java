@@ -7,6 +7,6 @@ package npcs;
  */
 
 public enum PICKUPID {
-	Int, Char,Boolean,Picked;
+	Int, Char,Boolean,Picked, Greater, Less, Equal, NotEqual;
 }
 

@@ -55,7 +55,10 @@ public class Spawner {
 			else if(stage == 4) dataTypesQuiz();
 
 			//level 2
-			
+			case 2: 
+			if(stage == 1) relationalOperators();
+		    else if(stage == 2) booleanValues();
+		    else if(stage == 3) conditionalStatements();
 			
 			//level 3
 			case 3: if(stage == 1) levelThreeStageOne();
@@ -257,14 +260,210 @@ public class Spawner {
 	}
 	
 	//LEVEL 2 SETUP 	
-
+	/**
+	 * Sets up stage 1 of level 2 
+	 */
 	//Conditional statements
-
+      public void relationalOperators() {
+    	  int interactions = HUD.getInteractions();
+    		if(interactions == 1) {
+    			
+    			HUD.setInteractions(0); // This stops the NPC interaction in other levels from interfering in this level
+    			
+    		}
+      }
+      /**
+  	 * Sets up stage 2 of level 2 
+  	 */
+     public void booleanValues() {
+    		int interactions = HUD.getInteractions();
+    		
+    		if(hud.isStageEnd() == true) {
+    			Manager.clearAll();
+    			SidePanel.addText("~Congratulations you are now on Stage 2\n\n"
+    					+ "~In the previous stage, we spoke about how boolean values: True or False\n\n"
+    					+ "are used as a result when comparing values or evaluating expressions using relational operators.\n\n"
+    					+ "Expressions in java look like this: e.g 5 > 4 ( means that 5 is greater than 4) \n\n."
+    					+ "Because 5 is indeed greater than 4, the boolean value true will be the output/answer that Java gives\n\n"
+    					+ "Press the right arrow key to see what you need to do to complete this stage.\n\n");
+    			manager.addObject(new Player(Cells.A, Cells.A, ID.Player));
+    			String message1 = "Robbie loves eating screws but the evil yellow robots have stolen them\n\n"  
+    					+ "To get them back answer each boolean question correctly.\n\n";
+    			manager.addObject(new MessageNPC(Cells.B, Cells.A, ID.NPC, manager, side, hud, message1));
+    			hud.setStageEnd(false);
+    //		HUD.setInteractions(interactions + 1);
+    	
+    		}
+    		
+    		else if(interactions == 1) {
+				String message = "What will be the boolean value be for 3 == 5";
+				String answer = "false";
+				manager.addObject(new QuestionNPC(Cells.C, Cells.A, ID.NPC, manager, side, hud, message, answer, "/Users/mpl/Downloads//screw.png"));
+				HUD.setInteractions(interactions + 1);
+    		}
+    		
+    		else if(interactions == 3) {
+				String message = "What will be the boolean value be for 10 < 4";
+				String answer = "false";
+				manager.addObject(new QuestionNPC(Cells.H, Cells.A, ID.NPC, manager, side, hud, message, answer, "/Users/mpl/Downloads//screw.png"));
+				HUD.setInteractions(interactions + 1);
+    		
+      }
+    		else if(interactions == 5) {
+				String message = "Java also uses other operators that combine 2 operators into one e.g < = (is less than or equal to)\n\n"
+						+ ">= ( is greater than or equal to)\n\n"
+						+ "see if you can figure out what boolean value this expression would give:\n\n"
+						+ "8 <= 9 ";
+				String answer = "true";
+				manager.addObject(new QuestionNPC(Cells.H, Cells.H, ID.NPC, manager, side, hud, message, answer, "/Users/mpl/Downloads//screw.png"));
+				HUD.setInteractions(interactions + 1);	
+     }
+     
+    		else if(interactions == 7) {
+				String message = "What will be the boolean value be for 6 >= 9";
+				String answer = "false";
+				manager.addObject(new QuestionNPC(Cells.A, Cells.G, ID.NPC, manager, side, hud, message, answer, "/Users/mpl/Downloads//screw.png"));
+				HUD.setInteractions(interactions + 1);
+     }  	
+    		else if(interactions == 9) {
+				String message = "What will be the boolean value be for 7 != 1";
+				String answer = "true";
+				manager.addObject(new QuestionNPC(Cells.D, Cells.A, ID.NPC, manager, side, hud, message, answer, "/Users/mpl/Downloads//screw.png"));
+				HUD.setInteractions(interactions + 1);
+     }	
+    		else if(interactions == 11) {
+				String question = "Answer this last question to complete the stage \n\n"
+						+ "int robot1 = 5;\n\n"
+						+ "int robot2 = 9;\n\n"
+						+ "boolean testQuestion = robot1 <= robot2;\n\n"
+						+ "System.out.println(testQuestion);\n\n"
+						+ "The boolean variable testQuestion is holding an expression, can you figure what boolean value\n\n"
+						+ "the System.out.println(testQuestion) statement will print out?\n\n";
+				String answer = "true";
+				manager.addObject(new StageEndNPC(Cells.D, Cells.D, ID.NPC, manager, side, hud, question, answer));
+				HUD.setInteractions(0);
+    
+    		}
+     }	
+     /**
+ 	 * Sets up stage 3 of level 2 
+ 	 */ 		
+      public void conditionalStatements() {
+   	  int interactions = HUD.getInteractions();
+           if(hud.isStageEnd() == true) {
+  			    Manager.clearAll();
+  			    SidePanel.addText("Well done! You are now on the final stage of level 2. This stage is very important in Java\n\n"
+  			    		+ "because we are going to learn about conditional statements. Without these it is very difficult\n\n"
+  			    		+ "to control the flow of your program. To understand this in more detail, visit Robbie's friends.\n\n"
+  			    		+ "Make sure you pay attention you never know when you'll be tested by the robots.. \n\n"
+  			    		+ "Good luck!");
+  			    manager.addObject(new Player(Cells.A, Cells.A, ID.Player));
+  			String message1 = "Hi there, have you noticed that we make decisions everyday to do different things?\n\n"
+  					+ "In the way that we make decisions,\n\n"
+  					+ "computers need conditional statements to help them \n\n"
+  					+ "do different things.\n\n"
+  					+ "Decisions are written in Java using conditional statements.\n\n";
+  			manager.addObject(new MessageNPC(Cells.B, Cells.A, ID.NPC, manager, side, hud, message1));
+  			hud.setStageEnd(false);
+         
+			}
+  	         	
+             else if(interactions == 1) {
+  					String message = "What do computers use to make decisions?\n\n"
+  							+ "HINT:Read the panel on the left again!\n\n";
+  					String answer = "conditional statements";
+  					manager.addObject(new QuestionNPC(Cells.H, Cells.A, ID.NPC, manager, side, hud, message, answer, "/Users/mpl/Downloads//screw.png"));
+  					HUD.setInteractions(interactions + 1);
+  	  }		
+  	         	
+  	         	else if(interactions == 3) {
+				String message = "These conditional statements are referred to as the following:\n\n"
+		                + "if-then\n\n"
+						+ "if-else\n\n";
+				manager.addObject(new MessageNPC(Cells.H, Cells.H, ID.NPC, manager, side, hud, message));
+				HUD.setInteractions(interactions + 1);
+  	         	
+      }
+  	      	else if(interactions == 5) {
+				String message = "If-then statements are the most basic ones to use.\n\n"
+						+ " They start like this: if(insert condition) {\n\n"
+						+ "if the condition in the brackets evaluates to true then java will execute\n\n"
+						+ "the code that comes after the bracket.";
+				manager.addObject(new MessageNPC(Cells.A, Cells.H, ID.NPC, manager, side, hud, message));
+				HUD.setInteractions(interactions + 1);
+				
+  	      	}
+  	    	else if(interactions == 7) {
+					String message = "int screw1 = 5;\n\n"
+							+ "int screw2 = 9;\n\n"
+							+ "if(screw1 <=  screw2){\n\n"
+							+ "System.out.println(Robbie is still hungry)\n\n"
+							+ "What the above statement means: if the value stored in the variable screw1 is less than\n\n"
+							+ "or equal to the value stored in screw2, java needs to print out the sentence\n\n"
+							+ "Robbie is still hungry.\n\n"
+							+ "What is the condition in the above statement?";
+							String [] options = {"","screw1 <= screw2", "int screw1 = 5;", "int screw2 = 9;", "System.out.println(Robbie is still hungry)"};
+					String answer = "screw1 <= screw2";
+					manager.addObject(new MultipleChoiceQNPC(Cells.A, Cells.D, ID.NPC, manager, side, hud, message, options, answer));
+					HUD.setInteractions(interactions + 1);
+  	         	
+  	      	}	
+  	  	else if(interactions == 9) {
+			String message = "if-else statements are used to give the computer an alternative decision.\n\n"
+	                + "if the condition given in the statement evaluates to false then the computer will \n\n"
+	                + "execute a different decision\n\n"
+					+ "here is an example: int screw1 = 5;\n\n"
+					+ "int screw2 = 9;\n\n"
+					+ "if(screw1 <=  screw2){\n\n"
+					+ "System.out.println(Robbie is still hungry) }\n\n"
+					+ "else { \n\n"
+					+ "System.out.println(Robbie is full); }";
+			manager.addObject(new MessageNPC(Cells.D, Cells.D, ID.NPC, manager, side, hud, message));
+			HUD.setInteractions(interactions + 1);
+  	  	}    
+  	         	
+  	  else if(interactions == 11) {
+			String message = "Using the example that you just saw of the if-else statement\n\n"
+					+ "what decision do you think will be printed: the first one or the second?\n\n"
+					+ "int screw1 = 5;\n\n"
+					+ "int screw2 = 9;\n\n"
+					+ "if(screw1 <=  screw2){\n\n"
+					+ "System.out.println(Robbie is still hungry) }\n\n"
+					+ "else {\n\n"
+					+ "System.out.println(Robbie is full); }\n\n"
+					+ "HINT: Remember relational operators like <= means less than or equals to";
+			String [] options = {"","Robbie is still hungry", "Robbie is full"};
+			String answer = "Robbie is still hungry";
+			manager.addObject(new MultipleChoiceQNPC(Cells.D, Cells.E, ID.NPC, manager, side, hud, message, options, answer));
+			HUD.setInteractions(interactions + 1);
 		
+		
+      }	
+         //final quiz for end of level 2
+         		else if(interactions == 13) {
+         			String[] questions = {"What are Relational Operators?", "What is the primitive data type that has 2 values: True and False?\n\n",
+         					"Which symbol is used to check the equality of 2 values?\n\n", "Why do we use an if-else statement?\n\n",
+         				     "Why are conditional statements used in java?"};
+         			String [] question1 = {"","boolean", "they compare values", "variables"};
+         			String [] question2 = {"","int", "boolean", "conditional statements"};
+         			String [] question3 = {"","=", "<=", "=="};
+         			String [] question4 = {"","if a condition evaluates to false", "if a condition evaluates to true", "used to make decisions"};
+         			String [] question5 = {"","used to make decisions by checking condition","stores values","compare values"};
+         			String [][] options = {question1, question2, question3, question4, question5};
+         			String[] answers = {"they compare values", "boolean", "==", "if a condition evaluates to false","used to make decisions by checking condition"};
+         			manager.addObject(new MultipleQuestionNPC(Cells.D, Cells.F, ID.NPC, manager, side, hud, questions, answers, options));
+         			HUD.setInteractions(0);
+      }
+      }
+      
 	//LEVEL 3 SETUP
 	
 	public void levelThreeStageOne() {
-		
+		int interactions = HUD.getInteractions(); 
+		if(interactions == 1) {
+			
+			HUD.setInteractions(0); // This stops the NPC interaction in other levels from interfering in this level
+		}		
 	}
 	
 	public void levelThreeStageTwo() {
@@ -278,51 +477,50 @@ public class Spawner {
 								"~ Notice how the Collection grows as you add each letter.\n\n");
 			manager.addObject(new Player(Cells.A, Cells.A, ID.Player));
 			manager.addObject(new ArrayListNPC(Cells.D, Cells.E, ID.Collection,"Char", manager, side,  hud,false));
-			hud.setStageEnd(false);
+			hud.setStageEnd(false); }
 			
 		}
-	}
-	
-	
 	//third stage of the collections level which was proving to be overly complicated with the commands so it's been left out for now. 
-		public void levelThreeStageThree() {
-			if(hud.isStageEnd() == true) {
-				Manager.clearAll();
-				SidePanel.addText("~ Well Done! Now try using the remove() method similarly to get rid of the letter a from the collection");
-				manager.addObject(new Player(Cells.A, Cells.A, ID.Player));
-				manager.addObject(new ArrayListNPC(Cells.D, Cells.E, ID.Collection,"Char", manager, side,  hud,true));
-				hud.setStageEnd(false);
-	
-
+			public void levelThreeStageThree() {
+				if(hud.isStageEnd() == true) {
+					Manager.clearAll();
+					SidePanel.addText("~ Well Done! Now try using the remove() method similarly to get rid of the letter a from the collection");
+					manager.addObject(new Player(Cells.A, Cells.A, ID.Player));
+					manager.addObject(new ArrayListNPC(Cells.D, Cells.E, ID.Collection,"Char", manager, side,  hud,true));
+					hud.setStageEnd(false);
+					
+				}
+			}
+			
+			
+			
+		//LEVEL 4 SETUP
+		/**
+		 * Sets up stage 1 of level 4 and adds NPCs as necessary. Works in the same way as
+		 * levelOneStageOne()
+		 */
+		public void loopsIntro() {
+			int interactions = HUD.getInteractions();
+			if(interactions == 1) {
+				String message = "Well Done! Next try typing robot.move(up, 2); to get to the flower.\n"
+						+ "Then try to pickup the flower by typing a new command once you are on the same square.";
+				manager.addObject(new MessageNPC(Cells.E, Cells.C, ID.NPC, manager, side, hud, message));
+				HUD.setInteractions(interactions + 1);
+			 }
+			else if(interactions == 3) {
+				File picture = new File("pictures\\Flower.png");
+				manager.addFlower(new Flower(Cells.E, Cells.A, ID.Flower, manager, side, hud, picture));
+				String message = "Now you can move more than one square at a time!";
+				manager.addObject(new MessageNPC(Cells.F, Cells.A, ID.NPC, manager, side, hud, message));
+				HUD.setInteractions(interactions + 1);
+			}
+			else if(interactions == 5) {
+				String question = "What code did you use to make the robot pickup the flower?";
+				String answer = "robot.pickup(flower);";
+				manager.addObject(new StageEndNPC(Cells.D, Cells.A, ID.NPC, manager, side, hud, question, answer));
+				HUD.setInteractions(0); 
 			}
 		}
-	//LEVEL 4 SETUP
-	/**
-	 * Sets up stage 1 of level 4 and adds NPCs as necessary. Works in the same way as
-	 * levelOneStageOne()
-	 */
-	public void loopsIntro() {
-		int interactions = HUD.getInteractions();
-		if(interactions == 1) {
-			String message = "Well Done! Next try typing robot.move(up, 2); to get to the flower.\n"
-					+ "Then try to pickup the flower by typing a new command once you are on the same square.";
-			manager.addObject(new MessageNPC(Cells.E, Cells.C, ID.NPC, manager, side, hud, message));
-			HUD.setInteractions(interactions + 1);
-		 }
-		else if(interactions == 3) {
-			File picture = new File("pictures\\Flower.png");
-			manager.addFlower(new Flower(Cells.E, Cells.A, ID.Flower, manager, side, hud, picture));
-			String message = "Now you can move more than one square at a time!";
-			manager.addObject(new MessageNPC(Cells.F, Cells.A, ID.NPC, manager, side, hud, message));
-			HUD.setInteractions(interactions + 1);
-		}
-		else if(interactions == 5) {
-			String question = "What code did you use to make the robot pickup the flower?";
-			String answer = "robot.pickup(flower);";
-			manager.addObject(new StageEndNPC(Cells.D, Cells.A, ID.NPC, manager, side, hud, question, answer));
-			HUD.setInteractions(0);
-		 }
-	}
 	
 	/**
 	 * Sets up stage 2 of level 4 and adds NPCs as necessary
@@ -383,6 +581,7 @@ public class Spawner {
 			HUD.setInteractions(0);
 		}
 	}
+	////////
 	
 	/**
 	 * Sets up stage 3 of level 4 and adds NPCs as necessary

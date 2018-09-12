@@ -75,6 +75,7 @@ public class StageEndNPC extends GameObjects {
 	 */
 	public void render(Graphics g) {
 		File imageFile = new File("pictures\\walle.png");
+		//pictures\\walle.png
 		try {
 			Image robot = ImageIO.read(imageFile);
 			g.drawImage(robot, x, y, null);
