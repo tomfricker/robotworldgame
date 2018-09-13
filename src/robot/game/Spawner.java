@@ -298,14 +298,14 @@ public class Spawner {
     		else if(interactions == 1) {
 				String message = "What will be the boolean value be for 3 == 5";
 				String answer = "false";
-				manager.addObject(new QuestionNPC(Cells.C, Cells.A, ID.NPC, manager, side, hud, message, answer, "/Users/mpl/Downloads//screw.png"));
+				manager.addObject(new QuestionNPC(Cells.C, Cells.A, ID.NPC, manager, side, hud, message, answer, "pictures/screw.png"));
 				HUD.setInteractions(interactions + 1);
     		}
     		
     		else if(interactions == 3) {
 				String message = "What will be the boolean value be for 10 < 4";
 				String answer = "false";
-				manager.addObject(new QuestionNPC(Cells.H, Cells.A, ID.NPC, manager, side, hud, message, answer, "/Users/mpl/Downloads//screw.png"));
+				manager.addObject(new QuestionNPC(Cells.H, Cells.A, ID.NPC, manager, side, hud, message, answer, "pictures/screw.png"));
 				HUD.setInteractions(interactions + 1);
     		
       }
@@ -315,20 +315,20 @@ public class Spawner {
 						+ "see if you can figure out what boolean value this expression would give:\n\n"
 						+ "8 <= 9 ";
 				String answer = "true";
-				manager.addObject(new QuestionNPC(Cells.H, Cells.H, ID.NPC, manager, side, hud, message, answer, "/Users/mpl/Downloads//screw.png"));
+				manager.addObject(new QuestionNPC(Cells.H, Cells.H, ID.NPC, manager, side, hud, message, answer, "pictures/screw.png"));
 				HUD.setInteractions(interactions + 1);	
      }
      
     		else if(interactions == 7) {
 				String message = "What will be the boolean value be for 6 >= 9";
 				String answer = "false";
-				manager.addObject(new QuestionNPC(Cells.A, Cells.G, ID.NPC, manager, side, hud, message, answer, "/Users/mpl/Downloads//screw.png"));
+				manager.addObject(new QuestionNPC(Cells.A, Cells.G, ID.NPC, manager, side, hud, message, answer, "pictures/screw.png"));
 				HUD.setInteractions(interactions + 1);
      }  	
     		else if(interactions == 9) {
 				String message = "What will be the boolean value be for 7 != 1";
 				String answer = "true";
-				manager.addObject(new QuestionNPC(Cells.D, Cells.A, ID.NPC, manager, side, hud, message, answer, "/Users/mpl/Downloads//screw.png"));
+				manager.addObject(new QuestionNPC(Cells.D, Cells.A, ID.NPC, manager, side, hud, message, answer, "pictures/screw.png"));
 				HUD.setInteractions(interactions + 1);
      }	
     		else if(interactions == 11) {
@@ -372,7 +372,7 @@ public class Spawner {
   					String message = "What do computers use to make decisions?\n\n"
   							+ "HINT:Read the panel on the left again!\n\n";
   					String answer = "conditional statements";
-  					manager.addObject(new QuestionNPC(Cells.H, Cells.A, ID.NPC, manager, side, hud, message, answer, "/Users/mpl/Downloads//screw.png"));
+  					manager.addObject(new QuestionNPC(Cells.H, Cells.A, ID.NPC, manager, side, hud, message, answer, "pictures/screw.png"));
   					HUD.setInteractions(interactions + 1);
   	  }		
   	         	
